@@ -1,2 +1,3 @@
 github "yuantiku/YTKNetwork" ~> 2.0
 github "Tencent/WCDB"
+github "ccgus/fmdb"
