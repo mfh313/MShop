@@ -73,8 +73,8 @@
 		AC867EE41F1DB55600694086 /* MMServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EE21F1DB55600694086 /* MMServiceCenter.m */; };
 		AC867EE71F1DB5A900694086 /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EE61F1DB5A900694086 /* MShopApiManger.m */; };
 		AC867EEA1F1DB66C00694086 /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EE91F1DB66C00694086 /* MShopLoginApi.m */; };
-		AC867EED1F1DBD6100694086 /* WWKSSOReqAttachObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EEC1F1DBD6100694086 /* WWKSSOReqAttachObject.m */; };
 		AC867EF01F1DBE0900694086 /* MShopLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EEF1F1DBE0900694086 /* MShopLoginService.m */; };
+		AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EF21F1DD4EA00694086 /* MShopSSOReqAttachObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -219,10 +219,10 @@
 		AC867EE61F1DB5A900694086 /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC867EE81F1DB66C00694086 /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
 		AC867EE91F1DB66C00694086 /* MShopLoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopLoginApi.m; sourceTree = "<group>"; };
-		AC867EEB1F1DBD6100694086 /* WWKSSOReqAttachObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKSSOReqAttachObject.h; sourceTree = "<group>"; };
-		AC867EEC1F1DBD6100694086 /* WWKSSOReqAttachObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWKSSOReqAttachObject.m; sourceTree = "<group>"; };
 		AC867EEE1F1DBE0900694086 /* MShopLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginService.h; sourceTree = "<group>"; };
 		AC867EEF1F1DBE0900694086 /* MShopLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopLoginService.m; sourceTree = "<group>"; };
+		AC867EF11F1DD4EA00694086 /* MShopSSOReqAttachObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopSSOReqAttachObject.h; sourceTree = "<group>"; };
+		AC867EF21F1DD4EA00694086 /* MShopSSOReqAttachObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopSSOReqAttachObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,8 +341,6 @@
 			children = (
 				AC867DEC1F1D997600694086 /* ESLoginViewController.h */,
 				AC867DED1F1D997600694086 /* ESLoginViewController.m */,
-				AC867EEB1F1DBD6100694086 /* WWKSSOReqAttachObject.h */,
-				AC867EEC1F1DBD6100694086 /* WWKSSOReqAttachObject.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -603,6 +601,8 @@
 		AC867EDD1F1DB4D800694086 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC867EF11F1DD4EA00694086 /* MShopSSOReqAttachObject.h */,
+				AC867EF21F1DD4EA00694086 /* MShopSSOReqAttachObject.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -699,7 +699,6 @@
 				AC867E421F1D99E600694086 /* UIView+viewController.m in Sources */,
 				AC867E511F1D99E600694086 /* MMSelectButton.m in Sources */,
 				AC867E4C1F1D99E600694086 /* MMBaseInfoItem.m in Sources */,
-				AC867EED1F1DBD6100694086 /* WWKSSOReqAttachObject.m in Sources */,
 				AC867E531F1D99E600694086 /* MMUINavigationBar.m in Sources */,
 				AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */,
 				AC867E441F1D99E600694086 /* UIViewController+FullScreen.m in Sources */,
@@ -729,6 +728,7 @@
 				AC867E581F1D99E600694086 /* MFModelHelper.m in Sources */,
 				AC867E5E1F1D99E600694086 /* MMTabBarController.m in Sources */,
 				AC867E501F1D99E600694086 /* MMOnePixLayoutConstraint.m in Sources */,
+				AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */,
 				AC867E751F1D9BB400694086 /* YYClassInfo.m in Sources */,
 				AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */,
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,

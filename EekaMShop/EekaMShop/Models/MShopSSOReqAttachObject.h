@@ -1,5 +1,5 @@
 //
-//  WWKSSOReqAttachObject.h
+//  MShopSSOReqAttachObject.h
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/18.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WWKSSOReqAttachObject : NSObject
+@interface MShopSSOReqAttachObject : NSObject
 
 @property (nonatomic,weak) id delegate;
 @property (nonatomic,strong) NSString *key;

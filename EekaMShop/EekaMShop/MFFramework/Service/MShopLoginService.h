@@ -7,10 +7,10 @@
 //
 
 #import "MMService.h"
-#import "WWKSSOReqAttachObject.h"
+#import "MShopSSOReqAttachObject.h"
 
 @interface MShopLoginService : MMService
 
--(void)setAttachObject:(WWKSSOReqAttachObject *)attachObject;
+-(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject;
 
 @end

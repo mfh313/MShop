@@ -18,4 +18,6 @@
 
 #import "MFUICommonUtil.h"
 
+#import "MFFramework.h"
+
 #endif /* EekaPos_pch_pch */

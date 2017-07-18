@@ -10,6 +10,7 @@
 #import "WWKApi.h"
 #import "MShopLoginApi.h"
 #import "MShopLoginService.h"
+#import "WWKSSOReqAttachObject.h"
 
 @interface ESLoginViewController ()
 
@@ -38,6 +39,9 @@
         return;
     }
     
+    WWKSSOReqAttachObject *ssoReqAttachObject = [WWKSSOReqAttachObject]
+    
+    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     
     
 }

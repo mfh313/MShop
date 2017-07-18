@@ -10,4 +10,9 @@
 
 @implementation MShopLoginService
 
+-(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject
+{
+    
+}
+
 @end

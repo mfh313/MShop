@@ -19,12 +19,12 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
 
 + (NSString *)hostUrl
 {
-    return @"http://120.76.242.182:8083/";
+    return @"http://ad.koradior.info/ms/";
 }
 
 +(NSString *)loginURL
 {
-    return MFURLWithPara(@"pos/employee/login");
+    return MFURLWithPara(@"employeeApi/qywxLogin");
 }
 
 @end
