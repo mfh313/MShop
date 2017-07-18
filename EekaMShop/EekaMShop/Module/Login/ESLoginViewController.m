@@ -31,7 +31,9 @@
     [WWKApi sendReq:req];
     
     BOOL open = [WWKApi openApp];
-    NSLog(@"open=%@",@(open));
+    if (!open) {
+        [self showTips:@"请安装企业微信"];
+    }
 }
 
 
