@@ -7,6 +7,8 @@
 //
 
 #import <YTKNetwork/YTKNetwork.h>
+#import <YTKNetwork/YTKBatchRequest.h>
+#import "YTKBaseRequest+AnimatingAccessory.h"
 
 @interface MFNetworkRequest : YTKRequest
 

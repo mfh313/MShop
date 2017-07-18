@@ -10,4 +10,8 @@
 
 @interface MShopLoginApi : MFNetworkRequest
 
+@property (nonatomic,strong) NSString *code;
+
+-(BOOL)loginSuccess;
+
 @end

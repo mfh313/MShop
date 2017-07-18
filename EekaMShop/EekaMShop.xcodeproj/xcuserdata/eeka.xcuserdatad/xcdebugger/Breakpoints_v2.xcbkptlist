@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/Login/ESLoginViewController.m"
-            timestampString = "522052293.197349"
+            filePath = "EekaMShop/MFFramework/Networking/MFNetworkRequest.m"
+            timestampString = "522059164.716099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-loginWithWWKCode:"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-messageSuccess"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/MFFramework/Service/MShopLoginService.m"
-            timestampString = "522051478.656863"
+            filePath = "EekaMShop/MFFramework/Networking/MFNetworkRequest.m"
+            timestampString = "522059166.381567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-setWWKSSOReqAttachObject:"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-errorMessage"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/MFFramework/Service/MShopLoginService.m"
-            timestampString = "522051480.052207"
+            filePath = "EekaMShop/MFFramework/Networking/MFNetworkRequest.m"
+            timestampString = "522059206.926151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "-loginWithWWKSSOResp:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EekaMShop/MFFramework/Service/MShopLoginService.m"
-            timestampString = "522051507.60331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-loginWithWWKSSOResp:"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-errorMessage"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Login/ESLoginViewController.m"
-            timestampString = "522052293.197349"
+            timestampString = "522060391.714389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-loginWithWWKCode:"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-onDidLoginSuccess"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,12 +73,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/Login/ESLoginViewController.m"
-            timestampString = "522055773.897614"
+            filePath = "EekaMShop/Module/Login/ESLoginViewController.mm"
+            timestampString = "522061668.620681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-onClickWXLogin:"
             landmarkType = "7">
          </BreakpointContent>

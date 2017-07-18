@@ -10,4 +10,31 @@
 
 @implementation MShopLoginApi
 
+-(NSString *)requestUrl
+{
+    return [MShopApiManger loginURL];
+}
+
+- (YTKRequestMethod)requestMethod {
+    return YTKRequestMethodPOST;
+}
+
+- (id)requestArgument {
+    return @{
+             @"code":self.code
+             };
+}
+
+-(BOOL)loginSuccess
+{
+    NSDictionary *dict = self.responseJSONObject;
+    NSNumber *number = dict[@"errcode"];
+    if (number.intValue == 0)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "YTKBaseRequest.h"
+#import <YTKNetwork/YTKBaseRequest.h>
 
 @interface YTKBaseRequest (AnimatingAccessory)
 

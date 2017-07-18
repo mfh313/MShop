@@ -20,9 +20,9 @@
 
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp
 {
-    id vcObject = _waitAttachObject.delegate;
-    if ([vcObject isKindOfClass:[ESLoginViewController class]]) {
-        ESLoginViewController *loginVC = (ESLoginViewController *)vcObject;
+    id attachObject = _waitAttachObject.delegate;
+    if ([attachObject isKindOfClass:[ESLoginViewController class]]) {
+        ESLoginViewController *loginVC = (ESLoginViewController *)attachObject;
         [loginVC loginWithWWKCode:resp.code];
     }
 }

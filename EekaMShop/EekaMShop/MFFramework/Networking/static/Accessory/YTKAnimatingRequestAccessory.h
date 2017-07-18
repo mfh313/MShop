@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "YTKBaseRequest.h"
+#import <YTKNetwork/YTKBaseRequest.h>
 
 @interface YTKAnimatingRequestAccessory : NSObject <YTKRequestAccessory>
 
