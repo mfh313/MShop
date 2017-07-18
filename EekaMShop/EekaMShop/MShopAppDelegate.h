@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  MShopAppDelegate.h
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/4.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface MShopAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

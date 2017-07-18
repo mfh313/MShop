@@ -1,19 +1,19 @@
 //
-//  AppDelegate.m
+//  MShopAppDelegate.m
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/4.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "MShopAppDelegate.h"
 #import "WWKApi.h"
 
-@interface AppDelegate () <WWKApiDelegate>
+@interface MShopAppDelegate () <WWKApiDelegate>
 
 @end
 
-@implementation AppDelegate
+@implementation MShopAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

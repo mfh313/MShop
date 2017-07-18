@@ -25,8 +25,10 @@
     // state参数为这次请求的唯一标示，客户端需要维护其唯一性。SSO回调时会原样返回
     req.state = @"adfasdfasdf23412341fqw4df14t134rtflajssf8934haioefy";
     [WWKApi sendReq:req];
+    
+    BOOL open = [WWKApi openApp];
+    NSLog(@"open=%@",@(open));
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

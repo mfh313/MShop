@@ -8,28 +8,63 @@
 
 /* Begin PBXBuildFile section */
 		AC6670A81F0B25C00067F6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670A71F0B25C00067F6EE /* main.m */; };
-		AC6670AB1F0B25C00067F6EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670AA1F0B25C00067F6EE /* AppDelegate.m */; };
+		AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.m */; };
 		AC6670AE1F0B25C00067F6EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670AD1F0B25C00067F6EE /* ViewController.m */; };
 		AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670AF1F0B25C00067F6EE /* Main.storyboard */; };
 		AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B21F0B25C00067F6EE /* Assets.xcassets */; };
 		AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */; };
-		AC6670C11F0B28A90067F6EE /* libWXWorkApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6670BE1F0B28A90067F6EE /* libWXWorkApi.a */; };
+		AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCD1F1D982600694086 /* AFNetworking.framework */; };
+		AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCD1F1D982600694086 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCE1F1D982600694086 /* FMDB.framework */; };
+		AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCE1F1D982600694086 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCF1F1D982600694086 /* WCDB.framework */; };
+		AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCF1F1D982600694086 /* WCDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC867DD71F1D982600694086 /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DD01F1D982600694086 /* YTKNetwork.framework */; };
+		AC867DD81F1D982600694086 /* YTKNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DD01F1D982600694086 /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC867DDE1F1D983E00694086 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDB1F1D983E00694086 /* AVFoundation.framework */; };
+		AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDC1F1D983E00694086 /* CoreFoundation.framework */; };
+		AC867DE01F1D983E00694086 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDD1F1D983E00694086 /* Foundation.framework */; };
+		AC867DE61F1D990300694086 /* libWXWorkApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DE31F1D990300694086 /* libWXWorkApi.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC867DD91F1D982600694086 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */,
+				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
+				AC867DD81F1D982600694086 /* YTKNetwork.framework in Embed Frameworks */,
+				AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AC6670A31F0B25C00067F6EE /* EekaMShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EekaMShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6670A71F0B25C00067F6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AC6670A91F0B25C00067F6EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		AC6670AA1F0B25C00067F6EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AC6670A91F0B25C00067F6EE /* MShopAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MShopAppDelegate.h; sourceTree = "<group>"; };
+		AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MShopAppDelegate.m; sourceTree = "<group>"; };
 		AC6670AC1F0B25C00067F6EE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AC6670AD1F0B25C00067F6EE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AC6670B01F0B25C00067F6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC6670B21F0B25C00067F6EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6670B51F0B25C00067F6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6670B71F0B25C00067F6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC6670BE1F0B28A90067F6EE /* libWXWorkApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWXWorkApi.a; sourceTree = "<group>"; };
-		AC6670BF1F0B28A90067F6EE /* WWKApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKApi.h; sourceTree = "<group>"; };
-		AC6670C01F0B28A90067F6EE /* WWKApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKApiObject.h; sourceTree = "<group>"; };
+		AC867DCD1F1D982600694086 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		AC867DCE1F1D982600694086 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
+		AC867DCF1F1D982600694086 /* WCDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCDB.framework; path = Carthage/Build/iOS/WCDB.framework; sourceTree = "<group>"; };
+		AC867DD01F1D982600694086 /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YTKNetwork.framework; path = Carthage/Build/iOS/YTKNetwork.framework; sourceTree = "<group>"; };
+		AC867DDB1F1D983E00694086 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AC867DDC1F1D983E00694086 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		AC867DDD1F1D983E00694086 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AC867DE31F1D990300694086 /* libWXWorkApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWXWorkApi.a; sourceTree = "<group>"; };
+		AC867DE41F1D990300694086 /* WWKApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKApi.h; sourceTree = "<group>"; };
+		AC867DE51F1D990300694086 /* WWKApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKApiObject.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +72,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC6670C11F0B28A90067F6EE /* libWXWorkApi.a in Frameworks */,
+				AC867DE61F1D990300694086 /* libWXWorkApi.a in Frameworks */,
+				AC867DDE1F1D983E00694086 /* AVFoundation.framework in Frameworks */,
+				AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */,
+				AC867DE01F1D983E00694086 /* Foundation.framework in Frameworks */,
+				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
+				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
+				AC867DD71F1D982600694086 /* YTKNetwork.framework in Frameworks */,
+				AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6670A51F0B25C00067F6EE /* EekaMShop */,
+				AC867DDA1F1D983E00694086 /* Frameworks */,
 				AC6670A41F0B25C00067F6EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,13 +106,13 @@
 		AC6670A51F0B25C00067F6EE /* EekaMShop */ = {
 			isa = PBXGroup;
 			children = (
-				AC6670A91F0B25C00067F6EE /* AppDelegate.h */,
-				AC6670AA1F0B25C00067F6EE /* AppDelegate.m */,
+				AC6670A91F0B25C00067F6EE /* MShopAppDelegate.h */,
+				AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.m */,
 				AC6670AC1F0B25C00067F6EE /* ViewController.h */,
 				AC6670AD1F0B25C00067F6EE /* ViewController.m */,
 				AC6670AF1F0B25C00067F6EE /* Main.storyboard */,
-				AC6670BD1F0B28A90067F6EE /* WWK */,
 				AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */,
+				AC867DE11F1D990300694086 /* Vendors */,
 				AC6670B21F0B25C00067F6EE /* Assets.xcassets */,
 				AC6670B71F0B25C00067F6EE /* Info.plist */,
 				AC6670A61F0B25C00067F6EE /* Supporting Files */,
@@ -85,12 +128,34 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AC6670BD1F0B28A90067F6EE /* WWK */ = {
+		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AC6670BE1F0B28A90067F6EE /* libWXWorkApi.a */,
-				AC6670BF1F0B28A90067F6EE /* WWKApi.h */,
-				AC6670C01F0B28A90067F6EE /* WWKApiObject.h */,
+				AC867DCD1F1D982600694086 /* AFNetworking.framework */,
+				AC867DCE1F1D982600694086 /* FMDB.framework */,
+				AC867DCF1F1D982600694086 /* WCDB.framework */,
+				AC867DD01F1D982600694086 /* YTKNetwork.framework */,
+				AC867DDB1F1D983E00694086 /* AVFoundation.framework */,
+				AC867DDC1F1D983E00694086 /* CoreFoundation.framework */,
+				AC867DDD1F1D983E00694086 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC867DE11F1D990300694086 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				AC867DE21F1D990300694086 /* WWK */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		AC867DE21F1D990300694086 /* WWK */ = {
+			isa = PBXGroup;
+			children = (
+				AC867DE31F1D990300694086 /* libWXWorkApi.a */,
+				AC867DE41F1D990300694086 /* WWKApi.h */,
+				AC867DE51F1D990300694086 /* WWKApiObject.h */,
 			);
 			path = WWK;
 			sourceTree = "<group>";
@@ -105,6 +170,7 @@
 				AC66709F1F0B25C00067F6EE /* Sources */,
 				AC6670A01F0B25C00067F6EE /* Frameworks */,
 				AC6670A11F0B25C00067F6EE /* Resources */,
+				AC867DD91F1D982600694086 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -168,7 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6670AE1F0B25C00067F6EE /* ViewController.m in Sources */,
-				AC6670AB1F0B25C00067F6EE /* AppDelegate.m in Sources */,
+				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.m in Sources */,
 				AC6670A81F0B25C00067F6EE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,12 +360,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: xu yiheng (8BZ9HQD624)";
 				DEVELOPMENT_TEAM = 2C97V99SA2;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = EekaMShop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EekaMShop/WWK",
+					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,12 +385,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = EekaMShop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EekaMShop/WWK",
+					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
