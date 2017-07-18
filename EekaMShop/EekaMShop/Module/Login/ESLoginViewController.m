@@ -1,23 +1,27 @@
 //
-//  ViewController.m
+//  ESLoginViewController.m
 //  EekaMShop
 //
-//  Created by EEKA on 2017/7/4.
+//  Created by EEKA on 2017/7/18.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ESLoginViewController.h"
 #import "WWKApi.h"
 
-@interface ViewController ()
+@interface ESLoginViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ESLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 - (IBAction)onClickWXLogin:(id)sender {
@@ -30,10 +34,6 @@
     NSLog(@"open=%@",@(open));
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end
