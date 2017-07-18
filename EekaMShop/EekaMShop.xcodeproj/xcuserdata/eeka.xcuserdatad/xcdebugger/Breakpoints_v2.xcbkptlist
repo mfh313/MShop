@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Login/ESLoginViewController.mm"
-            timestampString = "522061668.620681"
+            timestampString = "522061870.562061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-onClickWXLogin:"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-loginWithWWKCode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

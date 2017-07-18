@@ -42,7 +42,7 @@
     }
     
     WWKSSOReq *req = [[WWKSSOReq alloc] init];
-    req.state = @"ESLoginViewController";
+    req.state = NSStringFromClass(self.class);
     
     MShopSSOReqAttachObject *attachObject = [MShopSSOReqAttachObject new];
     attachObject.key = NSStringFromClass(self.class);
@@ -51,7 +51,6 @@
     
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     [loginService setWWKSSOReqAttachObject:attachObject];
-    
     
     [WWKApi sendReq:req];
 }
@@ -73,12 +72,12 @@
     [m_loginApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         if (!m_loginApi.loginSuccess) {
-            NSLog(@"m_loginApi.errorMessage=%@",m_loginApi.errorMessage);
+            [self showTips:m_loginApi.errorMessage];
             return;
         }
         
         MShopLoginUserInfo *loginInfo = [MShopLoginUserInfo MM_modelWithJSON:request.responseJSONObject];
-        NSLog(@"loginInfo=%@",loginInfo);
+        NSLog(@"loginInfo=%@",loginInfo.description);
    
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf onDidLoginSuccess];
