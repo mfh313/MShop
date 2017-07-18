@@ -29,16 +29,15 @@
 }
 
 - (IBAction)onClickWXLogin:(id)sender {
-    WWKSSOReq *req = [[WWKSSOReq alloc] init];
-    // state参数为这次请求的唯一标示，客户端需要维护其唯一性。SSO回调时会原样返回
-    req.state = @"ESLoginViewController";
-    [WWKApi sendReq:req];
+
+//    BOOL isAppInstalled = [WWKApi isAppInstalled];
+//    if (!isAppInstalled) {
+//        [self showTips:@"请安装企业微信"];
+//        return;
+//    }
     
-    BOOL open = [WWKApi openApp];
-    if (!open) {
-        [self showTips:@"请安装企业微信"];
-        return;
-    }
+    WWKSSOReq *req = [[WWKSSOReq alloc] init];
+    req.state = @"ESLoginViewController";
     
     MShopSSOReqAttachObject *attachObject = [MShopSSOReqAttachObject new];
     attachObject.key = NSStringFromClass(self.class);
@@ -47,12 +46,18 @@
     
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     [loginService setWWKSSOReqAttachObject:attachObject];
+    
+    
+    [WWKApi sendReq:req];
 }
 
 
 -(void)loginWithWWKCode:(NSString *)code
-{
-    NSLog(@"code=%@",code);
+{    
+    if ([MFStringUtil isBlankString:code]) {
+        [self showTips:@"请无此权限，请联系管理员"];
+        return;
+    }
     
     
 }

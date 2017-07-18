@@ -22,7 +22,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>cn.eeka.eekamshop</string>
+			<string>main</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wwauthde623adaa711cfb6000006</string>
