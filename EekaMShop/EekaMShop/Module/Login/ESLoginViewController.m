@@ -10,7 +10,8 @@
 #import "WWKApi.h"
 #import "MShopLoginApi.h"
 #import "MShopLoginService.h"
-#import "WWKSSOReqAttachObject.h"
+#import "MShopSSOReqAttachObject.h"
+#import "ESLoginViewController.h"
 
 @interface ESLoginViewController ()
 
@@ -39,13 +40,19 @@
         return;
     }
     
-    WWKSSOReqAttachObject *ssoReqAttachObject = [WWKSSOReqAttachObject]
+    MShopSSOReqAttachObject *attachObject = [MShopSSOReqAttachObject new];
+    attachObject.key = NSStringFromClass(self.class);
+    attachObject.delegate = self;
+    attachObject.state = req.state;
     
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
-    
-    
+    [loginService setWWKSSOReqAttachObject:attachObject];
 }
 
 
+-(void)loginWithWWKCode:(NSString *)code
+{
+    
+}
 
 @end

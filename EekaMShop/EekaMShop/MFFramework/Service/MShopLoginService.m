@@ -7,12 +7,18 @@
 //
 
 #import "MShopLoginService.h"
+#import "WWKApi.h"
 
 @implementation MShopLoginService
 
 -(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject
 {
-    
+    _waitAttachObject = attachObject;
+}
+
+-(void)loginWithWWKSSOResp:(WWKSSOResp *)resp
+{
+    NSLog(@"resp.code=%@,resp.state=%@",resp.code,resp.state);
 }
 
 @end

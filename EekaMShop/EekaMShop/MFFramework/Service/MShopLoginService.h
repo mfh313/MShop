@@ -10,7 +10,12 @@
 #import "MShopSSOReqAttachObject.h"
 
 @interface MShopLoginService : MMService
+{
+    MShopSSOReqAttachObject *_waitAttachObject;
+}
 
 -(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject;
+
+-(void)loginWithWWKSSOResp:(WWKSSOResp *)resp;
 
 @end

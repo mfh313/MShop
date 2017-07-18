@@ -12,5 +12,6 @@
 
 @property (nonatomic,weak) id delegate;
 @property (nonatomic,strong) NSString *key;
+@property (nonatomic,strong) NSString *state;
 
 @end

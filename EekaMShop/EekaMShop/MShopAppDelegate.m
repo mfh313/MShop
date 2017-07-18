@@ -9,6 +9,7 @@
 #import "MShopAppDelegate.h"
 #import "WWKApi.h"
 #import "MMServiceCenter.h"
+#import "MShopLoginService.h"
 
 @interface MShopAppDelegate () <WWKApiDelegate>
 {
@@ -67,6 +68,9 @@
     if ([resp isKindOfClass:[WWKSSOResp class]]) {
         WWKSSOResp *r = (WWKSSOResp *)resp;
         [extra appendFormat:@"%@ for %@", r.code, r.state];
+        
+        MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+        [loginService loginWithWWKSSOResp:r];
     }
     
     if (extra.length) [extra insertString:@"\n\n" atIndex:0];

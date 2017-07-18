@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ESLoginViewController : UIViewController
+@interface ESLoginViewController : MMViewController
+
+-(void)loginWithWWKCode:(NSString *)code;
 
 @end
