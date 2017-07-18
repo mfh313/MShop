@@ -77,6 +77,7 @@
         }
         
         MShopLoginUserInfo *loginInfo = [MShopLoginUserInfo MM_modelWithJSON:request.responseJSONObject];
+        loginInfo.token = [MFStringUtil URLEncodedString:loginInfo.token];
         NSLog(@"loginInfo=%@",loginInfo.description);
    
         __strong typeof(weakSelf) strongSelf = weakSelf;
