@@ -6,9 +6,7 @@
 //  Copyright © 2016年 EEKA. All rights reserved.
 //
 
-#import "YTKRequest.h"
-#import "YTKBatchRequest.h"
-#import "YTKBaseRequest+AnimatingAccessory.h"
+#import <YTKNetwork/YTKNetwork.h>
 
 @interface MFNetworkRequest : YTKRequest
 

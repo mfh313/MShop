@@ -8,8 +8,12 @@
 
 #import "MShopAppDelegate.h"
 #import "WWKApi.h"
+#import "MMServiceCenter.h"
 
 @interface MShopAppDelegate () <WWKApiDelegate>
+{
+    MMServiceCenter *m_serviceCenter;
+}
 
 @end
 
@@ -17,23 +21,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    /*! @brief 不走管理端的注册方式
-     *
-     * 或许不久的将来我们会开放支持仅仅通过第三方App的schema作为AppId来进行注册，继而调用SDK对应的接口进行工作
-     * 这个接口虽然现在开放了，但暂时还没有开放权限，敬请期待...
-     * @param registerApp 第三方App的Schema
-     */
-    // [WWKApi registerApp:@"wwauth797275b8b439f4b5000002"];
-    
-    
-    /*! @brief 调用这个方法前需要先到管理端进行注册 走管理端的注册方式
-     *
-     * 在管理端通过注册(可能需要等待审批)，获得schema+corpid+agentid
-     * @param registerApp 第三方App的Schema
-     * @param registerApp 第三方App所属企业的ID
-     * @param registerApp 第三方App在企业内部的ID
-     */
+
     [WWKApi registerApp:@"wwauthde623adaa711cfb6000006" corpId:@"wxde623adaa711cfb6" agentId:@"1000006"];
+    
+    
     return YES;
 }
 

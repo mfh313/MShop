@@ -9,6 +9,7 @@
 #import "ESLoginViewController.h"
 #import "WWKApi.h"
 #import "MShopLoginApi.h"
+#import "MShopLoginService.h"
 
 @interface ESLoginViewController ()
 
@@ -28,7 +29,7 @@
 - (IBAction)onClickWXLogin:(id)sender {
     WWKSSOReq *req = [[WWKSSOReq alloc] init];
     // state参数为这次请求的唯一标示，客户端需要维护其唯一性。SSO回调时会原样返回
-    req.state = @"adfasdfasdf23412341fqw4df14t134rtflajssf8934haioefy";
+    req.state = @"ESLoginViewController";
     [WWKApi sendReq:req];
     
     BOOL open = [WWKApi openApp];
@@ -36,6 +37,7 @@
         [self showTips:@"请安装企业微信"];
         return;
     }
+    
     
     
 }
