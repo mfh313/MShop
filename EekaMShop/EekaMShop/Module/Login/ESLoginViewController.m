@@ -8,6 +8,7 @@
 
 #import "ESLoginViewController.h"
 #import "WWKApi.h"
+#import "MShopLoginApi.h"
 
 @interface ESLoginViewController ()
 
@@ -33,7 +34,10 @@
     BOOL open = [WWKApi openApp];
     if (!open) {
         [self showTips:@"请安装企业微信"];
+        return;
     }
+    
+    
 }
 
 
