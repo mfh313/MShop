@@ -7,7 +7,9 @@
 //
 
 #import "MShopLoginService.h"
+#import "MShopSSOReqAttachObject.h"
 #import "WWKApi.h"
+#import "ESLoginViewController.h"
 
 @implementation MShopLoginService
 
@@ -18,7 +20,11 @@
 
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp
 {
-    NSLog(@"resp.code=%@,resp.state=%@",resp.code,resp.state);
+    id vcObject = _waitAttachObject.delegate;
+    if ([vcObject isKindOfClass:[ESLoginViewController class]]) {
+        ESLoginViewController *loginVC = (ESLoginViewController *)vcObject;
+        [loginVC loginWithWWKCode:resp.code];
+    }
 }
 
 @end

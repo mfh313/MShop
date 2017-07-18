@@ -52,6 +52,8 @@
 
 -(void)loginWithWWKCode:(NSString *)code
 {
+    NSLog(@"code=%@",code);
+    
     
 }
 

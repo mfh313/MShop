@@ -7,7 +7,8 @@
 //
 
 #import "MMService.h"
-#import "MShopSSOReqAttachObject.h"
+
+@class MShopSSOReqAttachObject,WWKSSOResp;
 
 @interface MShopLoginService : MMService
 {
