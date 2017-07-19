@@ -24,6 +24,8 @@
 
 #import "MFStringUtil.h"
 
+#import "MFFileUtil.h"
+
 #import "XXNibBridge.h"
 
 #import "MMBaseClass.h"

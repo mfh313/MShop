@@ -7,22 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MShopEmployeeInfo.h"
 
-@interface MShopLoginUserInfo : NSObject
+@interface MShopLoginUserInfo : MShopEmployeeInfo
 
-@property (nonatomic,strong) NSString *avatar;
-@property (nonatomic,strong) NSString *department;
-@property (nonatomic,strong) NSString *email;
-@property (nonatomic,strong) NSString *englishName;
 @property (nonatomic,strong) NSString *token;
-@property (nonatomic,strong) NSString *extattr;
-@property (nonatomic,strong) NSNumber *gender;
-@property (nonatomic,assign) BOOL isLeader;
-@property (nonatomic,strong) NSString *mobile;
-@property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NSString *position;
-@property (nonatomic,strong) NSNumber *status;
-@property (nonatomic,strong) NSString *telephone;
-@property (nonatomic,strong) NSNumber *userId;
+
+WCDB_PROPERTY(token)
 
 @end

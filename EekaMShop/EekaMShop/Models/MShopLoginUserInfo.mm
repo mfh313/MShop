@@ -16,4 +16,9 @@
              };
 }
 
+WCDB_IMPLEMENTATION(MShopLoginUserInfo)
+
+WCDB_SYNTHESIZE(MShopLoginUserInfo, token)
+
+
 @end

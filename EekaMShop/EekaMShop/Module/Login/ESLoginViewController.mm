@@ -78,9 +78,9 @@
         
         MShopLoginUserInfo *loginInfo = [MShopLoginUserInfo MM_modelWithJSON:request.responseJSONObject];
         loginInfo.token = [MFStringUtil URLEncodedString:loginInfo.token];
-        NSLog(@"loginInfo=%@",loginInfo.description);
-   
+        
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf updateLoginInfoInDB:loginInfo];
         [strongSelf onDidLoginSuccess];
         
     } failure:^(YTKBaseRequest * request) {
@@ -89,6 +89,30 @@
         [self showTips:errorDesc];
     }];
 
+}
+
+-(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info
+{
+    Class cls = MShopLoginUserInfo.class;
+    NSString *fileName = NSStringFromClass(cls);
+    NSString *tableName = NSStringFromClass(cls);
+    
+    NSString *path = [MFDocumentDirectory stringByAppendingPathComponent:fileName];
+    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
+    [database close:^{
+        [database removeFilesWithError:nil];
+    }];
+    
+    BOOL ret = [database createTableAndIndexesOfName:tableName withClass:cls];
+    assert(ret);
+    
+    NSArray *schemas = [database getAllObjectsOnResults:{WCTMaster.name, WCTMaster.sql} fromTable:WCTMaster.TableName];
+    for (WCTMaster *table : schemas) {
+        NSLog(@"SQL Of %@: %@", table.name, table.sql);
+    }
+    
+
+    [database insertObject:info into:tableName];
 }
 
 -(void)onDidLoginSuccess
