@@ -30,6 +30,10 @@
 
 -(void)autoLogin
 {
+    //order by
+    //查找上次最后登陆
+    
+    
     [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
 }
 
