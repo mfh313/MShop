@@ -10,10 +10,13 @@
 #import "WWKApi.h"
 #import "MMServiceCenter.h"
 #import "MShopLoginService.h"
+#import "MShopAppViewControllerManager.h"
+#import "MShopLoginService.h"
 
 @interface MShopAppDelegate () <WWKApiDelegate>
 {
     MMServiceCenter *m_serviceCenter;
+    MShopAppViewControllerManager *m_appViewControllerMgr;
 }
 
 @end
@@ -25,7 +28,15 @@
 
     [WWKApi registerApp:@"wwauthde623adaa711cfb6000006" corpId:@"wxde623adaa711cfb6" agentId:@"1000006"];
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    m_appViewControllerMgr = [[MShopAppViewControllerManager getAppViewControllerManager] initWithWindow:self.window];
+    
     m_serviceCenter = [MMServiceCenter defaultCenter];
+    MShopLoginService *loginService = [m_serviceCenter getService:[MShopLoginService class]];
+    [loginService autoLogin];
     
     return YES;
 }

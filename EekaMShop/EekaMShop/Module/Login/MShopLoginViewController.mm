@@ -1,28 +1,29 @@
 //
-//  ESLoginViewController.m
+//  MShopLoginViewController.m
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/18.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "ESLoginViewController.h"
+#import "MShopLoginViewController.h"
 #import "WWKApi.h"
 #import "MShopLoginApi.h"
 #import "MShopLoginService.h"
 #import "MShopSSOReqAttachObject.h"
-#import "ESLoginViewController.h"
+#import "MShopLoginViewController.h"
 #import "MShopLoginUserInfo.h"
+#import "MShopAppViewControllerManager.h"
 #import <WCDB/WCDB.h>
 
-@interface ESLoginViewController ()
+@interface MShopLoginViewController ()
 {
     
 }
 
 @end
 
-@implementation ESLoginViewController
+@implementation MShopLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -117,7 +118,7 @@
 
 -(void)onDidLoginSuccess
 {
-    
+    [[MShopAppViewControllerManager getAppViewControllerManager] createMainTabViewController];
 }
 
 @end

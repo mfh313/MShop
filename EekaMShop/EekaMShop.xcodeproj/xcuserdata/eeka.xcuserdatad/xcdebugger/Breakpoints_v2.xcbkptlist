@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/Login/ESLoginViewController.mm"
-            timestampString = "522138943.352523"
+            filePath = "EekaMShop/Module/MShopAppViewControllerManager.m"
+            timestampString = "522147506.520525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-updateLoginInfoInDB:"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-jumpToLoginViewController"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

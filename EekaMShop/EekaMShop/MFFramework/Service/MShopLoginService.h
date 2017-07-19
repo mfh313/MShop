@@ -19,4 +19,6 @@
 
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp;
 
+-(void)autoLogin;
+
 @end

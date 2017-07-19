@@ -1,5 +1,5 @@
 //
-//  ESLoginViewController.h
+//  MShopLoginViewController.h
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/18.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ESLoginViewController : MMViewController
+@interface MShopLoginViewController : MMViewController
 
 -(void)loginWithWWKCode:(NSString *)code;
 

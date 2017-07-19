@@ -9,7 +9,8 @@
 #import "MShopLoginService.h"
 #import "MShopSSOReqAttachObject.h"
 #import "WWKApi.h"
-#import "ESLoginViewController.h"
+#import "MShopLoginViewController.h"
+#import "MShopAppViewControllerManager.h"
 
 @implementation MShopLoginService
 
@@ -21,10 +22,16 @@
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp
 {
     id attachObject = _waitAttachObject.delegate;
-    if ([attachObject isKindOfClass:[ESLoginViewController class]]) {
-        ESLoginViewController *loginVC = (ESLoginViewController *)attachObject;
+    if ([attachObject isKindOfClass:[MShopLoginViewController class]]) {
+        MShopLoginViewController *loginVC = (MShopLoginViewController *)attachObject;
         [loginVC loginWithWWKCode:resp.code];
     }
 }
+
+-(void)autoLogin
+{
+    [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
+}
+
 
 @end

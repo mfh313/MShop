@@ -14,6 +14,8 @@
 		AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */; };
 		AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.mm */; };
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
+		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.m */; };
+		AC85C2291F1F542F003785A4 /* MShopMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2281F1F542F003785A4 /* MShopMeViewController.m */; };
 		AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCD1F1D982600694086 /* AFNetworking.framework */; };
 		AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCD1F1D982600694086 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCE1F1D982600694086 /* FMDB.framework */; };
@@ -26,7 +28,7 @@
 		AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDC1F1D983E00694086 /* CoreFoundation.framework */; };
 		AC867DE01F1D983E00694086 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDD1F1D983E00694086 /* Foundation.framework */; };
 		AC867DE61F1D990300694086 /* libWXWorkApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DE31F1D990300694086 /* libWXWorkApi.a */; };
-		AC867DEE1F1D997600694086 /* ESLoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC867DED1F1D997600694086 /* ESLoginViewController.mm */; };
+		AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC867DED1F1D997600694086 /* MShopLoginViewController.mm */; };
 		AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867DF31F1D99E600694086 /* NSDictionary+Unicode.m */; };
 		AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867DF51F1D99E600694086 /* NSString+MMWidth.m */; };
 		AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867DF71F1D99E600694086 /* UIView+Extend.m */; };
@@ -115,6 +117,10 @@
 		AC85C21E1F1F2D45003785A4 /* MFFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFFileUtil.h; sourceTree = "<group>"; };
 		AC85C2201F1F2F7B003785A4 /* MShopMainFrameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMainFrameViewController.h; sourceTree = "<group>"; };
 		AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMainFrameViewController.m; sourceTree = "<group>"; };
+		AC85C2231F1F52BC003785A4 /* MShopAppViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppViewControllerManager.h; sourceTree = "<group>"; };
+		AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppViewControllerManager.m; sourceTree = "<group>"; };
+		AC85C2271F1F542F003785A4 /* MShopMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMeViewController.h; sourceTree = "<group>"; };
+		AC85C2281F1F542F003785A4 /* MShopMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMeViewController.m; sourceTree = "<group>"; };
 		AC867DCD1F1D982600694086 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		AC867DCE1F1D982600694086 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		AC867DCF1F1D982600694086 /* WCDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCDB.framework; path = Carthage/Build/iOS/WCDB.framework; sourceTree = "<group>"; };
@@ -125,8 +131,8 @@
 		AC867DE31F1D990300694086 /* libWXWorkApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWXWorkApi.a; sourceTree = "<group>"; };
 		AC867DE41F1D990300694086 /* WWKApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKApi.h; sourceTree = "<group>"; };
 		AC867DE51F1D990300694086 /* WWKApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKApiObject.h; sourceTree = "<group>"; };
-		AC867DEC1F1D997600694086 /* ESLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESLoginViewController.h; sourceTree = "<group>"; };
-		AC867DED1F1D997600694086 /* ESLoginViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ESLoginViewController.mm; sourceTree = "<group>"; };
+		AC867DEC1F1D997600694086 /* MShopLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginViewController.h; sourceTree = "<group>"; };
+		AC867DED1F1D997600694086 /* MShopLoginViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MShopLoginViewController.mm; sourceTree = "<group>"; };
 		AC867DF11F1D99E600694086 /* MFCategorys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCategorys.h; sourceTree = "<group>"; };
 		AC867DF21F1D99E600694086 /* NSDictionary+Unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Unicode.h"; sourceTree = "<group>"; };
 		AC867DF31F1D99E600694086 /* NSDictionary+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Unicode.m"; sourceTree = "<group>"; };
@@ -321,6 +327,15 @@
 			path = MainFrame;
 			sourceTree = "<group>";
 		};
+		AC85C2261F1F5415003785A4 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				AC85C2271F1F542F003785A4 /* MShopMeViewController.h */,
+				AC85C2281F1F542F003785A4 /* MShopMeViewController.m */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +378,10 @@
 			isa = PBXGroup;
 			children = (
 				AC85C21F1F1F2F5C003785A4 /* MainFrame */,
+				AC85C2261F1F5415003785A4 /* Me */,
 				AC867DEB1F1D997600694086 /* Login */,
+				AC85C2231F1F52BC003785A4 /* MShopAppViewControllerManager.h */,
+				AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -371,8 +389,8 @@
 		AC867DEB1F1D997600694086 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				AC867DEC1F1D997600694086 /* ESLoginViewController.h */,
-				AC867DED1F1D997600694086 /* ESLoginViewController.mm */,
+				AC867DEC1F1D997600694086 /* MShopLoginViewController.h */,
+				AC867DED1F1D997600694086 /* MShopLoginViewController.mm */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -796,6 +814,7 @@
 				AC867EF01F1DBE0900694086 /* MShopLoginService.m in Sources */,
 				AC867E591F1D99E600694086 /* MFThemeHelper.m in Sources */,
 				AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */,
+				AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.m in Sources */,
 				AC867E801F1D9CBB00694086 /* MBProgressHUD.m in Sources */,
 				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.m in Sources */,
 				AC867E461F1D99E600694086 /* UIViewController+UINavigationItem.m in Sources */,
@@ -803,6 +822,7 @@
 				AC867E451F1D99E600694086 /* UIViewController+pregress.m in Sources */,
 				AC867E411F1D99E600694086 /* UIView+threadHook.m in Sources */,
 				AC867E5A1F1D99E600694086 /* MFTableViewCellInfo.m in Sources */,
+				AC85C2291F1F542F003785A4 /* MShopMeViewController.m in Sources */,
 				AC867E581F1D99E600694086 /* MFModelHelper.m in Sources */,
 				AC867E5E1F1D99E600694086 /* MMTabBarController.m in Sources */,
 				AC867E501F1D99E600694086 /* MMOnePixLayoutConstraint.m in Sources */,
@@ -812,7 +832,7 @@
 				AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.mm in Sources */,
 				AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */,
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
-				AC867DEE1F1D997600694086 /* ESLoginViewController.mm in Sources */,
+				AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */,
 				AC867E541F1D99E600694086 /* MMUITextField.m in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,

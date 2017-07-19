@@ -20,5 +20,6 @@
 
 #import "MFFramework.h"
 
+#import "MShopAppViewControllerManager.h"
 
 #endif /* EekaPos_pch_pch */
