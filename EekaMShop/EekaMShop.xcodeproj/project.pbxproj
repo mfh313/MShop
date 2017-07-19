@@ -16,6 +16,7 @@
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
 		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.m */; };
 		AC85C2291F1F542F003785A4 /* MShopMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2281F1F542F003785A4 /* MShopMeViewController.m */; };
+		AC85C22C1F1F5943003785A4 /* MShopEmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C22B1F1F5943003785A4 /* MShopEmployeeListViewController.m */; };
 		AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCD1F1D982600694086 /* AFNetworking.framework */; };
 		AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCD1F1D982600694086 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCE1F1D982600694086 /* FMDB.framework */; };
@@ -121,6 +122,8 @@
 		AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppViewControllerManager.m; sourceTree = "<group>"; };
 		AC85C2271F1F542F003785A4 /* MShopMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMeViewController.h; sourceTree = "<group>"; };
 		AC85C2281F1F542F003785A4 /* MShopMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMeViewController.m; sourceTree = "<group>"; };
+		AC85C22A1F1F5943003785A4 /* MShopEmployeeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeListViewController.h; sourceTree = "<group>"; };
+		AC85C22B1F1F5943003785A4 /* MShopEmployeeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopEmployeeListViewController.m; sourceTree = "<group>"; };
 		AC867DCD1F1D982600694086 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		AC867DCE1F1D982600694086 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		AC867DCF1F1D982600694086 /* WCDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCDB.framework; path = Carthage/Build/iOS/WCDB.framework; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			children = (
 				AC85C2201F1F2F7B003785A4 /* MShopMainFrameViewController.h */,
 				AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */,
+				AC85C22A1F1F5943003785A4 /* MShopEmployeeListViewController.h */,
+				AC85C22B1F1F5943003785A4 /* MShopEmployeeListViewController.m */,
 			);
 			path = MainFrame;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 				AC867E5D1F1D99E600694086 /* MFTableViewUserInfo.m in Sources */,
 				AC867E5B1F1D99E600694086 /* MFTableViewInfo.m in Sources */,
 				AC867E431F1D99E600694086 /* UIViewController+FixBackIndicatorImage.m in Sources */,
+				AC85C22C1F1F5943003785A4 /* MShopEmployeeListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
