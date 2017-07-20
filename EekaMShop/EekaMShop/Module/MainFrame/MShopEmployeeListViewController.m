@@ -7,6 +7,7 @@
 //
 
 #import "MShopEmployeeListViewController.h"
+#import "MFTableViewInfo.h"
 
 @interface MShopEmployeeListViewController ()
 

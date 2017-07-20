@@ -27,8 +27,6 @@
 
 - (IBAction)onClickMemberManager:(id)sender
 {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MShop_MainFrame" bundle:nil];
-//    MShopEmployeeListViewController *employeeListVC = [storyboard instantiateViewControllerWithIdentifier:@"MShopEmployeeListViewController"];
     MShopEmployeeListViewController *employeeListVC = [MShopEmployeeListViewController new];
     employeeListVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:employeeListVC animated:YES];
