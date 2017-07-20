@@ -35,11 +35,18 @@
 }
 
 - (IBAction)onClickWXLogin:(id)sender {
+    
+    BOOL authentication = [self startWWKAuthentication];
+    if (!authentication) {
+        [self showTips:@"请安装企业微信"];
+    }
+}
 
+-(BOOL)startWWKAuthentication
+{
     BOOL isAppInstalled = [WWKApi isAppInstalled];
     if (!isAppInstalled) {
-        [self showTips:@"请安装企业微信"];
-        return;
+        return NO;
     }
     
     WWKSSOReq *req = [[WWKSSOReq alloc] init];
@@ -54,8 +61,9 @@
     [loginService setWWKSSOReqAttachObject:attachObject];
     
     [WWKApi sendReq:req];
+    
+    return YES;
 }
-
 
 -(void)loginWithWWKCode:(NSString *)code
 {    
@@ -82,6 +90,7 @@
         
         MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
         [loginService updateLoginInfoInDB:loginInfo];
+        [loginService updateLastLoginInfoInDB:loginInfo];
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf onDidLoginSuccess];

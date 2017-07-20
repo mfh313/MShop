@@ -15,6 +15,8 @@
     MShopSSOReqAttachObject *_waitAttachObject;
 }
 
+-(NSString *)getCurrentLoginToken;
+
 -(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject;
 
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp;
@@ -22,5 +24,6 @@
 -(void)autoLogin;
 
 -(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info;
+-(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info;
 
 @end

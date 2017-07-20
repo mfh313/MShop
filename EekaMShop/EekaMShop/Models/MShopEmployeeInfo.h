@@ -24,7 +24,7 @@
 @property (nonatomic,strong) NSString *status;
 @property (nonatomic,strong) NSString *telephone;
 @property (nonatomic,strong) NSString *userId;
-@property(nonatomic, retain) NSString *timestamp;
+@property (nonatomic,assign) int timestamp;
 
 WCDB_PROPERTY(avatar)
 WCDB_PROPERTY(department)

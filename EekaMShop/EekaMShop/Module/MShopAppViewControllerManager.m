@@ -46,8 +46,8 @@
     MShopMainFrameViewController *mainFrameVC = [[MShopMainFrameViewController alloc] init];
     MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:mainFrameVC];
     UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"主页"
-                                                              image:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                                                      selectedImage:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                      selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     rootNav.tabBarItem = homeTabItem;
     
     MShopMeViewController *meVC = [MShopMeViewController new];

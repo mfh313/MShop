@@ -15,6 +15,7 @@
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
+		AC7C28561F207932003C0C4C /* MShopLoginTable.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28551F207932003C0C4C /* MShopLoginTable.mm */; };
 		AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.mm */; };
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
 		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.m */; };
@@ -119,6 +120,8 @@
 		AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopLoginApi.m; sourceTree = "<group>"; };
 		AC7C284F1F203E6D003C0C4C /* MShopLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginService.h; sourceTree = "<group>"; };
 		AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MShopLoginService.mm; sourceTree = "<group>"; };
+		AC7C28541F207932003C0C4C /* MShopLoginTable.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = MShopLoginTable.h; sourceTree = "<group>"; };
+		AC7C28551F207932003C0C4C /* MShopLoginTable.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MShopLoginTable.mm; sourceTree = "<group>"; };
 		AC85C21A1F1EE7A1003785A4 /* MShopEmployeeInfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = MShopEmployeeInfo.h; sourceTree = "<group>"; };
 		AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MShopEmployeeInfo.mm; sourceTree = "<group>"; };
 		AC85C21E1F1F2D45003785A4 /* MFFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFFileUtil.h; sourceTree = "<group>"; };
@@ -670,6 +673,8 @@
 				AC867EF21F1DD4EA00694086 /* MShopSSOReqAttachObject.m */,
 				AC867F011F1E00DA00694086 /* MShopLoginUserInfo.h */,
 				AC867F021F1E00DA00694086 /* MShopLoginUserInfo.mm */,
+				AC7C28541F207932003C0C4C /* MShopLoginTable.h */,
+				AC7C28551F207932003C0C4C /* MShopLoginTable.mm */,
 				AC85C21A1F1EE7A1003785A4 /* MShopEmployeeInfo.h */,
 				AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.mm */,
 			);
@@ -847,6 +852,7 @@
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
 				AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */,
 				AC867E541F1D99E600694086 /* MMUITextField.m in Sources */,
+				AC7C28561F207932003C0C4C /* MShopLoginTable.mm in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,

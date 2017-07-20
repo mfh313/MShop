@@ -14,6 +14,7 @@
 #import "MShopAppViewControllerManager.h"
 #import "MShopLoginService.h"
 #import "MShopLoginUserInfo.h"
+#import "MShopLoginTable.h"
 
 
 @implementation MShopLoginService
@@ -34,11 +35,27 @@
 
 -(void)autoLogin
 {
-    //order by
-    //查找上次最后登陆
+    if (![MFStringUtil isBlankString:[self getCurrentLoginToken]])
+    {
+        [[MShopAppViewControllerManager getAppViewControllerManager] createMainTabViewController];
+    }
+    else
+    {
+        [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
+    }
+}
+
+-(NSString *)getCurrentLoginToken
+{
+    NSString *className = NSStringFromClass(MShopLoginTable.class);
+    NSString *path = [MFDocumentDirectory stringByAppendingPathComponent:className];
+    NSString *tableName = className;
+    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
     
-    
-    [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
+    WCTTable *table = [database getTableOfName:tableName
+                                     withClass:MShopLoginTable.class];
+    MShopLoginTable *loginInfo = [table getOneObject];
+    return loginInfo.token;
 }
 
 -(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info
@@ -67,7 +84,28 @@
 
 -(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info
 {
+    NSString *className = NSStringFromClass(MShopLoginTable.class);
+    NSString *path = [MFDocumentDirectory stringByAppendingPathComponent:className];
+    NSString *tableName = className;
+    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
+    [database close:^{
+        [database removeFilesWithError:nil];
+    }];
     
+    [database createTableAndIndexesOfName:tableName
+                                withClass:MShopLoginTable.class];
+    
+    
+    WCTTable *table = [database getTableOfName:tableName
+                               withClass:MShopLoginTable.class];
+    
+    
+    MShopLoginTable *object = [[MShopLoginTable alloc] init];
+    object.token = info.token;
+    object.userId = info.userId;
+    object.createTime = [NSDate date];
+    object.modifiedTime = [NSDate date];
+    [table insertObject:object];
 }
 
 
