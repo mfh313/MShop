@@ -65,5 +65,10 @@
     [database insertObject:info into:tableName];
 }
 
+-(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info
+{
+    
+}
+
 
 @end

@@ -634,8 +634,8 @@
 			isa = PBXGroup;
 			children = (
 				AC867E8B1F1DB32800694086 /* MFFramework.h */,
-				AC7C28491F203E6D003C0C4C /* API */,
 				AC7C284E1F203E6D003C0C4C /* Service */,
+				AC7C28491F203E6D003C0C4C /* API */,
 				AC867E8C1F1DB32800694086 /* Networking */,
 			);
 			path = MFFramework;
