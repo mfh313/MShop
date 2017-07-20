@@ -26,6 +26,8 @@
 
 -(void)autoLogin;
 
+-(void)logout;
+
 -(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info;
 -(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info;
 

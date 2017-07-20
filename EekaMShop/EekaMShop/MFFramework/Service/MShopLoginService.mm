@@ -46,6 +46,24 @@
     }
 }
 
+-(void)logout
+{
+    _currentLoginUserInfo = nil;
+    
+    Class cls = MShopLoginUserInfo.class;
+    NSString *tableName = NSStringFromClass(cls);
+    
+    NSString *path = [self MShopLoginUserInfoPath];
+    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
+    
+    WCTTable *table = [database getTableOfName:tableName
+                                     withClass:cls];
+    [table deleteAllObjects];
+    
+    [[MShopAppViewControllerManager getAppViewControllerManager] userLogOut];
+    [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
+}
+
 -(MShopLoginUserInfo *)currentLoginUserInfo
 {
     if (_currentLoginUserInfo) {
