@@ -36,6 +36,7 @@ WCDB_SYNTHESIZE_DEFAULT(MShopLoginUserInfo, timestamp, WCTDefaultTypeCurrentTime
 
 
 WCDB_PRIMARY(MShopLoginUserInfo, userId)
+WCDB_UNIQUE(MShopLoginUserInfo, userId)
 
 
 @end

@@ -8,7 +8,7 @@
 
 #import "MMService.h"
 
-@class MShopSSOReqAttachObject,WWKSSOResp;
+@class MShopSSOReqAttachObject,WWKSSOResp,MShopLoginUserInfo;
 
 @interface MShopLoginService : MMService
 {
@@ -20,5 +20,7 @@
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp;
 
 -(void)autoLogin;
+
+-(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info;
 
 @end
