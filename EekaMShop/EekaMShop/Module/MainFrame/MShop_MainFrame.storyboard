@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shop Main Frame View Controller-->
+        <scene sceneID="qr0-dA-ZbF">
+            <objects>
+                <viewController storyboardIdentifier="MShopMainFrameViewController" id="L8h-cF-tST" customClass="MShopMainFrameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SmQ-6j-wEP"/>
+                        <viewControllerLayoutGuide type="bottom" id="7oT-q4-wbB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="14b-xZ-OCd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fi8-Ab-IOm">
+                                <rect key="frame" x="98" y="72" width="179" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="会员管理"/>
+                                <connections>
+                                    <action selector="onClickMemberManager:" destination="L8h-cF-tST" eventType="touchUpInside" id="QdR-ap-CRZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fi8-Ab-IOm" firstAttribute="centerX" secondItem="14b-xZ-OCd" secondAttribute="centerX" id="OaD-5o-Lbg"/>
+                            <constraint firstItem="Fi8-Ab-IOm" firstAttribute="top" secondItem="SmQ-6j-wEP" secondAttribute="bottom" constant="52" id="mYe-8b-SS4"/>
+                            <constraint firstItem="Fi8-Ab-IOm" firstAttribute="leading" secondItem="14b-xZ-OCd" secondAttribute="leading" constant="98" id="xU5-DA-p81"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QMG-ze-Xh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95.200000000000003" y="84.107946026986511"/>
+        </scene>
+    </scenes>
+</document>
