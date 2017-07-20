@@ -7,9 +7,7 @@
 //
 
 #import "MFNetworkRequest.h"
-//#import "YTKRequest.h"
-//#import "YTKBatchRequest.h"
-//#import "YTKBaseRequest+AnimatingAccessory.h"
+#import "MFNetWorkAgent.h"
 
 #ifdef DEBUG
 #define MFAppLog(s, ... ) NSLog( @"[%@ in line %d] ===============>%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
@@ -29,7 +27,25 @@
 
 #endif
     
+}
+
+-(void)setCompletionBlockWithSuccess:(YTKRequestCompletionBlock)success failure:(YTKRequestCompletionBlock)failure
+{
+    __weak __typeof(self) weakSelf = self;
     
+    [super setCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        __strong __typeof(self) strongSelf = weakSelf;
+        if ([strongSelf tokenExpire]) {
+            
+            MFNetWorkAgent *netWorkAgent = [[MMServiceCenter defaultCenter] getService:[MFNetWorkAgent class]];
+            [netWorkAgent handleTokenExpire];
+            return;
+        }
+        
+        success(request);
+        
+    } failure:failure];
 }
 
 + (void)logWithSuccessResponse:(id)response url:(NSString *)url params:(NSDictionary *)params {
@@ -141,12 +157,18 @@
 {
     NSDictionary *dict = self.responseJSONObject;
     NSNumber *number = dict[@"errcode"];
-    if (number.intValue == 0 || number.intValue == 1)
+    if (number.intValue == 0)
     {
         return YES;
     }
     
     return NO;
+}
+
+-(BOOL)tokenExpire
+{
+    MFNetWorkAgent *netWorkAgent = [[MMServiceCenter defaultCenter] getService:[MFNetWorkAgent class]];
+    return [netWorkAgent tokenExpire:self];
 }
 
 -(NSString*)errorMessage
