@@ -1,20 +1,14 @@
 //
-//  MShopLoginUserInfo.m
+//  MShopLoginUserInfo+WCDB.m
 //  EekaMShop
 //
-//  Created by EEKA on 2017/7/18.
+//  Created by EEKA on 2017/7/20.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "MShopLoginUserInfo.h"
+#import "MShopLoginUserInfo+WCDB.h"
 
-@implementation MShopLoginUserInfo
-
-+ (NSDictionary *)modelCustomPropertyMapper {
-    return @{
-             @"token" : @"errmsg"
-             };
-}
+@implementation MShopLoginUserInfo (WCDB)
 
 WCDB_IMPLEMENTATION(MShopLoginUserInfo)
 
@@ -37,6 +31,5 @@ WCDB_SYNTHESIZE_DEFAULT(MShopLoginUserInfo, timestamp, WCTDefaultTypeCurrentTime
 
 WCDB_PRIMARY(MShopLoginUserInfo, userId)
 WCDB_UNIQUE(MShopLoginUserInfo, userId)
-
 
 @end

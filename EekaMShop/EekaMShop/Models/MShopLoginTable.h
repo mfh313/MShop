@@ -7,20 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WCDB/WCDB.h>
 
-@interface MShopLoginTable : NSObject <WCTTableCoding>
+@interface MShopLoginTable : NSObject 
 
 @property (nonatomic,strong) NSString *token;
 @property (nonatomic,strong) NSString *userId;
 @property (nonatomic,strong) NSDate *createTime;
 @property (nonatomic,strong) NSDate *modifiedTime;
-
-WCDB_PROPERTY(token)
-WCDB_PROPERTY(userId)
-WCDB_PROPERTY(createTime)
-WCDB_PROPERTY(modifiedTime)
-
 
 
 @end

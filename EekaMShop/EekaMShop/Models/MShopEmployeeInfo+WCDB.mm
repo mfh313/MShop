@@ -1,14 +1,14 @@
 //
-//  MShopEmployeeInfo.m
+//  MShopEmployeeInfo+WCDB.m
 //  EekaMShop
 //
-//  Created by EEKA on 2017/7/19.
+//  Created by EEKA on 2017/7/20.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "MShopEmployeeInfo.h"
+#import "MShopEmployeeInfo+WCDB.h"
 
-@implementation MShopEmployeeInfo
+@implementation MShopEmployeeInfo (WCDB)
 
 WCDB_IMPLEMENTATION(MShopEmployeeInfo)
 

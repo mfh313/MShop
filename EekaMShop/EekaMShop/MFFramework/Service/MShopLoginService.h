@@ -13,9 +13,12 @@
 @interface MShopLoginService : MMService
 {
     MShopSSOReqAttachObject *_waitAttachObject;
+    MShopLoginUserInfo *_currentLoginUserInfo;
 }
 
 -(NSString *)getCurrentLoginToken;
+
+-(MShopLoginUserInfo *)currentLoginUserInfo;
 
 -(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject;
 

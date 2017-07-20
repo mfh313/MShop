@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WCDB/WCDB.h>
 
-@interface MShopEmployeeInfo : NSObject <WCTTableCoding>
+@interface MShopEmployeeInfo : NSObject 
 
 @property (nonatomic,strong) NSString *avatar;
 @property (nonatomic,strong) NSString *department;
@@ -26,19 +25,6 @@
 @property (nonatomic,strong) NSString *userId;
 @property (nonatomic,assign) int timestamp;
 
-WCDB_PROPERTY(avatar)
-WCDB_PROPERTY(department)
-WCDB_PROPERTY(email)
-WCDB_PROPERTY(englishName)
-WCDB_PROPERTY(extattr)
-WCDB_PROPERTY(gender)
-WCDB_PROPERTY(isLeader)
-WCDB_PROPERTY(mobile)
-WCDB_PROPERTY(name)
-WCDB_PROPERTY(position)
-WCDB_PROPERTY(status)
-WCDB_PROPERTY(telephone)
-WCDB_PROPERTY(userId)
-WCDB_PROPERTY(timestamp)
+
 
 @end

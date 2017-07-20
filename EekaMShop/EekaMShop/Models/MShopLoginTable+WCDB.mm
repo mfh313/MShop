@@ -1,14 +1,14 @@
 //
-//  MShopLoginTable.m
+//  MShopLoginTable+WCDB.m
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/20.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "MShopLoginTable.h"
+#import "MShopLoginTable+WCDB.h"
 
-@implementation MShopLoginTable
+@implementation MShopLoginTable (WCDB)
 
 WCDB_IMPLEMENTATION(MShopLoginTable)
 WCDB_SYNTHESIZE(MShopLoginTable, token)

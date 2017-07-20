@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shop Me View Controller-->
+        <scene sceneID="SKA-e0-Yrd">
+            <objects>
+                <viewController storyboardIdentifier="MShopMeViewController" id="5TH-jw-xyR" customClass="MShopMeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8ws-Ed-Ac7"/>
+                        <viewControllerLayoutGuide type="bottom" id="rbK-lp-Wj7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lSx-pB-Llj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvz-Oz-yCm">
+                                <rect key="frame" x="0.0" y="70" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="centerX" secondItem="lSx-pB-Llj" secondAttribute="centerX" id="2wg-7s-QgO"/>
+                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="leading" secondItem="lSx-pB-Llj" secondAttribute="leading" id="W9U-sW-i9Q"/>
+                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="top" secondItem="8ws-Ed-Ac7" secondAttribute="bottom" constant="50" id="vge-p3-NDt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_nameLabel" destination="jvz-Oz-yCm" id="SPG-sn-Xir"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0E-ab-YbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-233" y="187"/>
+        </scene>
+    </scenes>
+</document>

@@ -8,13 +8,14 @@
 
 #import "MShopLoginService.h"
 #import "WWKApi.h"
-#import <WCDB/WCDB.h>
 #import "MShopSSOReqAttachObject.h"
 #import "MShopLoginViewController.h"
 #import "MShopAppViewControllerManager.h"
-#import "MShopLoginService.h"
-#import "MShopLoginUserInfo.h"
 #import "MShopLoginTable.h"
+#import "MShopLoginTable+WCDB.h"
+#import "MShopLoginUserInfo.h"
+#import "MShopLoginUserInfo+WCDB.h"
+#import <WCDB/WCDB.h>
 
 
 @implementation MShopLoginService
@@ -45,6 +46,23 @@
     }
 }
 
+-(MShopLoginUserInfo *)currentLoginUserInfo
+{
+    if (_currentLoginUserInfo) {
+        return _currentLoginUserInfo;
+    }
+    
+    Class cls = MShopLoginUserInfo.class;
+    NSString *tableName = NSStringFromClass(cls);
+    NSString *path = [self MShopLoginUserInfoPath];
+    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
+    
+    WCTTable *table = [database getTableOfName:tableName
+                                     withClass:cls];
+    MShopLoginUserInfo *loginInfo = [table getOneObject];
+    return loginInfo;
+}
+
 -(NSString *)getCurrentLoginToken
 {
     NSString *className = NSStringFromClass(MShopLoginTable.class);
@@ -58,13 +76,21 @@
     return loginInfo.token;
 }
 
--(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info
+-(NSString *)MShopLoginUserInfoPath
 {
     Class cls = MShopLoginUserInfo.class;
     NSString *fileName = NSStringFromClass(cls);
-    NSString *tableName = NSStringFromClass(cls);
     
     NSString *path = [MFDocumentDirectory stringByAppendingPathComponent:fileName];
+    return path;
+}
+
+-(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info
+{
+    Class cls = MShopLoginUserInfo.class;
+    NSString *tableName = NSStringFromClass(cls);
+    
+    NSString *path = [self MShopLoginUserInfoPath];
     WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
     [database close:^{
         [database removeFilesWithError:nil];
@@ -79,7 +105,7 @@
     }
     
     
-    [database insertObject:info into:tableName];
+    [database insertObject:(WCTObject *)info into:tableName];
 }
 
 -(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info

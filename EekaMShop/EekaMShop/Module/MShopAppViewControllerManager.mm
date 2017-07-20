@@ -50,7 +50,8 @@
                                                       selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     rootNav.tabBarItem = homeTabItem;
     
-    MShopMeViewController *meVC = [MShopMeViewController new];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Mshop_Me" bundle:nil];
+    MShopMeViewController *meVC = [storyboard instantiateViewControllerWithIdentifier:@"MShopMeViewController"];
     MMNavigationController *meRootNav = [[MMNavigationController alloc] initWithRootViewController:meVC];
     UITabBarItem *setTabItem = [[UITabBarItem alloc] initWithTitle:@"我"
                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
