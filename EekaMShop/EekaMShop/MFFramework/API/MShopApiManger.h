@@ -12,6 +12,8 @@
 
 +(NSString *)loginURL;
 
++(NSString *)userLoginURL;
+
 +(NSString *)getEmployeeListURL;
 
 +(NSString *)getIndividualList;

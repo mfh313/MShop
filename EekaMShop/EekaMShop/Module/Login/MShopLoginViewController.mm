@@ -7,6 +7,7 @@
 //
 
 #import "MShopLoginViewController.h"
+#import <WCDB/WCDB.h>
 #import "WWKApi.h"
 #import "MShopLoginApi.h"
 #import "MShopLoginService.h"
@@ -14,7 +15,7 @@
 #import "MShopLoginViewController.h"
 #import "MShopLoginUserInfo.h"
 #import "MShopAppViewControllerManager.h"
-#import <WCDB/WCDB.h>
+#import "MShopUserIdLoginApi.h"
 
 @interface MShopLoginViewController ()
 {
@@ -89,7 +90,7 @@
     m_loginApi.animatingView = MFAppWindow;
     [m_loginApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
-        if (!m_loginApi.loginSuccess) {
+        if (!m_loginApi.messageSuccess) {
             [self showTips:m_loginApi.errorMessage];
             return;
         }
@@ -110,6 +111,50 @@
         [self showTips:errorDesc];
     }];
 
+}
+
+- (IBAction)onClickMangerLogin:(id)sender
+{
+    MShopUserIdLoginApi *m_loginApi = [MShopUserIdLoginApi new];
+    [m_loginApi mangerLogin];
+    [self userIdLogin:m_loginApi];
+}
+
+- (IBAction)onClickClerkLogin:(id)sender
+{
+    MShopUserIdLoginApi *m_loginApi = [MShopUserIdLoginApi new];
+    [m_loginApi clerkLogin];
+    [self userIdLogin:m_loginApi];
+}
+
+-(void)userIdLogin:(MShopUserIdLoginApi *)m_loginApi
+{
+    __weak typeof(self) weakSelf = self;
+    
+    m_loginApi.animatingText = @"正在登录...";
+    m_loginApi.animatingView = MFAppWindow;
+    [m_loginApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!m_loginApi.messageSuccess) {
+            [self showTips:m_loginApi.errorMessage];
+            return;
+        }
+        
+        MShopLoginUserInfo *loginInfo = [MShopLoginUserInfo MM_modelWithJSON:request.responseJSONObject];
+        loginInfo.token = [MFStringUtil URLEncodedString:loginInfo.token];
+        
+        MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+        [loginService updateLoginInfoInDB:loginInfo];
+        [loginService updateLastLoginInfoInDB:loginInfo];
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf onDidLoginSuccess];
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
 }
 
 -(void)onDidLoginSuccess

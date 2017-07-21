@@ -19,14 +19,19 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
 
 + (NSString *)hostUrl
 {
-    return @"http://120.77.42.75:80/ms/"; //
+    return @"http://120.77.42.75:80/ms/";
 //    return @"http://10.8.143.193:8080/ms/"; //guo dong
-//    return @"http://ad.koradior.info/ms/"; //
+//    return @"http://ad.koradior.info/ms/";
 }
 
 +(NSString *)loginURL
 {
     return MFURLWithPara(@"employeeApi/qywxLogin.json");
+}
+
++(NSString *)userLoginURL
+{
+    return MFURLWithPara(@"employeeApi/userLogin.json");
 }
 
 +(NSString *)getEmployeeListURL

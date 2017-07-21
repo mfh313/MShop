@@ -22,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ai-VW-A9h">
-                                <rect key="frame" x="20" y="40" width="120" height="120"/>
+                                <rect key="frame" x="20" y="40" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="HCS-SV-W2o"/>
-                                    <constraint firstAttribute="width" constant="120" id="bo4-y1-XrU"/>
+                                    <constraint firstAttribute="height" constant="80" id="HCS-SV-W2o"/>
+                                    <constraint firstAttribute="width" constant="80" id="bo4-y1-XrU"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvz-Oz-yCm">
-                                <rect key="frame" x="160" y="50" width="195" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="jvz-Oz-yCm">
+                                <rect key="frame" x="120" y="30" width="235" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ur9-QL-47Q"/>
                                 </constraints>
@@ -37,8 +37,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr0-xb-aSB">
-                                <rect key="frame" x="160" y="100" width="195" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mr0-xb-aSB">
+                                <rect key="frame" x="120" y="80" width="235" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="auD-TV-r5k"/>
                                 </constraints>

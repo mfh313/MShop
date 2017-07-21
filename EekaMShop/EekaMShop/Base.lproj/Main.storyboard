@@ -35,17 +35,49 @@
                                     <action selector="onClickWXLogin:" destination="nL9-NX-2sM" eventType="touchUpInside" id="U9a-g2-Nyf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xda-T4-GbI">
+                                <rect key="frame" x="127" y="413.5" width="120" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="YYI-75-zam"/>
+                                    <constraint firstAttribute="width" constant="120" id="dTl-Tk-s9Y"/>
+                                </constraints>
+                                <state key="normal" title="店长登陆-测试">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickMangerLogin:" destination="nL9-NX-2sM" eventType="touchUpInside" id="yN1-cs-cZY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q32-kK-lTq">
+                                <rect key="frame" x="127" y="493.5" width="120" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Jgn-n7-yE6"/>
+                                    <constraint firstAttribute="height" constant="60" id="lUb-5S-eMs"/>
+                                </constraints>
+                                <state key="normal" title="店员登陆-测试">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickClerkLogin:" destination="nL9-NX-2sM" eventType="touchUpInside" id="dDW-Gk-4dX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="q32-kK-lTq" firstAttribute="top" secondItem="Xda-T4-GbI" secondAttribute="bottom" constant="20" id="3Gb-u9-Oex"/>
+                            <constraint firstItem="Xda-T4-GbI" firstAttribute="centerX" secondItem="3kF-Mn-S6g" secondAttribute="centerX" id="FXF-WI-iPq"/>
                             <constraint firstItem="fZt-nZ-WoI" firstAttribute="centerX" secondItem="3kF-Mn-S6g" secondAttribute="centerX" id="Iln-9L-xJu"/>
+                            <constraint firstItem="q32-kK-lTq" firstAttribute="centerX" secondItem="3kF-Mn-S6g" secondAttribute="centerX" id="OdD-YS-dZ0"/>
+                            <constraint firstItem="Xda-T4-GbI" firstAttribute="top" secondItem="fZt-nZ-WoI" secondAttribute="bottom" constant="20" id="R67-KZ-hHx"/>
                             <constraint firstItem="fZt-nZ-WoI" firstAttribute="centerY" secondItem="3kF-Mn-S6g" secondAttribute="centerY" id="zn5-Qe-T4Z"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cY1-jQ-n1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="24"/>
+            <point key="canvasLocation" x="1064.8" y="23.838080959520241"/>
         </scene>
     </scenes>
 </document>
