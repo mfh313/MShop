@@ -9,7 +9,6 @@
 #import "MShopMeViewController.h"
 #import "MShopLoginService.h"
 #import "MShopLoginUserInfo.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MShopMeViewController ()
 {

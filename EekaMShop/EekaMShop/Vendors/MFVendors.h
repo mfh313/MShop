@@ -8,3 +8,5 @@
 
 
 #import "HexColors.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>

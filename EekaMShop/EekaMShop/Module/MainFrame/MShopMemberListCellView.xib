@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MShopMemberListCellView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ceh-aE-k8X">
+                    <rect key="frame" x="20" y="7.5" width="56" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="56" id="6oY-24-MN8"/>
+                        <constraint firstAttribute="height" constant="56" id="8B6-a9-Fx8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTi-pu-RSL">
+                    <rect key="frame" x="96" y="26.5" width="31" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Uwq-Di-F20"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHs-3M-6Vd">
+                    <rect key="frame" x="324" y="26" width="31" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Uwa-Y1-3WR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="JHs-3M-6Vd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9tL-zN-E3i"/>
+                <constraint firstAttribute="trailing" secondItem="JHs-3M-6Vd" secondAttribute="trailing" constant="20" id="AZh-so-Qbb"/>
+                <constraint firstItem="kTi-pu-RSL" firstAttribute="centerY" secondItem="ceh-aE-k8X" secondAttribute="centerY" id="Wgc-h4-OPa"/>
+                <constraint firstItem="ceh-aE-k8X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ln9-7N-T8S"/>
+                <constraint firstItem="ceh-aE-k8X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="som-5t-SfM"/>
+                <constraint firstItem="kTi-pu-RSL" firstAttribute="leading" secondItem="ceh-aE-k8X" secondAttribute="trailing" constant="20" id="xSH-I4-kRq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_avtarImageView" destination="ceh-aE-k8X" id="GuV-zk-DI2"/>
+                <outlet property="_nameLabel" destination="kTi-pu-RSL" id="Hps-cN-sYV"/>
+                <outlet property="_phoneLabel" destination="JHs-3M-6Vd" id="Jaf-1C-9y6"/>
+            </connections>
+            <point key="canvasLocation" x="-26.5" y="59.5"/>
+        </view>
+    </objects>
+</document>

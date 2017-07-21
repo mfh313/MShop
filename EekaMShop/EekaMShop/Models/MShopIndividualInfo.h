@@ -16,15 +16,25 @@
 @property (nonatomic,strong) NSString *individualNo;
 @property (nonatomic,strong) NSString *individualName;
 @property (nonatomic,strong) NSString *birthday;
+@property (nonatomic,strong) NSString *yob;
+@property (nonatomic,strong) NSString *mob;
+@property (nonatomic,strong) NSString *dob;
 @property (nonatomic,strong) NSString *firstName;
 @property (nonatomic,strong) NSString *lastName;
 @property (nonatomic,strong) NSString *gender;
-@property (nonatomic,strong) NSString *address;
 @property (nonatomic,strong) NSString *status;
 @property (nonatomic,strong) NSString *occupationType;
 @property (nonatomic,strong) NSString *maintainDeptId;
 @property (nonatomic,strong) NSString *maintainEmployeeId;
 @property (nonatomic,assign) NSUInteger beginCount;
 @property (nonatomic,assign) NSUInteger endCount;
+@property (nonatomic,strong) NSString *avatar;
+@property (nonatomic,strong) NSString *currentPoint;
+@property (nonatomic,strong) NSString *level;
+@property (nonatomic,strong) NSString *provinceName;
+@property (nonatomic,strong) NSString *cityName;
+@property (nonatomic,strong) NSString *regionName;
+@property (nonatomic,strong) NSString *address;
+@property (nonatomic,assign) BOOL birthdayFlag;
 
 @end

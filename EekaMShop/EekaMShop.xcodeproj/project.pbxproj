@@ -18,6 +18,8 @@
 		AC7398FF1F21A33700F753C2 /* MShopGetMemberListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7398FE1F21A33700F753C2 /* MShopGetMemberListApi.m */; };
 		AC7399021F21AC6200F753C2 /* MShopIndividualInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */; };
 		AC7399051F21DCF500F753C2 /* MShopUserIdLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399041F21DCF500F753C2 /* MShopUserIdLoginApi.m */; };
+		AC7399081F21E67500F753C2 /* MShopMemberListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399071F21E67500F753C2 /* MShopMemberListCellView.m */; };
+		AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -137,6 +139,9 @@
 		AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualInfo.m; sourceTree = "<group>"; };
 		AC7399031F21DCF500F753C2 /* MShopUserIdLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopUserIdLoginApi.h; sourceTree = "<group>"; };
 		AC7399041F21DCF500F753C2 /* MShopUserIdLoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopUserIdLoginApi.m; sourceTree = "<group>"; };
+		AC7399061F21E67500F753C2 /* MShopMemberListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberListCellView.h; sourceTree = "<group>"; };
+		AC7399071F21E67500F753C2 /* MShopMemberListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberListCellView.m; sourceTree = "<group>"; };
+		AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberListCellView.xib; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -397,6 +402,9 @@
 				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				AC85C22A1F1F5943003785A4 /* MShopMemberListViewController.h */,
 				AC85C22B1F1F5943003785A4 /* MShopMemberListViewController.m */,
+				AC7399061F21E67500F753C2 /* MShopMemberListCellView.h */,
+				AC7399071F21E67500F753C2 /* MShopMemberListCellView.m */,
+				AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */,
 				AC7C28681F20B540003C0C4C /* MShop_MainFrame.storyboard */,
 			);
 			path = MainFrame;
@@ -828,6 +836,7 @@
 			files = (
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
 				AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */,
+				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,
 				AC7C28691F20B540003C0C4C /* MShop_MainFrame.storyboard in Resources */,
@@ -889,6 +898,7 @@
 				AC867E771F1D9BB400694086 /* HexColors.m in Sources */,
 				AC867E521F1D99E600694086 /* MMUIBridgeView.m in Sources */,
 				AC867E4D1F1D99E600694086 /* MMBaseTextFieldItem.m in Sources */,
+				AC7399081F21E67500F753C2 /* MShopMemberListCellView.m in Sources */,
 				AC867EE31F1DB55600694086 /* MMService.m in Sources */,
 				AC867E5F1F1D99E600694086 /* MFStringUtil.m in Sources */,
 				AC867E591F1D99E600694086 /* MFThemeHelper.m in Sources */,
