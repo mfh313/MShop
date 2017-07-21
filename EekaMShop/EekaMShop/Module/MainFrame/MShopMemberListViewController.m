@@ -7,9 +7,9 @@
 //
 
 #import "MShopMemberListViewController.h"
-#import "MFTableViewInfo.h"
 #import "MShopGetMemberListApi.h"
 #import "MShopIndividualInfo.h"
+#import "MFTableViewInfo.h"
 
 @interface MShopMemberListViewController ()
 {
@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = @"会员列表";
     
     _memberArray = [NSMutableArray array];
@@ -64,7 +63,6 @@
 
 -(void)reloadTableView
 {
-    NSLog(@"_memberArray=%@",_memberArray);
     [self showTips:@"获取成功"];
 }
 
