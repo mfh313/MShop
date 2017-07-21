@@ -33,7 +33,7 @@
     
     MShopGetEmployeeListApi *getEmployeeListApi = [MShopGetEmployeeListApi new];
     getEmployeeListApi.deptId = @"13041";
-    getEmployeeListApi.animatingText = @"正在获取用户列表...";
+    getEmployeeListApi.animatingText = @"正在获取会员列表...";
     getEmployeeListApi.animatingView = MFAppWindow;
     [getEmployeeListApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
@@ -42,7 +42,8 @@
             return;
         }
         
-//        __strong typeof(weakSelf) strongSelf = weakSelf;
+        NSLog(@"request.responseObject=%@",request.responseObject);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         
         
     } failure:^(YTKBaseRequest * request) {

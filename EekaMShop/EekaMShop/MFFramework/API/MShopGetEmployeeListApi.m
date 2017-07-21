@@ -22,7 +22,7 @@
 -(id)requestArgumentWithToken
 {
     return @{
-             @"department":self.deptId
+             @"deptId":self.deptId
              };
 }
 
