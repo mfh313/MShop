@@ -12,6 +12,8 @@
 		AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670AF1F0B25C00067F6EE /* Main.storyboard */; };
 		AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B21F0B25C00067F6EE /* Assets.xcassets */; };
 		AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */; };
+		AC7398F81F218FA500F753C2 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7398F71F218FA500F753C2 /* SDWebImage.framework */; };
+		AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7398F71F218FA500F753C2 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -102,6 +104,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */,
 				AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */,
 				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
 				AC867DD81F1D982600694086 /* YTKNetwork.framework in Embed Frameworks */,
@@ -121,6 +124,7 @@
 		AC6670B21F0B25C00067F6EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6670B51F0B25C00067F6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6670B71F0B25C00067F6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC7398F71F218FA500F753C2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
 				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
 				AC867DD71F1D982600694086 /* YTKNetwork.framework in Frameworks */,
+				AC7398F81F218FA500F753C2 /* SDWebImage.framework in Frameworks */,
 				AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +397,7 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC7398F71F218FA500F753C2 /* SDWebImage.framework */,
 				AC867DCD1F1D982600694086 /* AFNetworking.framework */,
 				AC867DCE1F1D982600694086 /* FMDB.framework */,
 				AC867DCF1F1D982600694086 /* WCDB.framework */,

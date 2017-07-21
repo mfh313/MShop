@@ -9,9 +9,12 @@
 #import "MShopMeViewController.h"
 #import "MShopLoginService.h"
 #import "MShopLoginUserInfo.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MShopMeViewController ()
 {
+    
+    __weak IBOutlet UIImageView *_avtarImageView;
     __weak IBOutlet UILabel *_nameLabel;
     MShopLoginService *m_loginService;
 }
@@ -26,6 +29,7 @@
     
     MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];
     
+    [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:loginInfo.avatar]];
     _nameLabel.text = loginInfo.name;
 }
 
