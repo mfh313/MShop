@@ -13,9 +13,10 @@
 
 @interface MShopMeViewController ()
 {
-    
     __weak IBOutlet UIImageView *_avtarImageView;
     __weak IBOutlet UILabel *_nameLabel;
+    __weak IBOutlet UILabel *_positionLabel;
+    
     MShopLoginService *m_loginService;
 }
 
@@ -31,6 +32,7 @@
     
     [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:loginInfo.avatar]];
     _nameLabel.text = loginInfo.name;
+    _positionLabel.text = loginInfo.position;
 }
 
 - (IBAction)onClickLogout:(id)sender {
