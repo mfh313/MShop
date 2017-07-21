@@ -8,9 +8,8 @@
 
 #import "MShopMemberListViewController.h"
 #import "MFTableViewInfo.h"
-#import "MShopGetEmployeeListApi.h"
 #import "MShopGetMemberListApi.h"
-#import "MShopEmployeeInfo.h"
+#import "MShopIndividualInfo.h"
 
 @interface MShopMemberListViewController ()
 {
@@ -26,6 +25,7 @@
     
     self.title = @"会员列表";
     
+    _memberArray = [NSMutableArray array];
     [self getMemberList];
 }
 
@@ -43,7 +43,13 @@
             return;
         }
         
-        NSLog(@"request.responseObject=%@",request.responseObject);
+        [_memberArray removeAllObjects];
+        
+        NSArray *individualList = request.responseObject[@"individualList"];
+        for (int i = 0; i < individualList.count; i++) {
+            MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
+            [_memberArray addObject:individual];
+        }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
@@ -58,7 +64,8 @@
 
 -(void)reloadTableView
 {
-    
+    NSLog(@"_memberArray=%@",_memberArray);
+    [self showTips:@"获取成功"];
 }
 
 - (void)didReceiveMemoryWarning {

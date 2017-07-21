@@ -16,6 +16,7 @@
 		AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7398F71F218FA500F753C2 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC7398FC1F21936800F753C2 /* MShopGetEmployeeListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7398FB1F21936800F753C2 /* MShopGetEmployeeListApi.m */; };
 		AC7398FF1F21A33700F753C2 /* MShopGetMemberListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7398FE1F21A33700F753C2 /* MShopGetMemberListApi.m */; };
+		AC7399021F21AC6200F753C2 /* MShopIndividualInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -131,6 +132,8 @@
 		AC7398FB1F21936800F753C2 /* MShopGetEmployeeListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetEmployeeListApi.m; sourceTree = "<group>"; };
 		AC7398FD1F21A33700F753C2 /* MShopGetMemberListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopGetMemberListApi.h; sourceTree = "<group>"; };
 		AC7398FE1F21A33700F753C2 /* MShopGetMemberListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetMemberListApi.m; sourceTree = "<group>"; };
+		AC7399001F21AC6200F753C2 /* MShopIndividualInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualInfo.h; sourceTree = "<group>"; };
+		AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualInfo.m; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -724,6 +727,8 @@
 				AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */,
 				AC7C285F1F209B86003C0C4C /* MShopEmployeeInfo+WCDB.h */,
 				AC7C28601F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm */,
+				AC7399001F21AC6200F753C2 /* MShopIndividualInfo.h */,
+				AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -859,6 +864,7 @@
 				AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */,
 				AC867E511F1D99E600694086 /* MMSelectButton.m in Sources */,
 				AC867E4C1F1D99E600694086 /* MMBaseInfoItem.m in Sources */,
+				AC7399021F21AC6200F753C2 /* MShopIndividualInfo.m in Sources */,
 				AC867E531F1D99E600694086 /* MMUINavigationBar.m in Sources */,
 				AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */,
 				AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */,
