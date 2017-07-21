@@ -19,6 +19,7 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
 
 + (NSString *)hostUrl
 {
+//    return @"http://10.8.143.193:8080/ms/";
     return @"http://ad.koradior.info/ms/";
 }
 
