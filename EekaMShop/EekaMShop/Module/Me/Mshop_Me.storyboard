@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ai-VW-A9h">
-                                <rect key="frame" x="36" y="40" width="120" height="120"/>
+                                <rect key="frame" x="20" y="40" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="HCS-SV-W2o"/>
                                     <constraint firstAttribute="width" constant="120" id="bo4-y1-XrU"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvz-Oz-yCm">
-                                <rect key="frame" x="0.0" y="190" width="375" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvz-Oz-yCm">
+                                <rect key="frame" x="160" y="80" width="195" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ur9-QL-47Q"/>
                                 </constraints>
@@ -52,13 +51,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="centerX" secondItem="lSx-pB-Llj" secondAttribute="centerX" id="2wg-7s-QgO"/>
-                            <constraint firstItem="W8J-09-faG" firstAttribute="centerX" secondItem="jvz-Oz-yCm" secondAttribute="centerX" id="9xA-Uz-nOv"/>
-                            <constraint firstItem="9ai-VW-A9h" firstAttribute="leading" secondItem="lSx-pB-Llj" secondAttribute="leadingMargin" constant="20" id="BKW-L1-1jj"/>
-                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="top" secondItem="9ai-VW-A9h" secondAttribute="bottom" constant="30" id="Id0-oL-dvN"/>
-                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="leading" secondItem="lSx-pB-Llj" secondAttribute="leading" id="W9U-sW-i9Q"/>
+                            <constraint firstItem="9ai-VW-A9h" firstAttribute="leading" secondItem="lSx-pB-Llj" secondAttribute="leading" constant="20" id="BKW-L1-1jj"/>
+                            <constraint firstAttribute="trailing" secondItem="jvz-Oz-yCm" secondAttribute="trailing" constant="20" id="Fih-LL-liC"/>
                             <constraint firstItem="9ai-VW-A9h" firstAttribute="top" secondItem="8ws-Ed-Ac7" secondAttribute="bottom" constant="20" id="bhv-zU-gK2"/>
                             <constraint firstItem="rbK-lp-Wj7" firstAttribute="top" secondItem="W8J-09-faG" secondAttribute="bottom" constant="60" id="c0D-HM-aUg"/>
+                            <constraint firstItem="W8J-09-faG" firstAttribute="centerX" secondItem="lSx-pB-Llj" secondAttribute="centerX" id="kYv-xE-zbL"/>
+                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="centerY" secondItem="9ai-VW-A9h" secondAttribute="centerY" id="wlY-R7-cT5"/>
+                            <constraint firstItem="jvz-Oz-yCm" firstAttribute="leading" secondItem="9ai-VW-A9h" secondAttribute="trailing" constant="20" id="ya0-G3-Zi1"/>
                         </constraints>
                     </view>
                     <connections>
