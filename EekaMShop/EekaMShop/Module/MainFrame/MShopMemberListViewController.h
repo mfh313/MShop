@@ -1,5 +1,5 @@
 //
-//  MShopEmployeeListViewController.h
+//  MShopMemberListViewController.h
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/19.
@@ -8,6 +8,6 @@
 
 #import "MMViewController.h"
 
-@interface MShopEmployeeListViewController : MMViewController
+@interface MShopMemberListViewController : MMViewController
 
 @end

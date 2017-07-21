@@ -14,4 +14,6 @@
 
 +(NSString *)getEmployeeListURL;
 
++(NSString *)getIndividualList;
+
 @end

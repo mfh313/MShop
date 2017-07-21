@@ -43,7 +43,7 @@
 -(id)requestArgument
 {
     NSMutableDictionary *requestArgument = [NSMutableDictionary dictionary];
-    if ([self addToken] && [self requestArgumentWithToken])
+    if ([self addToken])
     {
         MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
         NSString *token = [loginService getCurrentLoginToken];
@@ -51,7 +51,9 @@
             [requestArgument setObject:token forKey:@"token"];
         }
         
-        [requestArgument addEntriesFromDictionary:[self requestArgumentWithToken]];
+        if ([self requestArgumentWithToken]) {
+            [requestArgument addEntriesFromDictionary:[self requestArgumentWithToken]];
+        }
     }
     
     return requestArgument;

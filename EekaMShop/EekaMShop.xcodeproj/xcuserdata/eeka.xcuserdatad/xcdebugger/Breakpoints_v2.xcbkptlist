@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/MainFrame/MShopEmployeeListViewController.m"
-            timestampString = "522296383.938175"
+            filePath = "EekaMShop/Module/MainFrame/MShopMemberListViewController.m"
+            timestampString = "522299026.4636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-getEmployeeList"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-getMemberList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/MainFrame/MShopEmployeeListViewController.m"
-            timestampString = "522296661.554407"
+            filePath = "EekaMShop/Module/MainFrame/MShopMemberListViewController.m"
+            timestampString = "522299027.678907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-getEmployeeList"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-getMemberList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

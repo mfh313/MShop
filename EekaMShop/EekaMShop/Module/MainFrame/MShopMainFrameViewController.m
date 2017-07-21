@@ -8,7 +8,7 @@
 
 #import "MShopMainFrameViewController.h"
 #import "MShopMainFrameLogicController.h"
-#import "MShopEmployeeListViewController.h"
+#import "MShopMemberListViewController.h"
 
 @interface MShopMainFrameViewController ()
 {
@@ -27,7 +27,7 @@
 
 - (IBAction)onClickMemberManager:(id)sender
 {
-    MShopEmployeeListViewController *employeeListVC = [MShopEmployeeListViewController new];
+    MShopMemberListViewController *employeeListVC = [MShopMemberListViewController new];
     employeeListVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:employeeListVC animated:YES];
 }
