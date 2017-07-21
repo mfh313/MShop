@@ -26,8 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     
+    self.title = @"我";
+    
+    m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];
     
     [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:loginInfo.avatar]];

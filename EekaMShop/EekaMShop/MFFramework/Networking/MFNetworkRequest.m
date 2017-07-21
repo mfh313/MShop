@@ -8,6 +8,7 @@
 
 #import "MFNetworkRequest.h"
 #import "MFNetWorkAgent.h"
+#import "MShopLoginService.h"
 
 #ifdef DEBUG
 #define MFAppLog(s, ... ) NSLog( @"[%@ in line %d] ===============>%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
@@ -27,6 +28,33 @@
 
 #endif
     
+}
+
+-(BOOL)addToken
+{
+    return YES;
+}
+
+-(id)requestArgumentWithToken
+{
+    return nil;
+}
+
+-(id)requestArgument
+{
+    NSMutableDictionary *requestArgument = [NSMutableDictionary dictionary];
+    if ([self addToken] && [self requestArgumentWithToken])
+    {
+        MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+        NSString *token = [loginService getCurrentLoginToken];
+        if (![MFStringUtil isBlankString:token]) {
+            [requestArgument setObject:token forKey:@"token"];
+        }
+        
+        [requestArgument addEntriesFromDictionary:[self requestArgumentWithToken]];
+    }
+    
+    return requestArgument;
 }
 
 -(void)setCompletionBlockWithSuccess:(YTKRequestCompletionBlock)success failure:(YTKRequestCompletionBlock)failure

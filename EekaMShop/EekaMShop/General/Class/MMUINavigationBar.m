@@ -18,7 +18,7 @@
         _barBackShadowView.frame = CGRectMake(0, -20, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20);
         _barBackShadowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _barBackShadowView.backgroundColor = [UIColor hx_colorWithHexString:@"0080C0"];
-        [self addSubview:_barBackShadowView];
+//        [self addSubview:_barBackShadowView];
         
         [self bringSubviewToFront:_barBackShadowView];
         
