@@ -22,6 +22,10 @@
 		AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */; };
 		AC73990D1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73990C1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m */; };
 		AC7399101F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73990F1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m */; };
+		AC7399131F22034500F753C2 /* NSArray+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399121F22034500F753C2 /* NSArray+SafeInsert.m */; };
+		AC7399161F22045A00F753C2 /* NSCache+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399151F22045A00F753C2 /* NSCache+SafeInsert.m */; };
+		AC7399191F2204D100F753C2 /* NSMutableSet+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399181F2204D100F753C2 /* NSMutableSet+SafeInsert.m */; };
+		AC73991C1F22051700F753C2 /* NSMutableString+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73991B1F22051700F753C2 /* NSMutableString+SafeInsert.m */; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -148,6 +152,14 @@
 		AC73990C1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SafeInsert.m"; sourceTree = "<group>"; };
 		AC73990E1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeInsert.h"; sourceTree = "<group>"; };
 		AC73990F1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SafeInsert.m"; sourceTree = "<group>"; };
+		AC7399111F22034500F753C2 /* NSArray+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SafeInsert.h"; sourceTree = "<group>"; };
+		AC7399121F22034500F753C2 /* NSArray+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SafeInsert.m"; sourceTree = "<group>"; };
+		AC7399141F22045A00F753C2 /* NSCache+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCache+SafeInsert.h"; sourceTree = "<group>"; };
+		AC7399151F22045A00F753C2 /* NSCache+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCache+SafeInsert.m"; sourceTree = "<group>"; };
+		AC7399171F2204D100F753C2 /* NSMutableSet+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+SafeInsert.h"; sourceTree = "<group>"; };
+		AC7399181F2204D100F753C2 /* NSMutableSet+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+SafeInsert.m"; sourceTree = "<group>"; };
+		AC73991A1F22051700F753C2 /* NSMutableString+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+SafeInsert.h"; sourceTree = "<group>"; };
+		AC73991B1F22051700F753C2 /* NSMutableString+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+SafeInsert.m"; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -506,12 +518,20 @@
 			isa = PBXGroup;
 			children = (
 				AC867DF11F1D99E600694086 /* MFCategorys.h */,
-				AC73990E1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.h */,
-				AC73990F1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m */,
 				AC867DF21F1D99E600694086 /* NSDictionary+Unicode.h */,
 				AC867DF31F1D99E600694086 /* NSDictionary+Unicode.m */,
+				AC73990E1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.h */,
+				AC73990F1F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m */,
 				AC73990B1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.h */,
 				AC73990C1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m */,
+				AC7399111F22034500F753C2 /* NSArray+SafeInsert.h */,
+				AC7399121F22034500F753C2 /* NSArray+SafeInsert.m */,
+				AC7399171F2204D100F753C2 /* NSMutableSet+SafeInsert.h */,
+				AC7399181F2204D100F753C2 /* NSMutableSet+SafeInsert.m */,
+				AC73991A1F22051700F753C2 /* NSMutableString+SafeInsert.h */,
+				AC73991B1F22051700F753C2 /* NSMutableString+SafeInsert.m */,
+				AC7399141F22045A00F753C2 /* NSCache+SafeInsert.h */,
+				AC7399151F22045A00F753C2 /* NSCache+SafeInsert.m */,
 				AC867DF41F1D99E600694086 /* NSString+MMWidth.h */,
 				AC867DF51F1D99E600694086 /* NSString+MMWidth.m */,
 				AC867DF61F1D99E600694086 /* UIView+Extend.h */,
@@ -878,6 +898,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7399131F22034500F753C2 /* NSArray+SafeInsert.m in Sources */,
 				AC867E741F1D9BB400694086 /* NSObject+YYModel.m in Sources */,
 				AC867E551F1D99E600694086 /* MMUIView.m in Sources */,
 				AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */,
@@ -901,6 +922,7 @@
 				AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */,
 				AC7398FF1F21A33700F753C2 /* MShopGetMemberListApi.m in Sources */,
 				AC867EC71F1DB32800694086 /* MFNetworkRequest.m in Sources */,
+				AC73991C1F22051700F753C2 /* NSMutableString+SafeInsert.m in Sources */,
 				AC867E561F1D99E600694086 /* MMViewController.m in Sources */,
 				AC867E4A1F1D99E600694086 /* MFUICollectionView.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,
@@ -932,6 +954,8 @@
 				AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */,
 				AC7C28671F20B33F003C0C4C /* MShopMainFrameLogicController.m in Sources */,
 				AC867EFE1F1DF24100694086 /* YTKBaseRequest+AnimatingAccessory.m in Sources */,
+				AC7399161F22045A00F753C2 /* NSCache+SafeInsert.m in Sources */,
+				AC7399191F2204D100F753C2 /* NSMutableSet+SafeInsert.m in Sources */,
 				AC867E751F1D9BB400694086 /* YYClassInfo.m in Sources */,
 				AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */,
 				AC7399051F21DCF500F753C2 /* MShopUserIdLoginApi.m in Sources */,

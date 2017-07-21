@@ -15,5 +15,10 @@
 #import "UIView+viewController.h"
 
 #import "NSMutableDictionary+SafeInsert.h"
+#import "NSArray+SafeInsert.h"
 #import "NSMutableArray+SafeInsert.h"
+#import "NSMutableSet+SafeInsert.h"
+#import "NSMutableString+SafeInsert.h"
+#import "NSCache+SafeInsert.h"
+
 
