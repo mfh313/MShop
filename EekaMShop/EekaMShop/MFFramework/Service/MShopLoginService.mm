@@ -60,6 +60,8 @@
                                      withClass:cls];
     [table deleteAllObjects];
     
+    [self deleteLastLoginInfoInDB];
+    
     [[MShopAppViewControllerManager getAppViewControllerManager] userLogOut];
     [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
 }
@@ -152,5 +154,15 @@
     [table insertObject:object];
 }
 
+-(void)deleteLastLoginInfoInDB
+{
+    NSString *className = NSStringFromClass(MShopLoginTable.class);
+    NSString *path = [MFDocumentDirectory stringByAppendingPathComponent:className];
+    NSString *tableName = className;
+    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
+    WCTTable *table = [database getTableOfName:tableName
+                                     withClass:MShopLoginTable.class];
+    [table deleteAllObjects];
+}
 
 @end

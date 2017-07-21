@@ -22,12 +22,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZt-nZ-WoI">
-                                <rect key="frame" x="101" y="120" width="173" height="45"/>
+                                <rect key="frame" x="127.5" y="273.5" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="5QX-3B-yFk"/>
-                                    <constraint firstAttribute="width" constant="173" id="po7-th-3Fa"/>
+                                    <constraint firstAttribute="height" constant="120" id="5QX-3B-yFk"/>
+                                    <constraint firstAttribute="width" constant="120" id="po7-th-3Fa"/>
                                 </constraints>
-                                <state key="normal" title="企业微信登陆"/>
+                                <state key="normal" title="企业微信登陆">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="onClickWXLogin:" destination="nL9-NX-2sM" eventType="touchUpInside" id="U9a-g2-Nyf"/>
                                 </connections>
@@ -36,7 +39,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fZt-nZ-WoI" firstAttribute="centerX" secondItem="3kF-Mn-S6g" secondAttribute="centerX" id="Iln-9L-xJu"/>
-                            <constraint firstItem="fZt-nZ-WoI" firstAttribute="top" secondItem="I92-va-7jW" secondAttribute="bottom" constant="100" id="cue-lW-8qi"/>
+                            <constraint firstItem="fZt-nZ-WoI" firstAttribute="centerY" secondItem="3kF-Mn-S6g" secondAttribute="centerY" id="zn5-Qe-T4Z"/>
                         </constraints>
                     </view>
                 </viewController>
