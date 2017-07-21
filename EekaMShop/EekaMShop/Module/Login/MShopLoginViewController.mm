@@ -65,6 +65,17 @@
     return YES;
 }
 
+-(void)loginWithWWKSSOResp:(WWKSSOResp *)resp
+{
+    if (resp.errCode == WWKBaseRespErrCodeOK) {
+        [self loginWithWWKCode:resp.code];
+    }
+    else if (resp.errCode == WWKBaseRespErrCodeCancelled) {
+        [self showTips:@"您取消了登陆"];
+    }
+        
+}
+
 -(void)loginWithWWKCode:(NSString *)code
 {    
     if ([MFStringUtil isBlankString:code]) {

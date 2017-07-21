@@ -30,7 +30,7 @@
     id attachObject = _waitAttachObject.delegate;
     if ([attachObject isKindOfClass:[MShopLoginViewController class]]) {
         MShopLoginViewController *loginVC = (MShopLoginViewController *)attachObject;
-        [loginVC loginWithWWKCode:resp.code];
+        [loginVC loginWithWWKSSOResp:resp];
     }
 }
 
@@ -49,16 +49,6 @@
 -(void)logout
 {
     _currentLoginUserInfo = nil;
-    
-    Class cls = MShopLoginUserInfo.class;
-    NSString *tableName = NSStringFromClass(cls);
-    
-    NSString *path = [self MShopLoginUserInfoPath];
-    WCTDatabase *database = [[WCTDatabase alloc] initWithPath:path];
-    
-    WCTTable *table = [database getTableOfName:tableName
-                                     withClass:cls];
-    [table deleteAllObjects];
     
     [self deleteLastLoginInfoInDB];
     

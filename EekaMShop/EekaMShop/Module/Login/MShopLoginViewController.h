@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class WWKSSOResp;
 @interface MShopLoginViewController : MMViewController
 
--(void)loginWithWWKCode:(NSString *)code;
+-(void)loginWithWWKSSOResp:(WWKSSOResp *)resp;
 
 @end
