@@ -80,12 +80,27 @@
 
 - (MFTableViewSectionInfo *)makeNormalSection
 {
-    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo normalCellForTitle:@"测试" rightValue:@"122121"];
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:)
+                                                             makeTarget:self
+                                                              actionSel:@selector(onClickMemberListCell:)
+                                                           actionTarget:self
+                                                                 height:60.0f
+                                                               userInfo:nil];
     
     
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     [sectionInfo addCell:cellInfo];
     return sectionInfo;
+}
+
+-(void)makeMemberListCell:(MFTableViewCellInfo *)cellInfo
+{
+    
+}
+
+-(void)onClickMemberListCell:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

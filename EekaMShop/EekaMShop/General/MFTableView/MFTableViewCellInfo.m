@@ -95,25 +95,25 @@
     return cellInfo;
 }
 
-- (void)makeNormalCell:(MFTableViewCell *)cell title:(NSString *)title
+- (void)makeNormalCell:(MFTableViewCellInfo *)cellInfo title:(NSString *)title
 {
     [self addUserInfoValue:title forKey:@"title"];
-    [self makeNormalCell:cell];
+    [self makeNormalCell:cellInfo];
 }
 
-- (void)makeNormalCell:(MFTableViewCell *)cell
+- (void)makeNormalCell:(MFTableViewCellInfo *)cellInfo
 {
-    NSString *title = [self getUserInfoValueForKey:@"title"];
-    UIColor *titleColor = [self getUserInfoValueForKey:@"titleColor"];
-    UIFont *titleFont = [self getUserInfoValueForKey:@"titleFont"];
-    NSString *detail = [self getUserInfoValueForKey:@"detail"];
-    UIColor *detailColor = [self getUserInfoValueForKey:@"detailColor"];
-    UIFont *detailFont = [self getUserInfoValueForKey:@"detailFont"];
-    NSString *rightValue = [self getUserInfoValueForKey:@"rightValue"];
-    UIColor *rightValueColor = [self getUserInfoValueForKey:@"rightValueColor"];
-    NSString *leftValue = [self getUserInfoValueForKey:@"leftValue"];
-    UIColor *leftValueColor = [self getUserInfoValueForKey:@"leftValueColor"];
-    NSString *imageName = [self getUserInfoValueForKey:@"imageName"];
+//    NSString *title = [self getUserInfoValueForKey:@"title"];
+//    UIColor *titleColor = [self getUserInfoValueForKey:@"titleColor"];
+//    UIFont *titleFont = [self getUserInfoValueForKey:@"titleFont"];
+//    NSString *detail = [self getUserInfoValueForKey:@"detail"];
+//    UIColor *detailColor = [self getUserInfoValueForKey:@"detailColor"];
+//    UIFont *detailFont = [self getUserInfoValueForKey:@"detailFont"];
+//    NSString *rightValue = [self getUserInfoValueForKey:@"rightValue"];
+//    UIColor *rightValueColor = [self getUserInfoValueForKey:@"rightValueColor"];
+//    NSString *leftValue = [self getUserInfoValueForKey:@"leftValue"];
+//    UIColor *leftValueColor = [self getUserInfoValueForKey:@"leftValueColor"];
+//    NSString *imageName = [self getUserInfoValueForKey:@"imageName"];
 }
 
 + (instancetype)cellForMakeSel:(SEL)makeSel makeTarget:(id)makeTarget actionSel:(SEL)actionSel actionTarget:(id)actionTarget calHeightSel:(SEL)calHeightSel calHeightTarget:(id)calHeightTarget userInfo:(MFTableViewUserInfo *)userInfo
