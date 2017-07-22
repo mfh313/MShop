@@ -67,4 +67,26 @@
     [_arrSections removeAllObjects];
 }
 
+- (void)removeSectionAt:(NSUInteger)section
+{
+    if (_arrSections.count < section) {
+        return;
+    }
+    [_arrSections removeObjectAtIndex:section];
+    [_tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (NSUInteger)getSectionCount
+{
+    return _arrSections.count;
+}
+
+- (MFTableViewSectionInfo *)getSectionAt:(NSUInteger)section
+{
+    if (section < _arrSections.count) {
+        return _arrSections[section];
+    }
+    return nil;
+}
+
 @end

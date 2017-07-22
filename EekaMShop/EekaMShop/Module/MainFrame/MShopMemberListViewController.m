@@ -72,8 +72,9 @@
 
 -(void)reloadTableView
 {
-    MFTableViewSectionInfo *sectionInfo = [self makeNormalSection];
+    [m_tableViewInfo clearAllSection];
     
+    MFTableViewSectionInfo *sectionInfo = [self makeNormalSection];
     [m_tableViewInfo addSection:sectionInfo];
     
 }
