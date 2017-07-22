@@ -12,6 +12,8 @@
 
 -(void)addUserInfoValue:(id)value forKey:(NSString *)key
 {
+    NSParameterAssert(key);
+    
     if (!_dicInfo) {
         _dicInfo = [NSMutableDictionary dictionary];
     }
@@ -23,6 +25,8 @@
 
 - (id)getUserInfoValueForKey:(NSString *)key
 {
+    NSParameterAssert(key);
+    
     if (_dicInfo) {
         return [_dicInfo objectForKey:key];
     }
