@@ -76,12 +76,16 @@
     
     MFTableViewSectionInfo *sectionInfo = [self makeNormalSection];
     [m_tableViewInfo addSection:sectionInfo];
-    
 }
 
 - (MFTableViewSectionInfo *)makeNormalSection
 {
-    return nil;
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo normalCellForTitle:@"测试" rightValue:@"122121"];
+    
+    
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    [sectionInfo addCell:cellInfo];
+    return sectionInfo;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -116,4 +116,52 @@
     NSString *imageName = [self getUserInfoValueForKey:@"imageName"];
 }
 
++ (instancetype)cellForMakeSel:(SEL)makeSel makeTarget:(id)makeTarget actionSel:(SEL)actionSel actionTarget:(id)actionTarget calHeightSel:(SEL)calHeightSel calHeightTarget:(id)calHeightTarget userInfo:(MFTableViewUserInfo *)userInfo
+{
+    MFTableViewCellInfo *cellInfo = [[MFTableViewCellInfo alloc] init];
+    cellInfo.makeSel = makeSel;
+    cellInfo.makeTarget = makeTarget;
+    cellInfo.actionSel = actionSel;
+    cellInfo.actionTarget = actionTarget;
+    cellInfo.calHeightSel = calHeightSel;
+    cellInfo.calHeightTarget = calHeightTarget;
+    cellInfo.userInfo = userInfo;
+    return cellInfo;
+}
+
++ (instancetype)cellForMakeSel:(SEL)makeSel makeTarget:(id)makeTarget actionSel:(SEL)actionSel actionTarget:(id)actionTarget height:(CGFloat)height userInfo:(MFTableViewUserInfo *)userInfo
+{
+    MFTableViewCellInfo *cellInfo = [[MFTableViewCellInfo alloc] init];
+    cellInfo.makeSel = makeSel;
+    cellInfo.makeTarget = makeTarget;
+    cellInfo.actionSel = actionSel;
+    cellInfo.actionTarget = actionTarget;
+    cellInfo.fCellHeight = height;
+    cellInfo.userInfo = userInfo;
+    return cellInfo;
+}
+
++ (instancetype)cellForMakeSel:(SEL)makeSel makeTarget:(id)makeTarget actionSel:(SEL)actionSel actionTarget:(id)actionTarget height:(CGFloat)height userInfo:(MFTableViewUserInfo *)userInfo isFitIpadClassic:(BOOL)isFitIpadClassic
+{
+    MFTableViewCellInfo *cellInfo = [[MFTableViewCellInfo alloc] init];
+    cellInfo.makeSel = makeSel;
+    cellInfo.makeTarget = makeTarget;
+    cellInfo.actionSel = actionSel;
+    cellInfo.actionTarget = actionTarget;
+    cellInfo.fCellHeight = height;
+    cellInfo.userInfo = userInfo;
+    cellInfo.isNeedFixIpadClassic = isFitIpadClassic;
+    return cellInfo;
+}
+
++ (instancetype)cellForMakeSel:(SEL)makeSel makeTarget:(id)makeTarget height:(CGFloat)height userInfo:(MFTableViewUserInfo *)userInfo
+{
+    MFTableViewCellInfo *cellInfo = [[MFTableViewCellInfo alloc] init];
+    cellInfo.makeSel = makeSel;
+    cellInfo.makeTarget = makeTarget;
+    cellInfo.fCellHeight = height;
+    cellInfo.userInfo = userInfo;
+    return cellInfo;
+}
+
 @end
