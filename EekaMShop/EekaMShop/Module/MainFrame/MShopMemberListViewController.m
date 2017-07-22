@@ -14,6 +14,7 @@
 @interface MShopMemberListViewController ()
 {
     NSMutableArray *_memberArray;
+    MFTableViewInfo *m_tableViewInfo;
 }
 
 @end
@@ -23,6 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"会员列表";
+    
+    CGRect tableFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
+    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    contentTableView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:contentTableView];
     
     _memberArray = [NSMutableArray array];
     [self getMemberList];
@@ -63,7 +72,15 @@
 
 -(void)reloadTableView
 {
-    [self showTips:@"获取成功"];
+    MFTableViewSectionInfo *sectionInfo = [self makeNormalSection];
+    if (sectionInfo) {
+        [m_tableViewInfo addSection:sectionInfo];
+    }
+}
+
+- (MFTableViewSectionInfo *)makeNormalSection
+{
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {

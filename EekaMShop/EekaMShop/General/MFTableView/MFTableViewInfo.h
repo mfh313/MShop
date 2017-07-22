@@ -29,6 +29,12 @@
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 
+- (UITableView *)getTableView;
+
+- (void)addSection:(MFTableViewSectionInfo *)section;
+
+- (void)clearAllSection;
+
 - (MFTableViewCellInfo *)getCellAtSection:(NSUInteger)section row:(NSUInteger)row;
 
 @end

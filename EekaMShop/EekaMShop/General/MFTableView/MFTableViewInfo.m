@@ -51,4 +51,20 @@
     }
 }
 
+- (UITableView *)getTableView
+{
+    return _tableView;
+}
+
+#pragma mark - Section
+- (void)addSection:(MFTableViewSectionInfo *)section
+{
+    [_arrSections addObject:section];
+}
+
+- (void)clearAllSection
+{
+    [_arrSections removeAllObjects];
+}
+
 @end
