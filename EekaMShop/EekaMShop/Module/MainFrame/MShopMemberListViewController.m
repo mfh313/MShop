@@ -13,7 +13,7 @@
 
 @interface MShopMemberListViewController ()
 {
-    NSMutableArray *_memberArray;
+    NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
 }
 
@@ -33,11 +33,11 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    _memberArray = [NSMutableArray array];
-    [self getMemberList];
+    _individualArray = [NSMutableArray array];
+    [self getIndividualList];
 }
 
--(void)getMemberList
+-(void)getIndividualList
 {
     __weak typeof(self) weakSelf = self;
     
@@ -51,12 +51,12 @@
             return;
         }
         
-        [_memberArray removeAllObjects];
+        [_individualArray removeAllObjects];
         
         NSArray *individualList = request.responseObject[@"individualList"];
         for (int i = 0; i < individualList.count; i++) {
             MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
-            [_memberArray addObject:individual];
+            [_individualArray addObject:individual];
         }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -81,14 +81,19 @@
 - (MFTableViewSectionInfo *)addMemberSection
 {
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-    for (int i = 0; i < _memberArray.count; i++)
+    for (int i = 0; i < _individualArray.count; i++)
     {
+        MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:_individualArray[i]];
+        
+        MFTableViewUserInfo *userInfo = [[MFTableViewUserInfo alloc] init];
+        [userInfo addUserInfoValue:individual forKey:@"cellData"];
+        
         MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:)
                                                                  makeTarget:self
                                                                   actionSel:@selector(onClickMemberListCell:)
                                                                actionTarget:self
                                                                      height:60.0f
-                                                                   userInfo:nil];
+                                                                   userInfo:userInfo];
         [sectionInfo addCell:cellInfo];
     }
     
