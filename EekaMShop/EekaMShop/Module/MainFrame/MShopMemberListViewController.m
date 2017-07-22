@@ -74,22 +74,24 @@
 {
     [m_tableViewInfo clearAllSection];
     
-    MFTableViewSectionInfo *sectionInfo = [self makeNormalSection];
+    MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
     [m_tableViewInfo addSection:sectionInfo];
 }
 
-- (MFTableViewSectionInfo *)makeNormalSection
+- (MFTableViewSectionInfo *)addMemberSection
 {
-    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:)
-                                                             makeTarget:self
-                                                              actionSel:@selector(onClickMemberListCell:)
-                                                           actionTarget:self
-                                                                 height:60.0f
-                                                               userInfo:nil];
-    
-    
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-    [sectionInfo addCell:cellInfo];
+    for (int i = 0; i < _memberArray.count; i++)
+    {
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:)
+                                                                 makeTarget:self
+                                                                  actionSel:@selector(onClickMemberListCell:)
+                                                               actionTarget:self
+                                                                     height:60.0f
+                                                                   userInfo:nil];
+        [sectionInfo addCell:cellInfo];
+    }
+    
     return sectionInfo;
 }
 
