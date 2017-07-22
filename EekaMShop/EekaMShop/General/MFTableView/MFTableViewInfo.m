@@ -59,7 +59,7 @@
 #pragma mark - Section
 - (void)addSection:(MFTableViewSectionInfo *)section
 {
-    [_arrSections addObject:section];
+    [_arrSections safeAddObject:section];
 }
 
 - (void)clearAllSection

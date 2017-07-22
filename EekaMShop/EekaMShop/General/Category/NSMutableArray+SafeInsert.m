@@ -10,4 +10,11 @@
 
 @implementation NSMutableArray (SafeInsert)
 
+- (void)safeAddObject:(id)object
+{
+    if (object) {
+        [self addObject:object];
+    }
+}
+
 @end
