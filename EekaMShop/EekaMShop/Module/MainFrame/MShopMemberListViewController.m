@@ -10,6 +10,7 @@
 #import "MShopGetMemberListApi.h"
 #import "MShopIndividualInfo.h"
 #import "MFTableViewInfo.h"
+#import "MShopMemberListCellView.h"
 
 @interface MShopMemberListViewController ()
 {
@@ -102,6 +103,7 @@
 
 -(void)makeMemberListCell:(MFTableViewCellInfo *)cellInfo
 {
+    MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
     
 }
 
