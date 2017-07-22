@@ -12,6 +12,8 @@
 #import "MShopLoginService.h"
 #import "MShopAppViewControllerManager.h"
 #import "MShopLoginService.h"
+#import <WCDB/WCDB.h>
+#import <WCDB/WCTStatistics.h>
 
 @interface MShopAppDelegate () <WWKApiDelegate>
 {
@@ -38,7 +40,25 @@
     MShopLoginService *loginService = [m_serviceCenter getService:[MShopLoginService class]];
     [loginService autoLogin];
     
+    [self setWCDBMonitor];
+    
     return YES;
+}
+
+-(void)setWCDBMonitor
+{
+    //Error Monitor
+    [WCTStatistics SetGlobalErrorReport:^(WCTError *error) {
+        NSLog(@"[WCDB]%@", error);
+    }];
+    
+    [WCTStatistics SetGlobalTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
+        NSLog(@"Tag: %d", tag);
+        [sqls enumerateKeysAndObjectsUsingBlock:^(NSString *sql, NSNumber *count, BOOL *) {
+            NSLog(@"SQL: %@ Count: %d", sql, count.intValue);
+        }];
+        NSLog(@"Total cost %ld nanoseconds", (long)cost);
+    }];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
