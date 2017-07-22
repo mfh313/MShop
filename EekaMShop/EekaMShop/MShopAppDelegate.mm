@@ -79,7 +79,7 @@
 
 - (void)onResp:(WWKBaseResp *)resp {
     /*! @brief 所有通过sendReq发送的SDK请求的结果都在这个函数内部进行异步回调
-     * @param resp SDK处理请求后的返回结果 需要判断具体是哪项业务的回调
+     * @ param resp SDK处理请求后的返回结果 需要判断具体是哪项业务的回调
      */
     NSMutableString *extra = [NSMutableString string];
     
