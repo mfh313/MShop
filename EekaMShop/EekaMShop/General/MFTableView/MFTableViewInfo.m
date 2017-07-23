@@ -46,6 +46,7 @@ _Pragma("clang diagnostic pop") \
     MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[MFTableViewCell alloc] initWithStyle:cellInfo.cellStyle reuseIdentifier:identifier];
+        cell.selectionStyle = cellInfo.selectionStyle;
     }
     else
     {
@@ -67,6 +68,21 @@ _Pragma("clang diagnostic pop") \
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section < _arrSections.count) {
+        if (indexPath.row < [_arrSections[indexPath.section] getCellCount]) {
+            MFTableViewCellInfo *cellInfo = [_arrSections[indexPath.section] getCellAt:indexPath.row];
+            id target = cellInfo.calHeightTarget;
+            if (target && [target respondsToSelector:cellInfo.calHeightSel]) {
+                NoWarningPerformSelector(target, cellInfo.calHeightSel, cellInfo, nil);
+            }
+            return cellInfo.fCellHeight;
+        }
+    }
+    return CGFLOAT_MIN;
 }
 
 - (MFTableViewCellInfo *)getCellAtSection:(NSUInteger)section row:(NSUInteger)row

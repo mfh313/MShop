@@ -90,8 +90,9 @@
                                                                  makeTarget:self
                                                                   actionSel:@selector(onClickMemberListCell:)
                                                                actionTarget:self
-                                                                     height:60.0f
+                                                                     height:72.0f
                                                                    userInfo:nil];
+        cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
         [cellInfo addUserInfoValue:individual forKey:@"individual"];
         
         [sectionInfo addCell:cellInfo];
@@ -103,8 +104,9 @@
 -(void)makeMemberListCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
     MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
-    cellView.frame = cell.contentView.bounds;;
     cell.m_subContentView = cellView;
+    
+    cellView.frame = cell.contentView.bounds;;
     
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
     [cellView setIndividualInfo:individual];
