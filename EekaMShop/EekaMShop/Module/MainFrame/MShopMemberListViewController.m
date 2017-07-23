@@ -84,27 +84,30 @@
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     for (int i = 0; i < _individualArray.count; i++)
     {
-        MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:_individualArray[i]];
+        MShopIndividualInfo *individual = _individualArray[i];
         
-        MFTableViewUserInfo *userInfo = [[MFTableViewUserInfo alloc] init];
-        [userInfo addUserInfoValue:individual forKey:@"cellData"];
-        
-        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:)
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:cellInfo:)
                                                                  makeTarget:self
                                                                   actionSel:@selector(onClickMemberListCell:)
                                                                actionTarget:self
                                                                      height:60.0f
-                                                                   userInfo:userInfo];
+                                                                   userInfo:nil];
+        [cellInfo addUserInfoValue:individual forKey:@"individual"];
+        
         [sectionInfo addCell:cellInfo];
     }
     
     return sectionInfo;
 }
 
--(void)makeMemberListCell:(MFTableViewCellInfo *)cellInfo
+-(void)makeMemberListCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
     MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
+    cellView.frame = cell.contentView.bounds;;
+    cell.m_subContentView = cellView;
     
+    MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
+    [cellView setIndividualInfo:individual];
 }
 
 -(void)onClickMemberListCell:(id)sender

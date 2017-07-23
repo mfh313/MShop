@@ -8,6 +8,12 @@
 
 #import "MFTableViewInfo.h"
 
+#define NoWarningPerformSelector(target, action, object, object1) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+[target performSelector:action withObject:object withObject:object1] \
+_Pragma("clang diagnostic pop") \
+
 @implementation MFTableViewInfo
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
@@ -38,6 +44,27 @@
     MFTableViewCellInfo *cellInfo = [self getCellAtSection:indexPath.section row:indexPath.row];
     NSString *identifier = [NSString stringWithFormat:@"MFTableViewInfo_%zd_%f", cellInfo.cellStyle, cellInfo.fCellHeight];
     MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[MFTableViewCell alloc] initWithStyle:cellInfo.cellStyle reuseIdentifier:identifier];
+    }
+    else
+    {
+        [cell.contentView removeAllSubViews];
+    }
+    
+    if (cellInfo.makeTarget) {
+        if ([cellInfo.makeTarget respondsToSelector:cellInfo.makeSel]) {
+            NoWarningPerformSelector(cellInfo.makeTarget, cellInfo.makeSel, cell, cellInfo);
+        }
+        if (cellInfo.bNeedSeperateLine && tableView.separatorStyle == UITableViewCellSeparatorStyleNone) {
+            if (indexPath.row == 0) {
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 0.5f)];
+                line.backgroundColor = [UIColor grayColor];
+                [cell.contentView addSubview:line];
+            }
+        }
+        cellInfo.cell = cell;
+    }
     
     return cell;
 }
@@ -60,6 +87,7 @@
 - (void)addSection:(MFTableViewSectionInfo *)section
 {
     [_arrSections safeAddObject:section];
+    [_tableView reloadData];
 }
 
 - (void)clearAllSection

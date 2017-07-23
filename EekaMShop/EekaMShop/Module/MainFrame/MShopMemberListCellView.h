@@ -8,6 +8,9 @@
 
 #import "MMUIBridgeView.h"
 
+@class MShopIndividualInfo;
 @interface MShopMemberListCellView : MMUIBridgeView
+
+-(void)setIndividualInfo:(MShopIndividualInfo *)info;
 
 @end
