@@ -85,6 +85,22 @@ _Pragma("clang diagnostic pop") \
     return CGFLOAT_MIN;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section < _arrSections.count) {
+        MFTableViewCellInfo *cellInfo = [self getCellAtSection:indexPath.section row:indexPath.row];
+        if (cellInfo) {
+            id target = cellInfo.actionTarget;
+            if (target) {
+                if ([target respondsToSelector:cellInfo.actionSel]) {
+                    NoWarningPerformSelector(target, cellInfo.actionSel, cellInfo ,nil);
+                }
+            }
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (MFTableViewCellInfo *)getCellAtSection:(NSUInteger)section row:(NSUInteger)row
 {
     if (_arrSections.count >= section && [_arrSections[section] getCellCount] >= row) {

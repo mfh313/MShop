@@ -9,8 +9,9 @@
 #import "MShopMemberListViewController.h"
 #import "MShopGetMemberListApi.h"
 #import "MShopIndividualInfo.h"
-#import "MFTableViewInfo.h"
 #import "MShopMemberListCellView.h"
+#import "MShopMemberDetailViewController.h"
+#import "MFTableViewInfo.h"
 
 @interface MShopMemberListViewController ()
 {
@@ -112,9 +113,14 @@
     [cellView setIndividualInfo:individual];
 }
 
--(void)onClickMemberListCell:(id)sender
+-(void)onClickMemberListCell:(MFTableViewCellInfo *)cellInfo
 {
+    MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
     
+    MShopMemberDetailViewController *memberDetailVC = [MShopMemberDetailViewController new];
+    memberDetailVC.individual = individual;
+    memberDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:memberDetailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */; };
 		AC6670A81F0B25C00067F6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670A71F0B25C00067F6EE /* main.m */; };
 		AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.mm */; };
 		AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670AF1F0B25C00067F6EE /* Main.storyboard */; };
@@ -128,6 +129,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC2547B61F24ABEC00F54829 /* MShopMemberDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailViewController.h; sourceTree = "<group>"; };
+		AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailViewController.m; sourceTree = "<group>"; };
 		AC6670A31F0B25C00067F6EE /* EekaMShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EekaMShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6670A71F0B25C00067F6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6670A91F0B25C00067F6EE /* MShopAppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; path = MShopAppDelegate.h; sourceTree = "<group>"; };
@@ -420,6 +423,8 @@
 				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				AC85C22A1F1F5943003785A4 /* MShopMemberListViewController.h */,
 				AC85C22B1F1F5943003785A4 /* MShopMemberListViewController.m */,
+				AC2547B61F24ABEC00F54829 /* MShopMemberDetailViewController.h */,
+				AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */,
 				AC7399061F21E67500F753C2 /* MShopMemberListCellView.h */,
 				AC7399071F21E67500F753C2 /* MShopMemberListCellView.m */,
 				AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */,
@@ -935,6 +940,7 @@
 				AC867E5F1F1D99E600694086 /* MFStringUtil.m in Sources */,
 				AC867E591F1D99E600694086 /* MFThemeHelper.m in Sources */,
 				AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */,
+				AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */,
 				AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */,
 				AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.mm in Sources */,
 				AC867E801F1D9CBB00694086 /* MBProgressHUD.m in Sources */,
