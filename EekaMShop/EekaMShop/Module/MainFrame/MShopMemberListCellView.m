@@ -28,7 +28,7 @@
     _phoneLabel.text = info.phone;
     
     if ([info hasMaintainEmployee]) {
-        _maintainEmployeeLabel.text = [NSString stringWithFormat:@"维护员工:%@",info.maintainEmployeeId];
+        _maintainEmployeeLabel.text = [NSString stringWithFormat:@"维护员工:%@",info.maintainEmployeeName];
     }
     else
     {

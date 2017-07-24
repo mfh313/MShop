@@ -98,6 +98,9 @@
         cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
         [cellInfo addUserInfoValue:individual forKey:@"individual"];
         
+//        for (int i = 0; i < 40; i++) {
+//            [sectionInfo addCell:cellInfo];
+//        }
         [sectionInfo addCell:cellInfo];
     }
     
