@@ -38,7 +38,11 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    [self makeProfileCell];
+    [self makeMemberInfoViews];
+}
+
+-(void)makeMemberInfoViews
+{
     [self makeInfoCells];
 }
 
@@ -80,6 +84,48 @@
     }];
 }
 
+-(void)makeInfoCells
+{
+    [m_tableViewInfo clearAllSection];
+    
+    [self makeProfileCell];
+    
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
+    MFTableViewCellInfo *phoneCellInfo = [MFTableViewCellInfo
+                                          normalCellForSel:nil
+                                          target:self
+                                          title:@"手机号"
+                                          rightValue:self.individual.phone
+                                          accessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    MFTableViewCellInfo *sexCellInfo = [MFTableViewCellInfo
+                                          normalCellForSel:nil
+                                          target:self
+                                          title:@"性别"
+                                          rightValue:self.individual.gender
+                                          accessoryType:UITableViewCellAccessoryNone];
+
+    
+    
+    
+    
+    [sectionInfo addCell:phoneCellInfo];
+    [sectionInfo addCell:sexCellInfo];
+    
+    if ([self needSelectMaintainEmployeePowerCell])
+    {
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeSelectMaintainEmployeeCell:)
+                                                                 makeTarget:self
+                                                                  actionSel:nil
+                                                               actionTarget:self
+                                                                     height:60.0f
+                                                                   userInfo:nil];
+        [sectionInfo addCell:cellInfo];
+    }
+    
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
 -(void)makeProfileCell
 {
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
@@ -103,47 +149,29 @@
     [cellView setIndividualInfo:_individual.avatar name:_individual.individualName];
 }
 
--(void)makeInfoCells
+
+-(void)makeNormalCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
-    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     
-//    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeProfileCell)
-//                                                             makeTarget:self
-//                                                              actionSel:nil
-//                                                           actionTarget:self
-//                                                                 height:100.0f
-//                                                               userInfo:nil];
-//    cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
-//    [sectionInfo addCell:cellInfo];
-//
-//    [m_tableViewInfo addSection:sectionInfo];
-    
-    if ([self hasSelectMaintainEmployeePower])
-    {
-        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeSelectMaintainEmployeeCell:)
-                                                                 makeTarget:self
-                                                                  actionSel:nil
-                                                               actionTarget:self
-                                                                     height:60.0f
-                                                                   userInfo:nil];
-        [sectionInfo addCell:cellInfo];
-    }
-    
-    [m_tableViewInfo addSection:sectionInfo];
 }
 
--(BOOL)hasSelectMaintainEmployeePower
+-(BOOL)needSelectMaintainEmployeePowerCell
 {
-    if (!self.individual.maintainDeptId) {
+    if (!self.individual.maintainDeptId)
+    {
         return YES;
     }
     else
     {
         MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
         MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
-        if ([currentLoginUserInfo.position isEqualToString:@"店长"]
-            && [[self depIdForDepartment:currentLoginUserInfo.department] isEqualToString:self.individual.maintainDeptId]) {
-            return YES;
+        
+        if ([[self depIdForDepartment:currentLoginUserInfo.department] isEqualToString:self.individual.maintainDeptId])
+        {
+            if ([currentLoginUserInfo.position isEqualToString:@"店长"])
+            {
+                return YES;
+            }
         }
     }
     
@@ -196,6 +224,11 @@
 {
     NSString *stringArray = [department substringWithRange:(NSRange){1,department.length - 2}];
     return [stringArray componentsSeparatedByString:@","].firstObject;
+}
+
+-(void)getIndividualInfo
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
