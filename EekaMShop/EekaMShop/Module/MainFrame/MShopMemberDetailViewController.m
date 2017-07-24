@@ -28,12 +28,7 @@
     [super viewDidLoad];
     
     self.title = @"会员资料";
-    
     [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
-    
-    if ([self hasSelectMaintainEmployeePower]) {
-        [self setRightNavView];
-    }
     
     CGRect tableFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
@@ -43,18 +38,8 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    [self addMemberInfoView];
-}
-
--(BOOL)hasSelectMaintainEmployeePower
-{
-    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
-    return [loginService hasSelectMaintainEmployeePower];
-}
-
--(void)setRightNavView
-{
-    [self setRightNaviButtonWithTitle:@"分配" action:@selector(selectMaintainEmployee)];
+    [self makeProfileCell];
+    [self makeInfoCells];
 }
 
 -(void)selectMaintainEmployee
@@ -68,6 +53,7 @@
 #pragma mark - MShopEmployeeListViewControllerDelegate
 -(void)onDidSelectEmployee:(MShopEmployeeInfo *)employeeInfo
 {
+    self.individual.maintainDeptId = [self depIdForDepartment:employeeInfo.department];
     self.individual.maintainEmployeeId = employeeInfo.userId;
     self.individual.maintainEmployeeName = employeeInfo.name;
     
@@ -92,12 +78,6 @@
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];
-}
-
-- (void)addMemberInfoView
-{
-    [self makeProfileCell];
-    [self makeInfoCells];
 }
 
 -(void)makeProfileCell
@@ -125,17 +105,82 @@
 
 -(void)makeInfoCells
 {
-    //    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-    //    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeProfileCell)
-    //                                                             makeTarget:self
-    //                                                              actionSel:nil
-    //                                                           actionTarget:self
-    //                                                                 height:100.0f
-    //                                                               userInfo:nil];
-    //    cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
-    //    [sectionInfo addCell:cellInfo];
-    //
-    //    [m_tableViewInfo addSection:sectionInfo];
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
+//    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeProfileCell)
+//                                                             makeTarget:self
+//                                                              actionSel:nil
+//                                                           actionTarget:self
+//                                                                 height:100.0f
+//                                                               userInfo:nil];
+//    cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
+//    [sectionInfo addCell:cellInfo];
+//
+//    [m_tableViewInfo addSection:sectionInfo];
+    
+    if ([self hasSelectMaintainEmployeePower])
+    {
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeSelectMaintainEmployeeCell:)
+                                                                 makeTarget:self
+                                                                  actionSel:nil
+                                                               actionTarget:self
+                                                                     height:60.0f
+                                                                   userInfo:nil];
+        [sectionInfo addCell:cellInfo];
+    }
+    
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(BOOL)hasSelectMaintainEmployeePower
+{
+    if (!self.individual.maintainDeptId) {
+        return YES;
+    }
+    else
+    {
+        MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+        MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
+        if ([currentLoginUserInfo.position isEqualToString:@"店长"]
+            && [[self depIdForDepartment:currentLoginUserInfo.department] isEqualToString:self.individual.maintainDeptId]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(void)makeSelectMaintainEmployeeCell:(MFTableViewCell *)cell
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"分配会员" forState:UIControlStateNormal];
+    [button setBackgroundImage:MFImageStretchCenter(@"button_normal") forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(onClickIndividualModifyBtn) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(40, 10, CGRectGetWidth(contentView.frame) - 80, CGRectGetHeight(contentView.frame) - 20);
+    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [contentView addSubview:button];
+    
+    MMOnePixLine *onePixLine = [MMOnePixLine new];
+    onePixLine.frame = CGRectMake(0, CGRectGetHeight(contentView.bounds) - MFOnePixHeight, CGRectGetWidth(contentView.bounds), MFOnePixHeight);
+    onePixLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    onePixLine.backgroundColor = [UIColor clearColor];
+    [contentView addSubview:onePixLine];
+    
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;;
+}
+
+-(NSString *)depIdForDepartment:(NSString *)department
+{
+    NSString *stringArray = [department substringWithRange:(NSRange){1,department.length - 2}];
+    return [stringArray componentsSeparatedByString:@","].firstObject;
+}
+
+-(void)onClickIndividualModifyBtn
+{
+    [self selectMaintainEmployee];
 }
 
 - (void)didReceiveMemoryWarning {

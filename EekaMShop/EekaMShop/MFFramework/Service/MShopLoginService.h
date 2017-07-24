@@ -7,8 +7,9 @@
 //
 
 #import "MMService.h"
+#import "MShopLoginUserInfo.h"
 
-@class MShopSSOReqAttachObject,WWKSSOResp,MShopLoginUserInfo;
+@class MShopSSOReqAttachObject,WWKSSOResp;
 
 @interface MShopLoginService : MMService
 {
@@ -32,8 +33,5 @@
 
 -(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info;
 -(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info;
-
-
--(BOOL)hasSelectMaintainEmployeePower;
 
 @end
