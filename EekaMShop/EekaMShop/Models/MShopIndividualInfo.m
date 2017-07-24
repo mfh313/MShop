@@ -10,4 +10,14 @@
 
 @implementation MShopIndividualInfo
 
+-(BOOL)hasMaintainEmployee
+{
+    if (self.maintainEmployeeId
+        && [self.maintainEmployeeId isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

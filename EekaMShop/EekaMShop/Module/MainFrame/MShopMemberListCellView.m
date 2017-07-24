@@ -14,6 +14,7 @@
     __weak IBOutlet UIImageView *_avtarImageView;
     __weak IBOutlet UILabel *_nameLabel;
     __weak IBOutlet UILabel *_phoneLabel;
+    __weak IBOutlet UILabel *_maintainEmployeeLabel;
 }
 
 @end
@@ -25,6 +26,14 @@
     [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:info.avatar] placeholderImage:MFImage(@"avtar")];
     _nameLabel.text = info.individualName;
     _phoneLabel.text = info.phone;
+    
+    if ([info hasMaintainEmployee]) {
+        _maintainEmployeeLabel.text = [NSString stringWithFormat:@"维护员工:%@",info.maintainEmployeeId];
+    }
+    else
+    {
+        _maintainEmployeeLabel.text = [NSString stringWithFormat:@"无维护员工"];
+    }
 }
 
 @end

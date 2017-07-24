@@ -30,11 +30,14 @@
 @property (nonatomic,assign) NSUInteger endCount;
 @property (nonatomic,strong) NSString *avatar;
 @property (nonatomic,strong) NSString *currentPoint;
-@property (nonatomic,strong) NSString *level;
+@property (nonatomic,strong) NSString *grade;
 @property (nonatomic,strong) NSString *provinceName;
 @property (nonatomic,strong) NSString *cityName;
 @property (nonatomic,strong) NSString *regionName;
 @property (nonatomic,strong) NSString *address;
 @property (nonatomic,assign) BOOL birthdayFlag;
+
+-(BOOL)hasMaintainEmployee;
+
 
 @end
