@@ -22,7 +22,7 @@
 
 -(void)setIndividualInfo:(MShopIndividualInfo *)info
 {
-    [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:info.avatar]];
+    [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:info.avatar] placeholderImage:MFImage(@"avtar")];
     _nameLabel.text = info.individualName;
     _phoneLabel.text = info.phone;
 }

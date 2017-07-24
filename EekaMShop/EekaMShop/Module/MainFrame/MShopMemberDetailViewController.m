@@ -31,13 +31,13 @@
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    contentTableView.backgroundColor = [UIColor redColor];
+    contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    [self addMemberSection];
+    [self addMemberInfoSection];
 }
 
-- (void)addMemberSection
+- (void)addMemberInfoSection
 {
     [self makeProfileCell];
     

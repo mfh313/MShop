@@ -38,6 +38,8 @@
 		AC7C28641F20B01E003C0C4C /* MFNetWorkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28631F20B01E003C0C4C /* MFNetWorkAgent.m */; };
 		AC7C28671F20B33F003C0C4C /* MShopMainFrameLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */; };
 		AC7C28691F20B540003C0C4C /* MShop_MainFrame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC7C28681F20B540003C0C4C /* MShop_MainFrame.storyboard */; };
+		AC7E3F721F2580760035E3DC /* SCLAlertViewFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; };
+		AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */; };
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
 		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.mm */; };
@@ -119,6 +121,7 @@
 			files = (
 				AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */,
 				AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */,
+				AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */,
 				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
 				AC867DD81F1D982600694086 /* YTKNetwork.framework in Embed Frameworks */,
 				AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */,
@@ -183,6 +186,7 @@
 		AC7C28651F20B33F003C0C4C /* MShopMainFrameLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMainFrameLogicController.h; sourceTree = "<group>"; };
 		AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMainFrameLogicController.m; sourceTree = "<group>"; };
 		AC7C28681F20B540003C0C4C /* MShop_MainFrame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MShop_MainFrame.storyboard; sourceTree = "<group>"; };
+		AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertViewFramework.framework; path = Carthage/Build/iOS/SCLAlertViewFramework.framework; sourceTree = "<group>"; };
 		AC85C21A1F1EE7A1003785A4 /* MShopEmployeeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeInfo.h; sourceTree = "<group>"; };
 		AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopEmployeeInfo.m; sourceTree = "<group>"; };
 		AC85C21E1F1F2D45003785A4 /* MFFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFFileUtil.h; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				AC867DDE1F1D983E00694086 /* AVFoundation.framework in Frameworks */,
 				AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */,
 				AC867DE01F1D983E00694086 /* Foundation.framework in Frameworks */,
+				AC7E3F721F2580760035E3DC /* SCLAlertViewFramework.framework in Frameworks */,
 				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
 				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
 				AC867DD71F1D982600694086 /* YTKNetwork.framework in Frameworks */,
@@ -446,6 +451,7 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */,
 				AC7398F71F218FA500F753C2 /* SDWebImage.framework */,
 				AC867DCD1F1D982600694086 /* AFNetworking.framework */,
 				AC867DCE1F1D982600694086 /* FMDB.framework */,
