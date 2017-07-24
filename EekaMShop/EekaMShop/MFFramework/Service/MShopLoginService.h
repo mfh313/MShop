@@ -33,4 +33,7 @@
 -(void)updateLoginInfoInDB:(MShopLoginUserInfo *)info;
 -(void)updateLastLoginInfoInDB:(MShopLoginUserInfo *)info;
 
+
+-(BOOL)hasSelectMaintainEmployeePower;
+
 @end

@@ -450,8 +450,6 @@
 			children = (
 				AC85C2201F1F2F7B003785A4 /* MShopMainFrameViewController.h */,
 				AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */,
-				AC7E3F781F25C3130035E3DC /* MShopEmployeeListViewController.h */,
-				AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */,
 				AC7C28651F20B33F003C0C4C /* MShopMainFrameLogicController.h */,
 				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				AC85C22A1F1F5943003785A4 /* MShopMemberListViewController.h */,
@@ -461,6 +459,8 @@
 				AC7399061F21E67500F753C2 /* MShopMemberListCellView.h */,
 				AC7399071F21E67500F753C2 /* MShopMemberListCellView.m */,
 				AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */,
+				AC7E3F781F25C3130035E3DC /* MShopEmployeeListViewController.h */,
+				AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */,
 				AC7E3F7B1F25CA560035E3DC /* MShopEmployeeInfoCellView.h */,
 				AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */,
 				AC7E3F7E1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib */,

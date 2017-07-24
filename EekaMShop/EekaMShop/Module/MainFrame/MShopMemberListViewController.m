@@ -38,6 +38,12 @@
     [self.view addSubview:contentTableView];
     
     _individualArray = [NSMutableArray array];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self getIndividualList];
 }
 

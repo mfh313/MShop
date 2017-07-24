@@ -13,7 +13,7 @@
 -(BOOL)hasMaintainEmployee
 {
     if (self.maintainEmployeeId
-        && [self.maintainEmployeeId isKindOfClass:[NSNull class]]) {
+        && ![self.maintainEmployeeId isKindOfClass:[NSNull class]]) {
         return YES;
     }
     

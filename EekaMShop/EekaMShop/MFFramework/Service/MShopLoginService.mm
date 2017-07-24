@@ -68,6 +68,16 @@
     return [stringArray componentsSeparatedByString:@","].firstObject;
 }
 
+-(BOOL)hasSelectMaintainEmployeePower
+{
+    MShopLoginUserInfo *currentLoginUserInfo = [self currentLoginUserInfo];
+    if ([currentLoginUserInfo.position isEqualToString:@"店长"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 -(MShopLoginUserInfo *)currentLoginUserInfo
 {
     if (_currentLoginUserInfo) {

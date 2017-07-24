@@ -12,6 +12,7 @@
 #import "MShopEmployeeInfo.h"
 #import "MShopEmployeeListViewController.h"
 #import "MShopIndividualModifyApi.h"
+#import "MShopLoginService.h"
 
 @interface MShopMemberDetailViewController ()<MShopEmployeeListViewControllerDelegate>
 {
@@ -28,7 +29,8 @@
     self.title = @"会员资料";
     
     [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
-    if (![self.individual hasMaintainEmployee]) {
+    
+    if ([self hasSelectMaintainEmployeePower]) {
         [self setRightNavView];
     }
     
@@ -41,6 +43,12 @@
     [self.view addSubview:contentTableView];
     
     [self addMemberInfoSection];
+}
+
+-(BOOL)hasSelectMaintainEmployeePower
+{
+    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    return [loginService hasSelectMaintainEmployeePower];
 }
 
 -(void)setRightNavView
