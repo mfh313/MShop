@@ -13,6 +13,7 @@
 #import "MShopEmployeeListViewController.h"
 #import "MShopIndividualModifyApi.h"
 #import "MShopLoginService.h"
+#import "MShopMemberProfileCellView.h"
 
 @interface MShopMemberDetailViewController ()<MShopEmployeeListViewControllerDelegate>
 {
@@ -42,7 +43,7 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    [self addMemberInfoSection];
+    [self addMemberInfoView];
 }
 
 -(BOOL)hasSelectMaintainEmployeePower
@@ -53,7 +54,7 @@
 
 -(void)setRightNavView
 {
-    [self setRightNaviButtonWithTitle:@"分配会员" action:@selector(selectMaintainEmployee)];
+    [self setRightNaviButtonWithTitle:@"分配" action:@selector(selectMaintainEmployee)];
 }
 
 -(void)selectMaintainEmployee
@@ -93,30 +94,48 @@
     }];
 }
 
-- (void)addMemberInfoSection
+- (void)addMemberInfoView
 {
     [self makeProfileCell];
-    
+    [self makeInfoCells];
+}
+
+-(void)makeProfileCell
+{
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:cellInfo:)
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeProfileCellView:cellInfo:)
                                                              makeTarget:self
-                                                              actionSel:@selector(onClickMemberListCell:)
+                                                              actionSel:nil
                                                            actionTarget:self
-                                                                 height:100.0f
+                                                                 height:108.0f
                                                                userInfo:nil];
-    cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
     [sectionInfo addCell:cellInfo];
     
     [m_tableViewInfo addSection:sectionInfo];
 }
 
--(void)makeProfileCell
+-(void)makeProfileCellView:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
-//    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-//    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:<#(SEL)#> makeTarget:<#(id)#> height:<#(CGFloat)#> userInfo:<#(MFTableViewUserInfo *)#>];
-//    [sectionInfo addCell:cellInfo];
-//    
-//    [m_tableViewInfo addSection:sectionInfo];
+    MShopMemberProfileCellView *cellView = [MShopMemberProfileCellView nibView];
+    cell.m_subContentView = cellView;
+    cellView.frame = cell.contentView.bounds;;
+    
+    [cellView setIndividualInfo:_individual.avatar name:_individual.individualName];
+}
+
+-(void)makeInfoCells
+{
+    //    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    //    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeProfileCell)
+    //                                                             makeTarget:self
+    //                                                              actionSel:nil
+    //                                                           actionTarget:self
+    //                                                                 height:100.0f
+    //                                                               userInfo:nil];
+    //    cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
+    //    [sectionInfo addCell:cellInfo];
+    //
+    //    [m_tableViewInfo addSection:sectionInfo];
 }
 
 - (void)didReceiveMemoryWarning {

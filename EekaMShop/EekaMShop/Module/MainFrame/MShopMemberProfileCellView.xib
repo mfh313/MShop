@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MShopMemberProfileCellView">
+            <rect key="frame" x="0.0" y="0.0" width="615" height="119"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hlK-Fp-3IQ">
+                    <rect key="frame" x="15" y="20" width="68" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="Imm-Zk-w3q"/>
+                        <constraint firstAttribute="width" constant="68" id="gJF-k0-Pj3"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OM-Hu-wQD">
+                    <rect key="frame" x="103" y="45" width="31" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="GYz-kO-Ab3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csc-qb-PaA" customClass="MMOnePixLine">
+                    <rect key="frame" x="0.0" y="118" width="615" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="WTh-sF-FEd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="csc-qb-PaA" secondAttribute="trailing" id="7um-fy-58O"/>
+                <constraint firstItem="4OM-Hu-wQD" firstAttribute="leading" secondItem="hlK-Fp-3IQ" secondAttribute="trailing" constant="20" id="D5A-AM-0r0"/>
+                <constraint firstItem="csc-qb-PaA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="azZ-Yf-UEe"/>
+                <constraint firstAttribute="bottom" secondItem="csc-qb-PaA" secondAttribute="bottom" id="bDc-bB-1mK"/>
+                <constraint firstItem="hlK-Fp-3IQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="tC9-0g-0Re"/>
+                <constraint firstItem="hlK-Fp-3IQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="uYX-kt-zHb"/>
+                <constraint firstItem="4OM-Hu-wQD" firstAttribute="centerY" secondItem="hlK-Fp-3IQ" secondAttribute="centerY" id="xqs-zG-1OH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_avtarImageView" destination="hlK-Fp-3IQ" id="giF-FY-Qfo"/>
+                <outlet property="_nameLabel" destination="4OM-Hu-wQD" id="WCH-kC-Lrc"/>
+            </connections>
+            <point key="canvasLocation" x="23.5" y="3.5"/>
+        </view>
+    </objects>
+</document>
