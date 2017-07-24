@@ -41,6 +41,10 @@
 		AC7E3F721F2580760035E3DC /* SCLAlertViewFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; };
 		AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC7E3F771F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */; };
+		AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */; };
+		AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */; };
+		AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7E3F7E1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib */; };
+		AC7E3F821F25CF420035E3DC /* MShopIndividualModifyApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F811F25CF420035E3DC /* MShopIndividualModifyApi.m */; };
 		AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */; };
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
 		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.mm */; };
@@ -190,6 +194,13 @@
 		AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertViewFramework.framework; path = Carthage/Build/iOS/SCLAlertViewFramework.framework; sourceTree = "<group>"; };
 		AC7E3F751F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		AC7E3F781F25C3130035E3DC /* MShopEmployeeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeListViewController.h; sourceTree = "<group>"; };
+		AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopEmployeeListViewController.m; sourceTree = "<group>"; };
+		AC7E3F7B1F25CA560035E3DC /* MShopEmployeeInfoCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeInfoCellView.h; sourceTree = "<group>"; };
+		AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopEmployeeInfoCellView.m; sourceTree = "<group>"; };
+		AC7E3F7E1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopEmployeeInfoCellView.xib; sourceTree = "<group>"; };
+		AC7E3F801F25CF420035E3DC /* MShopIndividualModifyApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualModifyApi.h; sourceTree = "<group>"; };
+		AC7E3F811F25CF420035E3DC /* MShopIndividualModifyApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualModifyApi.m; sourceTree = "<group>"; };
 		AC85C21A1F1EE7A1003785A4 /* MShopEmployeeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeInfo.h; sourceTree = "<group>"; };
 		AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopEmployeeInfo.m; sourceTree = "<group>"; };
 		AC85C21E1F1F2D45003785A4 /* MFFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFFileUtil.h; sourceTree = "<group>"; };
@@ -404,6 +415,8 @@
 				AC7398FB1F21936800F753C2 /* MShopGetEmployeeListApi.m */,
 				AC7398FD1F21A33700F753C2 /* MShopGetMemberListApi.h */,
 				AC7398FE1F21A33700F753C2 /* MShopGetMemberListApi.m */,
+				AC7E3F801F25CF420035E3DC /* MShopIndividualModifyApi.h */,
+				AC7E3F811F25CF420035E3DC /* MShopIndividualModifyApi.m */,
 				AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */,
 				AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */,
 				AC7399031F21DCF500F753C2 /* MShopUserIdLoginApi.h */,
@@ -437,6 +450,8 @@
 			children = (
 				AC85C2201F1F2F7B003785A4 /* MShopMainFrameViewController.h */,
 				AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */,
+				AC7E3F781F25C3130035E3DC /* MShopEmployeeListViewController.h */,
+				AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */,
 				AC7C28651F20B33F003C0C4C /* MShopMainFrameLogicController.h */,
 				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				AC85C22A1F1F5943003785A4 /* MShopMemberListViewController.h */,
@@ -446,6 +461,9 @@
 				AC7399061F21E67500F753C2 /* MShopMemberListCellView.h */,
 				AC7399071F21E67500F753C2 /* MShopMemberListCellView.m */,
 				AC7399091F21E68C00F753C2 /* MShopMemberListCellView.xib */,
+				AC7E3F7B1F25CA560035E3DC /* MShopEmployeeInfoCellView.h */,
+				AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */,
+				AC7E3F7E1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib */,
 				AC7C28681F20B540003C0C4C /* MShop_MainFrame.storyboard */,
 			);
 			path = MainFrame;
@@ -889,6 +907,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
+				AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */,
 				AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
@@ -949,6 +968,7 @@
 				AC73991C1F22051700F753C2 /* NSMutableString+SafeInsert.m in Sources */,
 				AC867E561F1D99E600694086 /* MMViewController.m in Sources */,
 				AC867E4A1F1D99E600694086 /* MFUICollectionView.m in Sources */,
+				AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,
 				AC867EFD1F1DF24100694086 /* YTKAnimatingRequestAccessory.m in Sources */,
 				AC867E771F1D9BB400694086 /* HexColors.m in Sources */,
@@ -977,6 +997,7 @@
 				AC867E5E1F1D99E600694086 /* MMTabBarController.m in Sources */,
 				AC867E501F1D99E600694086 /* MMOnePixLayoutConstraint.m in Sources */,
 				AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */,
+				AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */,
 				AC7C28671F20B33F003C0C4C /* MShopMainFrameLogicController.m in Sources */,
 				AC867EFE1F1DF24100694086 /* YTKBaseRequest+AnimatingAccessory.m in Sources */,
 				AC7399161F22045A00F753C2 /* NSCache+SafeInsert.m in Sources */,
@@ -992,6 +1013,7 @@
 				AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,
+				AC7E3F821F25CF420035E3DC /* MShopIndividualModifyApi.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,
 				AC867E4F1F1D99E600694086 /* MMObject.m in Sources */,
 				AC73990D1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m in Sources */,

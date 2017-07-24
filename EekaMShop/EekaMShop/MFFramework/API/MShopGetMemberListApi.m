@@ -12,7 +12,7 @@
 
 -(NSString *)requestUrl
 {
-    return [MShopApiManger getIndividualList];
+    return [MShopApiManger getIndividualListURL];
 }
 
 - (YTKRequestMethod)requestMethod {

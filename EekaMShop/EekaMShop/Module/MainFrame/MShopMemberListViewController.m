@@ -121,7 +121,7 @@
         [cell.contentView addSubview:cell.m_subContentView];
     }
     
-    MShopMemberListCellView *cellView = (MShopMemberListCellView *)cell.m_subContentView ;
+    MShopMemberListCellView *cellView = (MShopMemberListCellView *)cell.m_subContentView;
     cellView.frame = cell.contentView.bounds;;
     
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];

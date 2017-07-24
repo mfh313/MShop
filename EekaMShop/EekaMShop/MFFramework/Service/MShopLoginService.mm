@@ -56,6 +56,18 @@
     [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
 }
 
+-(NSString *)currentLoginUserDepartment
+{
+    MShopLoginUserInfo *currentLoginUserInfo = [self currentLoginUserInfo];
+    NSString *department = currentLoginUserInfo.department;
+    if (!department) {
+        return nil;
+    }
+    
+    NSString *stringArray = [department substringWithRange:(NSRange){1,department.length-2}];
+    return [stringArray componentsSeparatedByString:@","].firstObject;
+}
+
 -(MShopLoginUserInfo *)currentLoginUserInfo
 {
     if (_currentLoginUserInfo) {

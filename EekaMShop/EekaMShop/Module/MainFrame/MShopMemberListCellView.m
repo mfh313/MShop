@@ -32,7 +32,7 @@
     }
     else
     {
-        _maintainEmployeeLabel.text = [NSString stringWithFormat:@"无维护员工"];
+        _maintainEmployeeLabel.text = [NSString stringWithFormat:@"未分配维护员工"];
     }
 }
 

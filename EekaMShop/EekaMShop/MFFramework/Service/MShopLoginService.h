@@ -20,6 +20,8 @@
 
 -(MShopLoginUserInfo *)currentLoginUserInfo;
 
+-(NSString *)currentLoginUserDepartment;
+
 -(void)setWWKSSOReqAttachObject:(MShopSSOReqAttachObject *)attachObject;
 
 -(void)loginWithWWKSSOResp:(WWKSSOResp *)resp;
