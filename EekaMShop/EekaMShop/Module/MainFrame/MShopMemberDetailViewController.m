@@ -24,6 +24,8 @@
     
     self.title = @"会员资料";
     
+    [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
+    
     CGRect tableFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
@@ -37,10 +39,9 @@
 
 - (void)addMemberSection
 {
-    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-    
     [self makeProfileCell];
     
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeMemberListCell:cellInfo:)
                                                              makeTarget:self
                                                               actionSel:@selector(onClickMemberListCell:)
@@ -55,7 +56,11 @@
 
 -(void)makeProfileCell
 {
-    
+//    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+//    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:<#(SEL)#> makeTarget:<#(id)#> height:<#(CGFloat)#> userInfo:<#(MFTableViewUserInfo *)#>];
+//    [sectionInfo addCell:cellInfo];
+//    
+//    [m_tableViewInfo addSection:sectionInfo];
 }
 
 - (void)didReceiveMemoryWarning {

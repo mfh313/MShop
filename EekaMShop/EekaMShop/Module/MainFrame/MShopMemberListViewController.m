@@ -27,6 +27,8 @@
     [super viewDidLoad];
     self.title = @"会员列表";
     
+    [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
+    
     CGRect tableFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
     UITableView *contentTableView = [m_tableViewInfo getTableView];

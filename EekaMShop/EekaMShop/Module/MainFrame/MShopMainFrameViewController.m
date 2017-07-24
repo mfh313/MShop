@@ -23,6 +23,7 @@
     [super viewDidLoad];
     
     self.title = @"主页";
+    
 }
 
 - (IBAction)onClickMemberManager:(id)sender
