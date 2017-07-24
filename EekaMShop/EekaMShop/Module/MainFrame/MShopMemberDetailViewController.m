@@ -155,11 +155,18 @@
     UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"分配会员" forState:UIControlStateNormal];
     [button setBackgroundImage:MFImageStretchCenter(@"button_normal") forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onClickIndividualModifyBtn) forControlEvents:UIControlEventTouchUpInside];
     button.frame = CGRectMake(40, 10, CGRectGetWidth(contentView.frame) - 80, CGRectGetHeight(contentView.frame) - 20);
     button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    NSString *buttonTitle = @"分配会员";
+    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
+    if (![currentLoginUserInfo.position isEqualToString:@"店长"]) {
+        buttonTitle = @"分配给自己";
+    }
+    [button setTitle:buttonTitle forState:UIControlStateNormal];
     [contentView addSubview:button];
     
     MMOnePixLine *onePixLine = [MMOnePixLine new];
@@ -172,15 +179,23 @@
     contentView.frame = cell.contentView.bounds;;
 }
 
+-(void)onClickIndividualModifyBtn
+{
+    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
+    if (![currentLoginUserInfo.position isEqualToString:@"店长"]) {
+        [self onDidSelectEmployee:currentLoginUserInfo];
+    }
+    else
+    {
+       [self selectMaintainEmployee];
+    }
+}
+
 -(NSString *)depIdForDepartment:(NSString *)department
 {
     NSString *stringArray = [department substringWithRange:(NSRange){1,department.length - 2}];
     return [stringArray componentsSeparatedByString:@","].firstObject;
-}
-
--(void)onClickIndividualModifyBtn
-{
-    [self selectMaintainEmployee];
 }
 
 - (void)didReceiveMemoryWarning {
