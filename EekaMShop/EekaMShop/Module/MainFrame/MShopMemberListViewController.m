@@ -78,8 +78,14 @@
 {
     [m_tableViewInfo clearAllSection];
     
-    MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
-    [m_tableViewInfo addSection:sectionInfo];
+    if (_individualArray.count > 0) {
+        MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
+        [m_tableViewInfo addSection:sectionInfo];
+    }
+    else
+    {
+        [self showTips:@"无会员数据"];
+    }
 }
 
 - (MFTableViewSectionInfo *)addMemberSection
@@ -98,9 +104,6 @@
         cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
         [cellInfo addUserInfoValue:individual forKey:@"individual"];
         
-//        for (int i = 0; i < 40; i++) {
-//            [sectionInfo addCell:cellInfo];
-//        }
         [sectionInfo addCell:cellInfo];
     }
     
@@ -109,9 +112,16 @@
 
 -(void)makeMemberListCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
-    MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
-    cell.m_subContentView = cellView;
+    if (!cell.m_subContentView) {
+        MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
     
+    MShopMemberListCellView *cellView = (MShopMemberListCellView *)cell.m_subContentView ;
     cellView.frame = cell.contentView.bounds;;
     
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
