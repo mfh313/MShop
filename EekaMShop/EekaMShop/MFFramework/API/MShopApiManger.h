@@ -22,6 +22,8 @@
 
 +(NSString *)getIndividualURL;
 
++(NSString *)individualConsumptionURL;
+
 +(NSString *)individualModifyURL;
 
 @end
