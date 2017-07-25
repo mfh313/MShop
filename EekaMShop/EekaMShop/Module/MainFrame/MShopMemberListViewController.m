@@ -12,14 +12,14 @@
 #import "MShopMemberListCellView.h"
 #import "MShopMemberDetailViewController.h"
 #import "MFTableViewInfo.h"
-#import "MShopUISearchBar.h"
+#import "MMUISearchBar.h"
 #import "MShopSearchIndividualApi.h"
 
 @interface MShopMemberListViewController ()
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
-    MShopUISearchBar *m_searchBar;
+    MMUISearchBar *m_searchBar;
     NSMutableArray *_searchIndividualArray;
 }
 
@@ -60,11 +60,17 @@
 {
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     
-    m_searchBar = [[MShopUISearchBar alloc] init];
+    m_searchBar = [[MMUISearchBar alloc] init];
     m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
     m_searchBar.placeholder = @"会员手机号搜索";
     m_searchBar.delegate = self;
+    m_searchBar.showsScopeBar = YES;
+    m_searchBar.showsCancelButton = YES;
     contentTableView.tableHeaderView = m_searchBar;
+    
+    UIButton *cancelBtn = [m_searchBar findCancelButton];
+    [cancelBtn setTitle:@"修改" forState:UIControlStateNormal];
+    NSLog(@"cancelBtn=%@",cancelBtn);
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar

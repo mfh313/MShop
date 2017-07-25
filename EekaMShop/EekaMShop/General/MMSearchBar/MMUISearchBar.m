@@ -10,12 +10,30 @@
 
 @implementation MMUISearchBar
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+//UISearchBarTextField
+//UISearchBarBackground
+//UINavigationButton
+
+- (id)findUISearchBarBackground:(id)arg1
+{
+    for (UIView *subview in [[self.subviews lastObject] subviews]) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            return subview;
+        }
+    }
+    
+    return nil;
 }
-*/
+
+- (id)findCancelButton
+{
+    for (UIView *subview in [[self.subviews lastObject] subviews]) {
+        if ([subview isKindOfClass:NSClassFromString(@"UINavigationButton")]) {
+            return subview;
+        }
+    }
+    
+    return nil;
+}
 
 @end
