@@ -13,6 +13,7 @@
 #import "MShopMemberDetailViewController.h"
 #import "MFTableViewInfo.h"
 #import "MShopUISearchBar.h"
+#import "MShopGetIndividualApi.h"
 
 @interface MShopMemberListViewController ()
 {
@@ -66,7 +67,46 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        
+        NSString *searchText = searchBar.text;
+        [self searchIndividualInfo:searchText];
+        return NO;
+    }
+    return YES;
+}
+
+-(void)searchIndividualInfo:(NSString *)searchText
+{
+    searchText = @"15813818620";
+    
+    __weak typeof(self) weakSelf = self;
+    MShopGetIndividualApi *getIndividualApi = [MShopGetIndividualApi new];
+    getIndividualApi.phone = searchText;
+    getIndividualApi.animatingView = MFAppWindow;
+    [getIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!getIndividualApi.messageSuccess) {
+            [self showTips:getIndividualApi.errorMessage];
+            return;
+        }
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
+        
+        
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
 }
 
 -(void)getIndividualList
