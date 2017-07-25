@@ -1,5 +1,5 @@
 //
-//  MShopGetIndividualApi.h
+//  MShopSearchIndividualApi.h
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/25.
@@ -8,8 +8,8 @@
 
 #import "MFNetworkRequest.h"
 
-@interface MShopGetIndividualApi : MFNetworkRequest
+@interface MShopSearchIndividualApi : MFNetworkRequest
 
-@property (nonatomic,strong) NSString *individualId;
+@property (nonatomic,strong) NSString *searchKey;
 
 @end

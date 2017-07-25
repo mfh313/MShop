@@ -27,12 +27,6 @@
                  };
     }
     
-    if (self.phone) {
-        return @{
-                 @"phone ":self.phone
-                 };
-    }
-    
     return nil;
     
 }

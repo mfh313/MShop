@@ -150,7 +150,6 @@
     [cellView setIndividualInfo:_individual.avatar name:_individual.individualName];
 }
 
-
 -(void)makeNormalCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
     
@@ -212,12 +211,13 @@
 {
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
-    if (![currentLoginUserInfo.position isEqualToString:@"店长"]) {
+    if (![currentLoginUserInfo.position isEqualToString:@"店长"])
+    {
         [self onDidSelectEmployee:currentLoginUserInfo];
     }
     else
     {
-       [self selectMaintainEmployee];
+        [self selectMaintainEmployee];
     }
 }
 
@@ -241,8 +241,9 @@
         }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        // TODO: show loading
-        
+        MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:request.responseObject];
+        _individual = individual;
+        [strongSelf makeMemberInfoViews];
         
     } failure:^(YTKBaseRequest * request) {
         

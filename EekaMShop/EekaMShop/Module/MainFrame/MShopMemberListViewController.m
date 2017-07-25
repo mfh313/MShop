@@ -13,7 +13,7 @@
 #import "MShopMemberDetailViewController.h"
 #import "MFTableViewInfo.h"
 #import "MShopUISearchBar.h"
-#import "MShopGetIndividualApi.h"
+#import "MShopSearchIndividualApi.h"
 
 @interface MShopMemberListViewController ()
 {
@@ -87,13 +87,13 @@
     searchText = @"15813818620";
     
     __weak typeof(self) weakSelf = self;
-    MShopGetIndividualApi *getIndividualApi = [MShopGetIndividualApi new];
-    getIndividualApi.phone = searchText;
-    getIndividualApi.animatingView = MFAppWindow;
-    [getIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+    MShopSearchIndividualApi *searchIndividualApi = [MShopSearchIndividualApi new];
+    searchIndividualApi.searchKey = searchText;
+    searchIndividualApi.animatingView = MFAppWindow;
+    [searchIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
-        if (!getIndividualApi.messageSuccess) {
-            [self showTips:getIndividualApi.errorMessage];
+        if (!searchIndividualApi.messageSuccess) {
+            [self showTips:searchIndividualApi.errorMessage];
             return;
         }
         
