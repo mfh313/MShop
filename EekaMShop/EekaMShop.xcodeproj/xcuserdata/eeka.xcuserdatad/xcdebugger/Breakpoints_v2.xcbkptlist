@@ -26,13 +26,90 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/MainFrame/MShopMemberDetailViewController.m"
-            timestampString = "522583715.654167"
+            timestampString = "522640844.891581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-makeNormalCell:cellInfo:"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "-getIndividualInfo"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MShopMemberDetailViewController getIndividualInfo]"
+                  moduleName = "EekaMShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eeka/Documents/SVN/EekaMShop/EekaMShop/EekaMShop/Module/MainFrame/MShopMemberDetailViewController.m"
+                  timestampString = "522640909.387679"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
+                  offsetFromSymbolStart = "584">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[MShopMemberDetailViewController getIndividualInfo]_block_invoke"
+                  moduleName = "EekaMShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eeka/Documents/SVN/EekaMShop/EekaMShop/EekaMShop/Module/MainFrame/MShopMemberDetailViewController.m"
+                  timestampString = "522640909.388941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.225"
+                  moduleName = "EekaMShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eeka/Documents/SVN/EekaMShop/EekaMShop/EekaMShop/Module/MainFrame/MShopMemberDetailViewController.m"
+                  timestampString = "522640909.390114"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.226"
+                  moduleName = "EekaMShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eeka/Documents/SVN/EekaMShop/EekaMShop/EekaMShop/Module/MainFrame/MShopMemberDetailViewController.m"
+                  timestampString = "522640909.391281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[MShopMemberDetailViewController getIndividualInfo]_block_invoke.228"
+                  moduleName = "EekaMShop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eeka/Documents/SVN/EekaMShop/EekaMShop/EekaMShop/Module/MainFrame/MShopMemberDetailViewController.m"
+                  timestampString = "522640909.392449"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -22,8 +22,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fi8-Ab-IOm">
-                                <rect key="frame" x="98" y="72" width="179" height="34"/>
+                                <rect key="frame" x="127.5" y="72" width="120" height="120"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="dcQ-zj-YGt"/>
+                                    <constraint firstAttribute="width" constant="120" id="pT7-EN-mCe"/>
+                                </constraints>
                                 <state key="normal" title="会员管理"/>
                                 <connections>
                                     <action selector="onClickMemberManager:" destination="L8h-cF-tST" eventType="touchUpInside" id="QdR-ap-CRZ"/>
@@ -33,8 +37,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fi8-Ab-IOm" firstAttribute="centerX" secondItem="14b-xZ-OCd" secondAttribute="centerX" id="OaD-5o-Lbg"/>
-                            <constraint firstItem="Fi8-Ab-IOm" firstAttribute="top" secondItem="SmQ-6j-wEP" secondAttribute="bottom" constant="52" id="mYe-8b-SS4"/>
-                            <constraint firstItem="Fi8-Ab-IOm" firstAttribute="leading" secondItem="14b-xZ-OCd" secondAttribute="leading" constant="98" id="xU5-DA-p81"/>
+                            <constraint firstItem="Fi8-Ab-IOm" firstAttribute="top" secondItem="SmQ-6j-wEP" secondAttribute="bottom" constant="52" id="Ohg-1A-6yH"/>
                         </constraints>
                     </view>
                 </viewController>

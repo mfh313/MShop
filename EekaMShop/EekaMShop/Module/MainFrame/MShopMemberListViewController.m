@@ -90,7 +90,7 @@
     }
     else
     {
-        [self showTips:@"无会员数据"];
+        [self showTips:@"无会员数据，开始搜索吧！"];
     }
 }
 

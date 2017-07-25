@@ -12,6 +12,7 @@
 #import "MShopEmployeeInfo.h"
 #import "MShopEmployeeListViewController.h"
 #import "MShopIndividualModifyApi.h"
+#import "MShopGetIndividualApi.h"
 #import "MShopLoginService.h"
 #import "MShopMemberProfileCellView.h"
 
@@ -228,7 +229,26 @@
 
 -(void)getIndividualInfo
 {
-    
+    __weak typeof(self) weakSelf = self;
+    MShopGetIndividualApi *getIndividualApi = [MShopGetIndividualApi new];
+    getIndividualApi.individualId = self.individual.individualId;
+    getIndividualApi.animatingView = MFAppWindow;
+    [getIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!getIndividualApi.messageSuccess) {
+            [self showTips:getIndividualApi.errorMessage];
+            return;
+        }
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        // TODO: show loading
+        
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
