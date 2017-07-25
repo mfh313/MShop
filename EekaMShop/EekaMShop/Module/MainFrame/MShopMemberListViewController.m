@@ -20,6 +20,7 @@
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
     MShopUISearchBar *m_searchBar;
+    NSMutableArray *_searchIndividualArray;
 }
 
 @end
@@ -43,6 +44,7 @@
     [self makeSearchBar];
     
     _individualArray = [NSMutableArray array];
+    _searchIndividualArray = [NSMutableArray array];
     
      [self getIndividualList];
 }
@@ -99,7 +101,12 @@
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
-        
+        [_searchIndividualArray removeAllObjects];
+        NSArray *individualList = request.responseObject[@"individualList"];
+        for (int i = 0; i < individualList.count; i++) {
+            MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
+            [_searchIndividualArray addObject:individual];
+        }
         
         
     } failure:^(YTKBaseRequest * request) {

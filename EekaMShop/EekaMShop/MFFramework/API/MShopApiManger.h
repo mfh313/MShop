@@ -18,6 +18,8 @@
 
 +(NSString *)getIndividualListURL;
 
++(NSString *)searchIndividualURL;
+
 +(NSString *)getIndividualURL;
 
 +(NSString *)individualModifyURL;

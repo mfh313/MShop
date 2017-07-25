@@ -44,6 +44,11 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
     return MFURLWithPara(@"employeeApi/getIndividual.json");
 }
 
++(NSString *)searchIndividualURL
+{
+    return MFURLWithPara(@"employeeApi/searchIndividual.json");
+}
+
 +(NSString *)getIndividualListURL
 {
     return MFURLWithPara(@"employeeApi/getIndividualList.json");

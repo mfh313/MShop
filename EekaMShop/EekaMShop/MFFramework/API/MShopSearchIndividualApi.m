@@ -10,4 +10,21 @@
 
 @implementation MShopSearchIndividualApi
 
+-(NSString *)requestUrl
+{
+    return [MShopApiManger searchIndividualURL];
+}
+
+- (YTKRequestMethod)requestMethod {
+    return YTKRequestMethodPOST;
+}
+
+-(id)requestArgumentWithToken
+{
+    return @{
+             @"searchKey ":self.searchKey
+             };
+    
+}
+
 @end
