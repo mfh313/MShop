@@ -67,10 +67,7 @@
     m_searchBar.showsScopeBar = YES;
     m_searchBar.showsCancelButton = YES;
     contentTableView.tableHeaderView = m_searchBar;
-    
-    UIButton *cancelBtn = [m_searchBar findCancelButton];
-    [cancelBtn setTitle:@"修改" forState:UIControlStateNormal];
-    NSLog(@"cancelBtn=%@",cancelBtn);
+
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
