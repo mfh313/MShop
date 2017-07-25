@@ -50,6 +50,7 @@
 		AC7FBD641F26DB2F00B11D5C /* MShopGetIndividualApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD631F26DB2F00B11D5C /* MShopGetIndividualApi.m */; };
 		AC7FBD6B1F26F3EA00B11D5C /* MShopUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD6A1F26F3EA00B11D5C /* MShopUISearchBar.m */; };
 		AC7FBD6F1F26F8B100B11D5C /* MMSearchBarDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD6E1F26F8B100B11D5C /* MMSearchBarDisplayController.m */; };
+		AC7FBD721F27299400B11D5C /* MMUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD711F27299400B11D5C /* MMUISearchBar.m */; };
 		AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */; };
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
 		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.mm */; };
@@ -215,6 +216,8 @@
 		AC7FBD6A1F26F3EA00B11D5C /* MShopUISearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopUISearchBar.m; sourceTree = "<group>"; };
 		AC7FBD6D1F26F8B100B11D5C /* MMSearchBarDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchBarDisplayController.h; sourceTree = "<group>"; };
 		AC7FBD6E1F26F8B100B11D5C /* MMSearchBarDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchBarDisplayController.m; sourceTree = "<group>"; };
+		AC7FBD701F27299400B11D5C /* MMUISearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMUISearchBar.h; sourceTree = "<group>"; };
+		AC7FBD711F27299400B11D5C /* MMUISearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMUISearchBar.m; sourceTree = "<group>"; };
 		AC85C21A1F1EE7A1003785A4 /* MShopEmployeeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeInfo.h; sourceTree = "<group>"; };
 		AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopEmployeeInfo.m; sourceTree = "<group>"; };
 		AC85C21E1F1F2D45003785A4 /* MFFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFFileUtil.h; sourceTree = "<group>"; };
@@ -473,6 +476,8 @@
 		AC7FBD6C1F26F87A00B11D5C /* MMSearchBarDisplayController */ = {
 			isa = PBXGroup;
 			children = (
+				AC7FBD701F27299400B11D5C /* MMUISearchBar.h */,
+				AC7FBD711F27299400B11D5C /* MMUISearchBar.m */,
 				AC7FBD6D1F26F8B100B11D5C /* MMSearchBarDisplayController.h */,
 				AC7FBD6E1F26F8B100B11D5C /* MMSearchBarDisplayController.m */,
 			);
@@ -988,6 +993,7 @@
 				AC867E571F1D99E600694086 /* UINavigationBar+MMUINavigationBar.m in Sources */,
 				AC867EE41F1DB55600694086 /* MMServiceCenter.m in Sources */,
 				AC867E421F1D99E600694086 /* UIView+viewController.m in Sources */,
+				AC7FBD721F27299400B11D5C /* MMUISearchBar.m in Sources */,
 				AC867F001F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m in Sources */,
 				AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */,
 				AC867E511F1D99E600694086 /* MMSelectButton.m in Sources */,

@@ -39,14 +39,34 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    m_searchBar = [[MShopUISearchBar alloc] init];
-    m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
-    m_searchBar.placeholder = @"精确搜索手机号";
-    contentTableView.tableHeaderView = m_searchBar;
+    [self makeSearchBar];
     
     _individualArray = [NSMutableArray array];
     
      [self getIndividualList];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self getIndividualList];
+}
+
+-(void)makeSearchBar
+{
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    
+    m_searchBar = [[MShopUISearchBar alloc] init];
+    m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
+    m_searchBar.placeholder = @"精确搜索手机号";
+    m_searchBar.delegate = self;
+    contentTableView.tableHeaderView = m_searchBar;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 -(void)getIndividualList
@@ -85,6 +105,11 @@
 -(void)reloadTableView
 {
     [m_tableViewInfo clearAllSection];
+    
+    if (_individualArray.count == 0) {
+        [self addBlankView];
+        return;
+    }
     
     MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
     [m_tableViewInfo addSection:sectionInfo];
@@ -138,6 +163,41 @@
     memberDetailVC.individual = individual;
     memberDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:memberDetailVC animated:YES];
+}
+
+-(void)addBlankView
+{
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeBlankCell:)
+                                                             makeTarget:self
+                                                              actionSel:nil
+                                                           actionTarget:self
+                                                                 height:200.0f
+                                                               userInfo:nil];
+    [sectionInfo addCell:cellInfo];
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)makeBlankCell:(MFTableViewCell *)cell
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:MFImageStretchCenter(@"button_normal") forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(onClickblankBtn) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = contentView.bounds;
+    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [button setTitle:@"无会员,点击开始搜索" forState:UIControlStateNormal];
+    
+    [contentView addSubview:button];
+    
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;;
+}
+
+-(void)onClickblankBtn
+{
+    [m_searchBar becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

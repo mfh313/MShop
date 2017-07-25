@@ -6,8 +6,8 @@
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "MMViewController.h"
+#import "MMSearchBarDisplayController.h"
 
-@interface MShopMemberListViewController : MMViewController
+@interface MShopMemberListViewController : MMSearchBarDisplayController
 
 @end
