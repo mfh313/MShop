@@ -18,31 +18,20 @@
  * limitations under the License.
  */
 
-#ifdef WCDB_BUILTIN_COLUMN_CODING
+#ifndef statement_rollback_hpp
+#define statement_rollback_hpp
 
-#import <Foundation/Foundation.h>
-#import <WCDB/WCDB.h>
+#include <WCDB/statement.hpp>
 
-@interface NSDate (WCDB) <WCTColumnCoding>
-@end
+namespace WCDB {
 
-@implementation NSDate (WCDB)
+class StatementRollback : public Statement {
+public:
+    StatementRollback &rollback(const std::string &savepointName = "");
 
-+ (instancetype)unarchiveWithWCTValue:(NSNumber *)value
-{
-    return value ? [NSDate dateWithTimeIntervalSince1970:value.longLongValue] : nil;
-}
+    virtual Statement::Type getStatementType() const override;
+};
 
-- (NSNumber *)archivedWCTValue
-{
-    return [NSNumber numberWithLongLong:self.timeIntervalSince1970];
-}
+} //namespace WCDB
 
-+ (WCTColumnType)columnTypeForWCDB
-{
-    return WCTColumnTypeInteger64;
-}
-
-@end
-
-#endif //WCDB_BUILTIN_COLUMN_CODING
+#endif /* statement_rollback_hpp */

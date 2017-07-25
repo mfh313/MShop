@@ -34,8 +34,9 @@ const std::string Database::defaultConfigName = "default";
 const std::string Database::defaultCipherConfigName = "cipher";
 const std::string Database::defaultTraceConfigName = "trace";
 const std::string Database::defaultCheckpointConfigName = "checkpoint";
-const std::string Database::defaultSyncName = "sync";
-std::shared_ptr<Trace> Database::s_globalTrace = nullptr;
+const std::string Database::defaultSyncConfigName = "sync";
+std::shared_ptr<PerformanceTrace> Database::s_globalPerformanceTrace = nullptr;
+std::shared_ptr<SQLTrace> Database::s_globalSQLTrace = nullptr;
 
 static const Config s_checkpointConfig = [](std::shared_ptr<Handle> &handle,
                                             Error &error) -> bool {
@@ -69,9 +70,18 @@ const Configs Database::defaultConfigs(
     {{
          Database::defaultTraceConfigName,
          [](std::shared_ptr<Handle> &handle, Error &error) -> bool {
-             std::shared_ptr<Trace> trace = s_globalTrace;
-             if (trace) {
-                 handle->setTrace(*trace.get());
+             {
+                 std::shared_ptr<PerformanceTrace> trace =
+                     s_globalPerformanceTrace;
+                 if (trace) {
+                     handle->setPerformanceTrace(*trace.get());
+                 }
+             }
+             {
+                 std::shared_ptr<SQLTrace> trace = s_globalSQLTrace;
+                 if (trace) {
+                     handle->setSQLTrace(*trace.get());
+                 }
              }
              return true;
          },
@@ -168,7 +178,7 @@ const Configs Database::defaultConfigs(
          2,
      },
      {
-         Database::defaultSyncName,
+         Database::defaultSyncConfigName,
          nullptr, //placeholder
          3,
      },
@@ -190,60 +200,46 @@ void Database::setConfig(const std::string &name, const Config &config)
     m_pool->setConfig(name, config);
 }
 
-void Database::setCipherKey(const void *key, int size)
+void Database::setCipher(const void *key, int keySize)
 {
-    std::shared_ptr<std::vector<unsigned char>> keys(
-        new std::vector<unsigned char>(size));
-    memcpy(keys->data(), key, size);
-    m_pool->setConfig(
-        Database::defaultCipherConfigName,
-        [keys](std::shared_ptr<Handle> &handle, Error &error) -> bool {
-
-            bool result =
-                handle->setCipherKey(keys->data(), (int) keys->size());
-
-            //Page Size
-            {
-                static const StatementPragma s_getCipherPageSize =
-                    StatementPragma().pragma(Pragma::CipherPageSize);
-                static const StatementPragma s_setCipherPageSize =
-                    StatementPragma().pragma(Pragma::CipherPageSize, 4096);
-
-                //Get Page Size
-                std::shared_ptr<StatementHandle> statementHandle =
-                    handle->prepare(s_getCipherPageSize);
-                if (!statementHandle) {
-                    error = handle->getError();
-                    return false;
-                }
-                statementHandle->step();
-                if (!statementHandle->isOK()) {
-                    error = statementHandle->getError();
-                    return false;
-                }
-                int cipherPageSize =
-                    statementHandle->getValue<WCDB::ColumnType::Integer32>(0);
-                statementHandle->finalize();
-
-                //Set Page Size
-                if (cipherPageSize != 4096 &&
-                    !handle->exec(s_setCipherPageSize)) {
-                    error = handle->getError();
-                    return false;
-                }
-            }
-
-            error = handle->getError();
-            return result;
-        });
+    setCipher(key, keySize, 4096);
 }
 
-void Database::setTrace(const Trace &trace)
+void Database::setCipher(const void *key, int keySize, int pageSize)
+{
+    std::shared_ptr<std::vector<unsigned char>> keys(
+        new std::vector<unsigned char>(keySize));
+    memcpy(keys->data(), key, keySize);
+    m_pool->setConfig(Database::defaultCipherConfigName,
+                      [keys, pageSize](std::shared_ptr<Handle> &handle,
+                                       Error &error) -> bool {
+
+                          //Set Cipher Key
+                          bool result = handle->setCipherKey(
+                              keys->data(), (int) keys->size());
+                          if (!result) {
+                              error = handle->getError();
+                              return false;
+                          }
+
+                          //Set Cipher Page Size
+                          if (!handle->exec(StatementPragma().pragma(
+                                  Pragma::CipherPageSize, pageSize))) {
+                              error = handle->getError();
+                              return false;
+                          }
+
+                          error.reset();
+                          return true;
+                      });
+}
+
+void Database::setPerformanceTrace(const PerformanceTrace &trace)
 {
     m_pool->setConfig(
         Database::defaultTraceConfigName,
         [trace](std::shared_ptr<Handle> &handle, Error &error) -> bool {
-            handle->setTrace(trace);
+            handle->setPerformanceTrace(trace);
             return true;
         });
 }
@@ -252,7 +248,7 @@ void Database::setSyncEnabled(bool sync)
 {
     if (sync) {
         m_pool->setConfig(
-            Database::defaultSyncName,
+            Database::defaultSyncConfigName,
             [](std::shared_ptr<Handle> &handle, Error &error) -> bool {
 
                 //Synchronous
@@ -295,15 +291,20 @@ void Database::setSyncEnabled(bool sync)
         //disable checkpoint opti for sync
         m_pool->setConfig(Database::defaultCheckpointConfigName, nullptr);
     } else {
-        m_pool->setConfig(Database::defaultSyncName, nullptr);
+        m_pool->setConfig(Database::defaultSyncConfigName, nullptr);
         m_pool->setConfig(Database::defaultCheckpointConfigName,
                           s_checkpointConfig);
     }
 }
 
-void Database::SetGlobalTrace(const Trace &globalTrace)
+void Database::SetGlobalPerformanceTrace(const PerformanceTrace &globalTrace)
 {
-    s_globalTrace.reset(new Trace(globalTrace));
+    s_globalPerformanceTrace.reset(new PerformanceTrace(globalTrace));
+}
+
+void Database::SetGlobalSQLTrace(const SQLTrace &globalTrace)
+{
+    s_globalSQLTrace.reset(new SQLTrace(globalTrace));
 }
 
 } //namespace WCDB

@@ -48,6 +48,8 @@
 		AC7E3F851F25DB270035E3DC /* MShopMemberProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F841F25DB270035E3DC /* MShopMemberProfileCellView.m */; };
 		AC7E3F871F25DB650035E3DC /* MShopMemberProfileCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7E3F861F25DB650035E3DC /* MShopMemberProfileCellView.xib */; };
 		AC7FBD641F26DB2F00B11D5C /* MShopGetIndividualApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD631F26DB2F00B11D5C /* MShopGetIndividualApi.m */; };
+		AC7FBD6B1F26F3EA00B11D5C /* MShopUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD6A1F26F3EA00B11D5C /* MShopUISearchBar.m */; };
+		AC7FBD6F1F26F8B100B11D5C /* MMSearchBarDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FBD6E1F26F8B100B11D5C /* MMSearchBarDisplayController.m */; };
 		AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */; };
 		AC85C2221F1F2F7B003785A4 /* MShopMainFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */; };
 		AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC85C2241F1F52BC003785A4 /* MShopAppViewControllerManager.mm */; };
@@ -209,6 +211,10 @@
 		AC7E3F861F25DB650035E3DC /* MShopMemberProfileCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberProfileCellView.xib; sourceTree = "<group>"; };
 		AC7FBD621F26DB2F00B11D5C /* MShopGetIndividualApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopGetIndividualApi.h; sourceTree = "<group>"; };
 		AC7FBD631F26DB2F00B11D5C /* MShopGetIndividualApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetIndividualApi.m; sourceTree = "<group>"; };
+		AC7FBD691F26F3EA00B11D5C /* MShopUISearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopUISearchBar.h; sourceTree = "<group>"; };
+		AC7FBD6A1F26F3EA00B11D5C /* MShopUISearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopUISearchBar.m; sourceTree = "<group>"; };
+		AC7FBD6D1F26F8B100B11D5C /* MMSearchBarDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchBarDisplayController.h; sourceTree = "<group>"; };
+		AC7FBD6E1F26F8B100B11D5C /* MMSearchBarDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchBarDisplayController.m; sourceTree = "<group>"; };
 		AC85C21A1F1EE7A1003785A4 /* MShopEmployeeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeInfo.h; sourceTree = "<group>"; };
 		AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopEmployeeInfo.m; sourceTree = "<group>"; };
 		AC85C21E1F1F2D45003785A4 /* MFFileUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFFileUtil.h; sourceTree = "<group>"; };
@@ -455,6 +461,24 @@
 			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
+		AC7FBD651F26F34100B11D5C /* MShop */ = {
+			isa = PBXGroup;
+			children = (
+				AC7FBD691F26F3EA00B11D5C /* MShopUISearchBar.h */,
+				AC7FBD6A1F26F3EA00B11D5C /* MShopUISearchBar.m */,
+			);
+			path = MShop;
+			sourceTree = "<group>";
+		};
+		AC7FBD6C1F26F87A00B11D5C /* MMSearchBarDisplayController */ = {
+			isa = PBXGroup;
+			children = (
+				AC7FBD6D1F26F8B100B11D5C /* MMSearchBarDisplayController.h */,
+				AC7FBD6E1F26F8B100B11D5C /* MMSearchBarDisplayController.m */,
+			);
+			path = MMSearchBarDisplayController;
+			sourceTree = "<group>";
+		};
 		AC85C21F1F1F2F5C003785A4 /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,6 +580,8 @@
 		AC867DEF1F1D99E600694086 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				AC7FBD6C1F26F87A00B11D5C /* MMSearchBarDisplayController */,
+				AC7FBD651F26F34100B11D5C /* MShop */,
 				AC867E2F1F1D99E600694086 /* MFTableView */,
 				AC867EDE1F1DB55600694086 /* Service */,
 				AC867DF01F1D99E600694086 /* Category */,
@@ -970,6 +996,7 @@
 				AC867E531F1D99E600694086 /* MMUINavigationBar.m in Sources */,
 				AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */,
 				AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */,
+				AC7FBD6B1F26F3EA00B11D5C /* MShopUISearchBar.m in Sources */,
 				AC867E441F1D99E600694086 /* UIViewController+FullScreen.m in Sources */,
 				AC867E781F1D9BB400694086 /* XXNibBridge.m in Sources */,
 				AC867E5C1F1D99E600694086 /* MFTableViewSectionInfo.m in Sources */,
@@ -1010,6 +1037,7 @@
 				AC85C2291F1F542F003785A4 /* MShopMeViewController.mm in Sources */,
 				AC867E581F1D99E600694086 /* MFModelHelper.m in Sources */,
 				AC867E5E1F1D99E600694086 /* MMTabBarController.m in Sources */,
+				AC7FBD6F1F26F8B100B11D5C /* MMSearchBarDisplayController.m in Sources */,
 				AC867E501F1D99E600694086 /* MMOnePixLayoutConstraint.m in Sources */,
 				AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */,
 				AC7E3F851F25DB270035E3DC /* MShopMemberProfileCellView.m in Sources */,

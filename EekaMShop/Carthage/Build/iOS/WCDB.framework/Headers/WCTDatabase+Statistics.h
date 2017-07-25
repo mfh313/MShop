@@ -27,8 +27,8 @@
 /**
  @brief You can register a tracer to monitor the performance of all SQLs in this database. The database tracer will recover the global tracer for specifiy database.
  @param trace trace
- @see [WCTStatistics SetGlobalTrace:]
+ @see [WCTStatistics SetGlobalPerformanceTrace:]
  */
-- (void)setTrace:(WCTTrace)trace;
+- (void)setPerformanceTrace:(WCTPerformanceTrace)trace;
 
 @end

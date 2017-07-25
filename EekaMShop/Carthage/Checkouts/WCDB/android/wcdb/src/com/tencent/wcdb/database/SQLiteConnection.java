@@ -105,6 +105,8 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
 
     // The recent operations log.
     private final OperationLog mRecentOperations = new OperationLog();
+    private Thread mAcquiredThread;
+    private int mAcquiredTid;
 
     // The native SQLiteConnection pointer.  (FOR INTERNAL USE ONLY)
     private long mConnectionPtr;
@@ -510,6 +512,13 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
     // Preparing statements that might write is ok, just don't execute them.
     void setOnlyAllowReadOnlyOperations(boolean readOnly) {
         mOnlyAllowReadOnlyOperations = readOnly;
+    }
+
+    // Called by SQLiteSession only.
+    // Mark acquisition state for debug purpose.
+    void setAcquisitionState(Thread thread, int tid) {
+        mAcquiredThread = thread;
+        mAcquiredTid = tid;
     }
 
     // Called by SQLiteConnectionPool only.
@@ -1125,6 +1134,9 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
         }
         printer.println("  isPrimaryConnection: " + mIsPrimaryConnection);
         printer.println("  onlyAllowReadOnlyOperations: " + mOnlyAllowReadOnlyOperations);
+        if (mAcquiredThread != null) {
+            printer.println("  acquiredThread: " + mAcquiredThread + " (tid: " + mAcquiredTid + ")");
+        }
 
         mRecentOperations.dump(printer, verbose);
 
@@ -1458,7 +1470,7 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
                     }
                 }
                 operation.mCookie = newOperationCookieLocked(index);
-                operation.mTid = android.os.Process.myTid();
+                operation.mTid = mAcquiredTid;
                 mIndex = index;
                 return operation;
             }
@@ -1475,42 +1487,46 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
         }
 
         public void endOperation(int cookie) {
-            final Operation operation;
             final String sql;
+            final String kind;
             final int type;
             final long elapsedTimeMillis;
 
             synchronized (mOperations) {
-                operation = getOperationLocked(cookie);
-                sql = operation.mSql;
-                type = operation.mType;
-                elapsedTimeMillis = operation.mEndTime - operation.mStartTime;
-
+                Operation operation = getOperationLocked(cookie);
                 if (endOperationDeferLogLocked(operation)) {
                     logOperationLocked(operation, null);
                 }
+
+                sql = operation.mSql;
+                kind = operation.mKind;
+                type = operation.mType;
+                elapsedTimeMillis = operation.mEndTime - operation.mStartTime;
             }
 
-            mPool.traceExecute(sql, type, elapsedTimeMillis);
+            if (!"prepare".equals(kind))
+                mPool.traceExecute(sql, type, elapsedTimeMillis);
         }
 
         public boolean endOperationDeferLog(int cookie) {
-            final Operation operation;
             final String sql;
+            final String kind;
             final int type;
             final long elapsedTimeMillis;
             final boolean result;
 
             synchronized (mOperations) {
-                operation = getOperationLocked(cookie);
+                Operation operation = getOperationLocked(cookie);
+                result = endOperationDeferLogLocked(operation);
+
                 sql = operation.mSql;
+                kind = operation.mKind;
                 type = operation.mType;
                 elapsedTimeMillis = operation.mEndTime - operation.mStartTime;
-
-                result = endOperationDeferLogLocked(operation);
             }
 
-            mPool.traceExecute(sql, type, elapsedTimeMillis);
+            if (!"prepare".equals(kind))
+                mPool.traceExecute(sql, type, elapsedTimeMillis);
             return result;
         }
 

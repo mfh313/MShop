@@ -18,31 +18,20 @@
  * limitations under the License.
  */
 
-#ifdef WCDB_BUILTIN_COLUMN_CODING
+#ifndef statement_rollback_hpp
+#define statement_rollback_hpp
 
-#import <Foundation/Foundation.h>
-#import <WCDB/WCDB.h>
+#include <WCDB/statement.hpp>
 
-@interface NSValue (WCDB) <WCTColumnCoding>
-@end
+namespace WCDB {
 
-@implementation NSValue (WCDB)
+class StatementRollback : public Statement {
+public:
+    StatementRollback &rollback(const std::string &savepointName = "");
 
-+ (instancetype)unarchiveWithWCTValue:(NSData *)value
-{
-    return value ? [NSKeyedUnarchiver unarchiveObjectWithData:value] : nil;
-}
+    virtual Statement::Type getStatementType() const override;
+};
 
-- (NSData *)archivedWCTValue
-{
-    return [NSKeyedArchiver archivedDataWithRootObject:self];
-}
+} //namespace WCDB
 
-+ (WCTColumnType)columnTypeForWCDB
-{
-    return WCTColumnTypeBinary;
-}
-
-@end
-
-#endif //WCDB_BUILTIN_COLUMN_CODING
+#endif /* statement_rollback_hpp */

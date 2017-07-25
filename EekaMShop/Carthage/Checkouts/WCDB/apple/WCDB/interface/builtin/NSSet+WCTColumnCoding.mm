@@ -23,10 +23,10 @@
 #import <Foundation/Foundation.h>
 #import <WCDB/WCDB.h>
 
-@interface NSDictionary (WCDB) <WCTColumnCoding>
+@interface NSSet (WCTColumnCoding) <WCTColumnCoding>
 @end
 
-@implementation NSDictionary (WCDB)
+@implementation NSSet (WCTColumnCoding)
 
 + (instancetype)unarchiveWithWCTValue:(NSData *)value
 {
@@ -45,10 +45,10 @@
 
 @end
 
-@interface NSMutableDictionary (WCDB) <WCTColumnCoding>
+@interface NSMutableSet (WCTColumnCoding) <WCTColumnCoding>
 @end
 
-@implementation NSMutableDictionary (WCDB)
+@implementation NSMutableSet (WCTColumnCoding)
 
 + (instancetype)unarchiveWithWCTValue:(NSData *)value
 {

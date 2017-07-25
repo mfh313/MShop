@@ -12,11 +12,13 @@
 #import "MShopMemberListCellView.h"
 #import "MShopMemberDetailViewController.h"
 #import "MFTableViewInfo.h"
+#import "MShopUISearchBar.h"
 
 @interface MShopMemberListViewController ()
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
+    MShopUISearchBar *m_searchBar;
 }
 
 @end
@@ -37,14 +39,14 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    _individualArray = [NSMutableArray array];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    m_searchBar = [[MShopUISearchBar alloc] init];
+    m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
+    m_searchBar.placeholder = @"精确搜索手机号";
+    contentTableView.tableHeaderView = m_searchBar;
     
-    [self getIndividualList];
+    _individualArray = [NSMutableArray array];
+    
+     [self getIndividualList];
 }
 
 -(void)getIndividualList
@@ -84,14 +86,8 @@
 {
     [m_tableViewInfo clearAllSection];
     
-    if (_individualArray.count > 0) {
-        MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
-        [m_tableViewInfo addSection:sectionInfo];
-    }
-    else
-    {
-        [self showTips:@"无会员数据，开始搜索吧！"];
-    }
+    MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
+    [m_tableViewInfo addSection:sectionInfo];
 }
 
 - (MFTableViewSectionInfo *)addMemberSection

@@ -19,7 +19,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <WCDB/WCDB.h>
 
 @interface WCTSampleColumnCoding : NSObject
 

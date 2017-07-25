@@ -27,7 +27,9 @@
 
 #import <WCDB/WINQ.h>
 
+#import <WCDB/WCTMaster+WCTTableCoding.h>
 #import <WCDB/WCTMaster.h>
+#import <WCDB/WCTSequence+WCTTableCoding.h>
 #import <WCDB/WCTSequence.h>
 
 #import <WCDB/WCTDelete.h>
@@ -70,5 +72,8 @@
 #import <WCDB/WCTError.h>
 #import <WCDB/WCTStatistics.h>
 #import <WCDB/WCTTransaction+Statistics.h>
+
+#import <WCDB/WCTCompatible.h>
+#import <WCDB/WCTStatistics+Compatible.h>
 
 #endif /* WCDB_h */
