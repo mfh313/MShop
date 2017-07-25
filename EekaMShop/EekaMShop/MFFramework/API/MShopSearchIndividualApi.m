@@ -22,7 +22,7 @@
 -(id)requestArgumentWithToken
 {
     return @{
-             @"searchKey ":self.searchKey
+             @"searchKey":self.searchKey
              };
     
 }

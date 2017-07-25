@@ -62,7 +62,7 @@
     
     m_searchBar = [[MShopUISearchBar alloc] init];
     m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
-    m_searchBar.placeholder = @"精确搜索手机号";
+    m_searchBar.placeholder = @"会员手机号搜索";
     m_searchBar.delegate = self;
     contentTableView.tableHeaderView = m_searchBar;
 }
@@ -78,6 +78,8 @@
 //        [self.navigationController setNavigationBarHidden:NO animated:YES];
         
         NSString *searchText = searchBar.text;
+        searchText = @"15813818620";
+        
         [self searchIndividualInfo:searchText];
         return NO;
     }
@@ -86,8 +88,6 @@
 
 -(void)searchIndividualInfo:(NSString *)searchText
 {
-    searchText = @"15813818620";
-    
     __weak typeof(self) weakSelf = self;
     MShopSearchIndividualApi *searchIndividualApi = [MShopSearchIndividualApi new];
     searchIndividualApi.searchKey = searchText;
@@ -107,7 +107,8 @@
             MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
             [_searchIndividualArray addObject:individual];
         }
-        
+
+        [strongSelf showIndividualInfo:_searchIndividualArray.firstObject];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -205,7 +206,11 @@
 -(void)onClickMemberListCell:(MFTableViewCellInfo *)cellInfo
 {
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
-    
+    [self showIndividualInfo:individual];
+}
+
+-(void)showIndividualInfo:(MShopIndividualInfo *)individual
+{
     MShopMemberDetailViewController *memberDetailVC = [MShopMemberDetailViewController new];
     memberDetailVC.individual = individual;
     memberDetailVC.hidesBottomBarWhenPushed = YES;
