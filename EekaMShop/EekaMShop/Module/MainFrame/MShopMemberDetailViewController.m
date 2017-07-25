@@ -76,6 +76,7 @@
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf showTips:@"分配成功"];
+        [strongSelf getIndividualInfo];
         
         
     } failure:^(YTKBaseRequest * request) {
