@@ -229,22 +229,15 @@
 {
     UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:MFImageStretchCenter(@"button_normal") forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(onClickblankBtn) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = contentView.bounds;
-    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [button setTitle:@"无会员,点击开始搜索" forState:UIControlStateNormal];
-    
-    [contentView addSubview:button];
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    tipLabel.text = @"还没有会员,开始搜索添加会员吧！";
+    tipLabel.font = [UIFont systemFontOfSize:16.0f];
+    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [contentView addSubview:tipLabel];
     
     cell.m_subContentView = contentView;
     contentView.frame = cell.contentView.bounds;;
-}
-
--(void)onClickblankBtn
-{
-    [m_searchBar becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
