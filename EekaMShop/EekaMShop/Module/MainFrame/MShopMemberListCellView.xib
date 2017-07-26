@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHs-3M-6Vd">
-                    <rect key="frame" x="326" y="20.5" width="29" height="17"/>
+                    <rect key="frame" x="331" y="20.5" width="29" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Uwa-Y1-3WR"/>
                     </constraints>
@@ -59,7 +59,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="JHs-3M-6Vd" secondAttribute="trailing" constant="20" id="AZh-so-Qbb"/>
+                <constraint firstAttribute="trailing" secondItem="JHs-3M-6Vd" secondAttribute="trailing" constant="15" id="AZh-so-Qbb"/>
                 <constraint firstItem="Ycc-TO-aj5" firstAttribute="leading" secondItem="kTi-pu-RSL" secondAttribute="leading" id="SgK-iY-qAu"/>
                 <constraint firstItem="JHs-3M-6Vd" firstAttribute="centerY" secondItem="kTi-pu-RSL" secondAttribute="centerY" id="Y42-iE-gd1"/>
                 <constraint firstItem="Ycc-TO-aj5" firstAttribute="top" secondItem="kTi-pu-RSL" secondAttribute="bottom" constant="5" id="eEm-G9-sD9"/>

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MMUISearchBar.h"
 
 @class MMSearchBar;
 
@@ -47,10 +48,28 @@
 - (UIView *)viewForHeaderInSection:(NSInteger)section ForSearchViewTable:(UITableView *)tableView;
 @end
 
+@class MMUISearchBar,MMViewController;
 @interface MMSearchBar : NSObject <UISearchDisplayDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 {
     __weak id<MMSearchBarDelegate> m_delegate;
+    NSString *m_nsLastSearchText;
+    MMUISearchBar *m_searchBar;
+    NSMutableArray *m_arrFilteredObject;
+    UISearchDisplayController *m_searchDisplayController;
+    MMViewController *m_viewController;
+    NSInteger m_returnKeyType;
+    BOOL m_isShouldRemoveDimmingView;
 }
 
+@property (nonatomic,weak) id<MMSearchBarDelegate> m_delegate;
+@property (nonatomic,strong) NSString *m_nsLastSearchText;
+@property (nonatomic,assign) NSInteger m_returnKeyType;
+@property (nonatomic,strong) MMUISearchBar *m_searchBar;
+@property (nonatomic,strong) UISearchDisplayController *m_searchDisplayController;
+
+- (id)initWithContentsController:(MMViewController *)viewController;
+
+- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller;
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller;
 
 @end

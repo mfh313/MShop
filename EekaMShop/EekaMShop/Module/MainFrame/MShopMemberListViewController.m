@@ -12,14 +12,15 @@
 #import "MShopMemberListCellView.h"
 #import "MShopMemberDetailViewController.h"
 #import "MFTableViewInfo.h"
-#import "MMUISearchBar.h"
 #import "MShopSearchIndividualApi.h"
+#import "MShopMemberSearchBar.h"
+#import "MShopMemberListCellView.h"
 
-@interface MShopMemberListViewController ()<MFTableViewInfoDelegate>
+@interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate>
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
-    MMUISearchBar *m_searchBar;
+    MShopMemberSearchBar *m_mmSearchBar;
     NSMutableArray *_searchIndividualArray;
 }
 
@@ -31,12 +32,13 @@
     [super viewDidLoad];
     self.title = @"会员列表";
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
     
-    CGRect tableFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
-    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
+    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     m_tableViewInfo.delegate = self;
     UITableView *contentTableView = [m_tableViewInfo getTableView];
+    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor whiteColor];
@@ -61,32 +63,115 @@
 {
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     
-    m_searchBar = [[MMUISearchBar alloc] init];
-    m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
-    m_searchBar.placeholder = @"会员手机号搜索";
-    m_searchBar.delegate = self;
-    contentTableView.tableHeaderView = m_searchBar;
-
+    m_mmSearchBar = [[MShopMemberSearchBar alloc] initWithContentsController:self];
+    m_mmSearchBar.m_delegate = self;
+    
+    MMUISearchBar *searchBar = m_mmSearchBar.m_searchBar;
+    contentTableView.tableHeaderView = searchBar;
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+#pragma mark - MMSearchBarDelegate
+- (void)SearchBarBecomeActive
 {
-
+//    UITableView *contentTableView = [m_tableViewInfo getTableView];
+//    contentTableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
+//        
+//    });
+////    dispatch_async(dispatch_get_main_queue(), ^{
+////        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
+////    });
+    
 }
 
-- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (void)SearchBarBecomeUnActive
+{
+//    UITableView *contentTableView = [m_tableViewInfo getTableView];
+//    
+//    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        [contentTableView setContentOffset:CGPointMake(0, -64) animated:NO];
+//        
+//    });
+}
+
+- (void)resetTableViewOffset
+{
+    
+}
+
+- (void)SearchBarShouldEnd
+{
+    
+}
+
+- (void)cancelSearch
+{
+    
+}
+
+- (void)mmsearchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    
+}
+
+- (void)mmsearchBarCancelButtonClicked:(MMSearchBar *)searchBar
+{
+    
+}
+
+- (void)mmsearchBarSearchButtonClicked:(MMSearchBar *)searchBar
+{
+    
+}
+
+- (BOOL)mmsearchBarShouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
-        NSString *searchText = searchBar.text;
-        searchText = @"15813818620";
         
-        [self searchIndividualInfo:searchText];
+        NSString *searchText = m_mmSearchBar.m_nsLastSearchText;
+        
+//        searchText = @"137";
+        
+        [self searchIndividual:searchText];
         return NO;
     }
     return YES;
 }
 
--(void)searchIndividualInfo:(NSString *)searchText
+-(NSInteger)numberOfSectionsForSearchViewTable:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)numberOfRowsInSection:(NSInteger)section ForSearchViewTable:(UITableView *)tableView
+{
+    return _searchIndividualArray.count;
+}
+
+-(UITableViewCell *)cellForIndex:(NSIndexPath *)indexPath ForSearchViewTable:(UITableView *)tableView
+{
+    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EPSaleBillingDiscountInputView"];
+    
+    if (cell == nil) {
+        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EPSaleBillingDiscountInputView"];
+        MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
+        cell.m_subContentView = cellView;
+    }
+    
+    cell.m_subContentView.frame = cell.contentView.bounds;
+    
+    MShopMemberListCellView *cellView = (MShopMemberListCellView *)cell.m_subContentView;
+    MShopIndividualInfo *individual = _searchIndividualArray[indexPath.row];
+    
+    [cellView setIndividualInfo:individual];
+    return cell;
+}
+
+-(void)searchIndividual:(NSString *)searchText
 {
     __weak typeof(self) weakSelf = self;
     MShopSearchIndividualApi *searchIndividualApi = [MShopSearchIndividualApi new];
@@ -100,7 +185,6 @@
         }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
         [_searchIndividualArray removeAllObjects];
         NSArray *individualList = request.responseObject[@"individualList"];
         for (int i = 0; i < individualList.count; i++) {
@@ -108,8 +192,6 @@
             [_searchIndividualArray addObject:individual];
         }
 
-        [strongSelf showIndividualInfo:_searchIndividualArray.firstObject];
-        
     } failure:^(YTKBaseRequest * request) {
         
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
@@ -233,6 +315,7 @@
 -(void)makeBlankCell:(MFTableViewCell *)cell
 {
     UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    contentView.backgroundColor = [UIColor whiteColor];
     
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
     tipLabel.textAlignment = NSTextAlignmentCenter;
