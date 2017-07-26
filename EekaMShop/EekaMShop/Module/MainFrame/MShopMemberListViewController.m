@@ -80,10 +80,10 @@
 //        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
 //        
 //    });
-////    dispatch_async(dispatch_get_main_queue(), ^{
-////        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
-////    });
-    
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
+//    });
 }
 
 - (void)SearchBarBecomeUnActive
@@ -130,16 +130,43 @@
 
 - (BOOL)mmsearchBarShouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if ([text isEqualToString:@"\n"]) {
-        
-        NSString *searchText = m_mmSearchBar.m_nsLastSearchText;
-        
-//        searchText = @"137";
-        
-        [self searchIndividual:searchText];
+    if ([text isEqualToString:@"\n"])
+    {
+        [self searchIndividual:m_mmSearchBar.m_nsLastSearchText];
         return NO;
     }
+    
     return YES;
+}
+
+-(void)searchIndividual:(NSString *)searchText
+{
+    __weak typeof(self) weakSelf = self;
+    MShopSearchIndividualApi *searchIndividualApi = [MShopSearchIndividualApi new];
+    searchIndividualApi.searchKey = searchText;
+    searchIndividualApi.animatingView = MFAppWindow;
+    [searchIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!searchIndividualApi.messageSuccess) {
+            [self showTips:searchIndividualApi.errorMessage];
+            return;
+        }
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [_searchIndividualArray removeAllObjects];
+        NSArray *individualList = request.responseObject[@"individualList"];
+        for (int i = 0; i < individualList.count; i++) {
+            MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
+            [_searchIndividualArray addObject:individual];
+        }
+        
+        NSLog(@"_searchIndividualArray=%@",_searchIndividualArray);
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
 }
 
 -(NSInteger)numberOfSectionsForSearchViewTable:(UITableView *)tableView
@@ -171,32 +198,9 @@
     return cell;
 }
 
--(void)searchIndividual:(NSString *)searchText
+-(CGFloat)heightForSearchViewTable:(NSIndexPath *)indexPath
 {
-    __weak typeof(self) weakSelf = self;
-    MShopSearchIndividualApi *searchIndividualApi = [MShopSearchIndividualApi new];
-    searchIndividualApi.searchKey = searchText;
-    searchIndividualApi.animatingView = MFAppWindow;
-    [searchIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
-        
-        if (!searchIndividualApi.messageSuccess) {
-            [self showTips:searchIndividualApi.errorMessage];
-            return;
-        }
-        
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        [_searchIndividualArray removeAllObjects];
-        NSArray *individualList = request.responseObject[@"individualList"];
-        for (int i = 0; i < individualList.count; i++) {
-            MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
-            [_searchIndividualArray addObject:individual];
-        }
-
-    } failure:^(YTKBaseRequest * request) {
-        
-        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
-        [self showTips:errorDesc];
-    }];
+    return 60.0f;
 }
 
 -(void)getIndividualList

@@ -24,8 +24,8 @@
 - (void)didScrollViewScroll:(UIScrollView *)scrollView;
 - (void)didSearchViewTableSelect:(NSIndexPath *)indexPath;
 - (void)doSearch:(NSString *)searchText Pre:(BOOL)pre;
-- (double)heightForHeaderInSection:(NSInteger)section ForSearchViewTable:(UITableView *)tableView;
-- (double)heightForSearchViewTable:(NSIndexPath *)indexPath;
+- (CGFloat)heightForHeaderInSection:(NSInteger)section ForSearchViewTable:(UITableView *)tableView;
+- (CGFloat)heightForSearchViewTable:(NSIndexPath *)indexPath;
 - (void)mmSearchBarDidEnd;
 - (void)mmSearchBarTextDidChange:(NSString *)searchText;
 - (void)mmSearchDisplayControllerDidBeginSearch;
