@@ -49,7 +49,7 @@
 
 @interface MMSearchBar : NSObject <UISearchDisplayDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 {
-    
+    __weak id<MMSearchBarDelegate> m_delegate;
 }
 
 
