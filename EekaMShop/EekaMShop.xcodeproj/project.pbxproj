@@ -27,6 +27,7 @@
 		AC7399161F22045A00F753C2 /* NSCache+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399151F22045A00F753C2 /* NSCache+SafeInsert.m */; };
 		AC7399191F2204D100F753C2 /* NSMutableSet+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7399181F2204D100F753C2 /* NSMutableSet+SafeInsert.m */; };
 		AC73991C1F22051700F753C2 /* NSMutableString+SafeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73991B1F22051700F753C2 /* NSMutableString+SafeInsert.m */; };
+		AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC76F3D51F281B9500499C66 /* MMSearchBar.m */; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -178,6 +179,8 @@
 		AC7399181F2204D100F753C2 /* NSMutableSet+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+SafeInsert.m"; sourceTree = "<group>"; };
 		AC73991A1F22051700F753C2 /* NSMutableString+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+SafeInsert.h"; sourceTree = "<group>"; };
 		AC73991B1F22051700F753C2 /* NSMutableString+SafeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+SafeInsert.m"; sourceTree = "<group>"; };
+		AC76F3D41F281B9500499C66 /* MMSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchBar.h; sourceTree = "<group>"; };
+		AC76F3D51F281B9500499C66 /* MMSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchBar.m; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -485,6 +488,8 @@
 				AC7FBD781F2741B300B11D5C /* MMSearchBarDisplayController.m */,
 				AC7FBD791F2741B300B11D5C /* MMUISearchBar.h */,
 				AC7FBD7A1F2741B300B11D5C /* MMUISearchBar.m */,
+				AC76F3D41F281B9500499C66 /* MMSearchBar.h */,
+				AC76F3D51F281B9500499C66 /* MMSearchBar.m */,
 			);
 			path = MMSearchBar;
 			sourceTree = "<group>";
@@ -1060,6 +1065,7 @@
 				AC7399191F2204D100F753C2 /* NSMutableSet+SafeInsert.m in Sources */,
 				AC867E751F1D9BB400694086 /* YYClassInfo.m in Sources */,
 				AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */,
+				AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */,
 				AC7399051F21DCF500F753C2 /* MShopUserIdLoginApi.m in Sources */,
 				AC7C28611F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm in Sources */,
 				AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */,

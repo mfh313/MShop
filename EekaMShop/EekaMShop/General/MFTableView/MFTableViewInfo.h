@@ -27,6 +27,8 @@
     __weak id<MFTableViewInfoDelegate> _delegate;
 }
 
+@property (nonatomic,weak) id<MFTableViewInfoDelegate> delegate;
+
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 
 - (UITableView *)getTableView;

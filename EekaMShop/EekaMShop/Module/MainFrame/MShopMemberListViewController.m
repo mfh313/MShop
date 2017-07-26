@@ -15,7 +15,7 @@
 #import "MMUISearchBar.h"
 #import "MShopSearchIndividualApi.h"
 
-@interface MShopMemberListViewController ()
+@interface MShopMemberListViewController ()<MFTableViewInfoDelegate>
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
@@ -35,6 +35,7 @@
     
     CGRect tableFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
+    m_tableViewInfo.delegate = self;
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -64,22 +65,18 @@
     m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
     m_searchBar.placeholder = @"会员手机号搜索";
     m_searchBar.delegate = self;
-    m_searchBar.showsScopeBar = YES;
-    m_searchBar.showsCancelButton = YES;
     contentTableView.tableHeaderView = m_searchBar;
 
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
 }
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"]) {
-//        [self.navigationController setNavigationBarHidden:NO animated:YES];
-        
         NSString *searchText = searchBar.text;
         searchText = @"15813818620";
         
@@ -246,6 +243,11 @@
     
     cell.m_subContentView = contentView;
     contentView.frame = cell.contentView.bounds;;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {
