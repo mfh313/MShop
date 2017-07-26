@@ -68,7 +68,7 @@
 @property (nonatomic,strong) UISearchDisplayController *m_searchDisplayController;
 
 - (id)initWithContentsController:(MMViewController *)viewController;
-
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller;
 - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller;
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller;
 

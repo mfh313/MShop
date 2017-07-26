@@ -16,11 +16,11 @@
     
     if (!_searchGuideView) {
         _searchGuideView = [[UIView alloc] initWithFrame:CGRectZero];
-        _searchGuideView.backgroundColor = [UIColor redColor];
+        _searchGuideView.backgroundColor = [UIColor whiteColor];
     }
     
     _searchGuideView.frame = CGRectMake(0, 64, CGRectGetWidth(controller.searchContentsController.view.frame), CGRectGetHeight(controller.searchContentsController.view.frame) - 64);
-    [controller.searchContentsController.view addSubview:_searchGuideView];
+//    [controller.searchContentsController.view addSubview:_searchGuideView];
 }
 
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
