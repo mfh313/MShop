@@ -108,25 +108,25 @@
     
 }
 
-- (void)cancelSearch
-{
-    
-}
-
-- (void)mmsearchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    
-}
-
-- (void)mmsearchBarCancelButtonClicked:(MMSearchBar *)searchBar
-{
-    
-}
-
-- (void)mmsearchBarSearchButtonClicked:(MMSearchBar *)searchBar
-{
-    
-}
+//- (void)cancelSearch
+//{
+//    
+//}
+//
+//- (void)mmsearchBarTextDidBeginEditing:(UISearchBar *)searchBar
+//{
+//    
+//}
+//
+//- (void)mmsearchBarCancelButtonClicked:(MMSearchBar *)searchBar
+//{
+//    
+//}
+//
+//- (void)mmsearchBarSearchButtonClicked:(MMSearchBar *)searchBar
+//{
+//    
+//}
 
 - (BOOL)mmsearchBarShouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {

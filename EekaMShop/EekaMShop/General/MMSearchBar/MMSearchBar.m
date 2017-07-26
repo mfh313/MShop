@@ -50,12 +50,12 @@
 {
     [m_searchDisplayController setActive:YES animated:YES];
     
-    if ([self.m_delegate respondsToSelector:@selector(SearchBarBecomeActive)]) {
-        [self.m_delegate SearchBarBecomeActive];
-    }
-    
     if ([self.m_delegate respondsToSelector:@selector(mmsearchBarTextDidBeginEditing:)]) {
         [self.m_delegate mmsearchBarTextDidBeginEditing:searchBar];
+    }
+    
+    if ([self.m_delegate respondsToSelector:@selector(SearchBarBecomeActive)]) {
+        [self.m_delegate SearchBarBecomeActive];
     }
 }
 
@@ -70,6 +70,8 @@
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
+    [m_searchDisplayController setActive:NO animated:YES];
+    
     if ([self.m_delegate respondsToSelector:@selector(mmSearchBarDidEnd)]) {
         [self.m_delegate mmSearchBarDidEnd];
     }
@@ -109,8 +111,6 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    [m_searchDisplayController setActive:NO animated:YES];
-    
     if ([self.m_delegate respondsToSelector:@selector(mmsearchBarCancelButtonClicked:)]) {
         [self.m_delegate mmsearchBarCancelButtonClicked:self];
     }
@@ -275,7 +275,6 @@
     }
 }
 
-
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -289,6 +288,11 @@
     if ([self.m_delegate respondsToSelector:@selector(didScrollViewScroll:)]) {
         [self.m_delegate didScrollViewScroll:scrollView];
     }
+}
+
+- (CGFloat)yOffsetForUnactiveStatus
+{
+    return 0;
 }
 
 - (id)findDimmingView
