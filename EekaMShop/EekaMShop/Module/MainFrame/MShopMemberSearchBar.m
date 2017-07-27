@@ -33,7 +33,7 @@ NS_DEPRECATED_IOS(3_0,8_0)
         
         _searchTipLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _searchTipLabel.textAlignment = NSTextAlignmentCenter;
-        _searchTipLabel.text = @"输入会员完整姓名或者手机号\n手机号支持模糊搜索,尽量输入会员手机号码后四位，比如8953,8460。。。";
+        _searchTipLabel.text = @"输入会员完整姓名或者手机号\n手机号支持模糊搜索,输入会员手机号码至少四位，比如8953,8460。。。";
         _searchTipLabel.numberOfLines = 0;
         _searchTipLabel.font = [UIFont systemFontOfSize:16.0f];
         _searchTipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
