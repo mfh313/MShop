@@ -80,19 +80,30 @@
     
 }
 
+- (void)doSearch:(NSString *)searchText Pre:(BOOL)pre
+{
+    [m_mmSearchBar hideSearchGuideView];
+    [self doSearchIndividual:searchText];
+}
+
 - (BOOL)mmsearchBarShouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text isEqualToString:@"\n"])
     {
-        [self searchIndividual:m_mmSearchBar.m_nsLastSearchText];
+        [m_mmSearchBar hideSearchGuideView];
+        [self doSearchIndividual:m_mmSearchBar.m_nsLastSearchText];
         return NO;
     }
     
     return YES;
 }
 
--(void)searchIndividual:(NSString *)searchText
+-(void)doSearchIndividual:(NSString *)searchText
 {
+    if ([MFStringUtil isBlankString:searchText]) {
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
     MShopSearchIndividualApi *searchIndividualApi = [MShopSearchIndividualApi new];
     searchIndividualApi.searchKey = searchText;
@@ -112,14 +123,18 @@
             [_searchIndividualArray addObject:individual];
         }
         
-        NSLog(@"_searchIndividualArray=%@",_searchIndividualArray);
-        [m_mmSearchBar.m_searchDisplayController.searchResultsTableView reloadData];
+        [strongSelf reloadSearchResultsTableView];
         
     } failure:^(YTKBaseRequest * request) {
         
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];
+}
+
+-(void)reloadSearchResultsTableView
+{
+    [m_mmSearchBar.m_searchDisplayController.searchResultsTableView reloadData];
 }
 
 -(NSInteger)numberOfSectionsForSearchViewTable:(UITableView *)tableView
@@ -153,7 +168,7 @@
 
 -(CGFloat)heightForSearchViewTable:(NSIndexPath *)indexPath
 {
-    return 60.0f;
+    return 72.0f;
 }
 
 - (void)didSearchViewTableSelect:(NSIndexPath *)indexPath

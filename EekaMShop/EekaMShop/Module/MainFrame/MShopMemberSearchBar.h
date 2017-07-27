@@ -16,4 +16,6 @@
     UILabel *_searchTipLabel;
 }
 
+-(void)hideSearchGuideView;
+
 @end

@@ -11,11 +11,13 @@
 @implementation MShopMemberSearchBar
 
 -(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     [super searchDisplayControllerWillBeginSearch:controller];
 }
 
 -(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     [super searchDisplayControllerDidBeginSearch:controller];
     
@@ -31,7 +33,7 @@
         
         _searchTipLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _searchTipLabel.textAlignment = NSTextAlignmentCenter;
-        _searchTipLabel.text = @"输入会员姓名或者手机号\n手机号支持模糊搜索,尽量输入数字长度大于3，比如135，137。。。";
+        _searchTipLabel.text = @"输入会员完整姓名或者手机号\n手机号支持模糊搜索,尽量输入会员手机号码后四位，比如8953,8460。。。";
         _searchTipLabel.numberOfLines = 0;
         _searchTipLabel.font = [UIFont systemFontOfSize:16.0f];
         _searchTipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -55,9 +57,15 @@
 }
 
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     [super searchDisplayControllerWillEndSearch:controller];
     
+    [_searchGuideView removeFromSuperview];
+}
+
+-(void)hideSearchGuideView
+{
     [_searchGuideView removeFromSuperview];
 }
 

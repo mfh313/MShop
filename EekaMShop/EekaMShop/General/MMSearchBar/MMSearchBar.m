@@ -30,6 +30,7 @@
         m_searchDisplayController.searchResultsDataSource = self;
         m_searchDisplayController.searchResultsDelegate = self;
         m_searchDisplayController.delegate = self;
+        m_searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         m_searchDisplayController.searchContentsController.fd_interactivePopDisabled = YES;
     }
@@ -126,6 +127,7 @@
 
 #pragma amrk - UISearchDisplayDelegate
 -(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerWillBeginSearch)]) {
         [self.m_delegate mmSearchDisplayControllerWillBeginSearch];
@@ -133,6 +135,7 @@
 }
 
 -(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerDidBeginSearch)]) {
         [self.m_delegate mmSearchDisplayControllerDidBeginSearch];
@@ -140,6 +143,7 @@
 }
 
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerWillEndSearch)]) {
         [self.m_delegate mmSearchDisplayControllerWillEndSearch];
@@ -147,6 +151,7 @@
 }
 
 -(void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerDidEndSearch)]) {
         [self.m_delegate mmSearchDisplayControllerDidEndSearch];
@@ -154,6 +159,7 @@
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerDidHideSearchResultsTableView:)]) {
         [self.m_delegate mmSearchDisplayControllerDidHideSearchResultsTableView:tableView];
@@ -161,6 +167,7 @@
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerDidShowSearchResultsTableView:)]) {
         [self.m_delegate mmSearchDisplayControllerDidShowSearchResultsTableView:tableView];
@@ -168,6 +175,7 @@
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerWillHideSearchResultsTableView:)]) {
         [self.m_delegate mmSearchDisplayControllerWillHideSearchResultsTableView:tableView];
@@ -175,6 +183,7 @@
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerWillShowSearchResultsTableView:)]) {
         [self.m_delegate mmSearchDisplayControllerWillShowSearchResultsTableView:tableView];
@@ -182,11 +191,17 @@
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+NS_DEPRECATED_IOS(3_0,8_0)
 {
+    if ([self.m_delegate respondsToSelector:@selector(doSearch:Pre:)]) {
+        [self.m_delegate doSearch:searchString Pre:YES];
+    }
+    
     return YES;
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+NS_DEPRECATED_IOS(3_0,8_0)
 {
     return YES;
 }
@@ -214,7 +229,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.m_delegate respondsToSelector:@selector(cellForSearchViewTable:index:)]) {
+    if ([self.m_delegate respondsToSelector:@selector(cellForIndex:ForSearchViewTable:)]) {
         
         UITableViewCell *cell = [self.m_delegate cellForIndex:indexPath ForSearchViewTable:tableView];
         if ([self.m_delegate respondsToSelector:@selector(cellForSearchViewTable:index:)]) {
