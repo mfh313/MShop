@@ -37,6 +37,7 @@
     }
     
     UIView *searchDisplayControllerContainerView = controller.searchContentsController.view;
+    
     _searchGuideView.frame = CGRectMake(0, 64, CGRectGetWidth(searchDisplayControllerContainerView.frame), CGRectGetHeight(searchDisplayControllerContainerView.frame));
     _scrollView.frame = _searchGuideView.bounds;
     _scrollView.contentSize = CGSizeZero;
@@ -44,11 +45,9 @@
     _searchTipLabel.frame = CGRectMake(20, 20, CGRectGetWidth(_searchGuideView.frame) - 40, 60);
     [searchDisplayControllerContainerView addSubview:_searchGuideView];
     
-    
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapGuideView)];
     [_searchGuideView addGestureRecognizer:tapGes];
 }
-
 
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
 {
@@ -62,9 +61,5 @@
     [self.m_searchBar resignFirstResponder];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.m_searchBar resignFirstResponder];
-}
 
 @end

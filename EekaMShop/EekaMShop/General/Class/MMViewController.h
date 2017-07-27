@@ -12,4 +12,6 @@
 
 -(void)onClickBackBtn:(id)sender;
 
+-(void)setWantsFullScreen:(BOOL)wantsFullScreenLayout;
+
 @end

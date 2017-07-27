@@ -19,7 +19,7 @@
         
         m_returnKeyType = UIReturnKeySearch;
         
-        m_searchBar = [[MMUISearchBar alloc] init];
+        m_searchBar = [[UISearchBar alloc] init];
         m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(viewController.view.frame), 44);
         m_searchBar.placeholder = @"搜索";
         m_searchBar.tintColor = [UIColor hx_colorWithHexString:@"0080C0"];
@@ -53,8 +53,6 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    [m_searchDisplayController setActive:YES animated:YES];
-    
     if ([self.m_delegate respondsToSelector:@selector(mmsearchBarTextDidBeginEditing:)]) {
         [self.m_delegate mmsearchBarTextDidBeginEditing:searchBar];
     }

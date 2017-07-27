@@ -14,13 +14,14 @@
 #import "MFTableViewInfo.h"
 #import "MShopSearchIndividualApi.h"
 #import "MShopMemberSearchBar.h"
+#import "MMSearchBar.h"
 #import "MShopMemberListCellView.h"
 
 @interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate>
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
-    MShopMemberSearchBar *m_mmSearchBar;
+    MMSearchBar *m_mmSearchBar;
     NSMutableArray *_searchIndividualArray;
 }
 
@@ -32,13 +33,12 @@
     [super viewDidLoad];
     self.title = @"会员列表";
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
     
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     m_tableViewInfo.delegate = self;
+    
     UITableView *contentTableView = [m_tableViewInfo getTableView];
-    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor whiteColor];
@@ -48,8 +48,7 @@
     
     _individualArray = [NSMutableArray array];
     _searchIndividualArray = [NSMutableArray array];
-    
-     [self getIndividualList];
+    [self getIndividualList];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -63,7 +62,7 @@
 {
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     
-    m_mmSearchBar = [[MShopMemberSearchBar alloc] initWithContentsController:self];
+    m_mmSearchBar = [[MMSearchBar alloc] initWithContentsController:self];
     m_mmSearchBar.m_delegate = self;
     
     MMUISearchBar *searchBar = m_mmSearchBar.m_searchBar;
@@ -73,17 +72,7 @@
 #pragma mark - MMSearchBarDelegate
 - (void)SearchBarBecomeActive
 {
-//    UITableView *contentTableView = [m_tableViewInfo getTableView];
-//    contentTableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        
-//        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
-//        
-//    });
-//    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [contentTableView setContentOffset:CGPointMake(0, -20) animated:NO];
-//    });
+
 }
 
 - (void)SearchBarBecomeUnActive
