@@ -271,7 +271,7 @@
 -(void)makeBlankCell:(MFTableViewCell *)cell
 {
     UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
-    contentView.backgroundColor = [UIColor lightGrayColor];
+    contentView.backgroundColor = [UIColor whiteColor];
     
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
     tipLabel.textAlignment = NSTextAlignmentCenter;
