@@ -7,8 +7,10 @@
 //
 
 #import "MMSearchBar.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @implementation MMSearchBar
+
 @synthesize m_searchBar,m_returnKeyType,m_nsLastSearchText,m_delegate,m_searchDisplayController;
 
 - (id)initWithContentsController:(MMViewController *)viewController
@@ -30,6 +32,9 @@
         m_searchDisplayController.searchResultsDataSource = self;
         m_searchDisplayController.searchResultsDelegate = self;
         m_searchDisplayController.delegate = self;
+        
+        m_searchDisplayController.searchContentsController.fd_interactivePopDisabled = YES;
+        
     }
     
     return self;
@@ -70,8 +75,6 @@
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    [m_searchDisplayController setActive:NO animated:YES];
-    
     if ([self.m_delegate respondsToSelector:@selector(mmSearchBarDidEnd)]) {
         [self.m_delegate mmSearchBarDidEnd];
     }
@@ -111,6 +114,8 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    [m_searchDisplayController setActive:NO animated:YES];
+    
     if ([self.m_delegate respondsToSelector:@selector(mmsearchBarCancelButtonClicked:)]) {
         [self.m_delegate mmsearchBarCancelButtonClicked:self];
     }
@@ -125,7 +130,6 @@
 {
     
 }
-
 
 #pragma amrk - UISearchDisplayDelegate
 -(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
@@ -295,8 +299,19 @@
     return 0;
 }
 
-- (id)findDimmingView
+- (UIView *)findDimmingView
 {
+    for(UIView *view in m_searchDisplayController.searchContentsController.view.subviews)
+    {
+        NSLog(@"%@",[view class]);
+        for (UIView *subView in view.subviews) {
+            if([subView isKindOfClass:NSClassFromString(@"_UISearchDisplayControllerDimmingView")])
+            {
+                return subView;
+            }
+        }
+    }
+    
     return nil;
 }
 

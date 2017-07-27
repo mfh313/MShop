@@ -11,6 +11,9 @@
 @interface MShopMemberSearchBar : MMSearchBar
 {
     UIView *_searchGuideView;
+    UIScrollView *_scrollView;
+    UIView *_whiteLayerView;
+    UILabel *_searchTipLabel;
 }
 
 @end

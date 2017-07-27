@@ -88,14 +88,7 @@
 
 - (void)SearchBarBecomeUnActive
 {
-//    UITableView *contentTableView = [m_tableViewInfo getTableView];
-//    
-//    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        
-//        [contentTableView setContentOffset:CGPointMake(0, -64) animated:NO];
-//        
-//    });
+    
 }
 
 - (void)resetTableViewOffset
@@ -107,26 +100,6 @@
 {
     
 }
-
-//- (void)cancelSearch
-//{
-//    
-//}
-//
-//- (void)mmsearchBarTextDidBeginEditing:(UISearchBar *)searchBar
-//{
-//    
-//}
-//
-//- (void)mmsearchBarCancelButtonClicked:(MMSearchBar *)searchBar
-//{
-//    
-//}
-//
-//- (void)mmsearchBarSearchButtonClicked:(MMSearchBar *)searchBar
-//{
-//    
-//}
 
 - (BOOL)mmsearchBarShouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
