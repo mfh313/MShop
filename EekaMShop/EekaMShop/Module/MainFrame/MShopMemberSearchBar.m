@@ -31,7 +31,7 @@
         
         _searchTipLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _searchTipLabel.textAlignment = NSTextAlignmentCenter;
-        _searchTipLabel.text = @"输入会员姓名或者手机号，手机号支持模糊搜索。";
+        _searchTipLabel.text = @"输入会员姓名或者手机号\n手机号支持模糊搜索,尽量输入数字长度大于3，比如135，137。。。";
         _searchTipLabel.numberOfLines = 0;
         _searchTipLabel.font = [UIFont systemFontOfSize:16.0f];
         _searchTipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

@@ -217,7 +217,6 @@
     if ([self.m_delegate respondsToSelector:@selector(cellForSearchViewTable:index:)]) {
         
         UITableViewCell *cell = [self.m_delegate cellForIndex:indexPath ForSearchViewTable:tableView];
-        
         if ([self.m_delegate respondsToSelector:@selector(cellForSearchViewTable:index:)]) {
             cell = [self.m_delegate cellForSearchViewTable:cell index:indexPath];
         }
@@ -225,7 +224,7 @@
         return cell;
     }
     
-    return nil;
+    return [UITableViewCell new];
 }
 
 #pragma mark - UITableViewDelegate
