@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */; };
+		AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */; };
+		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
 		AC6670A81F0B25C00067F6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670A71F0B25C00067F6EE /* main.m */; };
 		AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.mm */; };
 		AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670AF1F0B25C00067F6EE /* Main.storyboard */; };
@@ -148,6 +150,9 @@
 /* Begin PBXFileReference section */
 		AC2547B61F24ABEC00F54829 /* MShopMemberDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailViewController.h; sourceTree = "<group>"; };
 		AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailViewController.m; sourceTree = "<group>"; };
+		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
+		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
+		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
 		AC6670A31F0B25C00067F6EE /* EekaMShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EekaMShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6670A71F0B25C00067F6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6670A91F0B25C00067F6EE /* MShopAppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; path = MShopAppDelegate.h; sourceTree = "<group>"; };
@@ -506,10 +511,13 @@
 				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				AC85C22A1F1F5943003785A4 /* MShopMemberListViewController.h */,
 				AC85C22B1F1F5943003785A4 /* MShopMemberListViewController.m */,
-				AC76F3D71F289D5E00499C66 /* MShopMemberSearchBar.h */,
-				AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */,
 				AC2547B61F24ABEC00F54829 /* MShopMemberDetailViewController.h */,
 				AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */,
+				AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */,
+				AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */,
+				AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */,
+				AC76F3D71F289D5E00499C66 /* MShopMemberSearchBar.h */,
+				AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */,
 				AC7E3F831F25DB270035E3DC /* MShopMemberProfileCellView.h */,
 				AC7E3F841F25DB270035E3DC /* MShopMemberProfileCellView.m */,
 				AC7E3F861F25DB650035E3DC /* MShopMemberProfileCellView.xib */,
@@ -968,6 +976,7 @@
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
 				AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */,
 				AC7E3F871F25DB650035E3DC /* MShopMemberProfileCellView.xib in Resources */,
+				AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */,
 				AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
@@ -1080,6 +1089,7 @@
 				AC867E541F1D99E600694086 /* MMUITextField.m in Sources */,
 				AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
+				AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,
 				AC7E3F821F25CF420035E3DC /* MShopIndividualModifyApi.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,

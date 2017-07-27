@@ -118,7 +118,7 @@
     }
     
     MShopEmployeeInfoCellView *cellView = (MShopEmployeeInfoCellView *)cell.m_subContentView;
-    cellView.frame = cell.contentView.bounds;;
+    cellView.frame = cell.contentView.bounds;
     
     MShopEmployeeInfo *employeeInfo = (MShopEmployeeInfo *)[cellInfo getUserInfoValueForKey:@"MShopEmployeeInfo"];
     [cellView setEmployeeInfo:employeeInfo];

@@ -25,6 +25,7 @@
 @property (nonatomic,strong) NSString *status;
 @property (nonatomic,strong) NSString *occupationType;
 @property (nonatomic,strong) NSString *maintainDeptId;
+@property (nonatomic,strong) NSString *maintainDeptName;
 @property (nonatomic,strong) NSString *maintainEmployeeId;
 @property (nonatomic,strong) NSString *maintainEmployeeName;
 @property (nonatomic,assign) NSUInteger beginCount;
@@ -40,5 +41,6 @@
 
 -(BOOL)hasMaintainEmployee;
 
+-(NSString *)genderDescribe;
 
 @end

@@ -25,6 +25,7 @@
 @property (nonatomic,strong) NSString *userId;
 @property (nonatomic,assign) int timestamp;
 
-
+-(BOOL)isShopKeeper;
+-(NSString *)genderDescribe;
 
 @end

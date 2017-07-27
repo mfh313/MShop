@@ -23,7 +23,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTi-pu-RSL">
-                    <rect key="frame" x="91" y="20" width="31" height="18"/>
+                    <rect key="frame" x="91" y="15" width="31" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Uwq-Di-F20"/>
                     </constraints>
@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHs-3M-6Vd">
-                    <rect key="frame" x="331" y="20.5" width="29" height="17"/>
+                    <rect key="frame" x="331" y="15.5" width="29" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Uwa-Y1-3WR"/>
                     </constraints>
@@ -41,7 +41,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维护员工" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycc-TO-aj5">
-                    <rect key="frame" x="91" y="43" width="53.5" height="16"/>
+                    <rect key="frame" x="91" y="38" width="53.5" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="YdD-Wl-tNh"/>
                     </constraints>
@@ -63,7 +63,7 @@
                 <constraint firstItem="Ycc-TO-aj5" firstAttribute="leading" secondItem="kTi-pu-RSL" secondAttribute="leading" id="SgK-iY-qAu"/>
                 <constraint firstItem="JHs-3M-6Vd" firstAttribute="centerY" secondItem="kTi-pu-RSL" secondAttribute="centerY" id="Y42-iE-gd1"/>
                 <constraint firstItem="Ycc-TO-aj5" firstAttribute="top" secondItem="kTi-pu-RSL" secondAttribute="bottom" constant="5" id="eEm-G9-sD9"/>
-                <constraint firstItem="kTi-pu-RSL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="lkx-y1-jMf"/>
+                <constraint firstItem="kTi-pu-RSL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="lkx-y1-jMf"/>
                 <constraint firstItem="ceh-aE-k8X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ln9-7N-T8S"/>
                 <constraint firstItem="5cF-Jk-NWG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lwe-x1-dqf"/>
                 <constraint firstItem="ceh-aE-k8X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="som-5t-SfM"/>

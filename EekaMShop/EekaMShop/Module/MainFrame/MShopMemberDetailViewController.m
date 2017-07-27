@@ -15,6 +15,7 @@
 #import "MShopGetIndividualApi.h"
 #import "MShopLoginService.h"
 #import "MShopMemberProfileCellView.h"
+#import "MShopMemberDetailCellView.h"
 
 @interface MShopMemberDetailViewController ()<MShopEmployeeListViewControllerDelegate>
 {
@@ -43,7 +44,7 @@
 
 -(void)makeMemberInfoViews
 {
-    [self makeInfoCells];
+    [self makeInfoSection];
 }
 
 -(void)selectMaintainEmployee
@@ -85,33 +86,65 @@
     }];
 }
 
--(void)makeInfoCells
+-(void)makeInfoSection
 {
     [m_tableViewInfo clearAllSection];
     
     [self makeProfileCell];
     
+    [self makeIndividualConsumptionSection];
+    
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     
     MFTableViewCellInfo *phoneCellInfo = [MFTableViewCellInfo
-                                          normalCellForSel:nil
+                                          normalCellForSel:@selector(makeNormalCell:cellInfo:)
                                           target:self
                                           title:@"手机号"
                                           rightValue:self.individual.phone
                                           accessoryType:UITableViewCellAccessoryDisclosureIndicator];
     MFTableViewCellInfo *sexCellInfo = [MFTableViewCellInfo
-                                          normalCellForSel:nil
+                                          normalCellForSel:@selector(makeNormalCell:cellInfo:)
                                           target:self
                                           title:@"性别"
-                                          rightValue:self.individual.gender
+                                          rightValue:[self.individual genderDescribe]
                                           accessoryType:UITableViewCellAccessoryNone];
 
-    
+    MFTableViewCellInfo *birthdayCellInfo = [MFTableViewCellInfo
+                                        normalCellForSel:@selector(makeNormalCell:cellInfo:)
+                                        target:self
+                                        title:@"出生日期"
+                                        rightValue:self.individual.birthday
+                                        accessoryType:UITableViewCellAccessoryNone];
+    MFTableViewCellInfo *addressCellInfo = [MFTableViewCellInfo
+                                             normalCellForSel:@selector(makeNormalCell:cellInfo:)
+                                             target:self
+                                             title:@"住址"
+                                             rightValue:self.individual.address
+                                             accessoryType:UITableViewCellAccessoryNone];
     
     
     
     [sectionInfo addCell:phoneCellInfo];
     [sectionInfo addCell:sexCellInfo];
+    [sectionInfo addCell:birthdayCellInfo];
+    [sectionInfo addCell:addressCellInfo];
+    
+    if (self.individual.maintainDeptId) {
+        MFTableViewCellInfo *maintainDeptNameCellInfo = [MFTableViewCellInfo
+                                                normalCellForSel:@selector(makeNormalCell:cellInfo:)
+                                                target:self
+                                                title:@"维护店铺"
+                                                rightValue:self.individual.maintainDeptName
+                                                accessoryType:UITableViewCellAccessoryNone];
+        MFTableViewCellInfo *maintainEmployeeNameCellInfo = [MFTableViewCellInfo
+                                                         normalCellForSel:@selector(makeNormalCell:cellInfo:)
+                                                         target:self
+                                                         title:@"维护员工"
+                                                         rightValue:self.individual.maintainEmployeeName
+                                                         accessoryType:UITableViewCellAccessoryNone];
+        [sectionInfo addCell:maintainDeptNameCellInfo];
+        [sectionInfo addCell:maintainEmployeeNameCellInfo];
+    }
     
     if ([self needSelectMaintainEmployeePowerCell])
     {
@@ -125,6 +158,43 @@
     }
     
     [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)makeIndividualConsumptionSection
+{
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
+    MFTableViewCellInfo *individualConsumptionCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeIndividualConsumptionCell:cellInfo:)
+                                                                                  makeTarget:self
+                                                                                   actionSel:@selector(onClickIndividualConsumption) actionTarget:self
+                                                                                      height:80
+                                                                                    userInfo:nil];
+    [sectionInfo addCell:individualConsumptionCellInfo];
+    
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)makeIndividualConsumptionCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    contentView.backgroundColor = [UIColor whiteColor];
+    
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;
+    
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(contentView.frame) - 20, CGRectGetHeight(contentView.frame))];
+    tipLabel.textAlignment = NSTextAlignmentLeft;
+    tipLabel.text = @"会员消费记录";
+    tipLabel.font = [UIFont systemFontOfSize:16.0f];
+    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [contentView addSubview:tipLabel];
+    
+    UIButton *arrowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [arrowBtn setImage:MFImage(@"arrow") forState:UIControlStateNormal];
+    arrowBtn.frame = CGRectMake(CGRectGetWidth(cell.contentView.frame) - 9 - 15, (cellInfo.fCellHeight - 16) / 2, 9, 16);
+    [contentView addSubview:arrowBtn];
+    
+    [self addOnePixLine:contentView];
 }
 
 -(void)makeProfileCell
@@ -145,14 +215,28 @@
 {
     MShopMemberProfileCellView *cellView = [MShopMemberProfileCellView nibView];
     cell.m_subContentView = cellView;
-    cellView.frame = cell.contentView.bounds;;
+    cellView.frame = cell.contentView.bounds;
     
     [cellView setIndividualInfo:_individual.avatar name:_individual.individualName];
 }
 
 -(void)makeNormalCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
+    if (!cell.m_subContentView) {
+        MShopMemberDetailCellView *cellView = [MShopMemberDetailCellView nibView];
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
     
+    MShopMemberDetailCellView *cellView = (MShopMemberDetailCellView *)cell.m_subContentView;
+    cellView.frame = cell.contentView.bounds;
+    
+    NSString *title =  [cellInfo getUserInfoValueForKey:@"title"];
+    NSString *rightValue =  [cellInfo getUserInfoValueForKey:@"rightValue"];
+    [cellView setTitle:title rightValue:rightValue];
 }
 
 -(BOOL)needSelectMaintainEmployeePowerCell
@@ -168,7 +252,7 @@
         
         if ([[self depIdForDepartment:currentLoginUserInfo.department] isEqualToString:self.individual.maintainDeptId])
         {
-            if ([currentLoginUserInfo.position isEqualToString:@"店长"])
+            if ([currentLoginUserInfo isShopKeeper])
             {
                 return YES;
             }
@@ -191,27 +275,31 @@
     NSString *buttonTitle = @"分配会员";
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
-    if (![currentLoginUserInfo.position isEqualToString:@"店长"]) {
+    if (![currentLoginUserInfo isShopKeeper]) {
         buttonTitle = @"分配给自己";
     }
     [button setTitle:buttonTitle forState:UIControlStateNormal];
     [contentView addSubview:button];
     
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;
+    contentView.backgroundColor = [UIColor whiteColor];
+}
+
+-(void)addOnePixLine:(UIView *)contentView
+{
     MMOnePixLine *onePixLine = [MMOnePixLine new];
     onePixLine.frame = CGRectMake(0, CGRectGetHeight(contentView.bounds) - MFOnePixHeight, CGRectGetWidth(contentView.bounds), MFOnePixHeight);
     onePixLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     onePixLine.backgroundColor = [UIColor clearColor];
     [contentView addSubview:onePixLine];
-    
-    cell.m_subContentView = contentView;
-    contentView.frame = cell.contentView.bounds;;
 }
 
 -(void)onClickIndividualModifyBtn
 {
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
-    if (![currentLoginUserInfo.position isEqualToString:@"店长"])
+    if (![currentLoginUserInfo isShopKeeper])
     {
         [self onDidSelectEmployee:currentLoginUserInfo];
     }
@@ -250,6 +338,11 @@
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];
+}
+
+-(void)onClickIndividualConsumption
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

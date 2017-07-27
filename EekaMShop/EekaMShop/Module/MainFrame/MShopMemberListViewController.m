@@ -32,7 +32,9 @@
     [super viewDidLoad];
     self.title = @"会员列表";
     
-    [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
+    if (self.navigationController.viewControllers.count > 1) {
+        [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
+    }
     
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     m_tableViewInfo.delegate = self;
@@ -83,9 +85,19 @@
     return YES;
 }
 
+-(BOOL)limitFourNumber:(NSString *)text
+{
+    return YES;
+}
+
 -(void)doSearchIndividual:(NSString *)searchText
 {
     if ([MFStringUtil isBlankString:searchText]) {
+        return;
+    }
+    
+    if (![self limitFourNumber:searchText]) {
+        //至少四位数字
         return;
     }
     
@@ -242,7 +254,7 @@
     }
     
     MShopMemberListCellView *cellView = (MShopMemberListCellView *)cell.m_subContentView;
-    cellView.frame = cell.contentView.bounds;;
+    cellView.frame = cell.contentView.bounds;
     
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
     [cellView setIndividualInfo:individual];
@@ -288,7 +300,7 @@
     [contentView addSubview:tipLabel];
     
     cell.m_subContentView = contentView;
-    contentView.frame = cell.contentView.bounds;;
+    contentView.frame = cell.contentView.bounds;
 }
 
 - (void)didReceiveMemoryWarning {

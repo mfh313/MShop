@@ -685,7 +685,7 @@ static inline NSString *cachePath() {
     // 只要不切换baseurl，就一直使用同一个session manager
     if (sg_sharedManager == nil || sg_isBaseURLChanged) {
       
-      AFHTTPSessionManager *manager = nil;;
+      AFHTTPSessionManager *manager = nil;
       if ([self baseUrl] != nil) {
         manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[self baseUrl]]];
       } else {

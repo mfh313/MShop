@@ -7,10 +7,12 @@
 //
 
 #import "MShopAppViewControllerManager.h"
+#import "MMTabBarController.h"
 #import "MShopLoginViewController.h"
 #import "MShopMainFrameViewController.h"
 #import "MShopMeViewController.h"
-#import "MMTabBarController.h"
+#import "MShopMemberListViewController.h"
+
 
 @implementation MShopAppViewControllerManager
 
@@ -43,10 +45,16 @@
 
 -(void)createMainTabViewController
 {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MShop_MainFrame" bundle:nil];
-    MShopMainFrameViewController *mainFrameVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"MShopMainFrameViewController"];
-    MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:mainFrameVC];
-    UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"主页"
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MShop_MainFrame" bundle:nil];
+//    MShopMainFrameViewController *mainFrameVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"MShopMainFrameViewController"];
+//    MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:mainFrameVC];
+//    UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"主页"
+//                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+//                                                      selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+//    rootNav.tabBarItem = homeTabItem;
+    MShopMemberListViewController *employeeListVC = [MShopMemberListViewController new];
+    MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:employeeListVC];
+    UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"会员列表"
                                                               image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                       selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     rootNav.tabBarItem = homeTabItem;

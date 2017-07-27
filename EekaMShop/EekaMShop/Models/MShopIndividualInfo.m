@@ -20,4 +20,16 @@
     return NO;
 }
 
+-(NSString *)genderDescribe
+{
+    if (self.gender.integerValue == 10) {
+        return @"男";
+    }
+    else if (self.gender.integerValue == 20) {
+        return @"女";
+    }
+    
+    return @"无性别";
+}
+
 @end
