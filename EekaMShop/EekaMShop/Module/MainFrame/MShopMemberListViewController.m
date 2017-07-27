@@ -52,6 +52,11 @@
     [self getIndividualList];
 }
 
+- (void)cancelSearch
+{
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -60,26 +65,6 @@
 }
 
 #pragma mark - MMSearchBarDelegate
-- (void)SearchBarBecomeActive
-{
-
-}
-
-- (void)SearchBarBecomeUnActive
-{
-    
-}
-
-- (void)resetTableViewOffset
-{
-    
-}
-
-- (void)SearchBarShouldEnd
-{
-    
-}
-
 - (void)doSearch:(NSString *)searchText Pre:(BOOL)pre
 {
     [m_mmSearchBar hideSearchGuideView];

@@ -71,7 +71,9 @@
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller;
 - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller;
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller;
-
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller;
+- (void)finishSearch;
+- (void)cancelSearch;
 - (UIView *)findDimmingView;
 
 @end

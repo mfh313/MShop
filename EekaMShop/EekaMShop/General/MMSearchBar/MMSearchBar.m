@@ -43,6 +43,16 @@
     return m_searchBar.text;
 }
 
+- (void)finishSearch
+{
+    [m_searchDisplayController setActive:NO animated:YES];
+}
+
+- (void)cancelSearch
+{
+    [m_searchDisplayController setActive:NO animated:YES];
+}
+
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
@@ -112,6 +122,10 @@
 {
     if ([self.m_delegate respondsToSelector:@selector(mmsearchBarCancelButtonClicked:)]) {
         [self.m_delegate mmsearchBarCancelButtonClicked:self];
+    }
+    
+    if ([self.m_delegate respondsToSelector:@selector(cancelSearch)]) {
+        [self.m_delegate cancelSearch];
     }
 }
 
