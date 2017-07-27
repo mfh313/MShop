@@ -16,17 +16,15 @@
 - (id)initWithContentsController:(MMViewController *)viewController
 {
     if (self) {
-        
         m_returnKeyType = UIReturnKeySearch;
+        m_viewController = viewController;
         
-        m_searchBar = [[UISearchBar alloc] init];
+        m_searchBar = [[MMUISearchBar alloc] init];
         m_searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(viewController.view.frame), 44);
         m_searchBar.placeholder = @"搜索";
         m_searchBar.tintColor = [UIColor hx_colorWithHexString:@"0080C0"];
         m_searchBar.delegate = self;
         m_searchBar.returnKeyType = m_returnKeyType;
-        
-        m_viewController = viewController;
         
         m_searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:m_searchBar contentsController:viewController];
         m_searchDisplayController.searchResultsDataSource = self;
@@ -34,7 +32,6 @@
         m_searchDisplayController.delegate = self;
         
         m_searchDisplayController.searchContentsController.fd_interactivePopDisabled = YES;
-        
     }
     
     return self;
@@ -112,8 +109,6 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    [m_searchDisplayController setActive:NO animated:YES];
-    
     if ([self.m_delegate respondsToSelector:@selector(mmsearchBarCancelButtonClicked:)]) {
         [self.m_delegate mmsearchBarCancelButtonClicked:self];
     }
@@ -141,7 +136,7 @@
 {
     if ([self.m_delegate respondsToSelector:@selector(mmSearchDisplayControllerDidBeginSearch)]) {
         [self.m_delegate mmSearchDisplayControllerDidBeginSearch];
-    }
+    }    
 }
 
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller

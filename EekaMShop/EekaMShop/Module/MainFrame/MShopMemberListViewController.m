@@ -14,14 +14,13 @@
 #import "MFTableViewInfo.h"
 #import "MShopSearchIndividualApi.h"
 #import "MShopMemberSearchBar.h"
-#import "MMSearchBar.h"
 #import "MShopMemberListCellView.h"
 
 @interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate>
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
-    MMSearchBar *m_mmSearchBar;
+    MShopMemberSearchBar *m_mmSearchBar;
     NSMutableArray *_searchIndividualArray;
 }
 
@@ -44,7 +43,9 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    [self makeSearchBar];
+    m_mmSearchBar = [[MShopMemberSearchBar alloc] initWithContentsController:self];
+    m_mmSearchBar.m_delegate = self;
+    contentTableView.tableHeaderView = m_mmSearchBar.m_searchBar;
     
     _individualArray = [NSMutableArray array];
     _searchIndividualArray = [NSMutableArray array];
@@ -56,17 +57,6 @@
     [super viewWillAppear:animated];
     
     [self getIndividualList];
-}
-
--(void)makeSearchBar
-{
-    UITableView *contentTableView = [m_tableViewInfo getTableView];
-    
-    m_mmSearchBar = [[MMSearchBar alloc] initWithContentsController:self];
-    m_mmSearchBar.m_delegate = self;
-    
-    MMUISearchBar *searchBar = m_mmSearchBar.m_searchBar;
-    contentTableView.tableHeaderView = searchBar;
 }
 
 #pragma mark - MMSearchBarDelegate
@@ -281,7 +271,7 @@
 -(void)makeBlankCell:(MFTableViewCell *)cell
 {
     UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
-    contentView.backgroundColor = [UIColor redColor];
+    contentView.backgroundColor = [UIColor lightGrayColor];
     
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
     tipLabel.textAlignment = NSTextAlignmentCenter;
@@ -292,11 +282,6 @@
     
     cell.m_subContentView = contentView;
     contentView.frame = cell.contentView.bounds;;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {

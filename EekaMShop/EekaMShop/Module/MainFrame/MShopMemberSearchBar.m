@@ -10,6 +10,11 @@
 
 @implementation MShopMemberSearchBar
 
+-(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [super searchDisplayControllerWillBeginSearch:controller];
+}
+
 -(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
 {
     [super searchDisplayControllerDidBeginSearch:controller];

@@ -53,7 +53,7 @@
 {
     __weak id<MMSearchBarDelegate> m_delegate;
     NSString *m_nsLastSearchText;
-    UISearchBar *m_searchBar;
+    MMUISearchBar *m_searchBar;
     NSMutableArray *m_arrFilteredObject;
     UISearchDisplayController *m_searchDisplayController;
     MMViewController *m_viewController;
@@ -64,7 +64,7 @@
 @property (nonatomic,weak) id<MMSearchBarDelegate> m_delegate;
 @property (nonatomic,strong) NSString *m_nsLastSearchText;
 @property (nonatomic,assign) NSInteger m_returnKeyType;
-@property (nonatomic,strong) UISearchBar *m_searchBar;
+@property (nonatomic,strong) MMUISearchBar *m_searchBar;
 @property (nonatomic,strong) UISearchDisplayController *m_searchDisplayController;
 
 - (id)initWithContentsController:(MMViewController *)viewController;
