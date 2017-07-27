@@ -113,6 +113,7 @@
         }
         
         NSLog(@"_searchIndividualArray=%@",_searchIndividualArray);
+        [m_mmSearchBar.m_searchDisplayController.searchResultsTableView reloadData];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -133,10 +134,10 @@
 
 -(UITableViewCell *)cellForIndex:(NSIndexPath *)indexPath ForSearchViewTable:(UITableView *)tableView
 {
-    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EPSaleBillingDiscountInputView"];
+    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MShopMemberListCellView"];
     
     if (cell == nil) {
-        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EPSaleBillingDiscountInputView"];
+        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MShopMemberListCellView"];
         MShopMemberListCellView *cellView = [MShopMemberListCellView nibView];
         cell.m_subContentView = cellView;
     }
@@ -153,6 +154,12 @@
 -(CGFloat)heightForSearchViewTable:(NSIndexPath *)indexPath
 {
     return 60.0f;
+}
+
+- (void)didSearchViewTableSelect:(NSIndexPath *)indexPath
+{
+    MShopIndividualInfo *individual = _searchIndividualArray[indexPath.row];
+    [self showIndividualInfo:individual];
 }
 
 -(void)getIndividualList
