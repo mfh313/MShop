@@ -7,7 +7,6 @@
 //
 
 #import "MShopAppViewControllerManager.h"
-#import "MMTabBarController.h"
 #import "MShopLoginViewController.h"
 #import "MShopMainFrameViewController.h"
 #import "MShopMeViewController.h"
@@ -74,7 +73,7 @@
     m_window.rootViewController = m_tabbarController;
 }
 
-+ (id)getTabBarController
++ (MMTabBarController *)getTabBarController
 {
     return [[self getAppViewControllerManager] getTabBarController];
 }
@@ -84,7 +83,7 @@
     m_tabbarController = nil;
 }
 
-- (id)getTabBarController
+- (MMTabBarController *)getTabBarController
 {
     if (!m_tabbarController) {
         m_tabbarController = [[MMTabBarController alloc] init];

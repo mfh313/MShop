@@ -40,6 +40,16 @@
     
 }
 
+- (void)hideTabBar
+{
+    [self.tabBar setHidden:YES];
+}
+
+- (void)showTabBar
+{
+    [self.tabBar setHidden:NO];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

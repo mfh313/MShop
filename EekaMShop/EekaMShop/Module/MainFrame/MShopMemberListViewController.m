@@ -53,21 +53,32 @@
     [self getIndividualList];
 }
 
-- (void)cancelSearch
-{
-    
-}
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([self shouldShowTabbar]) {
+        [[MShopAppViewControllerManager getTabBarController] showTabBar];
+    }
     
     [self getIndividualList];
 }
 
 #pragma mark - MMSearchBarDelegate
+-(void)SearchBarBecomeActive
+{
+    [[MShopAppViewControllerManager getTabBarController] hideTabBar];
+}
+
+-(void)cancelSearch
+{
+    [[MShopAppViewControllerManager getTabBarController] showTabBar];
+}
+
 - (void)doSearch:(NSString *)searchText Pre:(BOOL)pre
 {
+    [_searchIndividualArray removeAllObjects];
+    
     [m_mmSearchBar hideSearchGuideView];
     [self doSearchIndividual:searchText];
 }
@@ -321,6 +332,16 @@
     
     cell.m_subContentView = contentView;
     contentView.frame = cell.contentView.bounds;
+}
+
+- (BOOL)isSeachActive
+{
+    return m_mmSearchBar.m_searchDisplayController.isActive;
+}
+
+- (BOOL)shouldShowTabbar
+{
+    return ![self isSeachActive];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -21,4 +21,8 @@
 
 - (void)setTabBarBadgeValue:(NSInteger)value forIndex:(NSInteger)index;
 
+- (void)hideTabBar;
+
+- (void)showTabBar;
+
 @end

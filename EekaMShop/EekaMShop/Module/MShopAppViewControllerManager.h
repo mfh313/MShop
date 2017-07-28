@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MMTabBarController.h"
 
-@class MMTabBarController;
 @interface MShopAppViewControllerManager : NSObject
 {
     UIWindow *m_window;
@@ -16,6 +16,7 @@
 }
 
 +(id)getAppViewControllerManager;
++(MMTabBarController *)getTabBarController;
 -(id)initWithWindow:(UIWindow *)window;
 -(void)userLogOut;
 -(void)jumpToLoginViewController;
