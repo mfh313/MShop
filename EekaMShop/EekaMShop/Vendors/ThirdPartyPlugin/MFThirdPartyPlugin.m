@@ -15,6 +15,13 @@
 
 @implementation MFThirdPartyPlugin
 
++(void)testCrash
+{
+    NSArray * array = @[@"1", @"2"];
+
+    NSLog(@"print %@", [array objectAtIndex:2]);
+}
+
 -(void)registerPlugins
 {
     [self registerBugly];

@@ -47,11 +47,7 @@
     [loginService autoLogin];
     
     [self setWCDBMonitor];
-    
-//    NSArray * array = @[@"1", @"2"];
-//    
-//    NSLog(@"print %@", [array objectAtIndex:2]);
-    
+        
     return YES;
 }
 

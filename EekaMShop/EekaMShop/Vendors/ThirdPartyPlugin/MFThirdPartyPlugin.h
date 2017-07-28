@@ -14,4 +14,6 @@
 
 -(void)applicationDidBecomeActive:(UIApplication *)application;
 
++(void)testCrash;
+
 @end
