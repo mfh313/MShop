@@ -48,6 +48,10 @@
     
     [self setWCDBMonitor];
     
+//    NSArray * array = @[@"1", @"2"];
+//    
+//    NSLog(@"print %@", [array objectAtIndex:2]);
+    
     return YES;
 }
 
@@ -58,7 +62,7 @@
         NSLog(@"[WCDB]%@", error);
     }];
     
-    [WCTStatistics SetGlobalTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
+    [WCTStatistics SetGlobalPerformanceTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
         NSLog(@"Tag: %d", tag);
         [sqls enumerateKeysAndObjectsUsingBlock:^(NSString *sql, NSNumber *count, BOOL *) {
             NSLog(@"SQL: %@ Count: %d", sql, count.intValue);
