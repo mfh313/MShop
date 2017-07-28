@@ -19,12 +19,24 @@
     return YTKRequestMethodPOST;
 }
 
+-(void)setPageIndex:(NSInteger)pageIndex pageSize:(NSInteger)pageSize
+{
+    _usePaging = YES;
+    _pageIndex = pageIndex;
+    _pageSize = pageSize;
+}
+
 -(id)requestArgumentWithToken
 {
-    return @{
-             @"individualId":self.individualId
-             };
+    NSMutableDictionary *requestArgument = [NSMutableDictionary dictionary];
+    requestArgument[@"individualId"] = self.individualId;
     
+    if (_usePaging) {
+        requestArgument[@"pageIndex"] = @(_pageIndex);
+        requestArgument[@"pageSize"] = @(_pageSize);
+    }
+    
+    return requestArgument;
 }
 
 @end

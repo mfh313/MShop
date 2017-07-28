@@ -9,7 +9,14 @@
 #import "MFNetworkRequest.h"
 
 @interface MShopGetConsumptionItems : MFNetworkRequest
+{
+    NSInteger _pageIndex;
+    NSInteger _pageSize;
+    BOOL _usePaging;
+}
 
 @property (nonatomic,strong) NSString *individualId;
+
+-(void)setPageIndex:(NSInteger)pageIndex pageSize:(NSInteger)pageSize;
 
 @end
