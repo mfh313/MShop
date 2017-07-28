@@ -8,7 +8,7 @@
 
 #import "MShopMeViewController.h"
 #import "MShopLoginService.h"
-#import "MShopLoginUserInfo.h"
+#import "UIImageView+CornerRadius.h"
 
 @interface MShopMeViewController ()
 {
@@ -27,6 +27,7 @@
     [super viewDidLoad];
     
     self.title = @"我";
+    [_avtarImageView zy_cornerRadiusAdvance:5.0f rectCornerType:UIRectCornerAllCorners];
     
     m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];

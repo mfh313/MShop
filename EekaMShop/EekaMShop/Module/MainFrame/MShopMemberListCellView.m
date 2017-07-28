@@ -8,6 +8,7 @@
 
 #import "MShopMemberListCellView.h"
 #import "MShopIndividualInfo.h"
+#import "UIImageView+CornerRadius.h"
 
 @interface MShopMemberListCellView ()
 {
@@ -20,6 +21,13 @@
 @end
 
 @implementation MShopMemberListCellView
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [_avtarImageView zy_cornerRadiusAdvance:5.0f rectCornerType:UIRectCornerAllCorners];
+}
 
 -(void)setIndividualInfo:(MShopIndividualInfo *)info
 {

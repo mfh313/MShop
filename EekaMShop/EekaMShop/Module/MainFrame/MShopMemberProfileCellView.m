@@ -7,6 +7,7 @@
 //
 
 #import "MShopMemberProfileCellView.h"
+#import "UIImageView+CornerRadius.h"
 
 @interface MShopMemberProfileCellView ()
 {
@@ -17,6 +18,13 @@
 @end
 
 @implementation MShopMemberProfileCellView
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [_avtarImageView zy_cornerRadiusAdvance:5.0f rectCornerType:UIRectCornerAllCorners];
+}
 
 -(void)setIndividualInfo:(NSString *)avtar name:(NSString *)name
 {

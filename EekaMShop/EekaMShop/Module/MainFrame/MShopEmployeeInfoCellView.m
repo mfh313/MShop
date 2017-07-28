@@ -8,6 +8,7 @@
 
 #import "MShopEmployeeInfoCellView.h"
 #import "MShopEmployeeInfo.h"
+#import "UIImageView+CornerRadius.h"
 
 @interface MShopEmployeeInfoCellView ()
 {
@@ -18,6 +19,13 @@
 @end
 
 @implementation MShopEmployeeInfoCellView
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [_avtarImageView zy_cornerRadiusAdvance:5.0f rectCornerType:UIRectCornerAllCorners];
+}
 
 -(void)setEmployeeInfo:(MShopEmployeeInfo *)employeeInfo
 {

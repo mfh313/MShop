@@ -46,6 +46,7 @@
 		AC77263E1F2B0F04005B2100 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = AC7726381F2B0F04005B2100 /* main.js */; };
 		AC77263F1F2B0F04005B2100 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = AC77263A1F2B0F04005B2100 /* main.js */; };
 		AC7726401F2B0F04005B2100 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = AC77263C1F2B0F04005B2100 /* main.js */; };
+		AC7726441F2B1CD9005B2100 /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7726431F2B1CD9005B2100 /* UIImageView+CornerRadius.m */; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -222,6 +223,8 @@
 		AC7726381F2B0F04005B2100 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		AC77263A1F2B0F04005B2100 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		AC77263C1F2B0F04005B2100 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		AC7726421F2B1CD9005B2100 /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
+		AC7726431F2B1CD9005B2100 /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -541,6 +544,15 @@
 			path = "清除脚本";
 			sourceTree = "<group>";
 		};
+		AC7726411F2B1CD9005B2100 /* CornerRadiusCategory */ = {
+			isa = PBXGroup;
+			children = (
+				AC7726421F2B1CD9005B2100 /* UIImageView+CornerRadius.h */,
+				AC7726431F2B1CD9005B2100 /* UIImageView+CornerRadius.m */,
+			);
+			path = CornerRadiusCategory;
+			sourceTree = "<group>";
+		};
 		AC7C28491F203E6D003C0C4C /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +695,7 @@
 				AC867E6C1F1D9BB400694086 /* HexColors */,
 				AC867E6F1F1D9BB400694086 /* XXNibBridge */,
 				AC867DE21F1D990300694086 /* WWK */,
+				AC7726411F2B1CD9005B2100 /* CornerRadiusCategory */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1241,6 +1254,7 @@
 				AC867E431F1D99E600694086 /* UIViewController+FixBackIndicatorImage.m in Sources */,
 				AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.m in Sources */,
 				AC85C22C1F1F5943003785A4 /* MShopMemberListViewController.m in Sources */,
+				AC7726441F2B1CD9005B2100 /* UIImageView+CornerRadius.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
