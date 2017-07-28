@@ -297,7 +297,7 @@
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
     [self showIndividualInfo:individual];
     
-    [MFThirdPartyPlugin testCrash];
+//    [MFThirdPartyPlugin testCrash];
 }
 
 -(void)showIndividualInfo:(MShopIndividualInfo *)individual
