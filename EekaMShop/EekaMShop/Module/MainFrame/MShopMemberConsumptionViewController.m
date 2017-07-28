@@ -9,6 +9,7 @@
 #import "MShopMemberConsumptionViewController.h"
 #import "MFTableViewInfo.h"
 #import "MShopIndividualInfo.h"
+#import "MShopGetConsumptionItems.h"
 
 @interface MShopMemberConsumptionViewController ()
 {

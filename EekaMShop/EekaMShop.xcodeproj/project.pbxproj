@@ -32,6 +32,7 @@
 		AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC76F3D51F281B9500499C66 /* MMSearchBar.m */; };
 		AC76F3D91F289D5E00499C66 /* MShopMemberSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */; };
 		AC7726091F2ACF6F005B2100 /* MShopMemberConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7726081F2ACF6F005B2100 /* MShopMemberConsumptionViewController.m */; };
+		AC77260C1F2AEACA005B2100 /* MShopGetConsumptionItems.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77260B1F2AEACA005B2100 /* MShopGetConsumptionItems.m */; };
 		AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */; };
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
@@ -192,6 +193,8 @@
 		AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberSearchBar.m; sourceTree = "<group>"; };
 		AC7726071F2ACF6F005B2100 /* MShopMemberConsumptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberConsumptionViewController.h; sourceTree = "<group>"; };
 		AC7726081F2ACF6F005B2100 /* MShopMemberConsumptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberConsumptionViewController.m; sourceTree = "<group>"; };
+		AC77260A1F2AEACA005B2100 /* MShopGetConsumptionItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopGetConsumptionItems.h; sourceTree = "<group>"; };
+		AC77260B1F2AEACA005B2100 /* MShopGetConsumptionItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetConsumptionItems.m; sourceTree = "<group>"; };
 		AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopApiManger.h; sourceTree = "<group>"; };
 		AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopApiManger.m; sourceTree = "<group>"; };
 		AC7C284C1F203E6D003C0C4C /* MShopLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopLoginApi.h; sourceTree = "<group>"; };
@@ -445,6 +448,8 @@
 			children = (
 				AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */,
 				AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */,
+				AC77260A1F2AEACA005B2100 /* MShopGetConsumptionItems.h */,
+				AC77260B1F2AEACA005B2100 /* MShopGetConsumptionItems.m */,
 				AC7FBD7D1F27443100B11D5C /* MShopIndividualConsumptionApi.h */,
 				AC7FBD7E1F27443100B11D5C /* MShopIndividualConsumptionApi.m */,
 				AC7FBD731F2735E100B11D5C /* MShopSearchIndividualApi.h */,
@@ -1044,6 +1049,7 @@
 				AC73991C1F22051700F753C2 /* NSMutableString+SafeInsert.m in Sources */,
 				AC867E561F1D99E600694086 /* MMViewController.m in Sources */,
 				AC867E4A1F1D99E600694086 /* MFUICollectionView.m in Sources */,
+				AC77260C1F2AEACA005B2100 /* MShopGetConsumptionItems.m in Sources */,
 				AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,
 				AC867EFD1F1DF24100694086 /* YTKAnimatingRequestAccessory.m in Sources */,
