@@ -143,18 +143,26 @@
     [sectionInfo addCell:addressCellInfo];
     
     if (self.individual.maintainDeptId) {
-        MFTableViewCellInfo *maintainDeptNameCellInfo = [MFTableViewCellInfo
-                                                normalCellForSel:@selector(makeNormalCell:cellInfo:)
-                                                target:self
-                                                title:@"维护店铺"
-                                                rightValue:self.individual.maintainDeptName
-                                                accessoryType:UITableViewCellAccessoryNone];
-        MFTableViewCellInfo *maintainEmployeeNameCellInfo = [MFTableViewCellInfo
-                                                         normalCellForSel:@selector(makeNormalCell:cellInfo:)
-                                                         target:self
-                                                         title:@"维护员工"
-                                                         rightValue:self.individual.maintainEmployeeName
-                                                         accessoryType:UITableViewCellAccessoryNone];
+        //维护店铺
+        MFTableViewCellInfo *maintainDeptNameCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                                                        makeTarget:self
+                                                                         actionSel:nil
+                                                                      actionTarget:nil
+                                                                            height:44.0
+                                                                          userInfo:nil];
+        [maintainDeptNameCellInfo addUserInfoValue:@"维护店铺" forKey:@"title"];
+        [maintainDeptNameCellInfo addUserInfoValue:self.individual.maintainDeptName forKey:@"rightValue"];
+        
+        //维护员工
+        MFTableViewCellInfo *maintainEmployeeNameCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                                                                 makeTarget:self
+                                                                                  actionSel:nil
+                                                                               actionTarget:nil
+                                                                                     height:44.0
+                                                                                   userInfo:nil];
+        [maintainEmployeeNameCellInfo addUserInfoValue:@"维护员工" forKey:@"title"];
+        [maintainEmployeeNameCellInfo addUserInfoValue:self.individual.maintainEmployeeName forKey:@"rightValue"];
+        
         [sectionInfo addCell:maintainDeptNameCellInfo];
         [sectionInfo addCell:maintainEmployeeNameCellInfo];
     }
