@@ -41,7 +41,6 @@
     
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     

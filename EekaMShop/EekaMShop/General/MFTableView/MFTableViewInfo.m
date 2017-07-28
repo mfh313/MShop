@@ -20,6 +20,7 @@ _Pragma("clang diagnostic pop") \
 {
     if (self = [super init]) {
         _tableView = [[MFUITableView alloc] initWithFrame:frame style:style];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.m_delegate = self;

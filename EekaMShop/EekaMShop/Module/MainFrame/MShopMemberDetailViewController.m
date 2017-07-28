@@ -16,6 +16,7 @@
 #import "MShopLoginService.h"
 #import "MShopMemberProfileCellView.h"
 #import "MShopMemberDetailCellView.h"
+#import "MShopMemberConsumptionViewController.h"
 
 @interface MShopMemberDetailViewController ()<MShopEmployeeListViewControllerDelegate>
 {
@@ -35,7 +36,6 @@
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
@@ -96,32 +96,45 @@
     
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     
-    MFTableViewCellInfo *phoneCellInfo = [MFTableViewCellInfo
-                                          normalCellForSel:@selector(makeNormalCell:cellInfo:)
-                                          target:self
-                                          title:@"手机号"
-                                          rightValue:self.individual.phone
-                                          accessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    MFTableViewCellInfo *sexCellInfo = [MFTableViewCellInfo
-                                          normalCellForSel:@selector(makeNormalCell:cellInfo:)
-                                          target:self
-                                          title:@"性别"
-                                          rightValue:[self.individual genderDescribe]
-                                          accessoryType:UITableViewCellAccessoryNone];
-
-    MFTableViewCellInfo *birthdayCellInfo = [MFTableViewCellInfo
-                                        normalCellForSel:@selector(makeNormalCell:cellInfo:)
-                                        target:self
-                                        title:@"出生日期"
-                                        rightValue:self.individual.birthday
-                                        accessoryType:UITableViewCellAccessoryNone];
-    MFTableViewCellInfo *addressCellInfo = [MFTableViewCellInfo
-                                             normalCellForSel:@selector(makeNormalCell:cellInfo:)
-                                             target:self
-                                             title:@"住址"
-                                             rightValue:self.individual.address
-                                             accessoryType:UITableViewCellAccessoryNone];
+    //手机号
+    MFTableViewCellInfo *phoneCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                             makeTarget:self
+                                              actionSel:nil
+                                           actionTarget:nil
+                                                 height:44.0
+                                               userInfo:nil];
+    [phoneCellInfo addUserInfoValue:@"手机号" forKey:@"title"];
+    [phoneCellInfo addUserInfoValue:self.individual.phone forKey:@"rightValue"];
     
+    //性别
+    MFTableViewCellInfo *sexCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                                                  makeTarget:self
+                                                                   actionSel:nil
+                                                                actionTarget:nil
+                                                                      height:44.0
+                                                                    userInfo:nil];
+    [sexCellInfo addUserInfoValue:@"性别" forKey:@"title"];
+    [sexCellInfo addUserInfoValue:[self.individual genderDescribe] forKey:@"rightValue"];
+
+    //出生日期
+    MFTableViewCellInfo *birthdayCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                                                makeTarget:self
+                                                                 actionSel:nil
+                                                              actionTarget:nil
+                                                                    height:44.0
+                                                                  userInfo:nil];
+    [birthdayCellInfo addUserInfoValue:@"出生日期" forKey:@"title"];
+    [birthdayCellInfo addUserInfoValue:self.individual.birthday forKey:@"rightValue"];
+    
+    //住址
+    MFTableViewCellInfo *addressCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                                                     makeTarget:self
+                                                                      actionSel:nil
+                                                                   actionTarget:nil
+                                                                         height:44.0
+                                                                       userInfo:nil];
+    [addressCellInfo addUserInfoValue:@"住址" forKey:@"title"];
+    [addressCellInfo addUserInfoValue:self.individual.address forKey:@"rightValue"];
     
     
     [sectionInfo addCell:phoneCellInfo];
@@ -342,7 +355,10 @@
 
 -(void)onClickIndividualConsumption
 {
-    
+    MShopMemberConsumptionViewController *consumptionVC = [MShopMemberConsumptionViewController new];
+    consumptionVC.individual = self.individual;
+    consumptionVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:consumptionVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
