@@ -55,9 +55,9 @@
 + (instancetype)normalCellForSel:(SEL)sel target:(id)target title:(NSString *)title rightValue:(NSString *)rightValue imageName:(NSString *)imageName accessoryType:(UITableViewCellAccessoryType)accessoryType isFitIpadClassic:(BOOL)isFitIpadClassic
 {
     MFTableViewCellInfo *cellInfo = [[MFTableViewCellInfo alloc] init];
-    [cellInfo setMakeSel:sel];
-    [cellInfo setMakeTarget:target];
-//    [cellInfo setActionSel:sel];
+    [cellInfo setMakeSel:@selector(makeNormalCell:)];
+    [cellInfo setMakeTarget:cellInfo];
+    [cellInfo setActionSel:sel];
     [cellInfo setActionTarget:target];
     [cellInfo setFCellHeight:44.0f];
     [cellInfo setAccessoryType:accessoryType];
