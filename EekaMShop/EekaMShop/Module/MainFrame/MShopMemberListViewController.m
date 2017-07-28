@@ -85,8 +85,30 @@
     return YES;
 }
 
--(BOOL)limitFourNumber:(NSString *)text
+
+- (BOOL)checkStrLimitFourNumber:(NSString *)str
 {
+    if ([str length] == 0) {
+        return NO;
+    }
+    
+    NSString *numberRegex = @"[0-9]+";
+    NSPredicate *numberPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", numberRegex];
+    
+    if ([numberPred evaluateWithObject:str])
+    {
+        //至少四位数字
+        NSString *regex = @"[0-9]{4,}";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+        
+        BOOL isMatch = [pred evaluateWithObject:str];
+        
+        if (!isMatch) {
+            return NO;
+        }
+        return YES;
+    }
+    
     return YES;
 }
 
@@ -96,8 +118,7 @@
         return;
     }
     
-    if (![self limitFourNumber:searchText]) {
-        //至少四位数字
+    if (![self checkStrLimitFourNumber:searchText]) {
         return;
     }
     
