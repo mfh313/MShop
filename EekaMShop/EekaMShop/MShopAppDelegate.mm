@@ -12,6 +12,7 @@
 #import "MShopLoginService.h"
 #import "MShopAppViewControllerManager.h"
 #import "MShopLoginService.h"
+#import "MFThirdPartyPlugin.h"
 #import <WCDB/WCDB.h>
 #import <WCDB/WCTStatistics.h>
 
@@ -19,6 +20,8 @@
 {
     MMServiceCenter *m_serviceCenter;
     MShopAppViewControllerManager *m_appViewControllerMgr;
+    
+    
 }
 
 @end
@@ -29,6 +32,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [WWKApi registerApp:@"wwauthde623adaa711cfb6000006" corpId:@"wxde623adaa711cfb6" agentId:@"1000006"];
+    
+    MFThirdPartyPlugin *thirdPartyPlugin = [m_serviceCenter getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin registerPlugins];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -129,6 +135,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    MFThirdPartyPlugin *thirdPartyPlugin = [m_serviceCenter getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin applicationDidBecomeActive:application];
 }
 
 
