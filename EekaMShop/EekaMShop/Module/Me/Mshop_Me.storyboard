@@ -57,6 +57,18 @@
                                     <action selector="onClickLogout:" destination="5TH-jw-xyR" eventType="touchUpInside" id="eIl-zO-HLV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycs-Sd-vCI">
+                                <rect key="frame" x="127" y="509" width="120" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="2Mj-DZ-o7o"/>
+                                </constraints>
+                                <state key="normal" title="分享此测试版"/>
+                                <connections>
+                                    <action selector="onClickLogout:" destination="5TH-jw-xyR" eventType="touchUpInside" id="dKb-XT-tgV"/>
+                                    <action selector="onClickShare:" destination="5TH-jw-xyR" eventType="touchUpInside" id="jV7-hW-qmF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -68,8 +80,10 @@
                             <constraint firstItem="9ai-VW-A9h" firstAttribute="top" secondItem="8ws-Ed-Ac7" secondAttribute="bottom" constant="20" id="bhv-zU-gK2"/>
                             <constraint firstItem="rbK-lp-Wj7" firstAttribute="top" secondItem="W8J-09-faG" secondAttribute="bottom" constant="60" id="c0D-HM-aUg"/>
                             <constraint firstItem="W8J-09-faG" firstAttribute="centerX" secondItem="lSx-pB-Llj" secondAttribute="centerX" id="kYv-xE-zbL"/>
+                            <constraint firstItem="Ycs-Sd-vCI" firstAttribute="centerX" secondItem="W8J-09-faG" secondAttribute="centerX" id="mA5-4E-MFi"/>
                             <constraint firstItem="Mr0-xb-aSB" firstAttribute="leading" secondItem="jvz-Oz-yCm" secondAttribute="leading" id="nxj-SN-TfV"/>
                             <constraint firstItem="jvz-Oz-yCm" firstAttribute="leading" secondItem="9ai-VW-A9h" secondAttribute="trailing" constant="20" id="ya0-G3-Zi1"/>
+                            <constraint firstItem="W8J-09-faG" firstAttribute="top" secondItem="Ycs-Sd-vCI" secondAttribute="bottom" constant="30" id="yux-mt-enF"/>
                         </constraints>
                     </view>
                     <connections>

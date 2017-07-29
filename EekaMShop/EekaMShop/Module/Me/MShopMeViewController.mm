@@ -9,6 +9,7 @@
 #import "MShopMeViewController.h"
 #import "MShopLoginService.h"
 #import "UIImageView+CornerRadius.h"
+#import "WWKApi.h"
 
 @interface MShopMeViewController ()
 {
@@ -41,6 +42,17 @@
     [m_loginService logout];
 }
 
+- (IBAction)onClickShare:(id)sender
+{
+    WWKSendMessageReq *req = [[WWKSendMessageReq alloc] init];
+    WWKMessageLinkAttachment *attachment = [[WWKMessageLinkAttachment alloc] init];
+    attachment.title = @"赢家M所APP测试版分享";
+    attachment.summary = @"测试版欢迎下载，请选择赢家MClub下载，并在Safari上打开";
+    attachment.url = @"https://www.eeka.info/index_test.html";
+    attachment.icon = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mclubShare" ofType:@"png"]];
+    req.attachment = attachment;
+    [WWKApi sendReq:req];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
