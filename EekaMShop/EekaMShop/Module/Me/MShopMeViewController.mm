@@ -47,7 +47,7 @@
     WWKSendMessageReq *req = [[WWKSendMessageReq alloc] init];
     WWKMessageLinkAttachment *attachment = [[WWKMessageLinkAttachment alloc] init];
     attachment.title = @"赢家M所APP测试版分享";
-    attachment.summary = @"测试版欢迎下载，请选择赢家MClub下载，并在Safari上打开";
+    attachment.summary = @"请在Safari上打开网页，并选择下载赢家MClub";
     attachment.url = @"https://www.eeka.info/index_test.html";
     attachment.icon = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mclubShare" ofType:@"png"]];
     req.attachment = attachment;
