@@ -11,6 +11,7 @@
 #import "MShopIndividualInfo.h"
 #import "MShopGetConsumptionItemsApi.h"
 #import "MShopIndividualConsumptionApi.h"
+#import "MShopIndividualConsumptionModel.h"
 
 @interface MShopMemberConsumptionViewController ()
 {
@@ -54,18 +55,16 @@
         }
         
         [_saleBillingItemArray removeAllObjects];
-        
         NSArray *saleBillingList = request.responseObject[@"saleBillingList"];
         for (int i = 0; i < saleBillingList.count; i++) {
-//            MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
-//            [_individualArray addObject:individual];
+            MShopIndividualConsumptionModel *saleBillingItem = [MShopIndividualConsumptionModel MM_modelWithJSON:saleBillingList[i]];
+            [_saleBillingItemArray addObject:saleBillingItem];
         }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
         
     } failure:^(YTKBaseRequest * request) {
-        
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];

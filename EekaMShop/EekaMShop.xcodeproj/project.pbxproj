@@ -142,6 +142,8 @@
 		AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EFA1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m */; };
 		AC867F001F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EFC1F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m */; };
 		AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */; };
+		AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */; };
+		AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -403,6 +405,10 @@
 		AC867EFC1F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKChainRequest+AnimatingAccessory.m"; sourceTree = "<group>"; };
 		AC867F011F1E00DA00694086 /* MShopLoginUserInfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = MShopLoginUserInfo.h; sourceTree = "<group>"; };
 		AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopLoginUserInfo.m; sourceTree = "<group>"; };
+		AC9F83C71F2C16C200952678 /* MShopIndividualConsumptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionModel.h; sourceTree = "<group>"; };
+		AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionModel.m; sourceTree = "<group>"; };
+		AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionItemModel.h; sourceTree = "<group>"; };
+		AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionItemModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -993,6 +999,12 @@
 			children = (
 				AC867EF11F1DD4EA00694086 /* MShopSSOReqAttachObject.h */,
 				AC867EF21F1DD4EA00694086 /* MShopSSOReqAttachObject.m */,
+				AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */,
+				AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */,
+				AC9F83C71F2C16C200952678 /* MShopIndividualConsumptionModel.h */,
+				AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */,
+				AC7399001F21AC6200F753C2 /* MShopIndividualInfo.h */,
+				AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */,
 				AC867F011F1E00DA00694086 /* MShopLoginUserInfo.h */,
 				AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */,
 				AC7C28591F209A79003C0C4C /* MShopLoginUserInfo+WCDB.h */,
@@ -1005,8 +1017,6 @@
 				AC85C21B1F1EE7A1003785A4 /* MShopEmployeeInfo.m */,
 				AC7C285F1F209B86003C0C4C /* MShopEmployeeInfo+WCDB.h */,
 				AC7C28601F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm */,
-				AC7399001F21AC6200F753C2 /* MShopIndividualInfo.h */,
-				AC7399011F21AC6200F753C2 /* MShopIndividualInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1172,10 +1182,12 @@
 				AC867E531F1D99E600694086 /* MMUINavigationBar.m in Sources */,
 				AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */,
 				AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */,
+				AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */,
 				AC867E441F1D99E600694086 /* UIViewController+FullScreen.m in Sources */,
 				AC867E781F1D9BB400694086 /* XXNibBridge.m in Sources */,
 				AC867E5C1F1D99E600694086 /* MFTableViewSectionInfo.m in Sources */,
 				AC7C285E1F209B51003C0C4C /* MShopLoginTable+WCDB.mm in Sources */,
+				AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */,
 				AC867E481F1D99E600694086 /* MFTableViewCell.m in Sources */,
 				AC867E4B1F1D99E600694086 /* MFUITableView.m in Sources */,
 				AC7FBD7B1F2741B300B11D5C /* MMSearchBarDisplayController.m in Sources */,
