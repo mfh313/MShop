@@ -15,7 +15,6 @@
 #import "MShopSearchIndividualApi.h"
 #import "MShopMemberSearchBar.h"
 #import "MShopMemberListCellView.h"
-#import "MFThirdPartyPlugin.h"
 
 @interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate>
 {
@@ -296,8 +295,6 @@
 {
     MShopIndividualInfo *individual = (MShopIndividualInfo *)[cellInfo getUserInfoValueForKey:@"individual"];
     [self showIndividualInfo:individual];
-    
-//    [MFThirdPartyPlugin testCrash];
 }
 
 -(void)showIndividualInfo:(MShopIndividualInfo *)individual

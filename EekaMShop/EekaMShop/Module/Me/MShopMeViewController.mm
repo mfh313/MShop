@@ -10,6 +10,7 @@
 #import "MShopLoginService.h"
 #import "UIImageView+CornerRadius.h"
 #import "WWKApi.h"
+#import "MFThirdPartyPlugin.h"
 
 @interface MShopMeViewController ()
 {
