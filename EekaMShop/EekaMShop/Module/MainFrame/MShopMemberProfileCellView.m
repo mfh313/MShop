@@ -8,6 +8,7 @@
 
 #import "MShopMemberProfileCellView.h"
 #import "UIImageView+CornerRadius.h"
+#import "XWScanImage.h"
 
 @interface MShopMemberProfileCellView ()
 {
@@ -24,6 +25,16 @@
     [super awakeFromNib];
     
     [_avtarImageView zy_cornerRadiusAdvance:5.0f rectCornerType:UIRectCornerAllCorners];
+    
+    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
+    [_avtarImageView addGestureRecognizer:tapGestureRecognizer1];
+    [_avtarImageView setUserInteractionEnabled:YES];
+}
+
+-(void)scanBigImageClick:(UITapGestureRecognizer *)tap
+{
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [XWScanImage scanBigImageWithImageView:clickedImageView];
 }
 
 -(void)setIndividualInfo:(NSString *)avtar name:(NSString *)name

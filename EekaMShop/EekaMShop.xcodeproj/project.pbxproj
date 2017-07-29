@@ -146,6 +146,7 @@
 		AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */; };
 		AC9F83D31F2C6D8800952678 /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; };
 		AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83D71F2C728E00952678 /* XWScanImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -415,6 +416,8 @@
 		AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberConsumptionCellView.m; sourceTree = "<group>"; };
 		AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberConsumptionCellView.xib; sourceTree = "<group>"; };
 		AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YTKNetwork.framework; path = Carthage/Build/iOS/YTKNetwork.framework; sourceTree = "<group>"; };
+		AC9F83D61F2C728E00952678 /* XWScanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScanImage.h; sourceTree = "<group>"; };
+		AC9F83D71F2C728E00952678 /* XWScanImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWScanImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -703,6 +706,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AC9F83D51F2C728E00952678 /* XWScanImage */,
 				AC77260D1F2B09D2005B2100 /* ThirdPartyPlugin */,
 				AC7E3F741F2598DD0035E3DC /* FDFullscreenPopGesture */,
 				AC867E7D1F1D9CBB00694086 /* MBProgressHUD */,
@@ -1058,6 +1062,15 @@
 			path = static/Accessory;
 			sourceTree = "<group>";
 		};
+		AC9F83D51F2C728E00952678 /* XWScanImage */ = {
+			isa = PBXGroup;
+			children = (
+				AC9F83D61F2C728E00952678 /* XWScanImage.h */,
+				AC9F83D71F2C728E00952678 /* XWScanImage.m */,
+			);
+			path = XWScanImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1237,6 +1250,7 @@
 				AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */,
 				AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */,
 				AC7399051F21DCF500F753C2 /* MShopUserIdLoginApi.m in Sources */,
+				AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */,
 				AC7C28611F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm in Sources */,
 				AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */,
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
