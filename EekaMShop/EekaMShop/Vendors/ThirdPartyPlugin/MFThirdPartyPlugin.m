@@ -39,6 +39,7 @@
 #ifdef DEBUG
     config.channel = @"调试渠道";
 #endif
+    
     [Bugly startWithAppId:BuglyAppID config:config];
     
     [BuglyLog initLogger:BuglyLogLevelWarn consolePrint:YES];
