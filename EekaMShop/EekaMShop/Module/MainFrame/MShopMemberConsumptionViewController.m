@@ -12,6 +12,7 @@
 #import "MShopGetConsumptionItemsApi.h"
 #import "MShopIndividualConsumptionApi.h"
 #import "MShopIndividualConsumptionModel.h"
+#import "MShopMemberConsumptionCellView.h"
 
 @interface MShopMemberConsumptionViewController ()
 {
@@ -85,7 +86,49 @@
 
 -(MFTableViewSectionInfo *)addConsumptionSection
 {
-    return nil;
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    for (int i = 0; i < _saleBillingItemArray.count; i++)
+    {
+        
+        
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeConsumptionCell:cellInfo:)
+                                                                 makeTarget:self
+                                                                  actionSel:@selector(onClickConsumptionCell:)
+                                                               actionTarget:self
+                                                                     height:72.0f
+                                                                   userInfo:nil];
+        cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
+        
+        MShopIndividualConsumptionModel *saleBillingItem = _saleBillingItemArray[i];
+        [cellInfo addUserInfoValue:saleBillingItem forKey:@"saleBillingItem"];
+        
+        [sectionInfo addCell:cellInfo];
+    }
+    
+    return sectionInfo;
+}
+
+-(void)makeConsumptionCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
+{
+    if (!cell.m_subContentView) {
+        MShopMemberConsumptionCellView *cellView = [MShopMemberConsumptionCellView nibView];
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
+    
+    MShopMemberConsumptionCellView *cellView = (MShopMemberConsumptionCellView *)cell.m_subContentView;
+    cellView.frame = cell.contentView.bounds;
+    
+    MShopIndividualConsumptionModel *saleBillingItem = (MShopIndividualConsumptionModel *)[cellInfo getUserInfoValueForKey:@"saleBillingItem"];
+    [cellView setIndividualConsumption:saleBillingItem];
+}
+
+-(void)onClickConsumptionCell:(MFTableViewCellInfo *)cellInfo
+{
+    
 }
 
 -(void)addBlankView

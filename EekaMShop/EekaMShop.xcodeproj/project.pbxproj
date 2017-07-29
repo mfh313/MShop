@@ -144,6 +144,8 @@
 		AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */; };
 		AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */; };
 		AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */; };
+		AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */; };
+		AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -409,6 +411,9 @@
 		AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionModel.m; sourceTree = "<group>"; };
 		AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionItemModel.h; sourceTree = "<group>"; };
 		AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionItemModel.m; sourceTree = "<group>"; };
+		AC9F83CD1F2C22F200952678 /* MShopMemberConsumptionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberConsumptionCellView.h; sourceTree = "<group>"; };
+		AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberConsumptionCellView.m; sourceTree = "<group>"; };
+		AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberConsumptionCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -639,11 +644,12 @@
 				AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */,
 				AC7726071F2ACF6F005B2100 /* MShopMemberConsumptionViewController.h */,
 				AC7726081F2ACF6F005B2100 /* MShopMemberConsumptionViewController.m */,
+				AC9F83CD1F2C22F200952678 /* MShopMemberConsumptionCellView.h */,
+				AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */,
+				AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */,
 				AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */,
 				AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */,
 				AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */,
-				AC76F3D71F289D5E00499C66 /* MShopMemberSearchBar.h */,
-				AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */,
 				AC7E3F831F25DB270035E3DC /* MShopMemberProfileCellView.h */,
 				AC7E3F841F25DB270035E3DC /* MShopMemberProfileCellView.m */,
 				AC7E3F861F25DB650035E3DC /* MShopMemberProfileCellView.xib */,
@@ -655,6 +661,8 @@
 				AC7E3F7B1F25CA560035E3DC /* MShopEmployeeInfoCellView.h */,
 				AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */,
 				AC7E3F7E1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib */,
+				AC76F3D71F289D5E00499C66 /* MShopMemberSearchBar.h */,
+				AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */,
 				AC7C28681F20B540003C0C4C /* MShop_MainFrame.storyboard */,
 			);
 			path = MainFrame;
@@ -1122,6 +1130,7 @@
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,
+				AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */,
 				AC77263F1F2B0F04005B2100 /* main.js in Resources */,
 				AC7C28691F20B540003C0C4C /* MShop_MainFrame.storyboard in Resources */,
 				AC77263D1F2B0F04005B2100 /* pos强制更新.txt in Resources */,
@@ -1266,6 +1275,7 @@
 				AC867E431F1D99E600694086 /* UIViewController+FixBackIndicatorImage.m in Sources */,
 				AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.m in Sources */,
 				AC85C22C1F1F5943003785A4 /* MShopMemberListViewController.m in Sources */,
+				AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */,
 				AC7726441F2B1CD9005B2100 /* UIImageView+CornerRadius.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
