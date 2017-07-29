@@ -11,7 +11,7 @@
 #import <JSPatchPlatform/JSPatch.h>
 
 #define JSPatch_APP_KEY @"a3ea2110954730fe"
-#define BuglyAppID @"11db5a0376"
+#define BUGLY_APP_ID @"11db5a0376"
 
 @implementation MFThirdPartyPlugin
 
@@ -40,7 +40,11 @@
     config.channel = @"调试渠道";
 #endif
     
-    [Bugly startWithAppId:BuglyAppID config:config];
+    [Bugly startWithAppId:BUGLY_APP_ID
+#if DEBUG
+        developmentDevice:YES
+#endif
+                   config:config];
     
     [BuglyLog initLogger:BuglyLogLevelWarn consolePrint:YES];
 }
