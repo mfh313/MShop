@@ -1,14 +1,14 @@
 //
-//  MShopGetConsumptionItems.m
+//  MShopGetConsumptionItemsApi.m
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/28.
 //  Copyright © 2017年 eeka. All rights reserved.
 //
 
-#import "MShopGetConsumptionItems.h"
+#import "MShopGetConsumptionItemsApi.h"
 
-@implementation MShopGetConsumptionItems
+@implementation MShopGetConsumptionItemsApi
 
 -(NSString *)requestUrl
 {

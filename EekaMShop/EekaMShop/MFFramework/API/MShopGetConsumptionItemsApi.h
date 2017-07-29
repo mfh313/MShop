@@ -1,5 +1,5 @@
 //
-//  MShopGetConsumptionItems.h
+//  MShopGetConsumptionItemsApi.h
 //  EekaMShop
 //
 //  Created by EEKA on 2017/7/28.
@@ -8,7 +8,7 @@
 
 #import "MFNetworkRequest.h"
 
-@interface MShopGetConsumptionItems : MFNetworkRequest
+@interface MShopGetConsumptionItemsApi : MFNetworkRequest
 {
     NSInteger _pageIndex;
     NSInteger _pageSize;
