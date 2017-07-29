@@ -212,7 +212,8 @@
     
     UIButton *arrowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [arrowBtn setImage:MFImage(@"arrow") forState:UIControlStateNormal];
-    arrowBtn.frame = CGRectMake(CGRectGetWidth(cell.contentView.frame) - 9 - 15, (cellInfo.fCellHeight - 16) / 2, 9, 16);
+    arrowBtn.frame = CGRectMake(CGRectGetWidth(contentView.frame) - 9 - 15, (cellInfo.fCellHeight - 16) / 2, 9, 16);
+    arrowBtn.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [contentView addSubview:arrowBtn];
     
     [self addOnePixLine:contentView];
