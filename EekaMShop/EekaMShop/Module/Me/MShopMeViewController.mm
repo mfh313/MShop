@@ -20,6 +20,8 @@
     __weak IBOutlet UILabel *_positionLabel;
     
     MShopLoginService *m_loginService;
+    
+    __weak IBOutlet UILabel *_appVersionLabel;
 }
 
 @end
@@ -41,6 +43,15 @@
     [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:loginInfo.avatar]];
     _nameLabel.text = loginInfo.name;
     _positionLabel.text = loginInfo.position;
+    
+    _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[self getNowBundleVersion]];
+}
+
+- (NSString *)getNowBundleVersion
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleVersion"];
+    return app_Version;
 }
 
 -(void)scanBigImageClick:(UITapGestureRecognizer *)tap
