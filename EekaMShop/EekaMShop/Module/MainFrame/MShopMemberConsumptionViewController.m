@@ -10,10 +10,12 @@
 #import "MFTableViewInfo.h"
 #import "MShopIndividualInfo.h"
 #import "MShopGetConsumptionItemsApi.h"
+#import "MShopIndividualConsumptionApi.h"
 
 @interface MShopMemberConsumptionViewController ()
 {
     MFTableViewInfo *m_tableViewInfo;
+    NSMutableArray *_saleBillingItemArray;
 }
 
 @end
@@ -32,6 +34,7 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
+    _saleBillingItemArray = [NSMutableArray array];
     [self getConsumptionItems];
 }
 
@@ -39,7 +42,8 @@
 {
     __weak typeof(self) weakSelf = self;
     
-    MShopGetConsumptionItemsApi *mfApi = [MShopGetConsumptionItemsApi new];
+    MShopIndividualConsumptionApi *mfApi = [MShopIndividualConsumptionApi new];
+    mfApi.individualId = self.individual.individualId;
     mfApi.animatingText = @"正在获取消费信息...";
     mfApi.animatingView = MFAppWindow;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
@@ -49,13 +53,13 @@
             return;
         }
         
-//        [_individualArray removeAllObjects];
-//        
-//        NSArray *individualList = request.responseObject[@"individualList"];
-//        for (int i = 0; i < individualList.count; i++) {
+        [_saleBillingItemArray removeAllObjects];
+        
+        NSArray *saleBillingList = request.responseObject[@"saleBillingList"];
+        for (int i = 0; i < saleBillingList.count; i++) {
 //            MShopIndividualInfo *individual = [MShopIndividualInfo MM_modelWithJSON:individualList[i]];
 //            [_individualArray addObject:individual];
-//        }
+        }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
@@ -71,13 +75,47 @@
 {
     [m_tableViewInfo clearAllSection];
     
-//    if (_individualArray.count == 0) {
-//        [self addBlankView];
-//        return;
-//    }
-//    
-//    MFTableViewSectionInfo *sectionInfo = [self addMemberSection];
-//    [m_tableViewInfo addSection:sectionInfo];
+    if (_saleBillingItemArray.count == 0) {
+        [self addBlankView];
+        return;
+    }
+    
+    MFTableViewSectionInfo *sectionInfo = [self addConsumptionSection];
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(MFTableViewSectionInfo *)addConsumptionSection
+{
+    return nil;
+}
+
+-(void)addBlankView
+{
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeBlankCell:)
+                                                             makeTarget:self
+                                                              actionSel:nil
+                                                           actionTarget:self
+                                                                 height:200.0f
+                                                               userInfo:nil];
+    [sectionInfo addCell:cellInfo];
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)makeBlankCell:(MFTableViewCell *)cell
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    contentView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    tipLabel.text = @"很抱歉，此会员还未消费。";
+    tipLabel.font = [UIFont systemFontOfSize:16.0f];
+    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [contentView addSubview:tipLabel];
+    
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;
 }
 
 - (void)didReceiveMemoryWarning {
