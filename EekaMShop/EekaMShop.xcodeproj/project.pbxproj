@@ -83,8 +83,6 @@
 		AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCE1F1D982600694086 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCF1F1D982600694086 /* WCDB.framework */; };
 		AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DCF1F1D982600694086 /* WCDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AC867DD71F1D982600694086 /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DD01F1D982600694086 /* YTKNetwork.framework */; };
-		AC867DD81F1D982600694086 /* YTKNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DD01F1D982600694086 /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC867DDE1F1D983E00694086 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDB1F1D983E00694086 /* AVFoundation.framework */; };
 		AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDC1F1D983E00694086 /* CoreFoundation.framework */; };
 		AC867DE01F1D983E00694086 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC867DDD1F1D983E00694086 /* Foundation.framework */; };
@@ -146,20 +144,22 @@
 		AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */; };
 		AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */; };
 		AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */; };
+		AC9F83D31F2C6D8800952678 /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; };
+		AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		AC867DD91F1D982600694086 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 				AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */,
 				AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */,
+				AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */,
 				AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */,
 				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
-				AC867DD81F1D982600694086 /* YTKNetwork.framework in Embed Frameworks */,
 				AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -414,6 +414,7 @@
 		AC9F83CD1F2C22F200952678 /* MShopMemberConsumptionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberConsumptionCellView.h; sourceTree = "<group>"; };
 		AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberConsumptionCellView.m; sourceTree = "<group>"; };
 		AC9F83D01F2C232900952678 /* MShopMemberConsumptionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberConsumptionCellView.xib; sourceTree = "<group>"; };
+		AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YTKNetwork.framework; path = Carthage/Build/iOS/YTKNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +424,7 @@
 			files = (
 				AC77262F1F2B0C23005B2100 /* Security.framework in Frameworks */,
 				AC77262D1F2B0C1C005B2100 /* libc++.tbd in Frameworks */,
+				AC9F83D31F2C6D8800952678 /* YTKNetwork.framework in Frameworks */,
 				AC77262B1F2B0C13005B2100 /* libz.tbd in Frameworks */,
 				AC7726291F2B0C01005B2100 /* SystemConfiguration.framework in Frameworks */,
 				AC867DE61F1D990300694086 /* libWXWorkApi.a in Frameworks */,
@@ -434,7 +436,6 @@
 				AC77261E1F2B09D2005B2100 /* Bugly.framework in Frameworks */,
 				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
 				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
-				AC867DD71F1D982600694086 /* YTKNetwork.framework in Frameworks */,
 				AC7398F81F218FA500F753C2 /* SDWebImage.framework in Frameworks */,
 				AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */,
 			);
@@ -681,6 +682,7 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */,
 				AC77262E1F2B0C23005B2100 /* Security.framework */,
 				AC77262C1F2B0C1C005B2100 /* libc++.tbd */,
 				AC77262A1F2B0C13005B2100 /* libz.tbd */,
