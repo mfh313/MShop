@@ -173,7 +173,7 @@
 		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
 		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
 		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
-		AC6670A31F0B25C00067F6EE /* EekaMShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EekaMShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC6670A31F0B25C00067F6EE /* eekamshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eekamshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6670A71F0B25C00067F6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6670A91F0B25C00067F6EE /* MShopAppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; path = MShopAppDelegate.h; sourceTree = "<group>"; };
 		AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = MShopAppDelegate.mm; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 		AC6670A41F0B25C00067F6EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AC6670A31F0B25C00067F6EE /* EekaMShop.app */,
+				AC6670A31F0B25C00067F6EE /* eekamshop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1076,7 +1076,7 @@
 			);
 			name = EekaMShop;
 			productName = EekaMShop;
-			productReference = AC6670A31F0B25C00067F6EE /* EekaMShop.app */;
+			productReference = AC6670A31F0B25C00067F6EE /* eekamshop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1418,7 +1418,7 @@
 					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = eekamshop;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1447,7 +1447,7 @@
 					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = eekamshop;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
