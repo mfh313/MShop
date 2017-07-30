@@ -15,7 +15,6 @@
 		AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670AF1F0B25C00067F6EE /* Main.storyboard */; };
 		AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B21F0B25C00067F6EE /* Assets.xcassets */; };
 		AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */; };
-		AC6F67561F2D64680026FC3C /* mclubShare.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6F67551F2D64680026FC3C /* mclubShare.png */; };
 		AC7398F81F218FA500F753C2 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7398F71F218FA500F753C2 /* SDWebImage.framework */; };
 		AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7398F71F218FA500F753C2 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC7398FC1F21936800F753C2 /* MShopGetEmployeeListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7398FB1F21936800F753C2 /* MShopGetEmployeeListApi.m */; };
@@ -183,7 +182,6 @@
 		AC6670B21F0B25C00067F6EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6670B51F0B25C00067F6EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6670B71F0B25C00067F6EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC6F67551F2D64680026FC3C /* mclubShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mclubShare.png; sourceTree = "<group>"; };
 		AC7398F71F218FA500F753C2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		AC7398FA1F21936800F753C2 /* MShopGetEmployeeListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopGetEmployeeListApi.h; sourceTree = "<group>"; };
 		AC7398FB1F21936800F753C2 /* MShopGetEmployeeListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetEmployeeListApi.m; sourceTree = "<group>"; };
@@ -478,7 +476,6 @@
 				AC867DEF1F1D99E600694086 /* General */,
 				AC867DE11F1D990300694086 /* Vendors */,
 				AC867E6B1F1D9BB400694086 /* MFVendors.h */,
-				AC6F67551F2D64680026FC3C /* mclubShare.png */,
 				AC6670B21F0B25C00067F6EE /* Assets.xcassets */,
 				AC6670AF1F0B25C00067F6EE /* Main.storyboard */,
 				AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */,
@@ -1144,7 +1141,6 @@
 				AC7726321F2B0EEF005B2100 /* rsa_private_key.pem in Resources */,
 				AC77263E1F2B0F04005B2100 /* main.js in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
-				AC6F67561F2D64680026FC3C /* mclubShare.png in Resources */,
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,

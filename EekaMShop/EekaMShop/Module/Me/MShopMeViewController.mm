@@ -71,7 +71,7 @@
     attachment.title = @"赢家M所APP测试版分享";
     attachment.summary = @"建议在Safari上打开网页";
     attachment.url = @"https://www.eeka.info/eekamshop_test.html";
-    attachment.icon = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mclubShare" ofType:@"png"]];
+    attachment.iconurl = @"https://www.eeka.info/EekaMShop_test/mclubShare.png";
     req.attachment = attachment;
     [WWKApi sendReq:req];
 }
