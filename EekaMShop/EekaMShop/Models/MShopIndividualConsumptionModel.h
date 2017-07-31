@@ -18,6 +18,7 @@
 @property (nonatomic,strong) NSString *printDate;
 @property (nonatomic,strong) NSNumber *amountPrice;
 @property (nonatomic,strong) NSNumber *trueRece;
+@property (nonatomic,strong) NSNumber *replaceFlag;
 @property (nonatomic,strong) NSNumber *actualRece;
 @property (nonatomic,strong) NSNumber *discount;
 @property (nonatomic,strong) NSNumber *status;

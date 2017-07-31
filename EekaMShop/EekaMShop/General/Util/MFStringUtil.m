@@ -58,4 +58,9 @@
     return [NSString stringWithFormat:@"%.4f",aFloat];
 }
 
++(NSString *)moneyDescWithNumber:(NSNumber *)money
+{
+    return [NSString stringWithFormat:@"¥ %.2f ",money.floatValue];
+}
+
 @end

@@ -8,9 +8,9 @@
 
 #import "MMUIBridgeView.h"
 
-@class MShopIndividualConsumptionModel;
+@class MShopIndividualConsumptionItemModel;
 @interface MShopMemberConsumptionCellView : MMUIBridgeView
 
--(void)setIndividualConsumption:(MShopIndividualConsumptionModel *)saleBillingItem;
+-(void)setIndividualConsumptionItem:(MShopIndividualConsumptionItemModel *)saleBillingItem;
 
 @end

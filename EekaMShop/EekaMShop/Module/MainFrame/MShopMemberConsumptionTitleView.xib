@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MShopMemberConsumptionTitleView">
+            <rect key="frame" x="0.0" y="0.0" width="528" height="61"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销售单号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqN-tH-Ewa">
+                    <rect key="frame" x="10" y="0.0" width="300" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="0bl-4A-zbV"/>
+                        <constraint firstAttribute="width" constant="300" id="MfB-bc-Kx9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销售时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFq-09-fQ8">
+                    <rect key="frame" x="10" y="28" width="300" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="GAC-ey-STG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费金额" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tve-Wy-gcj">
+                    <rect key="frame" x="363" y="34" width="150" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="Wg9-eI-X4w"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.91764705879999997" green="0.23921568630000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwZ-Wv-YiS" customClass="MMOnePixLine">
+                    <rect key="frame" x="0.0" y="60" width="528" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="EZ0-2s-ZKK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Tve-Wy-gcj" secondAttribute="trailing" constant="15" id="3fT-E5-Wyw"/>
+                <constraint firstItem="vFq-09-fQ8" firstAttribute="top" secondItem="UqN-tH-Ewa" secondAttribute="bottom" id="4rr-RX-hfK"/>
+                <constraint firstItem="vFq-09-fQ8" firstAttribute="width" secondItem="UqN-tH-Ewa" secondAttribute="width" id="Bvb-XR-1Nv"/>
+                <constraint firstItem="uwZ-Wv-YiS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HuV-jO-We5"/>
+                <constraint firstItem="vFq-09-fQ8" firstAttribute="leading" secondItem="UqN-tH-Ewa" secondAttribute="leading" id="WOI-h1-4ox"/>
+                <constraint firstAttribute="bottom" secondItem="uwZ-Wv-YiS" secondAttribute="bottom" id="WdV-qq-gYw"/>
+                <constraint firstItem="Tve-Wy-gcj" firstAttribute="centerY" secondItem="vFq-09-fQ8" secondAttribute="centerY" id="YnP-43-gnJ"/>
+                <constraint firstItem="UqN-tH-Ewa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="llH-b8-6uE"/>
+                <constraint firstAttribute="trailing" secondItem="uwZ-Wv-YiS" secondAttribute="trailing" id="y0g-Mb-8xl"/>
+                <constraint firstItem="UqN-tH-Ewa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="zTV-eS-AjL"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_saleNoLabel" destination="UqN-tH-Ewa" id="lxk-cZ-fZd"/>
+                <outlet property="_sellDateLabel" destination="vFq-09-fQ8" id="qqA-aP-UKG"/>
+                <outlet property="_trueReceLabel" destination="Tve-Wy-gcj" id="UIM-gk-OAl"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="119.5"/>
+        </view>
+    </objects>
+</document>

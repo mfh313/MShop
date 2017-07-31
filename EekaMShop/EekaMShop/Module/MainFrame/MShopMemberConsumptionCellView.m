@@ -7,12 +7,13 @@
 //
 
 #import "MShopMemberConsumptionCellView.h"
-#import "MShopIndividualConsumptionModel.h"
+#import "MShopIndividualConsumptionItemModel.h"
 
 @interface MShopMemberConsumptionCellView ()
 {
-    __weak IBOutlet UILabel *_saleNoLabel;
-    __weak IBOutlet UILabel *_sellDateLabel;
+    __weak IBOutlet UIImageView *_itemImageView;
+    __weak IBOutlet UILabel *_itemCodeLabel;
+    __weak IBOutlet UILabel *_itemNameLabel;
     __weak IBOutlet UILabel *_trueReceLabel;
 }
 
@@ -20,16 +21,12 @@
 
 @implementation MShopMemberConsumptionCellView
 
--(void)setIndividualConsumption:(MShopIndividualConsumptionModel *)saleBillingItem
+-(void)setIndividualConsumptionItem:(MShopIndividualConsumptionItemModel *)saleBillingItem
 {
-    _saleNoLabel.text = [NSString stringWithFormat:@"单号：%@",saleBillingItem.saleNo];
-    _sellDateLabel.text = [NSString stringWithFormat:@"销售日期：%@",saleBillingItem.sellDate];
-    _trueReceLabel.text = [self moneyDescWithNumber:saleBillingItem.trueRece];
-}
-
--(NSString *)moneyDescWithNumber:(NSNumber *)money
-{
-    return [NSString stringWithFormat:@"¥ %.2f ",money.floatValue];
+    [_itemImageView sd_setImageWithURL:[NSURL URLWithString:saleBillingItem.itemUrl]];
+    _itemCodeLabel.text = saleBillingItem.itemCode;
+    _itemNameLabel.text = saleBillingItem.itemName;
+    _trueReceLabel.text = [MFStringUtil moneyDescWithNumber:saleBillingItem.receivablePrice];
 }
 
 @end

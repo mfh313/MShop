@@ -10,9 +10,11 @@
 #import "MFTableViewInfo.h"
 #import "MShopIndividualInfo.h"
 #import "MShopGetConsumptionItemsApi.h"
-#import "MShopIndividualConsumptionApi.h"
 #import "MShopIndividualConsumptionModel.h"
+#import "MShopIndividualConsumptionItemModel.h"
+#import "MShopMemberConsumptionTitleView.h"
 #import "MShopMemberConsumptionCellView.h"
+
 
 @interface MShopMemberConsumptionViewController ()
 {
@@ -44,7 +46,7 @@
 {
     __weak typeof(self) weakSelf = self;
     
-    MShopIndividualConsumptionApi *mfApi = [MShopIndividualConsumptionApi new];
+    MShopGetConsumptionItemsApi *mfApi = [MShopGetConsumptionItemsApi new];
     mfApi.individualId = self.individual.individualId;
     mfApi.animatingText = @"正在获取消费信息...";
     mfApi.animatingView = MFAppWindow;
@@ -87,25 +89,58 @@
 -(MFTableViewSectionInfo *)addConsumptionSection
 {
     MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
     for (int i = 0; i < _saleBillingItemArray.count; i++)
     {
-        
-        
-        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeConsumptionCell:cellInfo:)
-                                                                 makeTarget:self
-                                                                  actionSel:@selector(onClickConsumptionCell:)
-                                                               actionTarget:self
-                                                                     height:72.0f
-                                                                   userInfo:nil];
-        cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
-        
         MShopIndividualConsumptionModel *saleBillingItem = _saleBillingItemArray[i];
-        [cellInfo addUserInfoValue:saleBillingItem forKey:@"saleBillingItem"];
         
-        [sectionInfo addCell:cellInfo];
+        MFTableViewCellInfo *headerCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeConsumptionTitleCell:cellInfo:)
+                                                                 makeTarget:self
+                                                                  actionSel:nil
+                                                               actionTarget:self
+                                                                     height:60.0f
+                                                                   userInfo:nil];
+        
+        [headerCellInfo addUserInfoValue:saleBillingItem forKey:@"saleBillingItem"];
+        [sectionInfo addCell:headerCellInfo];
+        
+        for (int j = 0; j < saleBillingItem.itemList.count; j++) {
+            
+            MShopIndividualConsumptionItemModel *itemModel = saleBillingItem.itemList[j];
+            
+            MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeConsumptionCell:cellInfo:)
+                                                                     makeTarget:self
+                                                                      actionSel:@selector(onClickConsumptionCell:)
+                                                                   actionTarget:self
+                                                                         height:100.0f
+                                                                       userInfo:nil];
+            cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
+            [cellInfo addUserInfoValue:itemModel forKey:@"MShopIndividualConsumptionItemModel"];
+            
+            [sectionInfo addCell:cellInfo];
+        }
+ 
     }
     
     return sectionInfo;
+}
+
+-(void)makeConsumptionTitleCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
+{
+    if (!cell.m_subContentView) {
+        MShopMemberConsumptionTitleView *cellView = [MShopMemberConsumptionTitleView nibView];
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
+    
+    MShopMemberConsumptionTitleView *cellView = (MShopMemberConsumptionTitleView *)cell.m_subContentView;
+    cellView.frame = cell.contentView.bounds;
+    
+    MShopIndividualConsumptionModel *saleBillingItem = (MShopIndividualConsumptionModel *)[cellInfo getUserInfoValueForKey:@"saleBillingItem"];
+    [cellView setIndividualConsumptionTitleModel:saleBillingItem];
 }
 
 -(void)makeConsumptionCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
@@ -122,8 +157,8 @@
     MShopMemberConsumptionCellView *cellView = (MShopMemberConsumptionCellView *)cell.m_subContentView;
     cellView.frame = cell.contentView.bounds;
     
-    MShopIndividualConsumptionModel *saleBillingItem = (MShopIndividualConsumptionModel *)[cellInfo getUserInfoValueForKey:@"saleBillingItem"];
-    [cellView setIndividualConsumption:saleBillingItem];
+    MShopIndividualConsumptionItemModel *saleBillingItem = (MShopIndividualConsumptionItemModel *)[cellInfo getUserInfoValueForKey:@"MShopIndividualConsumptionItemModel"];
+    [cellView setIndividualConsumptionItem:saleBillingItem];
 }
 
 -(void)onClickConsumptionCell:(MFTableViewCellInfo *)cellInfo
