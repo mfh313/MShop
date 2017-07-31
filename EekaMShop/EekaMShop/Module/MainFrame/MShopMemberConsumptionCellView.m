@@ -23,7 +23,7 @@
 
 -(void)setIndividualConsumptionItem:(MShopIndividualConsumptionItemModel *)saleBillingItem
 {
-    [_itemImageView sd_setImageWithURL:[NSURL URLWithString:saleBillingItem.itemUrl]];
+    [_itemImageView sd_setImageWithURL:[NSURL URLWithString:saleBillingItem.itemUrl] placeholderImage:MFImage(@"noImage")];
     _itemCodeLabel.text = saleBillingItem.itemCode;
     _itemNameLabel.text = saleBillingItem.itemName;
     _trueReceLabel.text = [MFStringUtil moneyDescWithNumber:saleBillingItem.receivablePrice];
