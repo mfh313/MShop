@@ -21,6 +21,12 @@
 
 @implementation MShopMemberConsumptionCellView
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    _itemImageView.contentMode = UIViewContentModeScaleAspectFit;
+}
+
 -(void)setIndividualConsumptionItem:(MShopIndividualConsumptionItemModel *)saleBillingItem
 {
     [_itemImageView sd_setImageWithURL:[NSURL URLWithString:saleBillingItem.pictureUrl] placeholderImage:MFImage(@"noImage")];
