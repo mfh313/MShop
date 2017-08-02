@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/MShopAppDelegate.mm"
-            timestampString = "523070396.119335"
+            filePath = "EekaMShop/Vendors/ThirdPartyPlugin/MFThirdPartyPlugin.m"
+            timestampString = "523352305.589832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-onResp:"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-jpushNotificationCenter:willPresentNotification:withCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/MShopAppDelegate.mm"
-            timestampString = "523070399.449519"
+            filePath = "EekaMShop/Vendors/ThirdPartyPlugin/MFThirdPartyPlugin.m"
+            timestampString = "523352325.941492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-onResp:"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "-jpushNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

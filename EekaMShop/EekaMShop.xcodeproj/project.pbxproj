@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC03A9491F31AD35004D4DDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A9481F31AD35004D4DDC /* CoreGraphics.framework */; };
+		AC03A94B1F31AD3F004D4DDC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A94A1F31AD3F004D4DDC /* AdSupport.framework */; };
+		AC03A94D1F31AD4B004D4DDC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A94C1F31AD4B004D4DDC /* CoreTelephony.framework */; };
+		AC03A94F1F31AD58004D4DDC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A94E1F31AD58004D4DDC /* CFNetwork.framework */; };
+		AC03A9551F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 in Resources */ = {isa = PBXBuildFile; fileRef = AC03A9511F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 */; };
+		AC03A9561F31ADEC004D4DDC /* jcore-ios-1.1.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A9521F31ADEC004D4DDC /* jcore-ios-1.1.5.a */; };
+		AC03A9571F31ADEC004D4DDC /* jpush-ios-3.0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A9531F31ADEC004D4DDC /* jpush-ios-3.0.6.a */; };
+		AC03A9591F31B229004D4DDC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A9581F31B229004D4DDC /* UserNotifications.framework */; };
+		AC03A95B1F31B26A004D4DDC /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A95A1F31B26A004D4DDC /* libresolv.tbd */; };
 		AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */; };
 		AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */; };
 		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
@@ -171,6 +180,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC03A9481F31AD35004D4DDC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AC03A94A1F31AD3F004D4DDC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		AC03A94C1F31AD4B004D4DDC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		AC03A94E1F31AD58004D4DDC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		AC03A9511F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_55GB65T7Y7.p8; sourceTree = "<group>"; };
+		AC03A9521F31ADEC004D4DDC /* jcore-ios-1.1.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.5.a"; sourceTree = "<group>"; };
+		AC03A9531F31ADEC004D4DDC /* jpush-ios-3.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.6.a"; sourceTree = "<group>"; };
+		AC03A9541F31ADEC004D4DDC /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		AC03A9581F31B229004D4DDC /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		AC03A95A1F31B26A004D4DDC /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		AC03A95C1F31B29C004D4DDC /* eekamshop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eekamshop.entitlements; sourceTree = "<group>"; };
 		AC2547B61F24ABEC00F54829 /* MShopMemberDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailViewController.h; sourceTree = "<group>"; };
 		AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailViewController.m; sourceTree = "<group>"; };
 		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
@@ -430,12 +450,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC03A95B1F31B26A004D4DDC /* libresolv.tbd in Frameworks */,
+				AC03A9591F31B229004D4DDC /* UserNotifications.framework in Frameworks */,
+				AC03A94F1F31AD58004D4DDC /* CFNetwork.framework in Frameworks */,
+				AC03A94D1F31AD4B004D4DDC /* CoreTelephony.framework in Frameworks */,
+				AC03A94B1F31AD3F004D4DDC /* AdSupport.framework in Frameworks */,
+				AC03A9491F31AD35004D4DDC /* CoreGraphics.framework in Frameworks */,
 				AC77262F1F2B0C23005B2100 /* Security.framework in Frameworks */,
 				AC77262D1F2B0C1C005B2100 /* libc++.tbd in Frameworks */,
 				AC9F83D31F2C6D8800952678 /* YTKNetwork.framework in Frameworks */,
 				AC77262B1F2B0C13005B2100 /* libz.tbd in Frameworks */,
+				AC03A9571F31ADEC004D4DDC /* jpush-ios-3.0.6.a in Frameworks */,
 				AC7726291F2B0C01005B2100 /* SystemConfiguration.framework in Frameworks */,
 				AC867DE61F1D990300694086 /* libWXWorkApi.a in Frameworks */,
+				AC03A9561F31ADEC004D4DDC /* jcore-ios-1.1.5.a in Frameworks */,
 				AC867DDE1F1D983E00694086 /* AVFoundation.framework in Frameworks */,
 				AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */,
 				AC77261F1F2B09D2005B2100 /* JSPatchPlatform.framework in Frameworks */,
@@ -452,6 +480,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC03A9501F31ADEC004D4DDC /* JPUSH */ = {
+			isa = PBXGroup;
+			children = (
+				AC03A9511F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 */,
+				AC03A9521F31ADEC004D4DDC /* jcore-ios-1.1.5.a */,
+				AC03A9531F31ADEC004D4DDC /* jpush-ios-3.0.6.a */,
+				AC03A9541F31ADEC004D4DDC /* JPUSHService.h */,
+			);
+			path = JPUSH;
+			sourceTree = "<group>";
+		};
 		AC66709A1F0B25C00067F6EE = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +523,7 @@
 				AC6670B21F0B25C00067F6EE /* Assets.xcassets */,
 				AC6670AF1F0B25C00067F6EE /* Main.storyboard */,
 				AC6670B41F0B25C00067F6EE /* LaunchScreen.storyboard */,
+				AC03A95C1F31B29C004D4DDC /* eekamshop.entitlements */,
 				AC867E601F1D9AA300694086 /* EShop-pch.pch */,
 				AC6670B71F0B25C00067F6EE /* Info.plist */,
 				AC6670A61F0B25C00067F6EE /* Supporting Files */,
@@ -693,6 +733,12 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC03A95A1F31B26A004D4DDC /* libresolv.tbd */,
+				AC03A9581F31B229004D4DDC /* UserNotifications.framework */,
+				AC03A94E1F31AD58004D4DDC /* CFNetwork.framework */,
+				AC03A94C1F31AD4B004D4DDC /* CoreTelephony.framework */,
+				AC03A94A1F31AD3F004D4DDC /* AdSupport.framework */,
+				AC03A9481F31AD35004D4DDC /* CoreGraphics.framework */,
 				AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */,
 				AC77262E1F2B0C23005B2100 /* Security.framework */,
 				AC77262C1F2B0C1C005B2100 /* libc++.tbd */,
@@ -714,6 +760,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AC03A9501F31ADEC004D4DDC /* JPUSH */,
 				AC9F83D51F2C728E00952678 /* XWScanImage */,
 				AC77260D1F2B09D2005B2100 /* ThirdPartyPlugin */,
 				AC7E3F741F2598DD0035E3DC /* FDFullscreenPopGesture */,
@@ -1114,6 +1161,14 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 2C97V99SA2;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1142,6 +1197,7 @@
 			files = (
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
 				AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */,
+				AC03A9551F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 in Resources */,
 				ACDFE2471F2F2114002795BE /* MShopMemberConsumptionTitleView.xib in Resources */,
 				AC7E3F871F25DB650035E3DC /* MShopMemberProfileCellView.xib in Resources */,
 				AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */,
@@ -1408,6 +1464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EekaMShop/eekamshop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: xu yiheng (8BZ9HQD624)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu yiheng (8BZ9HQD624)";
 				DEVELOPMENT_TEAM = 2C97V99SA2;
@@ -1426,6 +1483,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EekaMShop/WWK",
 					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
+					"$(PROJECT_DIR)/EekaMShop/Vendors/JPUSH",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
 				PRODUCT_NAME = eekamshop;
@@ -1438,6 +1496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EekaMShop/eekamshop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN EEKA FASHION CO.,LTD";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SHENZHEN EEKA FASHION CO.,LTD";
 				DEVELOPMENT_TEAM = 2C97V99SA2;
@@ -1456,6 +1515,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EekaMShop/WWK",
 					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
+					"$(PROJECT_DIR)/EekaMShop/Vendors/JPUSH",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
 				PRODUCT_NAME = eekamshop;

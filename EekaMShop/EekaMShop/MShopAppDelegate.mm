@@ -7,7 +7,6 @@
 //
 
 #import "MShopAppDelegate.h"
-#import "WWKApi.h"
 #import "MMServiceCenter.h"
 #import "MShopLoginService.h"
 #import "MShopAppViewControllerManager.h"
@@ -16,12 +15,10 @@
 #import <WCDB/WCDB.h>
 #import <WCDB/WCTStatistics.h>
 
-@interface MShopAppDelegate () <WWKApiDelegate>
+@interface MShopAppDelegate ()
 {
     MMServiceCenter *m_serviceCenter;
     MShopAppViewControllerManager *m_appViewControllerMgr;
-    
-    
 }
 
 @end
@@ -30,10 +27,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [WWKApi registerApp:@"wwauthde623adaa711cfb6000006" corpId:@"wxde623adaa711cfb6" agentId:@"1000006"];
+    m_serviceCenter = [MMServiceCenter defaultCenter];
     
-    MFThirdPartyPlugin *thirdPartyPlugin = [m_serviceCenter getService:[MFThirdPartyPlugin class]];
-    [thirdPartyPlugin registerPlugins];
+    MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin registerPluginsApplication:application didFinishLaunchingWithOptions:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -41,8 +38,7 @@
     
     m_appViewControllerMgr = [[MShopAppViewControllerManager getAppViewControllerManager] initWithWindow:self.window];
     
-    m_serviceCenter = [MMServiceCenter defaultCenter];
-    MShopLoginService *loginService = [m_serviceCenter getService:[MShopLoginService class]];
+    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     [loginService autoLogin];
     
     [self setWCDBMonitor];
@@ -75,44 +71,8 @@
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
-    /*! @brief 处理外部调用URL的时候需要将URL传给SDK进行相关处理
-     * @param url 外部调用传入的url
-     * @param delegate 当前类需要实现WWKApiDelegate对应的方法
-     */
-    return [WWKApi handleOpenURL:url delegate:self];
-}
-
-- (void)onResp:(WWKBaseResp *)resp {
-    /*! @brief 所有通过sendReq发送的SDK请求的结果都在这个函数内部进行异步回调
-     * @ param resp SDK处理请求后的返回结果 需要判断具体是哪项业务的回调
-     */
-    NSMutableString *extra = [NSMutableString string];
-    
-    /* 选择联系人的回调 */
-    if ([resp isKindOfClass:[WWKPickContactResp class]]) {
-        WWKPickContactResp *r = (WWKPickContactResp *)resp;
-        for (int i = 0; i < MIN(r.contacts.count, 5); ++i) {
-            if (extra.length) [extra appendString:@"\n"];
-            [extra appendFormat:@"%@<%@>", [r.contacts[i] name], [r.contacts[i] email]];
-        }
-        if (r.contacts.count > 5) {
-            [extra appendString:@"\n…"];
-        }
-    }
-    
-    /* SSO的回调 */
-    if ([resp isKindOfClass:[WWKSSOResp class]]) {
-        WWKSSOResp *r = (WWKSSOResp *)resp;
-        [extra appendFormat:@"%@ for %@", r.code, r.state];
-        
-        MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
-        [loginService loginWithWWKSSOResp:r];
-    }
-    
-    if (extra.length) [extra insertString:@"\n\n" atIndex:0];
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"返回结果" message:[NSString stringWithFormat:@"错误码：%d\n错误信息：%@%@", resp.errCode, resp.errStr, extra] preferredStyle:UIAlertControllerStyleAlert];
-//    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
-//    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alert animated:YES completion:nil];
+    MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
+    return [thirdPartyPlugin handleOpenURL:url sourceApplication:sourceApplication];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -138,10 +98,62 @@
     [thirdPartyPlugin applicationDidBecomeActive:application];
 }
 
-
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
+    MFThirdPartyPlugin *thirdPartyPlugin = [m_serviceCenter getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin registerJPUSHDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+- (void)application:(UIApplication *)application
+didRegisterUserNotificationSettings:
+(UIUserNotificationSettings *)notificationSettings {
+}
+
+// Called when your app has been activated by the user selecting an action from
+// a local notification.
+// A nil action identifier indicates the default action.
+// You should call the completion handler as soon as you've finished handling
+// the action.
+- (void)application:(UIApplication *)application
+handleActionWithIdentifier:(NSString *)identifier
+forLocalNotification:(UILocalNotification *)notification
+  completionHandler:(void (^)())completionHandler {
+}
+
+// Called when your app has been activated by the user selecting an action from
+// a remote notification.
+// A nil action identifier indicates the default action.
+// You should call the completion handler as soon as you've finished handling
+// the action.
+- (void)application:(UIApplication *)application
+handleActionWithIdentifier:(NSString *)identifier
+forRemoteNotification:(NSDictionary *)userInfo
+  completionHandler:(void (^)())completionHandler {
+}
+#endif
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:
+(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    MFThirdPartyPlugin *thirdPartyPlugin = [m_serviceCenter getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin didReceiveRemoteNotification:userInfo];
+    
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
 
 
 @end

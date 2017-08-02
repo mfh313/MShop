@@ -9,11 +9,19 @@
 #import <Foundation/Foundation.h>
 
 @interface MFThirdPartyPlugin : NSObject
+
++(void)testCrash;
     
--(void)registerPlugins;
+-(void)registerPluginsApplication:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
 -(void)applicationDidBecomeActive:(UIApplication *)application;
 
-+(void)testCrash;
+-(void)registerJPUSHDeviceToken:(NSData *)deviceToken;
+
+-(void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
+
 
 @end
