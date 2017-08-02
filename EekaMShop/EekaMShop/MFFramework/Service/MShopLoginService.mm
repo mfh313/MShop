@@ -7,6 +7,7 @@
 //
 
 #import "MShopLoginService.h"
+#import <WCDB/WCDB.h>
 #import "WWKApi.h"
 #import "MShopSSOReqAttachObject.h"
 #import "MShopLoginViewController.h"
@@ -15,7 +16,7 @@
 #import "MShopLoginTable+WCDB.h"
 #import "MShopLoginUserInfo.h"
 #import "MShopLoginUserInfo+WCDB.h"
-#import <WCDB/WCDB.h>
+#import "MFThirdPartyPlugin.h"
 
 
 @implementation MShopLoginService
@@ -54,6 +55,9 @@
     
     [[MShopAppViewControllerManager getAppViewControllerManager] userLogOut];
     [[MShopAppViewControllerManager getAppViewControllerManager] jumpToLoginViewController];
+    
+    MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin deletePushAlias];
 }
 
 -(NSString *)currentLoginUserDepartment

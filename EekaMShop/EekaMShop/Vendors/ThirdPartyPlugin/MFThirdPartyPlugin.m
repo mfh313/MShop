@@ -19,23 +19,20 @@
 #import "MShopLoginService.h"
 
 
-
 #define JSPatch_APP_KEY @"a3ea2110954730fe"
 #define BUGLY_APP_ID @"11db5a0376"
 #define JPUSH_APP_KEY @"97144cda4d1a6c13f653b8f1"
 
+static NSInteger seq = 0;
+
 @interface MFThirdPartyPlugin () <JPUSHRegisterDelegate,WWKApiDelegate>
+{
+    
+}
 
 @end
 
 @implementation MFThirdPartyPlugin
-
-+(void)testCrash
-{
-    NSArray * array = @[@"1", @"2"];
-
-    NSLog(@"print %@", [array objectAtIndex:2]);
-}
 
 -(void)registerPluginsApplication:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -153,6 +150,9 @@
 -(void)didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [JPUSHService handleRemoteNotification:userInfo];
+    
+    NSString *content = [userInfo valueForKey:@"content"];
+    NSLog(@"content=%@",content);
 }
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
@@ -347,7 +347,6 @@
                                 title, content, [self logDic:extra]];
     NSLog(@"%@", currentContent);
     
-
 }
 
 - (void)serviceError:(NSNotification *)notification {
@@ -359,6 +358,35 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [JSPatch sync];
+}
+
+-(void)setPushAlias:(NSString *)pushAlias
+{
+    [JPUSHService setAlias:pushAlias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        
+        NSLog(@"iResCode=%@,iAlias=%@,seq=%@",@(iResCode),iAlias,@(seq));
+        
+    } seq:[self seq]];
+}
+
+-(void)deletePushAlias
+{
+    [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        
+        NSLog(@"iResCode=%@,iAlias=%@,seq=%@",@(iResCode),iAlias,@(seq));
+        
+    } seq:[self seq]];
+}
+
+- (NSInteger)seq {
+    return ++ seq;
+}
+
++(void)testCrash
+{
+    NSArray * array = @[@"1", @"2"];
+    
+    NSLog(@"print %@", [array objectAtIndex:2]);
 }
 
 @end

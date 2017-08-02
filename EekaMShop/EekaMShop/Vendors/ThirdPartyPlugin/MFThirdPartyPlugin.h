@@ -21,7 +21,9 @@
 
 -(void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
-- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
+-(BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
 
+-(void)setPushAlias:(NSString *)pushAlias;
+-(void)deletePushAlias;
 
 @end
