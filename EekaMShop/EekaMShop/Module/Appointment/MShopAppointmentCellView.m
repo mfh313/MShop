@@ -23,7 +23,7 @@
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
     _titleLabel.text = [self titleDataItem:dataItem];
-    _timeLabel.text = [NSString stringWithFormat:@"预约时间：%@",dataItem.appointmentTime];
+    _timeLabel.text = [NSString stringWithFormat:@"预约时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
     _depNameLabel.text = [NSString stringWithFormat:@"预约单号：%@",dataItem.appointmentNo];
 }
 
