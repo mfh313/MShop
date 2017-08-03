@@ -32,45 +32,28 @@
     
     self.title = @"预约列表";
     
+    _appointmentList = [NSMutableArray array];
+    
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor whiteColor];
+    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     [self.view addSubview:contentTableView];
     
     __weak MShopAppointmentListViewController *weakSelf = self;
-    
-    //下拉刷新
     [contentTableView addPullToRefreshWithActionHandler:^{
         [weakSelf initPullToRefreshConfig];
         [weakSelf getAppointmentList];
     }];
     
-    //上拉分步刷新
     [contentTableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf pullUpConfig];
         [weakSelf pullUPAppointmentList];
     }];
-    
-    [self initPullToRefreshConfig];
-    
-    _appointmentList = [NSMutableArray array];
-    [self getAppointmentList];
-}
 
--(void)stopScrollingViewAnimatingUp:(BOOL)up
-{
-    UITableView *contentTableView = [m_tableViewInfo getTableView];
-    
-    if (up)
-    {
-        [contentTableView.infiniteScrollingView stopAnimating];
-    }
-    else
-    {
-        [contentTableView.pullToRefreshView stopAnimating];
-    }
+    [contentTableView triggerPullToRefresh];
 }
 
 -(void)initPullToRefreshConfig
@@ -95,6 +78,9 @@
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
 
+        UITableView *tableView = [m_tableViewInfo getTableView];
+        [tableView.infiniteScrollingView stopAnimating];
+        
         if (!mfApi.messageSuccess) {
             [weakSelf showTips:mfApi.errorMessage];
             _pullPrePageIndex--;
@@ -122,8 +108,6 @@
             [strongSelf showTips:@"没有数据了！"];
         }
         
-        [strongSelf stopScrollingViewAnimatingUp:YES];
-        
     } failure:^(YTKBaseRequest * request) {
         
         _pullPrePageIndex--;
@@ -143,6 +127,9 @@
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
+        UITableView *tableView = [m_tableViewInfo getTableView];
+        [tableView.pullToRefreshView stopAnimating];
+        
         if (!mfApi.messageSuccess) {
             [self showTips:mfApi.errorMessage];
             return;
@@ -158,8 +145,6 @@
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
-        
-        [strongSelf stopScrollingViewAnimatingUp:YES];
         
     } failure:^(YTKBaseRequest * request) {
         

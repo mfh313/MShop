@@ -75,6 +75,7 @@
 		AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */; };
 		AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */; };
 		AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */; };
+		AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */; };
 		AC7E3F721F2580760035E3DC /* SCLAlertViewFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; };
 		AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC7E3F771F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */; };
@@ -296,6 +297,8 @@
 		AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		AC7D018C1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		AC7D01901F32FF4100912EDA /* MShopAppointmentFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentFootView.h; sourceTree = "<group>"; };
+		AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentFootView.m; sourceTree = "<group>"; };
 		AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertViewFramework.framework; path = Carthage/Build/iOS/SCLAlertViewFramework.framework; sourceTree = "<group>"; };
 		AC7E3F751F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
@@ -684,6 +687,8 @@
 			children = (
 				AC7D017A1F32B7F500912EDA /* MShopAppointmentListViewController.h */,
 				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
+				AC7D01901F32FF4100912EDA /* MShopAppointmentFootView.h */,
+				AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */,
 				AC7D01831F32BD5C00912EDA /* MShopAppointmentCellView.h */,
 				AC7D01841F32BD5C00912EDA /* MShopAppointmentCellView.m */,
 				AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */,
@@ -1299,6 +1304,7 @@
 			files = (
 				AC7399131F22034500F753C2 /* NSArray+SafeInsert.m in Sources */,
 				AC867E741F1D9BB400694086 /* NSObject+YYModel.m in Sources */,
+				AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */,
 				AC867E551F1D99E600694086 /* MMUIView.m in Sources */,
 				AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */,
 				AC867E571F1D99E600694086 /* UINavigationBar+MMUINavigationBar.m in Sources */,
