@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MShopAppointmentCellView">
+            <rect key="frame" x="0.0" y="0.0" width="493" height="105"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预约描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVN-hk-ZMv">
+                    <rect key="frame" x="15" y="10" width="61.5" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="y9X-MG-RCQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预约时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iV-rX-jGh">
+                    <rect key="frame" x="15" y="38" width="53.5" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="HVE-dX-98h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预约门店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mw-V0-vbv">
+                    <rect key="frame" x="15" y="64" width="53.5" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="edo-c7-CTr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-O0-8Mc" customClass="MMOnePixLine">
+                    <rect key="frame" x="0.0" y="104" width="493" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="hZW-B4-t6a"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8iV-rX-jGh" firstAttribute="top" secondItem="FVN-hk-ZMv" secondAttribute="bottom" constant="10" id="LVB-51-6TS"/>
+                <constraint firstAttribute="bottom" secondItem="eKf-O0-8Mc" secondAttribute="bottom" id="ca5-s1-PoS"/>
+                <constraint firstItem="2mw-V0-vbv" firstAttribute="top" secondItem="8iV-rX-jGh" secondAttribute="bottom" constant="10" id="fro-aB-YRe"/>
+                <constraint firstAttribute="trailing" secondItem="eKf-O0-8Mc" secondAttribute="trailing" id="gHI-S5-EbW"/>
+                <constraint firstItem="FVN-hk-ZMv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="n34-rf-hro"/>
+                <constraint firstItem="2mw-V0-vbv" firstAttribute="leading" secondItem="8iV-rX-jGh" secondAttribute="leading" id="sHw-30-2B5"/>
+                <constraint firstItem="FVN-hk-ZMv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="sNq-T2-W8Y"/>
+                <constraint firstItem="8iV-rX-jGh" firstAttribute="leading" secondItem="FVN-hk-ZMv" secondAttribute="leading" id="uta-Ow-GTH"/>
+                <constraint firstItem="eKf-O0-8Mc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w7n-Oi-Gcg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_depNameLabel" destination="2mw-V0-vbv" id="Gch-Km-h7m"/>
+                <outlet property="_timeLabel" destination="8iV-rX-jGh" id="4DX-EN-ibx"/>
+                <outlet property="_titleLabel" destination="FVN-hk-ZMv" id="gCv-8j-mNC"/>
+            </connections>
+            <point key="canvasLocation" x="-14.5" y="74.5"/>
+        </view>
+    </objects>
+</document>

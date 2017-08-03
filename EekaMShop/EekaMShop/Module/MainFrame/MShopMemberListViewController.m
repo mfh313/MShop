@@ -15,7 +15,6 @@
 #import "MShopSearchIndividualApi.h"
 #import "MShopMemberSearchBar.h"
 #import "MShopMemberListCellView.h"
-#import "MFThirdPartyPlugin.h"
 
 @interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate>
 {

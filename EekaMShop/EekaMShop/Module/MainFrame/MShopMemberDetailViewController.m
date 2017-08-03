@@ -39,7 +39,14 @@
     contentTableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:contentTableView];
     
-    [self makeMemberInfoViews];
+    if (self.individual)
+    {
+        [self makeMemberInfoViews];
+    }
+    else
+    {
+        [self getIndividualInfo];
+    }
 }
 
 -(void)makeMemberInfoViews
@@ -99,8 +106,8 @@
     //手机号
     MFTableViewCellInfo *phoneCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
                                              makeTarget:self
-                                              actionSel:nil
-                                           actionTarget:nil
+                                              actionSel:@selector(onClickPhoneCell)
+                                           actionTarget:self
                                                  height:44.0
                                                userInfo:nil];
     [phoneCellInfo addUserInfoValue:@"手机号" forKey:@"title"];
@@ -187,7 +194,8 @@
     
     MFTableViewCellInfo *individualConsumptionCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeIndividualConsumptionCell:cellInfo:)
                                                                                   makeTarget:self
-                                                                                   actionSel:@selector(onClickIndividualConsumption) actionTarget:self
+                                                                                   actionSel:@selector(onClickIndividualConsumption)
+                                                                                actionTarget:self
                                                                                       height:80
                                                                                     userInfo:nil];
     [sectionInfo addCell:individualConsumptionCellInfo];
@@ -341,7 +349,16 @@
 {
     __weak typeof(self) weakSelf = self;
     MShopGetIndividualApi *getIndividualApi = [MShopGetIndividualApi new];
-    getIndividualApi.individualId = self.individual.individualId;
+    
+    if (self.individual)
+    {
+        getIndividualApi.individualId = self.individual.individualId;
+    }
+    else
+    {
+        getIndividualApi.individualId = self.individualId;
+    }
+    
     getIndividualApi.animatingView = MFAppWindow;
     [getIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
@@ -368,6 +385,14 @@
     consumptionVC.individual = self.individual;
     consumptionVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:consumptionVC animated:YES];
+}
+
+-(void)onClickPhoneCell
+{
+    NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"tel:%@",self.individual.phone];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
 }
 
 - (void)didReceiveMemoryWarning {

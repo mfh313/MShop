@@ -12,5 +12,6 @@
 @interface MShopMemberDetailViewController : MMViewController
 
 @property (nonatomic,strong) MShopIndividualInfo *individual;
+@property (nonatomic,strong) NSString *individualId;
 
 @end

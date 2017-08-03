@@ -28,4 +28,10 @@
 
 +(NSString *)getConsumptionItemsURL;
 
++(NSString *)getAppointmentListURL;
+
++(NSString *)appointmentModifyURL;
+
 @end
+
+

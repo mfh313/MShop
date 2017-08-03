@@ -11,6 +11,7 @@
 #import "MShopMainFrameViewController.h"
 #import "MShopMeViewController.h"
 #import "MShopMemberListViewController.h"
+#import "MShopAppointmentListViewController.h"
 
 
 @implementation MShopAppViewControllerManager
@@ -44,19 +45,21 @@
 
 -(void)createMainTabViewController
 {
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MShop_MainFrame" bundle:nil];
-//    MShopMainFrameViewController *mainFrameVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"MShopMainFrameViewController"];
-//    MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:mainFrameVC];
-//    UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"主页"
-//                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-//                                                      selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//    rootNav.tabBarItem = homeTabItem;
     MShopMemberListViewController *employeeListVC = [MShopMemberListViewController new];
     MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:employeeListVC];
     UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"会员列表"
                                                               image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                       selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     rootNav.tabBarItem = homeTabItem;
+    
+    
+    UIViewController *appointmentListVC = [self appointmentListVC];
+    MMNavigationController *rootAppointmentNav = [[MMNavigationController alloc] initWithRootViewController:appointmentListVC];
+    UITabBarItem *appointmentTabItem = [[UITabBarItem alloc] initWithTitle:@"会员预约"
+                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                      selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    rootAppointmentNav.tabBarItem = appointmentTabItem;
+    
     
     UIStoryboard *meStoryboard = [UIStoryboard storyboardWithName:@"Mshop_Me" bundle:nil];
     MShopMeViewController *meVC = [meStoryboard instantiateViewControllerWithIdentifier:@"MShopMeViewController"];
@@ -67,7 +70,7 @@
     meRootNav.tabBarItem = setTabItem;
     
     m_tabbarController = [self getTabBarController];
-    m_tabbarController.viewControllers = @[rootNav,meRootNav];
+    m_tabbarController.viewControllers = @[rootNav,rootAppointmentNav,meRootNav];
     m_tabbarController.tabBar.barTintColor = [UIColor whiteColor];
     
     m_window.rootViewController = m_tabbarController;
@@ -92,4 +95,19 @@
     return m_tabbarController;
 }
 
+
+-(UIViewController *)appointmentListVC
+{
+    MShopAppointmentListViewController *appointmentListVC = [MShopAppointmentListViewController new];
+    return appointmentListVC;
+}
+
 @end
+
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MShop_MainFrame" bundle:nil];
+//    MShopMainFrameViewController *mainFrameVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"MShopMainFrameViewController"];
+//    MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:mainFrameVC];
+//    UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"主页"
+//                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+//                                                      selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+//    rootNav.tabBarItem = homeTabItem;
