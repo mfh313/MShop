@@ -18,6 +18,8 @@
     MFTableViewInfo *m_tableViewInfo;
     NSMutableArray *_appointmentList;
     
+    UILabel *_navTitleLabel;
+    
     NSInteger _pageIndex;
     NSInteger _pullPrePageIndex;
     NSInteger _pageSize;
@@ -156,6 +158,8 @@
 
 -(void)reloadTableView
 {
+    [self setNavTitle];
+    
     [m_tableViewInfo clearAllSection];
     
     MFTableViewSectionInfo *sectionInfo = [self addAppointmentSection];
@@ -214,6 +218,23 @@
     memberDetailVC.individualId = individualId;
     memberDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:memberDetailVC animated:YES];
+}
+
+-(void)setNavTitle
+{
+    NSString *title = @"预约列表";
+    if (_appointmentList.count > 0) {
+        title = [NSString stringWithFormat:@"预约列表(%@)",@(_appointmentList.count)];
+    }
+    
+    if (!_navTitleLabel) {
+        _navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
+        _navTitleLabel.textAlignment = NSTextAlignmentCenter;
+        _navTitleLabel.font = [UIFont systemFontOfSize:16.0f];
+        [self.navigationItem setTitleView:_navTitleLabel];
+    }
+    
+    _navTitleLabel.text = title;
 }
 
 - (void)didReceiveMemoryWarning {
