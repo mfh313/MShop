@@ -61,7 +61,7 @@
 -(void)initPullToRefreshConfig
 {
     _pageIndex = 0;
-    _pageSize = 3;
+    _pageSize = 5;
     
     _pullPrePageIndex = _pageIndex;
 }
