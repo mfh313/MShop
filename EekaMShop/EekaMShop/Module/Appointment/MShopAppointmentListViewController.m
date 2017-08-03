@@ -21,7 +21,6 @@
     NSInteger _pageIndex;
     NSInteger _pullPrePageIndex;
     NSInteger _pageSize;
-    
 }
 
 @end
@@ -60,20 +59,19 @@
     [self getAppointmentList];
 }
 
-//-(void)stopScrollingViewAnimatingUp:(BOOL)up
-//{
-//    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-//    UITableView *contentTableView = [m_tableViewInfo getTableView];
-//    
-//    if (up)
-//    {
-//        [contentTableView.infiniteScrollingView stopAnimating];
-//    }
-//    else
-//    {
-//        [contentTableView.pullToRefreshView stopAnimating];
-//    }
-//}
+-(void)stopScrollingViewAnimatingUp:(BOOL)up
+{
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    
+    if (up)
+    {
+        [contentTableView.infiniteScrollingView stopAnimating];
+    }
+    else
+    {
+        [contentTableView.pullToRefreshView stopAnimating];
+    }
+}
 
 -(void)initPullToRefreshConfig
 {
@@ -121,8 +119,10 @@
         }
         else
         {
-            [weakSelf showTips:@"没有数据了！"];
+            [strongSelf showTips:@"没有数据了！"];
         }
+        
+        [strongSelf stopScrollingViewAnimatingUp:YES];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -158,6 +158,8 @@
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
+        
+        [strongSelf stopScrollingViewAnimatingUp:YES];
         
     } failure:^(YTKBaseRequest * request) {
         
