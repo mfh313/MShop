@@ -2,4 +2,3 @@ github "yuantiku/YTKNetwork" ~> 2.0
 github "Tencent/WCDB"
 github "ccgus/fmdb"
 github "rs/SDWebImage"
-github "dogo/SCLAlertView"

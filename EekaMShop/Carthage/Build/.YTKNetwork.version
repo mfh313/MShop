@@ -1,26 +1,26 @@
 {
   "iOS" : [
     {
-      "hash" : "22ba0f3ff672d56b0b3e3bf7c29f127fb159c1d2ab3daa998eeb36935ec3cd1b",
+      "hash" : "1629b2068c1dec9227c4c3e6d561bac802ac8972a6474139aa9dde22e7f99510",
       "name" : "YTKNetwork"
     }
   ],
   "commitish" : "2.0.3",
   "watchOS" : [
     {
-      "hash" : "3e4f4d9a37bce7fa792907b23f5469c1f6109f9a17cc8ed63c0f8232cdd41e26",
+      "hash" : "e44f45e3d864b42363da1e6211fc8f7c1a94c2abe066dfe2abbe007cd778bcc4",
       "name" : "YTKNetwork"
     }
   ],
   "tvOS" : [
     {
-      "hash" : "368b7cc63fc7c53df263443b0bd1c28027cf3358f8521ac7f11a664b7e7c1672",
+      "hash" : "b0c5423576f7b06c10abc55047cb0fdf8dd00747e9e8819ceff38f2f5d0fc594",
       "name" : "YTKNetwork"
     }
   ],
   "Mac" : [
     {
-      "hash" : "c5f4300b4687ba9588c272034c8b191156bbe519a8b52097a52a70485c1697ba",
+      "hash" : "a56529ce9cb4b747db2a8c7664c00072ef4a1cbd9f5824eba640682c2aeb19e9",
       "name" : "YTKNetwork"
     }
   ]
