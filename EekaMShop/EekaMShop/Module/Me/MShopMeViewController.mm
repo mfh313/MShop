@@ -119,7 +119,8 @@
 
 -(void)asynInfoToPhone
 {
-    
+    //1.是否清空联系人
+    //2.同步联系人
 }
 
 - (void)didReceiveMemoryWarning {
