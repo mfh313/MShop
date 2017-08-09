@@ -12,6 +12,8 @@
 #import "WWKApi.h"
 #import "MFThirdPartyPlugin.h"
 #import "XWScanImage.h"
+#import "MFGetSynMemberInfoApi.h"
+#import "MShopSynMemberInfoModel.h"
 
 @interface MShopMeViewController ()
 {
@@ -22,6 +24,7 @@
     MShopLoginService *m_loginService;
     
     __weak IBOutlet UILabel *_appVersionLabel;
+    NSMutableArray *_synMemberInfoArray;
 }
 
 @end
@@ -45,6 +48,8 @@
     _positionLabel.text = loginInfo.position;
     
     _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[self getNowBundleVersion]];
+    
+    _synMemberInfoArray = [NSMutableArray array];
 }
 
 - (NSString *)getNowBundleVersion
@@ -58,6 +63,10 @@
 {
     UIImageView *clickedImageView = (UIImageView *)tap.view;
     [XWScanImage scanBigImageWithImageView:clickedImageView];
+}
+
+- (IBAction)onClickSynMemBerInfo:(id)sender {
+    [self synMemberInfo];
 }
 
 - (IBAction)onClickLogout:(id)sender {
@@ -74,6 +83,43 @@
     attachment.iconurl = @"https://www.eeka.info/EekaMShop_test/mclubShare.png";
     req.attachment = attachment;
     [WWKApi sendReq:req];
+}
+
+-(void)synMemberInfo
+{
+    __weak typeof(self) weakSelf = self;
+    
+    MFGetSynMemberInfoApi *mfApi = [MFGetSynMemberInfoApi new];
+    mfApi.animatingText = @"正在同步会员信息到通讯录...";
+    mfApi.animatingView = MFAppWindow;
+    [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!mfApi.messageSuccess) {
+            [self showTips:mfApi.errorMessage];
+            return;
+        }
+        
+        NSArray *synMemberInfoArray = request.responseObject;
+        for (int i = 0; i < synMemberInfoArray.count; i++) {
+            MShopSynMemberInfoModel *model = [MShopSynMemberInfoModel MM_modelWithJSON:synMemberInfoArray[i]];
+            [_synMemberInfoArray addObject:model];
+        }
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf asynInfoToPhone];
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
+    
+}
+
+
+-(void)asynInfoToPhone
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -30,7 +30,7 @@
     
 }
 
--(BOOL)addToken
+-(BOOL)useToken
 {
     return YES;
 }
@@ -43,7 +43,7 @@
 -(id)requestArgument
 {
     NSMutableDictionary *requestArgument = [NSMutableDictionary dictionary];
-    if ([self addToken])
+    if ([self useToken])
     {
         MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
         NSString *token = [loginService getCurrentLoginToken];
@@ -185,6 +185,11 @@
 
 -(BOOL)messageSuccess
 {
+    if (![self.responseJSONObject isKindOfClass:[NSDictionary class]])
+    {
+        return YES;
+    }
+    
     NSDictionary *dict = self.responseJSONObject;
     NSNumber *number = dict[@"errcode"];
     if (number.intValue == 0)
@@ -203,6 +208,11 @@
 
 -(NSString*)errorMessage
 {
+    if (![self.responseJSONObject isKindOfClass:[NSDictionary class]])
+    {
+        return nil;
+    }
+    
     NSDictionary *dict = self.responseJSONObject;
     id string = dict[@"errmsg"];
     if ([string isKindOfClass:[NSNull class]]) {

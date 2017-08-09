@@ -14,11 +14,18 @@
 
 -(BOOL)tokenExpire:(MFNetworkRequest *)request
 {
-    NSDictionary *dict = request.responseJSONObject;
-    NSNumber *number = dict[@"errcode"];
-    if (number.intValue == 4001)
+    if ([request.responseJSONObject isKindOfClass:[NSDictionary class]])
     {
-        return YES;
+        NSDictionary *dict = request.responseJSONObject;
+        
+        id number = dict[@"errcode"];
+        if ([number isKindOfClass:[NSNumber class]]) {
+            
+            if (((NSNumber *)number).intValue == 4001)
+            {
+                return YES;
+            }
+        }
     }
     
     return NO;

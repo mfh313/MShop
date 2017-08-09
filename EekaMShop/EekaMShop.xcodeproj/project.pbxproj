@@ -19,6 +19,8 @@
 		AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */; };
 		AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */; };
 		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
+		AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */; };
+		AC567D7A1F3B10F400EE33BD /* MShopSynMemberInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC567D791F3B10F400EE33BD /* MShopSynMemberInfoModel.m */; };
 		AC6670A81F0B25C00067F6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670A71F0B25C00067F6EE /* main.m */; };
 		AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC6670AA1F0B25C00067F6EE /* MShopAppDelegate.mm */; };
 		AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6670AF1F0B25C00067F6EE /* Main.storyboard */; };
@@ -76,8 +78,6 @@
 		AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */; };
 		AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */; };
 		AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */; };
-		AC7E3F721F2580760035E3DC /* SCLAlertViewFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; };
-		AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC7E3F771F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */; };
 		AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */; };
 		AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */; };
@@ -179,7 +179,6 @@
 				AC7398F91F218FA500F753C2 /* SDWebImage.framework in Embed Frameworks */,
 				AC867DD21F1D982600694086 /* AFNetworking.framework in Embed Frameworks */,
 				AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */,
-				AC7E3F731F2580760035E3DC /* SCLAlertViewFramework.framework in Embed Frameworks */,
 				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
 				AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */,
 			);
@@ -205,6 +204,10 @@
 		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
 		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
 		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
+		AC567D751F3B0EE200EE33BD /* MFGetSynMemberInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGetSynMemberInfoApi.h; sourceTree = "<group>"; };
+		AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFGetSynMemberInfoApi.m; sourceTree = "<group>"; };
+		AC567D781F3B10F400EE33BD /* MShopSynMemberInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopSynMemberInfoModel.h; sourceTree = "<group>"; };
+		AC567D791F3B10F400EE33BD /* MShopSynMemberInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopSynMemberInfoModel.m; sourceTree = "<group>"; };
 		AC6670A31F0B25C00067F6EE /* eekamshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eekamshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6670A71F0B25C00067F6EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC6670A91F0B25C00067F6EE /* MShopAppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; path = MShopAppDelegate.h; sourceTree = "<group>"; };
@@ -299,7 +302,6 @@
 		AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		AC7D01901F32FF4100912EDA /* MShopAppointmentFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentFootView.h; sourceTree = "<group>"; };
 		AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentFootView.m; sourceTree = "<group>"; };
-		AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertViewFramework.framework; path = Carthage/Build/iOS/SCLAlertViewFramework.framework; sourceTree = "<group>"; };
 		AC7E3F751F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		AC7E3F781F25C3130035E3DC /* MShopEmployeeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeListViewController.h; sourceTree = "<group>"; };
@@ -495,7 +497,6 @@
 				AC867DDF1F1D983E00694086 /* CoreFoundation.framework in Frameworks */,
 				AC77261F1F2B09D2005B2100 /* JSPatchPlatform.framework in Frameworks */,
 				AC867DE01F1D983E00694086 /* Foundation.framework in Frameworks */,
-				AC7E3F721F2580760035E3DC /* SCLAlertViewFramework.framework in Frameworks */,
 				AC77261E1F2B09D2005B2100 /* Bugly.framework in Frameworks */,
 				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
 				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
@@ -645,6 +646,8 @@
 			children = (
 				AC7C284A1F203E6D003C0C4C /* MShopApiManger.h */,
 				AC7C284B1F203E6D003C0C4C /* MShopApiManger.m */,
+				AC567D751F3B0EE200EE33BD /* MFGetSynMemberInfoApi.h */,
+				AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */,
 				AC7D01801F32B9C500912EDA /* MShopAppointmentModifyApi.h */,
 				AC7D01811F32B9C500912EDA /* MShopAppointmentModifyApi.m */,
 				AC7D017D1F32B99D00912EDA /* MShopGetAppointmentListApi.h */,
@@ -801,7 +804,6 @@
 				AC77262C1F2B0C1C005B2100 /* libc++.tbd */,
 				AC77262A1F2B0C13005B2100 /* libz.tbd */,
 				AC7726281F2B0C01005B2100 /* SystemConfiguration.framework */,
-				AC7E3F711F2580760035E3DC /* SCLAlertViewFramework.framework */,
 				AC7398F71F218FA500F753C2 /* SDWebImage.framework */,
 				AC867DCD1F1D982600694086 /* AFNetworking.framework */,
 				AC867DCE1F1D982600694086 /* FMDB.framework */,
@@ -1127,6 +1129,8 @@
 			children = (
 				AC867EF11F1DD4EA00694086 /* MShopSSOReqAttachObject.h */,
 				AC867EF21F1DD4EA00694086 /* MShopSSOReqAttachObject.m */,
+				AC567D781F3B10F400EE33BD /* MShopSynMemberInfoModel.h */,
+				AC567D791F3B10F400EE33BD /* MShopSynMemberInfoModel.m */,
 				AC7D01771F32B67C00912EDA /* MShopAppointmentDataItem.h */,
 				AC7D01781F32B67C00912EDA /* MShopAppointmentDataItem.m */,
 				AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */,
@@ -1392,9 +1396,11 @@
 				AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
 				AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */,
+				AC567D7A1F3B10F400EE33BD /* MShopSynMemberInfoModel.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,
 				AC7E3F821F25CF420035E3DC /* MShopIndividualModifyApi.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,
+				AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */,
 				AC7D01851F32BD5C00912EDA /* MShopAppointmentCellView.m in Sources */,
 				AC867E4F1F1D99E600694086 /* MMObject.m in Sources */,
 				AC73990D1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m in Sources */,

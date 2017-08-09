@@ -32,6 +32,6 @@
 
 +(NSString *)appointmentModifyURL;
 
++(NSString *)getSynMemberInfoURL;
+
 @end
-
-

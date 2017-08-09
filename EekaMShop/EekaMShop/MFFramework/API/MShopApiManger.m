@@ -19,7 +19,8 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
 
 + (NSString *)hostUrl
 {
-    return @"http://mp.eekamclub.com/ms/";
+//    return @"http://mp.eekamclub.com/ms/";
+    return @"http://10.8.143.30:8080/ms/";   //zaolong
 //    return @"http://10.8.143.193:8080/ms/"; //guo dong
 }
 
@@ -76,6 +77,11 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
 +(NSString *)appointmentModifyURL
 {
     return MFURLWithPara(@"employeeApi/appointmentModify.json");
+}
+
++(NSString *)getSynMemberInfoURL
+{
+    return MFURLWithPara(@"employeeApi/getInfoByExcel.json");
 }
 
 @end
