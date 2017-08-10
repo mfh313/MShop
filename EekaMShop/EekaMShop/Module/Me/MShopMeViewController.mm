@@ -138,6 +138,8 @@
 
 -(void)askIfAsynInfoToPhone
 {
+    __weak typeof(self) weakSelf = self;
+    
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     [alert addButton:@"取消" actionBlock:nil];
     [alert addButton:@"先清空本地人然后再同步" actionBlock:^{
@@ -145,11 +147,15 @@
         
     }];
     [alert addButton:@"直接同步" actionBlock:^{
-        
-        
+        [weakSelf asynAddressBookInfo];
     }];
-    NSString *subTitle = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
-    [alert showNotice:@"新版本" subTitle:subTitle closeButtonTitle:nil duration:0];
+    NSString *title = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
+    [alert showNotice:title subTitle:nil closeButtonTitle:nil duration:0];
+}
+
+-(void)asynAddressBookInfo
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
