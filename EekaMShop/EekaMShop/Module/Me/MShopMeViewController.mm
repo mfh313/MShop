@@ -52,7 +52,6 @@
     _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[self getNowBundleVersion]];
     
     _synMemberInfoArray = [NSMutableArray array];
-    
     _synProgressLabel.hidden = YES;
     
     [self getAddressBookAuthor];
