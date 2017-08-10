@@ -181,7 +181,7 @@
         NSString *name = model.userName;
         NSString *phone = model.phone;
         NSString *note = [NSString stringWithFormat:@"维护员工-%@",model.maintainEmployeeName];
-        NSString *group = [MFStringUtil dateWithMMString:model.birthday];
+//        NSString *group = [MFStringUtil dateWithMMString:model.birthday];
         NSDate *birthday = [MFStringUtil dateWithTimeString:model.birthday];
         
         name = [self fixedName:model.userName birthday:model.birthday maintainEmployeeName:model.maintainEmployeeName];
@@ -194,7 +194,7 @@
         ABMultiValueAddValueAndLabel(phoneRef, (__bridge CFStringRef)phone, kABPersonPhoneIPhoneLabel, NULL);
         
         ABRecordSetValue(personRef, kABPersonPhoneProperty, phoneRef, &error);
-        ABRecordSetValue(personRef, kABGroupNameProperty, (__bridge CFStringRef)group, &error);
+//        ABRecordSetValue(personRef, kABGroupNameProperty, (__bridge CFStringRef)group, &error);
         
         ABAddressBookAddRecord(addressbookRef, personRef, nil);
         
