@@ -25,6 +25,7 @@
     MShopLoginService *m_loginService;
     
     __weak IBOutlet UILabel *_appVersionLabel;
+    __weak IBOutlet UILabel *_synProgressLabel;
     NSMutableArray *_synMemberInfoArray;
 }
 
@@ -51,6 +52,8 @@
     _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[self getNowBundleVersion]];
     
     _synMemberInfoArray = [NSMutableArray array];
+    
+    _synProgressLabel.hidden = YES;
     
     [self getAddressBookAuthor];
 }
@@ -160,7 +163,9 @@
 {
     NSMutableArray *models = _synMemberInfoArray;
     
-    [self showMBCircleInWindow];
+    dispatch_main_async_safe(^{
+        [self showMBCircleInWindow];
+    });
     
     ABAddressBookRef addressbookRef = ABAddressBookCreate();
     for (int i = 0; i < models.count; i++) {
@@ -189,8 +194,16 @@
         
         ABAddressBookSave(addressbookRef, NULL);
         
+        dispatch_main_async_safe((^{
+            _synProgressLabel.hidden = NO;
+            _synProgressLabel.text = [NSString stringWithFormat:@"正在同步 %@/%@",@(i),@(models.count)];
+        }));
+        
         if (i == models.count - 1) {
-            [self hiddenMBStatus];
+            dispatch_main_async_safe((^{
+                [self hiddenMBStatus];
+                _synProgressLabel.hidden = YES;
+            }));
         }
     }
     
@@ -199,13 +212,32 @@
 
 -(void)cleanAddressBook
 {
+    dispatch_main_async_safe(^{
+        [self showMBCircleInWindow];
+    });
+    
     ABAddressBookRef addressbookRef = ABAddressBookCreate();
     
     NSArray *addressbookArray = (__bridge NSArray *)ABAddressBookCopyArrayOfAllPeople(addressbookRef);
     for (id obj in addressbookArray)
     {
+        NSInteger index = [addressbookArray indexOfObject:obj];
+        
         ABRecordRef people = (__bridge ABRecordRef)obj;
         ABAddressBookRemoveRecord(addressbookRef, people, NULL);
+        
+        dispatch_main_async_safe((^{
+            _synProgressLabel.hidden = NO;
+            _synProgressLabel.text = [NSString stringWithFormat:@"正在删除 %@/%@",@(index),@(addressbookArray.count)];
+        }));
+        
+        if ([addressbookArray indexOfObject:obj] == addressbookArray.count - 1)
+        {
+            dispatch_main_async_safe(^{
+                [self hiddenMBStatus];
+                _synProgressLabel.hidden = YES;
+            });
+        }
     }
     
     ABAddressBookSave(addressbookRef, NULL);
