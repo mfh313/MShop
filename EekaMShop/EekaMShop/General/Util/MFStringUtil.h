@@ -28,6 +28,8 @@ static NSString * const MFPhoneNumberRegex = @"1[3|4|5|7|8][0-9]\\d{8}$";
 
 +(NSDate *)dateWithTimeString:(NSString *)dateStr;
 
++(NSString *)dateWithMMString:(NSString *)dateStr;
+
 +(NSString *)dateWithMMddString:(NSString *)dateStr;
 
 @end

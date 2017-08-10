@@ -105,4 +105,26 @@
     return dateString;
 }
 
++(NSString *)dateWithMMString:(NSString *)dateStr
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setTimeZone:[[self class] timeZone]];
+    NSDate *date = [formatter dateFromString:dateStr];
+    
+    NSString *dateString = nil;
+    
+    [formatter setDateFormat:@"MM"];
+    if (date == nil)
+    {
+        dateString = [formatter stringFromDate:[NSDate date]];
+    }
+    else
+    {
+        dateString = [formatter stringFromDate:date];
+    }
+    
+    return dateString;
+}
+
 @end
