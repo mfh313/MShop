@@ -142,12 +142,15 @@
     
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     [alert addButton:@"取消" actionBlock:nil];
-//    [alert addButton:@"先清空本地人然后再同步" actionBlock:^{
-//        
-//        
-//    }];
-    [alert addButton:@"直接同步" actionBlock:^{
-        [weakSelf asynAddressBookInfo];
+    [alert addButton:@"清空联系人" actionBlock:^{
+        [weakSelf cleanAddressBook];
+    }];
+    [alert addButton:@"确定" actionBlock:^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            [weakSelf asynAddressBookInfo];
+            
+        });
     }];
     NSString *subTitle = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
     [alert showNotice:@"提醒" subTitle:subTitle closeButtonTitle:nil duration:0];
@@ -155,10 +158,10 @@
 
 -(void)asynAddressBookInfo
 {
-//    _synMemberInfoArray = [NSMutableArray arrayWithArray:@[_synMemberInfoArray.firstObject]];
+    NSMutableArray *models = _synMemberInfoArray;
     
     ABAddressBookRef addressbookRef = ABAddressBookCreate();
-    for (int i = 0; i < _synMemberInfoArray.count; i++) {
+    for (int i = 0; i < models.count; i++) {
         MShopSynMemberInfoModel *model = _synMemberInfoArray[i];
         
         ABRecordRef personRef = ABPersonCreate();
@@ -181,10 +184,25 @@
         ABAddressBookAddRecord(addressbookRef, personRef, nil);
         
         CFRelease(personRef);
+        
+        ABAddressBookSave(addressbookRef, NULL);
+    }
+    
+    CFRelease(addressbookRef);
+}
+
+-(void)cleanAddressBook
+{
+    ABAddressBookRef addressbookRef = ABAddressBookCreate();
+    
+    NSArray *addressbookArray = (__bridge NSArray *)ABAddressBookCopyArrayOfAllPeople(addressbookRef);
+    for (id obj in addressbookArray)
+    {
+        ABRecordRef people = (__bridge ABRecordRef)obj;
+        ABAddressBookRemoveRecord(addressbookRef, people, NULL);
     }
     
     ABAddressBookSave(addressbookRef, NULL);
-    
     CFRelease(addressbookRef);
 }
 
