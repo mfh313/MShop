@@ -183,6 +183,8 @@
         NSString *note = [NSString stringWithFormat:@"维护员工-%@",model.maintainEmployeeName];
         NSDate *birthday = [MFStringUtil dateWithTimeString:model.birthday];
         
+        name = [self fixedName:model.userName birthday:model.birthday maintainEmployeeName:model.maintainEmployeeName];
+        
         ABRecordSetValue(personRef, kABPersonNoteProperty, (__bridge CFStringRef)note, &error);
         ABRecordSetValue(personRef, kABPersonFirstNameProperty, (__bridge CFStringRef)name, &error);
         ABRecordSetValue(personRef, kABPersonBirthdayProperty, (__bridge CFDateRef)birthday, &error);
@@ -210,6 +212,13 @@
     }));
     
     CFRelease(addressbookRef);
+}
+
+-(NSString *)fixedName:(NSString *)name birthday:(NSString *)birthday maintainEmployeeName:(NSString *)maintainEmployeeName
+{
+    NSString *yearMonth = [MFStringUtil dateWithMMddString:birthday];
+    NSString *fixName = [NSString stringWithFormat:@"%@(%@ %@)",name,yearMonth,maintainEmployeeName];
+    return fixName;
 }
 
 -(void)cleanAddressBook
