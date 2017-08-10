@@ -14,6 +14,7 @@
 #import "XWScanImage.h"
 #import "MFGetSynMemberInfoApi.h"
 #import "MShopSynMemberInfoModel.h"
+#import <AddressBook/AddressBook.h>
 
 @interface MShopMeViewController ()
 {
@@ -50,6 +51,8 @@
     _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[self getNowBundleVersion]];
     
     _synMemberInfoArray = [NSMutableArray array];
+    
+    [self getAddressBookAuthor];
 }
 
 - (NSString *)getNowBundleVersion
@@ -99,6 +102,7 @@
             return;
         }
         
+        [_synMemberInfoArray removeAllObjects];
         NSArray *synMemberInfoArray = request.responseObject;
         for (int i = 0; i < synMemberInfoArray.count; i++) {
             MShopSynMemberInfoModel *model = [MShopSynMemberInfoModel MM_modelWithJSON:synMemberInfoArray[i]];
@@ -106,7 +110,7 @@
         }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf asynInfoToPhone];
+        [strongSelf askIfAsynInfoToPhone];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -116,11 +120,36 @@
     
 }
 
-
--(void)asynInfoToPhone
+-(void)getAddressBookAuthor
 {
-    //1.是否清空联系人
-    //2.同步联系人
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+    if (granted)
+    {
+        NSLog(@"授权成功！");
+    }
+    else
+    {
+        NSLog(@"授权失败!");
+    }
+    });
+    CFRelease(addressBook);
+}
+
+-(void)askIfAsynInfoToPhone
+{
+    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+    [alert addButton:@"取消" actionBlock:nil];
+    [alert addButton:@"先清空本地人然后再同步" actionBlock:^{
+        
+        
+    }];
+    [alert addButton:@"直接同步" actionBlock:^{
+        
+        
+    }];
+    NSString *subTitle = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
+    [alert showNotice:@"新版本" subTitle:subTitle closeButtonTitle:nil duration:0];
 }
 
 - (void)didReceiveMemoryWarning {

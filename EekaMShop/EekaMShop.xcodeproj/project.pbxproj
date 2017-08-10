@@ -19,6 +19,16 @@
 		AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */; };
 		AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */; };
 		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
+		AC38C2C01F3BE1B100AD8707 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */; };
+		AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B21F3BE1B100AD8707 /* SCLAlertViewResponder.m */; };
+		AC38C2C21F3BE1B100AD8707 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B41F3BE1B100AD8707 /* SCLAlertViewStyleKit.m */; };
+		AC38C2C31F3BE1B100AD8707 /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B61F3BE1B100AD8707 /* SCLButton.m */; };
+		AC38C2C41F3BE1B100AD8707 /* SCLSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B91F3BE1B100AD8707 /* SCLSwitchView.m */; };
+		AC38C2C51F3BE1B100AD8707 /* SCLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2BB1F3BE1B100AD8707 /* SCLTextView.m */; };
+		AC38C2C61F3BE1B100AD8707 /* SCLTimerDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2BD1F3BE1B100AD8707 /* SCLTimerDisplay.m */; };
+		AC38C2C71F3BE1B100AD8707 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2BF1F3BE1B100AD8707 /* UIImage+ImageEffects.m */; };
+		AC38C2CA1F3BE28900AD8707 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC38C2C81F3BE28900AD8707 /* AddressBook.framework */; };
+		AC38C2CB1F3BE28900AD8707 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */; };
 		AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */; };
 		AC567D7A1F3B10F400EE33BD /* MShopSynMemberInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC567D791F3B10F400EE33BD /* MShopSynMemberInfoModel.m */; };
 		AC6670A81F0B25C00067F6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670A71F0B25C00067F6EE /* main.m */; };
@@ -204,6 +214,25 @@
 		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
 		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
 		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
+		AC38C2AF1F3BE1B100AD8707 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
+		AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
+		AC38C2B11F3BE1B100AD8707 /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
+		AC38C2B21F3BE1B100AD8707 /* SCLAlertViewResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewResponder.m; sourceTree = "<group>"; };
+		AC38C2B31F3BE1B100AD8707 /* SCLAlertViewStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewStyleKit.h; sourceTree = "<group>"; };
+		AC38C2B41F3BE1B100AD8707 /* SCLAlertViewStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewStyleKit.m; sourceTree = "<group>"; };
+		AC38C2B51F3BE1B100AD8707 /* SCLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLButton.h; sourceTree = "<group>"; };
+		AC38C2B61F3BE1B100AD8707 /* SCLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLButton.m; sourceTree = "<group>"; };
+		AC38C2B71F3BE1B100AD8707 /* SCLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
+		AC38C2B81F3BE1B100AD8707 /* SCLSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLSwitchView.h; sourceTree = "<group>"; };
+		AC38C2B91F3BE1B100AD8707 /* SCLSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLSwitchView.m; sourceTree = "<group>"; };
+		AC38C2BA1F3BE1B100AD8707 /* SCLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTextView.h; sourceTree = "<group>"; };
+		AC38C2BB1F3BE1B100AD8707 /* SCLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTextView.m; sourceTree = "<group>"; };
+		AC38C2BC1F3BE1B100AD8707 /* SCLTimerDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTimerDisplay.h; sourceTree = "<group>"; };
+		AC38C2BD1F3BE1B100AD8707 /* SCLTimerDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTimerDisplay.m; sourceTree = "<group>"; };
+		AC38C2BE1F3BE1B100AD8707 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		AC38C2BF1F3BE1B100AD8707 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		AC38C2C81F3BE28900AD8707 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		AC567D751F3B0EE200EE33BD /* MFGetSynMemberInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGetSynMemberInfoApi.h; sourceTree = "<group>"; };
 		AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFGetSynMemberInfoApi.m; sourceTree = "<group>"; };
 		AC567D781F3B10F400EE33BD /* MShopSynMemberInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopSynMemberInfoModel.h; sourceTree = "<group>"; };
@@ -479,6 +508,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC38C2CA1F3BE28900AD8707 /* AddressBook.framework in Frameworks */,
+				AC38C2CB1F3BE28900AD8707 /* AddressBookUI.framework in Frameworks */,
 				AC03A95B1F31B26A004D4DDC /* libresolv.tbd in Frameworks */,
 				AC03A9591F31B229004D4DDC /* UserNotifications.framework in Frameworks */,
 				AC03A94F1F31AD58004D4DDC /* CFNetwork.framework in Frameworks */,
@@ -517,6 +548,30 @@
 				AC03A9541F31ADEC004D4DDC /* JPUSHService.h */,
 			);
 			path = JPUSH;
+			sourceTree = "<group>";
+		};
+		AC38C2AE1F3BE1B100AD8707 /* SCLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				AC38C2AF1F3BE1B100AD8707 /* SCLAlertView.h */,
+				AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */,
+				AC38C2B11F3BE1B100AD8707 /* SCLAlertViewResponder.h */,
+				AC38C2B21F3BE1B100AD8707 /* SCLAlertViewResponder.m */,
+				AC38C2B31F3BE1B100AD8707 /* SCLAlertViewStyleKit.h */,
+				AC38C2B41F3BE1B100AD8707 /* SCLAlertViewStyleKit.m */,
+				AC38C2B51F3BE1B100AD8707 /* SCLButton.h */,
+				AC38C2B61F3BE1B100AD8707 /* SCLButton.m */,
+				AC38C2B71F3BE1B100AD8707 /* SCLMacros.h */,
+				AC38C2B81F3BE1B100AD8707 /* SCLSwitchView.h */,
+				AC38C2B91F3BE1B100AD8707 /* SCLSwitchView.m */,
+				AC38C2BA1F3BE1B100AD8707 /* SCLTextView.h */,
+				AC38C2BB1F3BE1B100AD8707 /* SCLTextView.m */,
+				AC38C2BC1F3BE1B100AD8707 /* SCLTimerDisplay.h */,
+				AC38C2BD1F3BE1B100AD8707 /* SCLTimerDisplay.m */,
+				AC38C2BE1F3BE1B100AD8707 /* UIImage+ImageEffects.h */,
+				AC38C2BF1F3BE1B100AD8707 /* UIImage+ImageEffects.m */,
+			);
+			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
 		AC66709A1F0B25C00067F6EE = {
@@ -793,6 +848,8 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC38C2C81F3BE28900AD8707 /* AddressBook.framework */,
+				AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */,
 				AC03A95A1F31B26A004D4DDC /* libresolv.tbd */,
 				AC03A9581F31B229004D4DDC /* UserNotifications.framework */,
 				AC03A94E1F31AD58004D4DDC /* CFNetwork.framework */,
@@ -819,6 +876,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AC38C2AE1F3BE1B100AD8707 /* SCLAlertView */,
 				AC7D01881F32CF0000912EDA /* SVPullToRefresh */,
 				AC03A9501F31ADEC004D4DDC /* JPUSH */,
 				AC9F83D51F2C728E00952678 /* XWScanImage */,
@@ -1307,6 +1365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC7399131F22034500F753C2 /* NSArray+SafeInsert.m in Sources */,
+				AC38C2C31F3BE1B100AD8707 /* SCLButton.m in Sources */,
 				AC867E741F1D9BB400694086 /* NSObject+YYModel.m in Sources */,
 				AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */,
 				AC867E551F1D99E600694086 /* MMUIView.m in Sources */,
@@ -1326,6 +1385,7 @@
 				AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */,
 				AC867E441F1D99E600694086 /* UIViewController+FullScreen.m in Sources */,
 				AC867E781F1D9BB400694086 /* XXNibBridge.m in Sources */,
+				AC38C2C01F3BE1B100AD8707 /* SCLAlertView.m in Sources */,
 				AC867E5C1F1D99E600694086 /* MFTableViewSectionInfo.m in Sources */,
 				AC7C285E1F209B51003C0C4C /* MShopLoginTable+WCDB.mm in Sources */,
 				AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */,
@@ -1342,6 +1402,7 @@
 				AC77260C1F2AEACA005B2100 /* MShopGetConsumptionItemsApi.m in Sources */,
 				AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */,
 				AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */,
+				AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,
 				AC867EFD1F1DF24100694086 /* YTKAnimatingRequestAccessory.m in Sources */,
 				AC867E771F1D9BB400694086 /* HexColors.m in Sources */,
@@ -1362,6 +1423,7 @@
 				AC867E801F1D9CBB00694086 /* MBProgressHUD.m in Sources */,
 				AC7398FC1F21936800F753C2 /* MShopGetEmployeeListApi.m in Sources */,
 				AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				AC38C2C41F3BE1B100AD8707 /* SCLSwitchView.m in Sources */,
 				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */,
 				ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */,
 				AC867E461F1D99E600694086 /* UIViewController+UINavigationItem.m in Sources */,
@@ -1377,6 +1439,7 @@
 				AC76F3D91F289D5E00499C66 /* MShopMemberSearchBar.m in Sources */,
 				AC867E501F1D99E600694086 /* MMOnePixLayoutConstraint.m in Sources */,
 				AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */,
+				AC38C2C51F3BE1B100AD8707 /* SCLTextView.m in Sources */,
 				AC7E3F851F25DB270035E3DC /* MShopMemberProfileCellView.m in Sources */,
 				AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */,
 				AC7C28671F20B33F003C0C4C /* MShopMainFrameLogicController.m in Sources */,
@@ -1393,6 +1456,7 @@
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
 				AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */,
 				AC867E541F1D99E600694086 /* MMUITextField.m in Sources */,
+				AC38C2C71F3BE1B100AD8707 /* UIImage+ImageEffects.m in Sources */,
 				AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
 				AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */,
@@ -1410,7 +1474,9 @@
 				AC7726091F2ACF6F005B2100 /* MShopMemberConsumptionViewController.m in Sources */,
 				AC7C285B1F209A79003C0C4C /* MShopLoginUserInfo+WCDB.mm in Sources */,
 				AC7D01821F32B9C500912EDA /* MShopAppointmentModifyApi.m in Sources */,
+				AC38C2C61F3BE1B100AD8707 /* SCLTimerDisplay.m in Sources */,
 				AC7D017C1F32B7F500912EDA /* MShopAppointmentListViewController.m in Sources */,
+				AC38C2C21F3BE1B100AD8707 /* SCLAlertViewStyleKit.m in Sources */,
 				AC867E761F1D9BB400694086 /* LYSideslipCell.m in Sources */,
 				AC867E5D1F1D99E600694086 /* MFTableViewUserInfo.m in Sources */,
 				AC867E5B1F1D99E600694086 /* MFTableViewInfo.m in Sources */,

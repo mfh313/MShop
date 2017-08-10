@@ -12,3 +12,5 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "SVPullToRefresh.h"
+
+#import "SCLAlertView.h"
