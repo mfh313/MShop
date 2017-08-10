@@ -145,7 +145,12 @@
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     [alert addButton:@"取消" actionBlock:nil];
     [alert addButton:@"清空联系人" actionBlock:^{
-        [weakSelf cleanAddressBook];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            [weakSelf cleanAddressBook];
+            
+        });
     }];
     [alert addButton:@"确定" actionBlock:^{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -197,14 +202,12 @@
             _synProgressLabel.hidden = NO;
             _synProgressLabel.text = [NSString stringWithFormat:@"正在同步 %@/%@",@(i),@(models.count)];
         }));
-        
-        if (i == models.count - 1) {
-            dispatch_main_async_safe((^{
-                [self hiddenMBStatus];
-                _synProgressLabel.hidden = YES;
-            }));
-        }
     }
+    
+    dispatch_main_async_safe((^{
+        [self hiddenMBStatus];
+        _synProgressLabel.hidden = YES;
+    }));
     
     CFRelease(addressbookRef);
 }
@@ -229,15 +232,12 @@
             _synProgressLabel.hidden = NO;
             _synProgressLabel.text = [NSString stringWithFormat:@"正在删除 %@/%@",@(index),@(addressbookArray.count)];
         }));
-        
-        if ([addressbookArray indexOfObject:obj] == addressbookArray.count - 1)
-        {
-            dispatch_main_async_safe(^{
-                [self hiddenMBStatus];
-                _synProgressLabel.hidden = YES;
-            });
-        }
     }
+    
+    dispatch_main_async_safe(^{
+        [self hiddenMBStatus];
+        _synProgressLabel.hidden = YES;
+    });
     
     ABAddressBookSave(addressbookRef, NULL);
     CFRelease(addressbookRef);
