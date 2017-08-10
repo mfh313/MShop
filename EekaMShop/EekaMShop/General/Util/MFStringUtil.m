@@ -63,4 +63,24 @@
     return [NSString stringWithFormat:@"¥ %.2f ",money.floatValue];
 }
 
++(NSTimeZone *)timeZone
+{
+    return [NSTimeZone timeZoneWithName:@"GMT"];
+}
+
++(NSDate *)dateWithTimeString:(NSString *)dateStr
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setTimeZone:[[self class] timeZone]];
+    NSDate *date = [formatter dateFromString:dateStr];
+    
+    if (date == nil) {
+        NSString *defaultDateString = [formatter stringFromDate:[NSDate date]];
+        date = [formatter dateFromString:defaultDateString];
+    }
+    
+    return date;
+}
+
 @end

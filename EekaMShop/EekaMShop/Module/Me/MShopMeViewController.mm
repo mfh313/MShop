@@ -142,20 +142,50 @@
     
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     [alert addButton:@"取消" actionBlock:nil];
-    [alert addButton:@"先清空本地人然后再同步" actionBlock:^{
-        
-        
-    }];
+//    [alert addButton:@"先清空本地人然后再同步" actionBlock:^{
+//        
+//        
+//    }];
     [alert addButton:@"直接同步" actionBlock:^{
         [weakSelf asynAddressBookInfo];
     }];
-    NSString *title = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
-    [alert showNotice:title subTitle:nil closeButtonTitle:nil duration:0];
+    NSString *subTitle = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
+    [alert showNotice:@"提醒" subTitle:subTitle closeButtonTitle:nil duration:0];
 }
 
 -(void)asynAddressBookInfo
 {
+//    _synMemberInfoArray = [NSMutableArray arrayWithArray:@[_synMemberInfoArray.firstObject]];
     
+    ABAddressBookRef addressbookRef = ABAddressBookCreate();
+    for (int i = 0; i < _synMemberInfoArray.count; i++) {
+        MShopSynMemberInfoModel *model = _synMemberInfoArray[i];
+        
+        ABRecordRef personRef = ABPersonCreate();
+        CFErrorRef error = NULL;
+        
+        NSString *name = model.userName;
+        NSString *phone = model.phone;
+        NSString *note = [NSString stringWithFormat:@"维护员工-%@",model.maintainEmployeeName];
+        NSDate *birthday = [MFStringUtil dateWithTimeString:model.birthday];
+        
+        ABRecordSetValue(personRef, kABPersonNoteProperty, (__bridge CFStringRef)note, &error);
+        ABRecordSetValue(personRef, kABPersonFirstNameProperty, (__bridge CFStringRef)name, &error);
+        ABRecordSetValue(personRef, kABPersonBirthdayProperty, (__bridge CFDateRef)birthday, &error);
+        
+        ABMultiValueRef phoneRef = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        ABMultiValueAddValueAndLabel(phoneRef, (__bridge CFStringRef)phone, kABPersonPhoneIPhoneLabel, NULL);
+        
+        ABRecordSetValue(personRef, kABPersonPhoneProperty, phoneRef, &error);
+        
+        ABAddressBookAddRecord(addressbookRef, personRef, nil);
+        
+        CFRelease(personRef);
+    }
+    
+    ABAddressBookSave(addressbookRef, NULL);
+    
+    CFRelease(addressbookRef);
 }
 
 - (void)didReceiveMemoryWarning {
