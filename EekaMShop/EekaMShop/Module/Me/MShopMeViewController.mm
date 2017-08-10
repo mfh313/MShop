@@ -160,6 +160,8 @@
 {
     NSMutableArray *models = _synMemberInfoArray;
     
+    [self showMBCircleInWindow];
+    
     ABAddressBookRef addressbookRef = ABAddressBookCreate();
     for (int i = 0; i < models.count; i++) {
         MShopSynMemberInfoModel *model = _synMemberInfoArray[i];
@@ -186,6 +188,10 @@
         CFRelease(personRef);
         
         ABAddressBookSave(addressbookRef, NULL);
+        
+        if (i == models.count - 1) {
+            [self hiddenMBStatus];
+        }
     }
     
     CFRelease(addressbookRef);

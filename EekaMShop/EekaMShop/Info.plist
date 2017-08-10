@@ -45,6 +45,8 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
+	<string>允许访问相机</string>
+	<key>NSContactsUsageDescription</key>
 	<string>允许访问通讯录才能读写本设备的联系人</string>
 	<key>UIBackgroundModes</key>
 	<array>
