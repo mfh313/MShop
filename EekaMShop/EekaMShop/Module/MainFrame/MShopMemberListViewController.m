@@ -107,8 +107,8 @@
     
     if ([numberPred evaluateWithObject:str])
     {
-        //至少四位数字
-        NSString *regex = @"[0-9]{4,}";
+//        NSString *regex = @"[0-9]{4,}"; //至少四位数字
+        NSString *regex = @"1[3|4|5|7|8][0-9]\\d{8}$";
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
         
         BOOL isMatch = [pred evaluateWithObject:str];
