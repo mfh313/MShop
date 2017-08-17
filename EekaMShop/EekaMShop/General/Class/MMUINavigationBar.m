@@ -15,12 +15,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         _barBackShadowView = [UIView new];
-        _barBackShadowView.frame = CGRectMake(0, -20, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20);
+        _barBackShadowView.frame = CGRectMake(0, -20, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) + 20);
         _barBackShadowView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-        _barBackShadowView.backgroundColor = [UIColor hx_colorWithHexString:@"0080C0"];
-//        [self addSubview:_barBackShadowView];
-        
-        [self bringSubviewToFront:_barBackShadowView];
+        _barBackShadowView.backgroundColor = [UIColor hx_colorWithHexString:@"000000"];
+        [self addSubview:_barBackShadowView];
         
         //去掉底部黑线
         [self setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
@@ -33,13 +31,20 @@
         _navBarLine.backgroundColor = [UIColor hx_colorWithHexString:@"d3d4d6"];
         [self addSubview:_navBarLine];
         
-        self.translucent = YES;
+        [self sendSubviewToBack:_barBackShadowView];
+        [self sendSubviewToBack:_navBarLine];
         
     }
     
     return self;
 }
 
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    _barBackShadowView.frame = CGRectMake(0, -20, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) + 20);
+}
 
 
 @end

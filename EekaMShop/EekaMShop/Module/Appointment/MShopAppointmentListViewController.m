@@ -231,6 +231,7 @@
         _navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
         _navTitleLabel.textAlignment = NSTextAlignmentCenter;
         _navTitleLabel.font = [UIFont systemFontOfSize:16.0f];
+        _navTitleLabel.textColor = [UIColor whiteColor];
         [self.navigationItem setTitleView:_navTitleLabel];
     }
     

@@ -28,4 +28,10 @@
     return self.topViewController.shouldAutorotate;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    UIViewController* topVC = self.topViewController;
+    return [topVC preferredStatusBarStyle];
+}
+
 @end

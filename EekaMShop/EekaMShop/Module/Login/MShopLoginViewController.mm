@@ -181,4 +181,9 @@
     [thirdPartyPlugin setPushAlias:pushAlias];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
 @end

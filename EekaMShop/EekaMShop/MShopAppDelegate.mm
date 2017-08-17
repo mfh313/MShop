@@ -42,6 +42,11 @@
     [loginService autoLogin];
     
     [self setWCDBMonitor];
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor clearColor];
+    NSDictionary *textAttributes = @{NSShadowAttributeName:shadow,NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
+    [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
         
     return YES;
 }
