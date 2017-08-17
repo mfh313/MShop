@@ -30,7 +30,7 @@
         _navBarLine = [UIView new];
         _navBarLine.frame = CGRectMake(0, CGRectGetHeight(self.bounds) - MFOnePixHeight, CGRectGetWidth(self.bounds), MFOnePixHeight);
         _navBarLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        _navBarLine.backgroundColor = [UIColor hx_colorWithHexString:@"d3d4d6" alpha:0.5];
+        _navBarLine.backgroundColor = [UIColor hx_colorWithHexString:@"d3d4d6"];
         [self addSubview:_navBarLine];
         
         self.translucent = YES;
