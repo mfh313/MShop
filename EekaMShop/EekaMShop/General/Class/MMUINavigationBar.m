@@ -22,10 +22,15 @@
         
         [self bringSubviewToFront:_barBackShadowView];
         
+        //去掉底部黑线
+        [self setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+        [self setShadowImage:[UIImage new]];
+        
+        //自定义黑线
         _navBarLine = [UIView new];
         _navBarLine.frame = CGRectMake(0, CGRectGetHeight(self.bounds) - MFOnePixHeight, CGRectGetWidth(self.bounds), MFOnePixHeight);
         _navBarLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        _navBarLine.backgroundColor = [UIColor clearColor];
+        _navBarLine.backgroundColor = [UIColor hx_colorWithHexString:@"d3d4d6" alpha:0.5];
         [self addSubview:_navBarLine];
         
         self.translucent = YES;
