@@ -20,7 +20,8 @@
 
 @interface MShopLoginViewController ()
 {
-    
+    __weak IBOutlet UIButton *_dianZBtn;
+    __weak IBOutlet UIButton *_dianYBtn;
 }
 
 @end
@@ -29,6 +30,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#ifdef DEBUG
+    [_dianZBtn setHidden:NO];
+    [_dianYBtn setHidden:NO];
+#else
+    
+#endif
     
 }
 
