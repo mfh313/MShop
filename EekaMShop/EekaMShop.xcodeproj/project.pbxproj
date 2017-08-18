@@ -1631,7 +1631,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
 				PRODUCT_NAME = eekamshop;
-				PROVISIONING_PROFILE = "d894121f-1089-4aa4-97c0-644786b8e35c";
+				PROVISIONING_PROFILE = "703b11fd-49ee-42b8-ab74-1d33c9b2a0e6";
 				PROVISIONING_PROFILE_SPECIFIER = "cn.eeka.eekamshop开发描述文件";
 			};
 			name = Debug;
