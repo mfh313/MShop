@@ -59,7 +59,7 @@
         
         [_employees removeAllObjects];
         
-        NSArray *employeeList = request.responseObject[@"userList"];
+        NSArray *employeeList = request.responseObject[@"employeeList"];
         for (int i = 0; i < employeeList.count; i++) {
             MShopEmployeeInfo *employeeInfo = [MShopEmployeeInfo MM_modelWithJSON:employeeList[i]];
             [_employees addObject:employeeInfo];
