@@ -44,6 +44,7 @@
 {
     [super layoutSubviews];
     _barBackShadowView.frame = CGRectMake(0, -20, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) + 20);
+    [self sendSubviewToBack:_barBackShadowView];
 }
 
 

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface MShopIndividualInfo : NSObject
 
 @property (nonatomic,strong) NSString *individualId;

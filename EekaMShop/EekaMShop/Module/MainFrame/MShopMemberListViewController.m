@@ -15,8 +15,9 @@
 #import "MShopSearchIndividualApi.h"
 #import "MShopMemberSearchBar.h"
 #import "MShopMemberListCellView.h"
+#import "MShopMemberListFreshDelegate.h"
 
-@interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate>
+@interface MShopMemberListViewController ()<MFTableViewInfoDelegate,MMSearchBarDelegate,MShopMemberListFreshDelegate>
 {
     NSMutableArray *_individualArray;
     MFTableViewInfo *m_tableViewInfo;
@@ -53,6 +54,12 @@
     [self getIndividualList];
 }
 
+#pragma mark - MShopMemberListFreshDelegate
+-(void)freshMemberList
+{
+    [self getIndividualList];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -60,8 +67,6 @@
     if ([self shouldShowTabbar]) {
         [[MShopAppViewControllerManager getTabBarController] showTabBar];
     }
-    
-    [self getIndividualList];
 }
 
 #pragma mark - MMSearchBarDelegate
@@ -94,7 +99,6 @@
     
     return YES;
 }
-
 
 - (BOOL)checkStrLimitFourNumber:(NSString *)str
 {
@@ -210,8 +214,6 @@
     __weak typeof(self) weakSelf = self;
     
     MShopGetMemberListApi *getMemberListApi = [MShopGetMemberListApi new];
-    getMemberListApi.animatingText = @"正在获取会员列表...";
-    getMemberListApi.animatingView = MFAppWindow;
     [getMemberListApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         if (!getMemberListApi.messageSuccess) {
@@ -301,6 +303,7 @@
 {
     MShopMemberDetailViewController *memberDetailVC = [MShopMemberDetailViewController new];
     memberDetailVC.individual = individual;
+    memberDetailVC.m_delegate = self;
     memberDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:memberDetailVC animated:YES];
 }

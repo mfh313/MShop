@@ -7,11 +7,13 @@
 //
 
 #import "MMViewController.h"
+#import "MShopMemberListFreshDelegate.h"
 
 @class MShopIndividualInfo;
 @interface MShopMemberDetailViewController : MMViewController
 
 @property (nonatomic,strong) MShopIndividualInfo *individual;
 @property (nonatomic,strong) NSString *individualId;
+@property (nonatomic,weak) id<MShopMemberListFreshDelegate> m_delegate;
 
 @end

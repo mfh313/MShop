@@ -49,6 +49,15 @@
     }
 }
 
+-(void)onClickBackBtn:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    if ([self.m_delegate respondsToSelector:@selector(freshMemberList)]) {
+        [self.m_delegate freshMemberList];
+    }
+}
+
 -(void)makeMemberInfoViews
 {
     [self makeInfoSection];
