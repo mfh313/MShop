@@ -38,7 +38,7 @@
     [self setTestBtnHidden:YES];
     
     UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longGesture.minimumPressDuration = 1.0;
+    longGesture.minimumPressDuration = 2.0;
     [_WXLoginBtn addGestureRecognizer:longGesture];
     
 #endif
