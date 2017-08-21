@@ -20,6 +20,7 @@
 
 @interface MShopLoginViewController ()
 {
+    __weak IBOutlet UIButton *_WXLoginBtn;
     __weak IBOutlet UIButton *_dianZBtn;
     __weak IBOutlet UIButton *_dianYBtn;
 }
@@ -32,17 +33,36 @@
     [super viewDidLoad];
     
 #ifdef DEBUG
-//    [_dianZBtn setHidden:NO];
-//    [_dianYBtn setHidden:NO];
+    [self setTestBtnHidden:NO];
 #else
+    [self setTestBtnHidden:YES];
+    
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longGesture.minimumPressDuration = 1.0;
+    [_WXLoginBtn addGestureRecognizer:longGesture];
     
 #endif
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+-(void)setTestBtnHidden:(BOOL)hidden
+{
+    [_dianZBtn setHidden:hidden];
+    [_dianYBtn setHidden:hidden];
 }
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
+    {
+        [self setTestBtnHidden:NO];
+    }
+    else if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
+    {
+
+    }
+}
+
 
 - (IBAction)onClickWXLogin:(id)sender {
     
@@ -192,6 +212,10 @@
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleDefault;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 @end

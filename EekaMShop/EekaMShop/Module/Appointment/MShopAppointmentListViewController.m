@@ -23,6 +23,8 @@
     NSInteger _pageIndex;
     NSInteger _pullPrePageIndex;
     NSInteger _pageSize;
+    
+    BOOL _hasFootBlankLine;
 }
 
 @end
@@ -33,9 +35,7 @@
     [super viewDidLoad];
     
     self.title = @"预约列表";
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+        
     _appointmentList = [NSMutableArray array];
     
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -57,7 +57,7 @@
         [weakSelf pullUPAppointmentList];
     }];
 
-//    [contentTableView triggerPullToRefresh];
+    [contentTableView triggerPullToRefresh];
 }
 
 -(void)initPullToRefreshConfig
@@ -105,12 +105,14 @@
         {
             [_appointmentList addObjectsFromArray:pullAppointmentList];
             
-            [strongSelf reloadTableView];
+            _hasFootBlankLine = NO;
         }
         else
         {
-            [strongSelf showTips:@"没有数据了！"];
+            _hasFootBlankLine = YES;
         }
+        
+        [strongSelf reloadTableView];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -147,6 +149,8 @@
             [_appointmentList addObject:dataItem];
         }
         
+        _hasFootBlankLine = NO;
+        
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
         
@@ -164,8 +168,78 @@
     
     [m_tableViewInfo clearAllSection];
     
-    MFTableViewSectionInfo *sectionInfo = [self addAppointmentSection];
+    if (_appointmentList.count > 0)
+    {
+        MFTableViewSectionInfo *sectionInfo = [self addAppointmentSection];
+        [m_tableViewInfo addSection:sectionInfo];
+        
+        if (_hasFootBlankLine)
+        {
+            [self addFootBlankLine];
+        }
+    }
+    else
+    {
+        [self addBlankView];
+    }
+}
+
+-(void)addFootBlankLine
+{
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeFootBlankLineCell:)
+                                                             makeTarget:self
+                                                              actionSel:nil
+                                                           actionTarget:self
+                                                                 height:30.0f
+                                                               userInfo:nil];
+    [sectionInfo addCell:cellInfo];
     [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)makeFootBlankLineCell:(MFTableViewCell *)cell
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    contentView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    tipLabel.text = @"已经到底了！";
+    tipLabel.font = [UIFont systemFontOfSize:15.0f];
+    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [contentView addSubview:tipLabel];
+    
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;
+}
+
+-(void)addBlankView
+{
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeBlankCell:)
+                                                             makeTarget:self
+                                                              actionSel:nil
+                                                           actionTarget:self
+                                                                 height:200.0f
+                                                               userInfo:nil];
+    [sectionInfo addCell:cellInfo];
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)makeBlankCell:(MFTableViewCell *)cell
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    contentView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    tipLabel.text = @"无预约记录";
+    tipLabel.font = [UIFont systemFontOfSize:16.0f];
+    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [contentView addSubview:tipLabel];
+    
+    cell.m_subContentView = contentView;
+    contentView.frame = cell.contentView.bounds;
 }
 
 -(MFTableViewSectionInfo *)addAppointmentSection

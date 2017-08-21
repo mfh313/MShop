@@ -75,6 +75,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_WXLoginBtn" destination="fZt-nZ-WoI" id="9cv-9k-cfz"/>
                         <outlet property="_dianYBtn" destination="q32-kK-lTq" id="SRe-Cb-4SM"/>
                         <outlet property="_dianZBtn" destination="Xda-T4-GbI" id="Urs-iQ-BT8"/>
                     </connections>
