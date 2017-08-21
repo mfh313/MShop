@@ -32,8 +32,8 @@
     [super viewDidLoad];
     
 #ifdef DEBUG
-    [_dianZBtn setHidden:NO];
-    [_dianYBtn setHidden:NO];
+//    [_dianZBtn setHidden:NO];
+//    [_dianYBtn setHidden:NO];
 #else
     
 #endif

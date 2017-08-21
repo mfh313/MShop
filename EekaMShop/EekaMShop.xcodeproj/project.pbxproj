@@ -29,6 +29,7 @@
 		AC38C2C71F3BE1B100AD8707 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2BF1F3BE1B100AD8707 /* UIImage+ImageEffects.m */; };
 		AC38C2CA1F3BE28900AD8707 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC38C2C81F3BE28900AD8707 /* AddressBook.framework */; };
 		AC38C2CB1F3BE28900AD8707 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */; };
+		AC396F191F4A73590071434E /* MGJRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC396F181F4A73590071434E /* MGJRouter.m */; };
 		AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */; };
 		AC567D7A1F3B10F400EE33BD /* MShopSynMemberInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC567D791F3B10F400EE33BD /* MShopSynMemberInfoModel.m */; };
 		AC6670A81F0B25C00067F6EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6670A71F0B25C00067F6EE /* main.m */; };
@@ -233,6 +234,8 @@
 		AC38C2BF1F3BE1B100AD8707 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		AC38C2C81F3BE28900AD8707 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		AC396F171F4A73590071434E /* MGJRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGJRouter.h; sourceTree = "<group>"; };
+		AC396F181F4A73590071434E /* MGJRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGJRouter.m; sourceTree = "<group>"; };
 		AC567D751F3B0EE200EE33BD /* MFGetSynMemberInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGetSynMemberInfoApi.h; sourceTree = "<group>"; };
 		AC567D761F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFGetSynMemberInfoApi.m; sourceTree = "<group>"; };
 		AC567D781F3B10F400EE33BD /* MShopSynMemberInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopSynMemberInfoModel.h; sourceTree = "<group>"; };
@@ -575,6 +578,15 @@
 			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
+		AC396F161F4A73590071434E /* MGJRouter */ = {
+			isa = PBXGroup;
+			children = (
+				AC396F171F4A73590071434E /* MGJRouter.h */,
+				AC396F181F4A73590071434E /* MGJRouter.m */,
+			);
+			path = MGJRouter;
+			sourceTree = "<group>";
+		};
 		AC66709A1F0B25C00067F6EE = {
 			isa = PBXGroup;
 			children = (
@@ -878,6 +890,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AC396F161F4A73590071434E /* MGJRouter */,
 				AC38C2AE1F3BE1B100AD8707 /* SCLAlertView */,
 				AC7D01881F32CF0000912EDA /* SVPullToRefresh */,
 				AC03A9501F31ADEC004D4DDC /* JPUSH */,
@@ -1369,6 +1382,7 @@
 				AC7399131F22034500F753C2 /* NSArray+SafeInsert.m in Sources */,
 				AC38C2C31F3BE1B100AD8707 /* SCLButton.m in Sources */,
 				AC867E741F1D9BB400694086 /* NSObject+YYModel.m in Sources */,
+				AC396F191F4A73590071434E /* MGJRouter.m in Sources */,
 				AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */,
 				AC867E551F1D99E600694086 /* MMUIView.m in Sources */,
 				AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */,

@@ -34,6 +34,8 @@
     
     self.title = @"预约列表";
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     _appointmentList = [NSMutableArray array];
     
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -55,7 +57,7 @@
         [weakSelf pullUPAppointmentList];
     }];
 
-    [contentTableView triggerPullToRefresh];
+//    [contentTableView triggerPullToRefresh];
 }
 
 -(void)initPullToRefreshConfig
