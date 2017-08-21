@@ -84,4 +84,11 @@ NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
     return MFURLWithPara(@"employeeApi/getInfoByExcel.json");
 }
 
++(NSString *)pushMessageURL
+{
+    //message
+    //alias
+    return MFURLWithPara(@"employeeApi/pushMessage.json");
+}
+
 @end
