@@ -54,7 +54,7 @@
     _synMemberInfoArray = [NSMutableArray array];
     _synProgressLabel.hidden = YES;
     
-    [self getAddressBookAuthor];
+//    [self getAddressBookAuthor];
 }
 
 - (NSString *)getNowBundleVersion
