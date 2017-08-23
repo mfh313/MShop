@@ -18,7 +18,6 @@
 #import "WWKApi.h"
 #import "MShopLoginService.h"
 
-
 #define JSPatch_APP_KEY @"a3ea2110954730fe"
 #define BUGLY_APP_ID @"11db5a0376"
 #define JPUSH_APP_KEY @"97144cda4d1a6c13f653b8f1"
@@ -38,12 +37,9 @@ static NSInteger seq = 0;
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self registerBugly];
-    
     [self registerJSPatchHotFix];
-    
     [self registerJPUSHServiceApplication:application didFinishLaunchingWithOptions:launchOptions];
     [self registerJPUSHNotificationCenter];
-    
     [self registerWWK];
 }
 
@@ -83,58 +79,24 @@ static NSInteger seq = 0;
 {
     NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
-    // 3.0.0及以后版本注册可以这样写，也可以继续用旧的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        //可以添加自定义categories
-        //    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-        //      NSSet<UNNotificationCategory *> *categories;
-        //      entity.categories = categories;
-        //    }
-        //    else {
-        //      NSSet<UIUserNotificationCategory *> *categories;
-        //      entity.categories = categories;
-        //    }
-    }
     
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
-    // 3.0.0以前版本旧的注册方式
-    //  if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-    //#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-    //    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-    //    entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
-    //    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-    //#endif
-    //  } else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    //      //可以添加自定义categories
-    //      [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-    //                                                        UIUserNotificationTypeSound |
-    //                                                        UIUserNotificationTypeAlert)
-    //                                            categories:nil];
-    //  } else {
-    //      //categories 必须为nil
-    //      [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-    //                                                        UIRemoteNotificationTypeSound |
-    //                                                        UIRemoteNotificationTypeAlert)
-    //                                            categories:nil];
-    //  }
-    
-    //如不需要使用IDFA，advertisingIdentifier 可为nil
     [JPUSHService setupWithOption:launchOptions
                            appKey:JPUSH_APP_KEY
                           channel:@"Publish channel"
                  apsForProduction:NO
             advertisingIdentifier:advertisingId];
     
-    //2.1.9版本新增获取registration id block接口。
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
-        if(resCode == 0){
+        if(resCode == 0)
+        {
             NSLog(@"registrationID获取成功：%@",registrationID);
-            
         }
-        else{
+        else
+        {
             NSLog(@"registrationID获取失败，code：%d",resCode);
         }
     }];
@@ -206,9 +168,8 @@ static NSInteger seq = 0;
 }
 #endif
 
-// log NSSet with UTF8
-// if not ,log will be \Uxxx
-- (NSString *)logDic:(NSDictionary *)dic {
+- (NSString *)logDic:(NSDictionary *)dic
+{
     if (![dic count]) {
         return nil;
     }
@@ -220,11 +181,7 @@ static NSInteger seq = 0;
     NSString *tempStr3 =
     [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
     NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
-//    NSString *str =
-//    [NSPropertyListSerialization propertyListFromData:tempData
-//                                     mutabilityOption:NSPropertyListImmutable
-//                                               format:NULL
-//                                     errorDescription:NULL];
+
     NSString *str = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:NULL error:NULL];
     return str;
 }
@@ -338,16 +295,22 @@ static NSInteger seq = 0;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSLog(@"title=%@,content=%@,[self logDic:extra]=%@", title,content,[self logDic:extra]);
     
-    NSString *currentContent = [NSString
-                                stringWithFormat:
-                                @"收到自定义消息:%@\ntitle:%@\ncontent:%@\nextra:%@\n",
-                                [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                               dateStyle:NSDateFormatterNoStyle
-                                                               timeStyle:NSDateFormatterMediumStyle],
-                                title, content, [self logDic:extra]];
-    NSLog(@"%@", currentContent);
+//    {
+//        "pushkey": "versionUpdate",
+//        "version": "1.0.0.0",
+//        "downloadUrl": "itms-services://?action=download-manifest&url=https://www.eeka.info/EekaMShop_test/eekamshop.plist",
+//        "baseOnServer": "N"
+//    }
     
+    NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data
+                                                                options:NSJSONReadingMutableContainers
+                                                                  error:nil];
+    NSLog(@"jsonData=%@",jsonData);
+
 }
 
 - (void)serviceError:(NSNotification *)notification {

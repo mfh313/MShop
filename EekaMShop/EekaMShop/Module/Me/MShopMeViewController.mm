@@ -82,10 +82,10 @@
 {
     WWKSendMessageReq *req = [[WWKSendMessageReq alloc] init];
     WWKMessageLinkAttachment *attachment = [[WWKMessageLinkAttachment alloc] init];
-    attachment.title = @"赢家M所APP测试版分享";
+    attachment.title = @"赢家M所APP分享";
     attachment.summary = @"建议在Safari上打开网页";
-    attachment.url = @"https://www.eeka.info/eekamshop_test.html";
-    attachment.iconurl = @"https://www.eeka.info/EekaMShop_test/mclubShare.png";
+    attachment.url = @"https://www.eeka.info/eekamshop.html";
+    attachment.iconurl = @"https://www.eeka.info/EekaMShop/mclubShare.png";
     req.attachment = attachment;
     [WWKApi sendReq:req];
 }

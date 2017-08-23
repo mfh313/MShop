@@ -9,12 +9,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Vendors/ThirdPartyPlugin/MFThirdPartyPlugin.m"
-            timestampString = "523358543.580523"
+            filePath = "EekaMShop/Module/Me/MShopMeViewController.mm"
+            timestampString = "524032120.781035"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "-cleanAddressBook"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EekaMShop/Vendors/ThirdPartyPlugin/MFThirdPartyPlugin.m"
+            timestampString = "525150674.482465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-networkDidReceiveMessage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/Me/MShopMeViewController.mm"
-            timestampString = "524032120.781035"
+            filePath = "EekaMShop/Vendors/ThirdPartyPlugin/MFThirdPartyPlugin.m"
+            timestampString = "525150698.092858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "-cleanAddressBook"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "-networkDidReceiveMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
