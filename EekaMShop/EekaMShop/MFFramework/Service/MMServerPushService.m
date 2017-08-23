@@ -16,6 +16,8 @@
 
 +(BOOL)needShowPushAlert:(NSString *)content
 {
+    NSLog(@"needShowPushAlert=%@",content);
+    
     if ([content isEqualToString:@"versionUpdate"])
     {
         SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
