@@ -32,7 +32,7 @@
         return NO;
     }
     
-    return NO;
+    return YES;
 }
 
 @end
