@@ -27,4 +27,6 @@
 
 -(void)deletePushAlias;
 
+-(void)setJPushTAG;
+
 @end

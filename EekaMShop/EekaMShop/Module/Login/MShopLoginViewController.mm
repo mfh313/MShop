@@ -188,25 +188,9 @@
 
 -(void)onDidLoginSuccess
 {
-    [self setJPushTAG];
-    [[MShopAppViewControllerManager getAppViewControllerManager] createMainTabViewController];
-}
-
-
--(void)setJPushTAG
-{
-    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
-    MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
-    
-    NSString *pushAlias = currentLoginUserInfo.userId;
-    
-    if ([currentLoginUserInfo isShopKeeper])
-    {
-        pushAlias = [NSString stringWithFormat:@"%@%@",[loginService currentLoginUserDepartment],@"店长"];
-    }
-    
     MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
-    [thirdPartyPlugin setPushAlias:pushAlias];
+    [thirdPartyPlugin setJPushTAG];
+    [[MShopAppViewControllerManager getAppViewControllerManager] createMainTabViewController];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle

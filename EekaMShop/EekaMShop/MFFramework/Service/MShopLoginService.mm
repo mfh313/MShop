@@ -39,6 +39,9 @@
 {
     if (![MFStringUtil isBlankString:[self getCurrentLoginToken]])
     {
+        MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
+        [thirdPartyPlugin setJPushTAG];
+        
         [[MShopAppViewControllerManager getAppViewControllerManager] createMainTabViewController];
     }
     else

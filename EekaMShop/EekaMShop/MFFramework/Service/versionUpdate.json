@@ -1,0 +1,11 @@
+{
+  "pushkey": "versionUpdate",
+  "version": "1.0.0.0",
+  "downloadUrl": "itms-services://?action=download-manifest&url=https://www.eeka.info/EekaMShop/eekamshop.plist",
+  "baseOnServer": "N",
+  "needShowAlert": "N"
+}
+
+/*
+ http://mp.eekamclub.com/ms/employeeApi/pushMessage.json?message=XXXXX&alias=xxx
+ */

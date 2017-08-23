@@ -17,6 +17,7 @@
 
 #import "WWKApi.h"
 #import "MShopLoginService.h"
+#import "MMServerPushService.h"
 
 #define JSPatch_APP_KEY @"a3ea2110954730fe"
 #define BUGLY_APP_ID @"11db5a0376"
@@ -113,8 +114,9 @@ static NSInteger seq = 0;
 {
     [JPUSHService handleRemoteNotification:userInfo];
     
-    NSString *content = [userInfo valueForKey:@"content"];
-    NSLog(@"content=%@",content);
+    NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    
+    [self handlePushMessage:alert];
 }
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
@@ -227,9 +229,6 @@ static NSInteger seq = 0;
     }
     
     if (extra.length) [extra insertString:@"\n\n" atIndex:0];
-    //    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"返回结果" message:[NSString stringWithFormat:@"错误码：%d\n错误信息：%@%@", resp.errCode, resp.errStr, extra] preferredStyle:UIAlertControllerStyleAlert];
-    //    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
-    //    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alert animated:YES completion:nil];
 }
 
 -(void)registerJPUSHNotificationCenter
@@ -292,25 +291,20 @@ static NSInteger seq = 0;
     NSString *title = [userInfo valueForKey:@"title"];
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSLog(@"title=%@,content=%@,[self logDic:extra]=%@", title,content,[self logDic:extra]);
     
-//    {
-//        "pushkey": "versionUpdate",
-//        "version": "1.0.0.0",
-//        "downloadUrl": "itms-services://?action=download-manifest&url=https://www.eeka.info/EekaMShop_test/eekamshop.plist",
-//        "baseOnServer": "N"
-//    }
-    
-    NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data
-                                                                options:NSJSONReadingMutableContainers
-                                                                  error:nil];
-    NSLog(@"jsonData=%@",jsonData);
+    [self handlePushMessage:content];
+}
 
+-(void)handlePushMessage:(NSString *)content
+{
+    BOOL needShowPushAlert = [MMServerPushService needShowPushAlert:content];
+    if (needShowPushAlert)
+    {
+        SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+        [alert showWarning:@"提示" subTitle:content closeButtonTitle:@"确定" duration:0];
+    }
 }
 
 - (void)serviceError:(NSNotification *)notification {
@@ -322,6 +316,22 @@ static NSInteger seq = 0;
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [JSPatch sync];
+}
+
+-(void)setJPushTAG
+{
+    MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
+    
+    NSString *pushAlias = currentLoginUserInfo.userId;
+    
+    if ([currentLoginUserInfo isShopKeeper])
+    {
+        pushAlias = [NSString stringWithFormat:@"%@%@",[loginService currentLoginUserDepartment],@"店长"];
+    }
+    
+    MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
+    [thirdPartyPlugin setPushAlias:pushAlias];
 }
 
 -(void)setPushAlias:(NSString *)pushAlias

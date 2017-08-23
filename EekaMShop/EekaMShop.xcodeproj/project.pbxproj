@@ -32,6 +32,8 @@
 		AC03A9591F31B229004D4DDC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A9581F31B229004D4DDC /* UserNotifications.framework */; };
 		AC03A95B1F31B26A004D4DDC /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03A95A1F31B26A004D4DDC /* libresolv.tbd */; };
 		AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */; };
+		AC254C3A1F4D5836007BE516 /* MMServerPushService.m in Sources */ = {isa = PBXBuildFile; fileRef = AC254C391F4D5836007BE516 /* MMServerPushService.m */; };
+		AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */ = {isa = PBXBuildFile; fileRef = AC254C3B1F4D6633007BE516 /* versionUpdate.json */; };
 		AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */; };
 		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
 		AC38C2C01F3BE1B100AD8707 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */; };
@@ -258,6 +260,9 @@
 		AC03A95C1F31B29C004D4DDC /* eekamshop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eekamshop.entitlements; sourceTree = "<group>"; };
 		AC2547B61F24ABEC00F54829 /* MShopMemberDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailViewController.h; sourceTree = "<group>"; };
 		AC2547B71F24ABEC00F54829 /* MShopMemberDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailViewController.m; sourceTree = "<group>"; };
+		AC254C381F4D5836007BE516 /* MMServerPushService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMServerPushService.h; sourceTree = "<group>"; };
+		AC254C391F4D5836007BE516 /* MMServerPushService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMServerPushService.m; sourceTree = "<group>"; };
+		AC254C3B1F4D6633007BE516 /* versionUpdate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = versionUpdate.json; sourceTree = "<group>"; };
 		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
 		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
 		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
@@ -873,6 +878,9 @@
 				AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */,
 				AC7C28621F20B01E003C0C4C /* MFNetWorkAgent.h */,
 				AC7C28631F20B01E003C0C4C /* MFNetWorkAgent.m */,
+				AC254C381F4D5836007BE516 /* MMServerPushService.h */,
+				AC254C391F4D5836007BE516 /* MMServerPushService.m */,
+				AC254C3B1F4D6633007BE516 /* versionUpdate.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1471,6 +1479,7 @@
 				A5C138841F4C60CC00F205E3 /* IQKeyboardManager.bundle in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
 				AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */,
+				AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */,
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,
@@ -1600,6 +1609,7 @@
 				AC867E751F1D9BB400694086 /* YYClassInfo.m in Sources */,
 				A5C138761F4C60CC00F205E3 /* IQNSArray+Sort.m in Sources */,
 				AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */,
+				AC254C3A1F4D5836007BE516 /* MMServerPushService.m in Sources */,
 				AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */,
 				AC7399051F21DCF500F753C2 /* MShopUserIdLoginApi.m in Sources */,
 				AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */,
