@@ -23,7 +23,7 @@ _PredictorSub11_C
 _PredictorSub12_C
 _PredictorSub13_C
 _lossless_enc_last_cpuinfo_used
-Apple LLVM version 8.1.0 (clang-802.0.41)
+Apple LLVM version 8.1.0 (clang-802.0.42)
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/SDWebImage/Vendors/libwebp/src/dsp/lossless_enc.c
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/SDWebImage
 PredictorSub13_C

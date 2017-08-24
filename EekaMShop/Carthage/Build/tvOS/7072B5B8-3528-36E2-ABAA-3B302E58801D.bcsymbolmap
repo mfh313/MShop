@@ -82,7 +82,7 @@ _OBJC_IVAR_$_YTKBaseRequest._constructingBodyBlock
 _OBJC_IVAR_$_YTKBaseRequest._resumableDownloadPath
 _OBJC_IVAR_$_YTKBaseRequest._resumableDownloadProgressBlock
 _OBJC_IVAR_$_YTKBaseRequest._requestPriority
-Apple LLVM version 8.1.0 (clang-802.0.41)
+Apple LLVM version 8.1.0 (clang-802.0.42)
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/YTKNetwork/YTKNetwork/YTKBaseRequest.m
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/YTKNetwork
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/YTKNetwork/YTKNetwork/YTKBaseRequest.h

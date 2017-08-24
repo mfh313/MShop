@@ -312,7 +312,7 @@ _url_session_manager_creation_queue.af_url_session_manager_creation_queue
 _url_session_manager_creation_queue.onceToken
 ___block_descriptor_tmp.760
 ___block_literal_global.761
-Apple LLVM version 8.1.0 (clang-802.0.41)
+Apple LLVM version 8.1.0 (clang-802.0.42)
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/AFNetworking/AFNetworking/AFURLSessionManager.m
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/AFNetworking
 __url_session_manager_creation_queue_block_invoke

@@ -1,5 +1,6 @@
 github "AFNetworking/AFNetworking" "3.1.0"
 github "Tencent/WCDB" "v1.0.3"
+github "Vizzle/VZFlexLayout" "2ffc2191d6a2476361dfc80645051b815bf91bee"
 github "ccgus/fmdb" "2.7.2"
 github "rs/SDWebImage" "4.1.0"
 github "yuantiku/YTKNetwork" "2.0.3"

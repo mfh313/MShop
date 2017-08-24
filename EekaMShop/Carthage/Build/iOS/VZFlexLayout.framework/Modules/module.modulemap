@@ -1,0 +1,6 @@
+framework module VZFlexLayout {
+  umbrella header "VZFlexLayout.h"
+
+  export *
+  module * { export * }
+}

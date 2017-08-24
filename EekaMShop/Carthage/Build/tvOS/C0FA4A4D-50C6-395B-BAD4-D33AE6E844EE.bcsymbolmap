@@ -45,7 +45,7 @@ ___block_descriptor_tmp.53
 _OBJC_IVAR_$_AFNetworkReachabilityManager._networkReachabilityStatus
 _OBJC_IVAR_$_AFNetworkReachabilityManager._networkReachabilityStatusBlock
 ___block_descriptor_tmp.121
-Apple LLVM version 8.1.0 (clang-802.0.41)
+Apple LLVM version 8.1.0 (clang-802.0.42)
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m
 /Users/eeka/Documents/SVN/EekaMShop/EekaMShop/Carthage/Checkouts/AFNetworking
 __destroy_helper_block_
