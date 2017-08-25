@@ -193,8 +193,6 @@
 		AC9F83D31F2C6D8800952678 /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; };
 		AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83D71F2C728E00952678 /* XWScanImage.m */; };
-		ACB3355E1F4FC79D0070AC8B /* VZFlexLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACB3355D1F4FC79D0070AC8B /* VZFlexLayout.framework */; };
-		ACB3355F1F4FC79D0070AC8B /* VZFlexLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ACB3355D1F4FC79D0070AC8B /* VZFlexLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDFE2441F2F20C3002795BE /* MShopMemberConsumptionTitleView.m */; };
 		ACDFE2471F2F2114002795BE /* MShopMemberConsumptionTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDFE2461F2F2114002795BE /* MShopMemberConsumptionTitleView.xib */; };
 /* End PBXBuildFile section */
@@ -211,7 +209,6 @@
 				AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */,
 				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
 				AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */,
-				ACB3355F1F4FC79D0070AC8B /* VZFlexLayout.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +552,6 @@
 		AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YTKNetwork.framework; path = Carthage/Build/iOS/YTKNetwork.framework; sourceTree = "<group>"; };
 		AC9F83D61F2C728E00952678 /* XWScanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScanImage.h; sourceTree = "<group>"; };
 		AC9F83D71F2C728E00952678 /* XWScanImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWScanImage.m; sourceTree = "<group>"; };
-		ACB3355D1F4FC79D0070AC8B /* VZFlexLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VZFlexLayout.framework; path = Carthage/Build/iOS/VZFlexLayout.framework; sourceTree = "<group>"; };
 		ACDE76CA1F469316003222AE /* MShopMemberListFreshDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberListFreshDelegate.h; sourceTree = "<group>"; };
 		ACDFE2431F2F20C3002795BE /* MShopMemberConsumptionTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberConsumptionTitleView.h; sourceTree = "<group>"; };
 		ACDFE2441F2F20C3002795BE /* MShopMemberConsumptionTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberConsumptionTitleView.m; sourceTree = "<group>"; };
@@ -590,7 +586,6 @@
 				AC77261E1F2B09D2005B2100 /* Bugly.framework in Frameworks */,
 				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
 				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
-				ACB3355E1F4FC79D0070AC8B /* VZFlexLayout.framework in Frameworks */,
 				AC7398F81F218FA500F753C2 /* SDWebImage.framework in Frameworks */,
 				AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */,
 			);
@@ -999,7 +994,6 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ACB3355D1F4FC79D0070AC8B /* VZFlexLayout.framework */,
 				AC38C2C81F3BE28900AD8707 /* AddressBook.framework */,
 				AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */,
 				AC03A95A1F31B26A004D4DDC /* libresolv.tbd */,
