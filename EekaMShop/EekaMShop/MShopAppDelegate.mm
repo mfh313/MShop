@@ -51,22 +51,6 @@
     return YES;
 }
 
--(void)setWCDBMonitor
-{
-    //Error Monitor
-    [WCTStatistics SetGlobalErrorReport:^(WCTError *error) {
-        NSLog(@"[WCDB]%@", error);
-    }];
-    
-    [WCTStatistics SetGlobalPerformanceTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
-        NSLog(@"Tag: %d", tag);
-        [sqls enumerateKeysAndObjectsUsingBlock:^(NSString *sql, NSNumber *count, BOOL *) {
-            NSLog(@"SQL: %@ Count: %d", sql, count.intValue);
-        }];
-        NSLog(@"Total cost %ld nanoseconds", (long)cost);
-    }];
-}
-
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return [self handleOpenURL:url sourceApplication:nil];
 }
@@ -160,6 +144,20 @@ fetchCompletionHandler:
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
-
+-(void)setWCDBMonitor
+{
+    //Error Monitor
+    [WCTStatistics SetGlobalErrorReport:^(WCTError *error) {
+        NSLog(@"[WCDB]%@", error);
+    }];
+    
+    [WCTStatistics SetGlobalPerformanceTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
+        NSLog(@"Tag: %d", tag);
+        [sqls enumerateKeysAndObjectsUsingBlock:^(NSString *sql, NSNumber *count, BOOL *) {
+            NSLog(@"SQL: %@ Count: %d", sql, count.intValue);
+        }];
+        NSLog(@"Total cost %ld nanoseconds", (long)cost);
+    }];
+}
 
 @end
