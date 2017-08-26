@@ -38,6 +38,7 @@
 		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
 		AC2C580C1F5168C600FB2E00 /* VZFlexLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */; };
 		AC2C580D1F5168C600FB2E00 /* VZFlexLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC2C58101F51695A00FB2E00 /* MFFlexLayoutCellView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC2C580F1F51695A00FB2E00 /* MFFlexLayoutCellView.mm */; };
 		AC38C2C01F3BE1B100AD8707 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */; };
 		AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B21F3BE1B100AD8707 /* SCLAlertViewResponder.m */; };
 		AC38C2C21F3BE1B100AD8707 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B41F3BE1B100AD8707 /* SCLAlertViewStyleKit.m */; };
@@ -270,6 +271,8 @@
 		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
 		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
 		AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VZFlexLayout.framework; path = Carthage/Build/iOS/VZFlexLayout.framework; sourceTree = "<group>"; };
+		AC2C580E1F51695A00FB2E00 /* MFFlexLayoutCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFlexLayoutCellView.h; sourceTree = "<group>"; };
+		AC2C580F1F51695A00FB2E00 /* MFFlexLayoutCellView.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = MFFlexLayoutCellView.mm; sourceTree = "<group>"; };
 		AC38C2AF1F3BE1B100AD8707 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
 		AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
 		AC38C2B11F3BE1B100AD8707 /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
@@ -991,6 +994,8 @@
 			children = (
 				AC85C2271F1F542F003785A4 /* MShopMeViewController.h */,
 				AC85C2281F1F542F003785A4 /* MShopMeViewController.mm */,
+				AC2C580E1F51695A00FB2E00 /* MFFlexLayoutCellView.h */,
+				AC2C580F1F51695A00FB2E00 /* MFFlexLayoutCellView.mm */,
 				AC7C28571F209509003C0C4C /* Mshop_Me.storyboard */,
 			);
 			path = Me;
@@ -1562,6 +1567,7 @@
 				AC867E4A1F1D99E600694086 /* MFUICollectionView.m in Sources */,
 				AC77260C1F2AEACA005B2100 /* MShopGetConsumptionItemsApi.m in Sources */,
 				AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */,
+				AC2C58101F51695A00FB2E00 /* MFFlexLayoutCellView.mm in Sources */,
 				AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */,
 				AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,

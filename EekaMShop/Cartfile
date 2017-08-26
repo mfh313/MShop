@@ -3,3 +3,4 @@ github "Tencent/WCDB"
 github "ccgus/fmdb"
 github "rs/SDWebImage"
 github "Vizzle/VZFlexLayout" "master"
+github "facebook/ComponentKit" ~> 0.20
