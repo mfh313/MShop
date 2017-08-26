@@ -1,11 +1,11 @@
 {
   "iOS" : [
     {
-      "hash" : "9f3f8ba3165e485b2cbe451396591c9dc2f73fc2a6f36b1fe57446a39d783c57",
+      "hash" : "3566a827c35c5ec9c8984ac16589f197c44e6daad37e68d3da8894b293792c64",
       "name" : "VZFlexLayout"
     }
   ],
-  "commitish" : "2ffc2191d6a2476361dfc80645051b815bf91bee",
+  "commitish" : "12425983331da8855181b7132f1bbceb38f10655",
   "watchOS" : [
 
   ],
