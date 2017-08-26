@@ -36,6 +36,8 @@
 		AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */ = {isa = PBXBuildFile; fileRef = AC254C3B1F4D6633007BE516 /* versionUpdate.json */; };
 		AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */; };
 		AC29F8A41F29D809000E474F /* MShopMemberDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */; };
+		AC2C580C1F5168C600FB2E00 /* VZFlexLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */; };
+		AC2C580D1F5168C600FB2E00 /* VZFlexLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC38C2C01F3BE1B100AD8707 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */; };
 		AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B21F3BE1B100AD8707 /* SCLAlertViewResponder.m */; };
 		AC38C2C21F3BE1B100AD8707 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38C2B41F3BE1B100AD8707 /* SCLAlertViewStyleKit.m */; };
@@ -209,6 +211,7 @@
 				AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */,
 				AC867DD41F1D982600694086 /* FMDB.framework in Embed Frameworks */,
 				AC867DD61F1D982600694086 /* WCDB.framework in Embed Frameworks */,
+				AC2C580D1F5168C600FB2E00 /* VZFlexLayout.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +269,7 @@
 		AC29F8A01F29D7F5000E474F /* MShopMemberDetailCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMemberDetailCellView.h; sourceTree = "<group>"; };
 		AC29F8A11F29D7F5000E474F /* MShopMemberDetailCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMemberDetailCellView.m; sourceTree = "<group>"; };
 		AC29F8A31F29D809000E474F /* MShopMemberDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberDetailCellView.xib; sourceTree = "<group>"; };
+		AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VZFlexLayout.framework; path = Carthage/Build/iOS/VZFlexLayout.framework; sourceTree = "<group>"; };
 		AC38C2AF1F3BE1B100AD8707 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
 		AC38C2B01F3BE1B100AD8707 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
 		AC38C2B11F3BE1B100AD8707 /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 				AC77261E1F2B09D2005B2100 /* Bugly.framework in Frameworks */,
 				AC867DD31F1D982600694086 /* FMDB.framework in Frameworks */,
 				AC867DD51F1D982600694086 /* WCDB.framework in Frameworks */,
+				AC2C580C1F5168C600FB2E00 /* VZFlexLayout.framework in Frameworks */,
 				AC7398F81F218FA500F753C2 /* SDWebImage.framework in Frameworks */,
 				AC867DD11F1D982600694086 /* AFNetworking.framework in Frameworks */,
 			);
@@ -994,6 +999,7 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */,
 				AC38C2C81F3BE28900AD8707 /* AddressBook.framework */,
 				AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */,
 				AC03A95A1F31B26A004D4DDC /* libresolv.tbd */,
