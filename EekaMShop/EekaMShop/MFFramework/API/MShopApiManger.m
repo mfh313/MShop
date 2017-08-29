@@ -84,4 +84,14 @@ NSString *const MShopApiTestUrl = @"http://120.76.242.182:8083/ms/";
     return MFURLWithPara(@"employeeApi/getInfoByExcel.json");
 }
 
++(NSString *)getFrozenEmployeeListURL
+{
+    return MFURLWithPara(@"employeeApi/getFrozenEmployeeList.json");
+}
+
++(NSString *)frozenOptEmployeeURL
+{
+    return MFURLWithPara(@"employeeApi/frozenOptEmployee.json");
+}
+
 @end

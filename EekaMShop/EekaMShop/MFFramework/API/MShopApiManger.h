@@ -37,4 +37,8 @@ extern NSString *const MShopApiTestUrl;
 
 +(NSString *)getSynMemberInfoURL;
 
++(NSString *)getFrozenEmployeeListURL;
+
++(NSString *)frozenOptEmployeeURL;
+
 @end
