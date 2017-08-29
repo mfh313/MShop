@@ -8,6 +8,9 @@
 
 #import "MMService.h"
 
+extern NSString *const MShopApiUrl;
+extern NSString *const MShopApiTestUrl;
+
 @interface MShopApiManger : MMService
 
 +(NSString *)loginURL;

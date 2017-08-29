@@ -12,15 +12,15 @@
 
 #define MFURLWithPara(para) [MFURL stringByAppendingPathComponent:para]
 
-NSString const *MShopApiTestUrl = @"https://pos.koradior.info:8443/";
-NSString const *MShopApiUrl = @"https://pos.szyingjia.cn:8888/";
+NSString *const MShopApiUrl = @"http://mp.eekamclub.com/ms/";
+NSString *const MShopApiTestUrl = @"http://120.76.242.182:8083/ms/";
 
 @implementation MShopApiManger
 
 + (NSString *)hostUrl
 {
-    return @"http://mp.eekamclub.com/ms/";
-//    return @"http://10.8.143.30:8080/ms/";   //zaolong
+    return MShopApiTestUrl;
+//    return @"http://10.8.143.30:8080/ms/";   //zao long
 //    return @"http://10.8.143.193:8080/ms/"; //guo dong
 }
 
