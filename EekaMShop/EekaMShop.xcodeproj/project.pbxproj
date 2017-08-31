@@ -205,6 +205,8 @@
 		ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDFE2441F2F20C3002795BE /* MShopMemberConsumptionTitleView.m */; };
 		ACDFE2471F2F2114002795BE /* MShopMemberConsumptionTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDFE2461F2F2114002795BE /* MShopMemberConsumptionTitleView.xib */; };
 		ACEF8B341F58289700733125 /* MShopFrozenEmployeeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8B331F58289700733125 /* MShopFrozenEmployeeModel.m */; };
+		ACEF8B371F58307200733125 /* MShopFrozenEmployeeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8B361F58307200733125 /* MShopFrozenEmployeeCellView.m */; };
+		ACEF8B391F58309400733125 /* MShopFrozenEmployeeCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEF8B381F58309400733125 /* MShopFrozenEmployeeCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -583,6 +585,9 @@
 		ACDFE2461F2F2114002795BE /* MShopMemberConsumptionTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMemberConsumptionTitleView.xib; sourceTree = "<group>"; };
 		ACEF8B321F58289700733125 /* MShopFrozenEmployeeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopFrozenEmployeeModel.h; sourceTree = "<group>"; };
 		ACEF8B331F58289700733125 /* MShopFrozenEmployeeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopFrozenEmployeeModel.m; sourceTree = "<group>"; };
+		ACEF8B351F58307100733125 /* MShopFrozenEmployeeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopFrozenEmployeeCellView.h; sourceTree = "<group>"; };
+		ACEF8B361F58307200733125 /* MShopFrozenEmployeeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopFrozenEmployeeCellView.m; sourceTree = "<group>"; };
+		ACEF8B381F58309400733125 /* MShopFrozenEmployeeCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopFrozenEmployeeCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1020,6 +1025,9 @@
 				AC85C2281F1F542F003785A4 /* MShopMeViewController.mm */,
 				AC96D3211F5814A900486095 /* MShopFrozenEmployeeManagerViewController.h */,
 				AC96D3221F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m */,
+				ACEF8B351F58307100733125 /* MShopFrozenEmployeeCellView.h */,
+				ACEF8B361F58307200733125 /* MShopFrozenEmployeeCellView.m */,
+				ACEF8B381F58309400733125 /* MShopFrozenEmployeeCellView.xib */,
 				AC96D3141F57DCF600486095 /* MShopMeProfileCellView.h */,
 				AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */,
 				AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */,
@@ -1496,6 +1504,7 @@
 			files = (
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
 				AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */,
+				ACEF8B391F58309400733125 /* MShopFrozenEmployeeCellView.xib in Resources */,
 				AC03A9551F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 in Resources */,
 				ACDFE2471F2F2114002795BE /* MShopMemberConsumptionTitleView.xib in Resources */,
 				AC7E3F871F25DB650035E3DC /* MShopMemberProfileCellView.xib in Resources */,
@@ -1650,6 +1659,7 @@
 				AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */,
 				AC7C28611F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm in Sources */,
 				A5C138831F4C60CC00F205E3 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				ACEF8B371F58307200733125 /* MShopFrozenEmployeeCellView.m in Sources */,
 				AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */,
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
 				AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */,

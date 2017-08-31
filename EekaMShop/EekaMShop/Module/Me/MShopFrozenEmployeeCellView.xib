@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MShopFrozenEmployeeCellView">
+            <rect key="frame" x="0.0" y="0.0" width="471" height="73"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZG-c5-Oa5">
+                    <rect key="frame" x="15" y="8" width="56" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="56" id="LEW-dI-fWy"/>
+                        <constraint firstAttribute="height" constant="56" id="icI-ml-Ro1"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElA-Mh-bq4">
+                    <rect key="frame" x="86" y="27.5" width="31" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Qmd-iI-VhH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmM-ga-2RM">
+                    <rect key="frame" x="376" y="14" width="80" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="FYH-ae-CNz"/>
+                        <constraint firstAttribute="height" constant="44" id="UPd-fy-zgw"/>
+                    </constraints>
+                    <state key="normal" title="冻结">
+                        <color key="titleColor" red="0.91372549020000005" green="0.21960784310000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="onClickFrozenButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="dx3-BC-Soc"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sI9-p1-PzG" customClass="MMOnePixLine">
+                    <rect key="frame" x="0.0" y="72" width="471" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="4jf-j1-FB6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="XZG-c5-Oa5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5bY-zE-1ce"/>
+                <constraint firstItem="ElA-Mh-bq4" firstAttribute="leading" secondItem="XZG-c5-Oa5" secondAttribute="trailing" constant="15" id="Cfo-iD-2sY"/>
+                <constraint firstAttribute="trailing" secondItem="hmM-ga-2RM" secondAttribute="trailing" constant="15" id="IAQ-Mv-PAO"/>
+                <constraint firstAttribute="trailing" secondItem="sI9-p1-PzG" secondAttribute="trailing" id="Mnu-nj-hn7"/>
+                <constraint firstItem="ElA-Mh-bq4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TCp-rh-yPi"/>
+                <constraint firstItem="XZG-c5-Oa5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="WuB-rc-P3c"/>
+                <constraint firstItem="hmM-ga-2RM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ElA-Mh-bq4" secondAttribute="trailing" constant="10" id="XKp-MT-xlC"/>
+                <constraint firstAttribute="bottom" secondItem="sI9-p1-PzG" secondAttribute="bottom" id="XS6-7U-K1G"/>
+                <constraint firstItem="sI9-p1-PzG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xzt-Jk-Dt4"/>
+                <constraint firstItem="hmM-ga-2RM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="uyf-9K-snX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_avtarImageView" destination="XZG-c5-Oa5" id="DZb-Fy-qfS"/>
+                <outlet property="_frozenButton" destination="hmM-ga-2RM" id="SeH-3R-g32"/>
+                <outlet property="_nameLabel" destination="ElA-Mh-bq4" id="A4S-Tf-Ewo"/>
+            </connections>
+            <point key="canvasLocation" x="81.5" y="350.5"/>
+        </view>
+    </objects>
+</document>

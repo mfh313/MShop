@@ -12,8 +12,9 @@
 #import "MShopFrozenEmployeeModel.h"
 #import "MShopGetEmployeeListApi.h"
 #import "MShopLoginService.h"
+#import "MShopFrozenEmployeeCellView.h"
 
-@interface MShopFrozenEmployeeManagerViewController ()
+@interface MShopFrozenEmployeeManagerViewController () <MShopFrozenEmployeeCellViewDelegate>
 {
     MFTableViewInfo *m_tableViewInfo;
     NSMutableArray *_frozenEmployeeList;
@@ -31,12 +32,20 @@
     
     _frozenEmployeeList = [NSMutableArray array];
     
+    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    contentTableView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:contentTableView];
+    
     [self sendFrozenBatchRequest];
 }
 
 - (void)sendFrozenBatchRequest
 {
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    MShopLoginUserInfo *currentLoginUserInfo = [loginService currentLoginUserInfo];
     
     MShopGetEmployeeListApi *employeeListApi = [MShopGetEmployeeListApi new];
     employeeListApi.deptId = [loginService currentLoginUserDepartment];
@@ -56,8 +65,19 @@
         MShopGetFrozenEmployeeListApi *frozenEmployeeListApi = (MShopGetFrozenEmployeeListApi *)requests[1];
         NSArray *frozenList = frozenEmployeeListApi.responseObject[@"employeeList"];
         
-        NSLog(@"employeeList=%@,frozenList=%@",employeeList,frozenList);
-        //fix
+        
+        
+        
+        
+        [_frozenEmployeeList removeAllObjects];
+        for (int i = 0; i < employeeList.count; i++) {
+            MShopFrozenEmployeeModel *employeeInfo = [MShopFrozenEmployeeModel MM_modelWithJSON:employeeList[i]];
+            
+            if (![currentLoginUserInfo.userId isEqualToString:employeeInfo.userId])
+            {
+                [_frozenEmployeeList addObject:employeeInfo];
+            }
+        }
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf reloadTableView];
@@ -68,6 +88,7 @@
         [self showTips:errorDesc];
     }];
 }
+
 
 -(void)reloadTableView
 {
@@ -100,20 +121,27 @@
 
 -(void)makeFrozenEmployeeInfoCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
-//    if (!cell.m_subContentView) {
-//        MShopEmployeeInfoCellView *cellView = [MShopEmployeeInfoCellView nibView];
-//        cell.m_subContentView = cellView;
-//    }
-//    else
-//    {
-//        [cell.contentView addSubview:cell.m_subContentView];
-//    }
-//    
-//    MShopEmployeeInfoCellView *cellView = (MShopEmployeeInfoCellView *)cell.m_subContentView;
-//    cellView.frame = cell.contentView.bounds;
-//    
-//    MShopFrozenEmployeeModel *employeeInfo = (MShopFrozenEmployeeModel *)[cellInfo getUserInfoValueForKey:@"MShopFrozenEmployeeModel"];
-//    [cellView setEmployeeInfo:employeeInfo];
+    if (!cell.m_subContentView) {
+        MShopFrozenEmployeeCellView *cellView = [MShopFrozenEmployeeCellView nibView];
+        cellView.m_delegate = self;
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
+    
+    MShopFrozenEmployeeCellView *cellView = (MShopFrozenEmployeeCellView *)cell.m_subContentView;
+    cellView.frame = cell.contentView.bounds;
+    
+    MShopFrozenEmployeeModel *employeeInfo = (MShopFrozenEmployeeModel *)[cellInfo getUserInfoValueForKey:@"MShopFrozenEmployeeModel"];
+    [cellView setEmployeeInfo:employeeInfo];
+}
+
+#pragma mark - MShopFrozenEmployeeCellViewDelegate
+-(void)onClickFrozenEmployee:(MShopFrozenEmployeeModel *)employeeInfo
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

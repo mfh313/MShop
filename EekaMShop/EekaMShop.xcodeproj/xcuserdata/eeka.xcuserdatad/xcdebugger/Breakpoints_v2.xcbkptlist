@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Me/MShopFrozenEmployeeManagerViewController.m"
-            timestampString = "525873101.436356"
+            timestampString = "525875324.626919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-sendFrozenBatchRequest"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Me/MShopFrozenEmployeeManagerViewController.m"
-            timestampString = "525872564.57427"
+            timestampString = "525875324.626919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-sendFrozenBatchRequest"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-onClickFrozenEmployee:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
