@@ -36,12 +36,17 @@
     [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:m_employeeInfo.avatar] placeholderImage:MFImage(@"avtar")];
     _nameLabel.text = m_employeeInfo.name;
     
-    if (m_employeeInfo.isFrozen) {
+    if (m_employeeInfo.isFrozen)
+    {
         [_frozenButton setTitle:@"解冻" forState:UIControlStateNormal];
+        [_frozenButton setTitleColor:[UIColor hx_colorWithHexString:@"686868"] forState:UIControlStateNormal];
+        [_frozenButton setBackgroundImage:MFImageStretchCenter(@"bg_pink") forState:UIControlStateNormal];
     }
     else
     {
         [_frozenButton setTitle:@"冻结" forState:UIControlStateNormal];
+        [_frozenButton setTitleColor:[UIColor hx_colorWithHexString:@"282828"] forState:UIControlStateNormal];
+        [_frozenButton setBackgroundImage:MFImageStretchCenter(@"border_normal") forState:UIControlStateNormal];
     }
 }
 

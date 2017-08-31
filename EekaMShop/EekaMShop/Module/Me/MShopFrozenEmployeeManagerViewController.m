@@ -13,11 +13,13 @@
 #import "MShopGetEmployeeListApi.h"
 #import "MShopLoginService.h"
 #import "MShopFrozenEmployeeCellView.h"
+#import "MShopFrozenOptEmployeeApi.h"
 
 @interface MShopFrozenEmployeeManagerViewController () <MShopFrozenEmployeeCellViewDelegate>
 {
     MFTableViewInfo *m_tableViewInfo;
     NSMutableArray *_frozenEmployeeList;
+    NSMutableSet *_frozenUserIdSet;
 }
 
 @end
@@ -31,6 +33,7 @@
     [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
     
     _frozenEmployeeList = [NSMutableArray array];
+    _frozenUserIdSet = [NSMutableSet set];
     
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
@@ -65,13 +68,26 @@
         MShopGetFrozenEmployeeListApi *frozenEmployeeListApi = (MShopGetFrozenEmployeeListApi *)requests[1];
         NSArray *frozenList = frozenEmployeeListApi.responseObject[@"employeeList"];
         
+        [_frozenUserIdSet removeAllObjects];
+        for (int i = 0; i < frozenList.count; i++)
+        {
+            NSString *frozenUserId = ((NSDictionary *)frozenList[i])[@"userId"];
+            [_frozenUserIdSet addObject:frozenUserId];
+        }
         
-        
-        
-        
+
         [_frozenEmployeeList removeAllObjects];
         for (int i = 0; i < employeeList.count; i++) {
             MShopFrozenEmployeeModel *employeeInfo = [MShopFrozenEmployeeModel MM_modelWithJSON:employeeList[i]];
+            
+            if ([_frozenUserIdSet containsObject:employeeInfo.userId])
+            {
+                employeeInfo.isFrozen = YES;
+            }
+            else
+            {
+                employeeInfo.isFrozen = NO;
+            }
             
             if (![currentLoginUserInfo.userId isEqualToString:employeeInfo.userId])
             {
@@ -88,7 +104,6 @@
         [self showTips:errorDesc];
     }];
 }
-
 
 -(void)reloadTableView
 {
@@ -141,7 +156,47 @@
 #pragma mark - MShopFrozenEmployeeCellViewDelegate
 -(void)onClickFrozenEmployee:(MShopFrozenEmployeeModel *)employeeInfo
 {
+    NSString *toStatus;
+    if (employeeInfo.isFrozen)
+    {
+        toStatus = MShopFrozenStatusOpen;
+    }
+    else
+    {
+        toStatus = MShopFrozenStatusClose;
+    }
     
+    MShopFrozenOptEmployeeApi *frozenApi = [MShopFrozenOptEmployeeApi new];
+    frozenApi.employeeId = employeeInfo.userId;
+    frozenApi.employeeName = employeeInfo.name;
+    frozenApi.status = toStatus;
+    frozenApi.animatingText = @"正在处理...";
+    frozenApi.animatingView = MFAppWindow;
+    
+    __weak typeof(self) weakSelf = self;
+    [frozenApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!frozenApi.messageSuccess) {
+            [weakSelf showTips:frozenApi.errorMessage];
+            return;
+        }
+        
+        NSString *opertion = @"冻结";
+        if ([toStatus isEqualToString:MShopFrozenStatusOpen]) {
+            opertion = @"解冻";
+        }
+        
+        NSString *resultMessage = [NSString stringWithFormat:@"%@%@成功",opertion,employeeInfo.name];
+        [weakSelf showTips:resultMessage];
+        
+        [weakSelf sendFrozenBatchRequest];
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
