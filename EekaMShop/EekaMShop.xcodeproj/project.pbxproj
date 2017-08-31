@@ -92,7 +92,6 @@
 		AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C284D1F203E6D003C0C4C /* MShopLoginApi.m */; };
 		AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */; };
 		AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28551F207932003C0C4C /* MShopLoginTable.m */; };
-		AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC7C28571F209509003C0C4C /* Mshop_Me.storyboard */; };
 		AC7C285B1F209A79003C0C4C /* MShopLoginUserInfo+WCDB.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C285A1F209A79003C0C4C /* MShopLoginUserInfo+WCDB.mm */; };
 		AC7C285E1F209B51003C0C4C /* MShopLoginTable+WCDB.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C285D1F209B51003C0C4C /* MShopLoginTable+WCDB.mm */; };
 		AC7C28611F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC7C28601F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm */; };
@@ -366,7 +365,6 @@
 		AC7C28501F203E6D003C0C4C /* MShopLoginService.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MShopLoginService.mm; sourceTree = "<group>"; };
 		AC7C28541F207932003C0C4C /* MShopLoginTable.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = MShopLoginTable.h; sourceTree = "<group>"; };
 		AC7C28551F207932003C0C4C /* MShopLoginTable.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopLoginTable.m; sourceTree = "<group>"; };
-		AC7C28571F209509003C0C4C /* Mshop_Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mshop_Me.storyboard; sourceTree = "<group>"; };
 		AC7C28591F209A79003C0C4C /* MShopLoginUserInfo+WCDB.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = "MShopLoginUserInfo+WCDB.h"; sourceTree = "<group>"; };
 		AC7C285A1F209A79003C0C4C /* MShopLoginUserInfo+WCDB.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "MShopLoginUserInfo+WCDB.mm"; sourceTree = "<group>"; };
 		AC7C285C1F209B51003C0C4C /* MShopLoginTable+WCDB.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = "MShopLoginTable+WCDB.h"; sourceTree = "<group>"; };
@@ -1020,7 +1018,6 @@
 				AC96D31C1F57E96900486095 /* MShopMeAddressBookSynCellView.h */,
 				AC96D31D1F57E96900486095 /* MShopMeAddressBookSynCellView.m */,
 				AC96D31F1F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib */,
-				AC7C28571F209509003C0C4C /* Mshop_Me.storyboard */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1502,7 +1499,6 @@
 				AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */,
 				AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */,
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
-				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
 				AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */,
 				AC96D3201F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,

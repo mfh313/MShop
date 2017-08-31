@@ -61,8 +61,7 @@
     rootAppointmentNav.tabBarItem = appointmentTabItem;
     
     
-    UIStoryboard *meStoryboard = [UIStoryboard storyboardWithName:@"Mshop_Me" bundle:nil];
-    MShopMeViewController *meVC = [meStoryboard instantiateViewControllerWithIdentifier:@"MShopMeViewController"];
+    MShopMeViewController *meVC = [MShopMeViewController new];
     MMNavigationController *meRootNav = [[MMNavigationController alloc] initWithRootViewController:meVC];
     UITabBarItem *setTabItem = [[UITabBarItem alloc] initWithTitle:@"我"
                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
@@ -71,9 +70,7 @@
     
     m_tabbarController = [self getTabBarController];
     m_tabbarController.viewControllers = @[rootNav,rootAppointmentNav,meRootNav];
-//    m_tabbarController.viewControllers = @[rootNav,meRootNav];
     m_tabbarController.tabBar.barTintColor = [UIColor whiteColor];
-    
     m_window.rootViewController = m_tabbarController;
 }
 
@@ -96,7 +93,6 @@
     return m_tabbarController;
 }
 
-
 -(UIViewController *)appointmentListVC
 {
     MShopAppointmentListViewController *appointmentListVC = [MShopAppointmentListViewController new];
@@ -104,11 +100,3 @@
 }
 
 @end
-
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MShop_MainFrame" bundle:nil];
-//    MShopMainFrameViewController *mainFrameVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"MShopMainFrameViewController"];
-//    MMNavigationController *rootNav = [[MMNavigationController alloc] initWithRootViewController:mainFrameVC];
-//    UITabBarItem *homeTabItem = [[UITabBarItem alloc] initWithTitle:@"主页"
-//                                                              image:[MFImage(@"tab3b") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-//                                                      selectedImage:[MFImage(@"tab4a") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//    rootNav.tabBarItem = homeTabItem;

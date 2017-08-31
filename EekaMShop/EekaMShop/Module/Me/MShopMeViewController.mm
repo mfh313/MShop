@@ -62,6 +62,9 @@
     [m_tableViewInfo clearAllSection];
     
     [self addProfileSection];
+    
+    [self addFrozenEmployeeSection];
+    
     [self addFunctionSection];
 }
 
@@ -76,6 +79,58 @@
                                                                userInfo:nil];
     [sectionInfo addCell:cellInfo];
     [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(BOOL)needAddressBookCell
+{
+    return NO;
+}
+
+-(BOOL)needFrozenEmployeeCell
+{
+    MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];
+    return [loginInfo isShopKeeper];
+}
+
+-(void)addFrozenEmployeeSection
+{
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
+    if (![self needFrozenEmployeeCell])
+    {
+        return;
+    }
+    
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeFrozenEmployeeCell:cellInfo:)
+                                                             makeTarget:self
+                                                              actionSel:@selector(onClickFrozenEmployee)
+                                                           actionTarget:self
+                                                                 height:44.0f
+                                                               userInfo:nil];
+//    [cellInfo setAccessoryType:UITableViewCellAccessoryDetailButton];
+    [sectionInfo addCell:cellInfo];
+
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+- (void)makeFrozenEmployeeCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
+{
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.font = [UIFont systemFontOfSize:17.0f];
+    titleLabel.textColor = [UIColor hx_colorWithHexString:@"282828"];
+    titleLabel.text = @"员工冻结管理";
+    titleLabel.frame = CGRectMake(15, (CGRectGetHeight(cell.contentView.frame) - 21) / 2, 120, 21);
+    [cell.contentView addSubview:titleLabel];
+    
+    UIButton *arrowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [arrowBtn setImage:MFImage(@"arrow") forState:UIControlStateNormal];
+    arrowBtn.frame = CGRectMake(0, 0, 8, 15);
+    cell.accessoryView = arrowBtn;
+}
+
+-(void)onClickFrozenEmployee
+{
+    
 }
 
 -(void)addFunctionSection
@@ -94,6 +149,26 @@
                                                                    userInfo:nil];
         [sectionInfo addCell:cellInfo];
     }
+    
+
+    MFTableViewCellInfo *shareVersionCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeShareVersionCell:)
+                                                             makeTarget:self
+                                                              actionSel:nil
+                                                           actionTarget:nil
+                                                                 height:44.0f
+                                                               userInfo:nil];
+    MFTableViewCellInfo *logoutCell = [MFTableViewCellInfo cellForMakeSel:@selector(makeLogoutCell:)
+                                                                         makeTarget:self
+                                                                          actionSel:nil
+                                                                       actionTarget:nil
+                                                                             height:44.0f
+                                                                           userInfo:nil];
+    
+    
+    
+    
+    [sectionInfo addCell:shareVersionCellInfo];
+    [sectionInfo addCell:logoutCell];
     
     [m_tableViewInfo addSection:sectionInfo];
     
@@ -119,11 +194,6 @@
     [cellView setProfileCellInfo:loginInfo];
 }
 
--(BOOL)needAddressBookCell
-{
-    return YES;
-}
-
 - (void)makeAddressBookCell:(MFTableViewCell *)cell
 {
     if (!cell.m_subContentView) {
@@ -144,11 +214,19 @@
     [cellView setSynProgressLabel:_synProgressText hidden:_synProgressLabelHidden];
 }
 
-- (IBAction)onClickLogout:(id)sender {
-    [m_loginService logout];
+- (void)makeShareVersionCell:(MFTableViewCell *)cell
+{
+    UIButton *contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [contentBtn setTitle:@"分享此版本" forState:UIControlStateNormal];
+    [contentBtn addTarget:self action:@selector(onClickShare:) forControlEvents:UIControlEventTouchUpInside];
+    contentBtn.backgroundColor = [UIColor redColor];
+    
+    [cell.contentView addSubview:contentBtn];
+    contentBtn.frame = CGRectMake(0, 0, 160, 40);
+    contentBtn.center = cell.contentView.center;
 }
 
-- (IBAction)onClickShare:(id)sender
+- (void)onClickShare:(id)sender
 {
     WWKSendMessageReq *req = [[WWKSendMessageReq alloc] init];
     WWKMessageLinkAttachment *attachment = [[WWKMessageLinkAttachment alloc] init];
@@ -158,6 +236,22 @@
     attachment.iconurl = @"https://www.eeka.info/EekaMShop/mclubShare.png";
     req.attachment = attachment;
     [WWKApi sendReq:req];
+}
+
+- (void)makeLogoutCell:(MFTableViewCell *)cell
+{
+    UIButton *contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [contentBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    [contentBtn addTarget:self action:@selector(onClickLogout:) forControlEvents:UIControlEventTouchUpInside];
+    contentBtn.backgroundColor = [UIColor redColor];
+    
+    [cell.contentView addSubview:contentBtn];
+    contentBtn.frame = CGRectMake(0, 0, 160, 40);
+    contentBtn.center = cell.contentView.center;
+}
+
+- (void)onClickLogout:(id)sender {
+    [m_loginService logout];
 }
 
 -(void)synMemberInfo
