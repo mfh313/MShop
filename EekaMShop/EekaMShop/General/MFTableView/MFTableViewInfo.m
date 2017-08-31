@@ -86,6 +86,38 @@ _Pragma("clang diagnostic pop") \
     return CGFLOAT_MIN;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section < _arrSections.count) {
+        return [_arrSections[section] getUserInfoValueForKey:@"headerTitle"];
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section < _arrSections.count) {
+        NSString *headerTitle = [self tableView:tableView titleForHeaderInSection:section];
+        if (headerTitle) {
+            return CGFLOAT_MIN;
+        } else {
+            MFTableViewSectionInfo *sectionInfo = _arrSections[section];
+            if (!sectionInfo.makeHeaderTarget) {
+                return sectionInfo.fHeaderHeight;
+            } else {
+                UIView *headerView = [sectionInfo getUserInfoValueForKey:@"header"];
+                if (headerView) {
+                    return headerView.frame.size.height;
+                } else {
+                    return sectionInfo.fHeaderHeight;
+                }
+            }
+        }
+    }
+    return CGFLOAT_MIN;
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section < _arrSections.count) {

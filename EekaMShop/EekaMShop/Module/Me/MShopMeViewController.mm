@@ -21,8 +21,6 @@
 {
     MShopLoginService *m_loginService;
     
-    __weak IBOutlet UILabel *_appVersionLabel;
-    
     MFTableViewInfo *m_tableViewInfo;
     
     NSMutableArray *_synMemberInfoArray;
@@ -40,19 +38,15 @@
     
     self.title = @"我";
     
+    _synMemberInfoArray = [NSMutableArray array];
     m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     
-    _synMemberInfoArray = [NSMutableArray array];
-    
-    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
-    contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    contentTableView.backgroundColor = [UIColor lightGrayColor];
-    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    contentTableView.backgroundColor = [UIColor hx_colorWithHexString:@"EFEFF4"];
     [self.view addSubview:contentTableView];
-    
-    _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[MFAppMacroUtil getCFBundleVersion]];
     
     [self reloadMeView];
 }
@@ -154,7 +148,7 @@
                                                              makeTarget:self
                                                               actionSel:nil
                                                            actionTarget:nil
-                                                                 height:44.0f
+                                                                 height:50.0f
                                                                userInfo:nil];
     MFTableViewCellInfo *logoutCell = [MFTableViewCellInfo cellForMakeSel:@selector(makeLogoutCell:)
                                                                          makeTarget:self
@@ -177,7 +171,6 @@
     [sectionInfo addCell:versionCell];
     
     [m_tableViewInfo addSection:sectionInfo];
-    
 }
 
 - (void)makeProfileCell:(MFTableViewCell *)cell
@@ -224,8 +217,8 @@
 {
     UIButton *contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [contentBtn setTitle:@"分享此版本" forState:UIControlStateNormal];
+    [contentBtn setTitleColor:[UIColor hx_colorWithHexString:@"0080C0"] forState:UIControlStateNormal];
     [contentBtn addTarget:self action:@selector(onClickShare:) forControlEvents:UIControlEventTouchUpInside];
-    contentBtn.backgroundColor = [UIColor redColor];
     
     [cell.contentView addSubview:contentBtn];
     contentBtn.frame = CGRectMake(0, 0, 160, 40);
@@ -248,8 +241,8 @@
 {
     UIButton *contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [contentBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    [contentBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [contentBtn addTarget:self action:@selector(onClickLogout:) forControlEvents:UIControlEventTouchUpInside];
-    contentBtn.backgroundColor = [UIColor redColor];
     
     [cell.contentView addSubview:contentBtn];
     contentBtn.frame = CGRectMake(0, 0, 160, 40);

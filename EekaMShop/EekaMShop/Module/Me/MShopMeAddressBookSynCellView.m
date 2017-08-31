@@ -11,6 +11,7 @@
 @interface MShopMeAddressBookSynCellView ()
 {
     __weak IBOutlet UILabel *_synProgressLabel;
+    __weak IBOutlet UIButton *_contentButton;
 }
 
 @end
@@ -20,7 +21,7 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    
+        
     _synProgressLabel.hidden = NO;
     _synProgressLabel.text = @"正在同步";
 }
