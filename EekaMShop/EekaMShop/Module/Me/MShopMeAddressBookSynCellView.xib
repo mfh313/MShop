@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MShopMeAddressBookSynCellView">
+            <rect key="frame" x="0.0" y="0.0" width="502" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在同步" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcY-Ga-7YC">
+                    <rect key="frame" x="224.5" y="10" width="53.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="4W1-O3-zOd"/>
+                        <constraint firstAttribute="height" constant="21" id="Py6-sb-BO5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqD-rY-7NE">
+                    <rect key="frame" x="151" y="41" width="200" height="34"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="lLI-Yd-BMc"/>
+                    </constraints>
+                    <state key="normal" title="同步会员到通讯录"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dcY-Ga-7YC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="6gj-ps-mex"/>
+                <constraint firstItem="BqD-rY-7NE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SUl-16-4g6"/>
+                <constraint firstItem="BqD-rY-7NE" firstAttribute="top" secondItem="dcY-Ga-7YC" secondAttribute="bottom" constant="10" id="bNf-Kd-1r2"/>
+                <constraint firstItem="dcY-Ga-7YC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="f3g-uq-gBE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_synProgressLabel" destination="dcY-Ga-7YC" id="17E-og-6GU"/>
+            </connections>
+            <point key="canvasLocation" x="97" y="316.5"/>
+        </view>
+    </objects>
+</document>

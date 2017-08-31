@@ -15,16 +15,20 @@
 #import <AddressBook/AddressBook.h>
 #import "MFAppMacroUtil.h"
 #import "MShopMeProfileCellView.h"
+#import "MShopMeAddressBookSynCellView.h"
 
 @interface MShopMeViewController ()
 {
     MShopLoginService *m_loginService;
     
     __weak IBOutlet UILabel *_appVersionLabel;
-    __weak IBOutlet UILabel *_synProgressLabel;
-    NSMutableArray *_synMemberInfoArray;
     
     MFTableViewInfo *m_tableViewInfo;
+    
+    NSMutableArray *_synMemberInfoArray;
+    BOOL _synProgressLabelHidden;
+    NSString *_synProgressText;
+    NSIndexPath *_synMemberInfoIndexPath;
 }
 
 @end
@@ -36,6 +40,10 @@
     
     self.title = @"我";
     
+    m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    
+    _synMemberInfoArray = [NSMutableArray array];
+    
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
@@ -44,15 +52,7 @@
     contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     [self.view addSubview:contentTableView];
     
-    m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
-    MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];
-    
     _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[MFAppMacroUtil getCFBundleVersion]];
-    
-    _synMemberInfoArray = [NSMutableArray array];
-    _synProgressLabel.hidden = YES;
-    
-    [self getAddressBookAuthor];
     
     [self reloadMeView];
 }
@@ -62,7 +62,6 @@
     [m_tableViewInfo clearAllSection];
     
     [self addProfileSection];
-    
     [self addFunctionSection];
 }
 
@@ -81,16 +80,23 @@
 
 -(void)addFunctionSection
 {
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
     if ([self needAddressBookCell])
     {
-        return;
+        [self getAddressBookAuthor];
+        
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeAddressBookCell:)
+                                                                 makeTarget:self
+                                                                  actionSel:@selector(synMemberInfo)
+                                                               actionTarget:self
+                                                                     height:90.0f
+                                                                   userInfo:nil];
+        [sectionInfo addCell:cellInfo];
     }
     
-}
-
--(BOOL)needAddressBookCell
-{
-    return YES;
+    [m_tableViewInfo addSection:sectionInfo];
+    
 }
 
 - (void)makeProfileCell:(MFTableViewCell *)cell
@@ -113,8 +119,29 @@
     [cellView setProfileCellInfo:loginInfo];
 }
 
-- (IBAction)onClickSynMemBerInfo:(id)sender {
-    [self synMemberInfo];
+-(BOOL)needAddressBookCell
+{
+    return YES;
+}
+
+- (void)makeAddressBookCell:(MFTableViewCell *)cell
+{
+    if (!cell.m_subContentView) {
+        MShopMeAddressBookSynCellView *cellView = [MShopMeAddressBookSynCellView nibView];
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
+    
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    _synMemberInfoIndexPath = [contentTableView indexPathForCell:cell];
+    
+    MShopMeAddressBookSynCellView *cellView = (MShopMeAddressBookSynCellView *)cell.m_subContentView;
+    cellView.frame = cell.contentView.bounds;
+    
+    [cellView setSynProgressLabel:_synProgressText hidden:_synProgressLabelHidden];
 }
 
 - (IBAction)onClickLogout:(id)sender {
@@ -190,16 +217,12 @@
     [alert addButton:@"清空联系人" actionBlock:^{
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
             [weakSelf cleanAddressBook];
-            
         });
     }];
     [alert addButton:@"确定" actionBlock:^{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
             [weakSelf asynAddressBookInfo];
-            
         });
     }];
     NSString *subTitle = [NSString stringWithFormat:@"是否同步%@个联系人到此设备通讯录",@(_synMemberInfoArray.count)];
@@ -224,7 +247,6 @@
         NSString *name = model.userName;
         NSString *phone = model.phone;
         NSString *note = [NSString stringWithFormat:@"维护员工-%@",model.maintainEmployeeName];
-//        NSString *group = [MFStringUtil dateWithMMString:model.birthday];
         NSDate *birthday = [MFStringUtil dateWithTimeString:model.birthday];
         
         name = [self fixedName:model.userName birthday:model.birthday maintainEmployeeName:model.maintainEmployeeName];
@@ -237,7 +259,6 @@
         ABMultiValueAddValueAndLabel(phoneRef, (__bridge CFStringRef)phone, kABPersonPhoneIPhoneLabel, NULL);
         
         ABRecordSetValue(personRef, kABPersonPhoneProperty, phoneRef, &error);
-//        ABRecordSetValue(personRef, kABGroupNameProperty, (__bridge CFStringRef)group, &error);
         
         ABAddressBookAddRecord(addressbookRef, personRef, nil);
         
@@ -246,14 +267,16 @@
         ABAddressBookSave(addressbookRef, NULL);
         
         dispatch_main_async_safe((^{
-            _synProgressLabel.hidden = NO;
-            _synProgressLabel.text = [NSString stringWithFormat:@"正在同步 %@/%@",@(i),@(models.count)];
+            _synProgressLabelHidden = NO;
+            _synProgressText = [NSString stringWithFormat:@"正在同步 %@/%@",@(i),@(models.count)];
+            [self reloadSynProgressIndexPath];
         }));
     }
     
     dispatch_main_async_safe((^{
         [self hiddenMBStatus];
-        _synProgressLabel.hidden = YES;
+        _synProgressLabelHidden = YES;
+        [self reloadSynProgressIndexPath];
     }));
     
     CFRelease(addressbookRef);
@@ -283,18 +306,26 @@
         ABAddressBookRemoveRecord(addressbookRef, people, NULL);
         
         dispatch_main_async_safe((^{
-            _synProgressLabel.hidden = NO;
-            _synProgressLabel.text = [NSString stringWithFormat:@"正在删除 %@/%@",@(index),@(addressbookArray.count)];
+            _synProgressLabelHidden = NO;
+            _synProgressText = [NSString stringWithFormat:@"正在删除 %@/%@",@(index),@(addressbookArray.count)];
+            [self reloadSynProgressIndexPath];
         }));
     }
     
     dispatch_main_async_safe(^{
         [self hiddenMBStatus];
-        _synProgressLabel.hidden = YES;
+        _synProgressLabelHidden = YES;
+        [self reloadSynProgressIndexPath];
     });
     
     ABAddressBookSave(addressbookRef, NULL);
     CFRelease(addressbookRef);
+}
+
+-(void)reloadSynProgressIndexPath
+{
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    [contentTableView reloadRowsAtIndexPaths:@[_synMemberInfoIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)didReceiveMemoryWarning {
