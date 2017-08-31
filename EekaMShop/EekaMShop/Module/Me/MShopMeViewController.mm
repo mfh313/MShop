@@ -8,25 +8,23 @@
 
 #import "MShopMeViewController.h"
 #import "MShopLoginService.h"
-#import "UIImageView+CornerRadius.h"
 #import "WWKApi.h"
 #import "MFThirdPartyPlugin.h"
-#import "XWScanImage.h"
 #import "MFGetSynMemberInfoApi.h"
 #import "MShopSynMemberInfoModel.h"
 #import <AddressBook/AddressBook.h>
+#import "MFAppMacroUtil.h"
+#import "MShopMeProfileCellView.h"
 
 @interface MShopMeViewController ()
 {
-    __weak IBOutlet UIImageView *_avtarImageView;
-    __weak IBOutlet UILabel *_nameLabel;
-    __weak IBOutlet UILabel *_positionLabel;
-    
     MShopLoginService *m_loginService;
     
     __weak IBOutlet UILabel *_appVersionLabel;
     __weak IBOutlet UILabel *_synProgressLabel;
     NSMutableArray *_synMemberInfoArray;
+    
+    MFTableViewInfo *m_tableViewInfo;
 }
 
 @end
@@ -37,37 +35,82 @@
     [super viewDidLoad];
     
     self.title = @"我";
-    [_avtarImageView zy_cornerRadiusAdvance:5.0f rectCornerType:UIRectCornerAllCorners];
-    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick:)];
-    [_avtarImageView addGestureRecognizer:tapGestureRecognizer1];
-    [_avtarImageView setUserInteractionEnabled:YES];
+    
+    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    UITableView *contentTableView = [m_tableViewInfo getTableView];
+    contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    contentTableView.backgroundColor = [UIColor lightGrayColor];
+    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    [self.view addSubview:contentTableView];
     
     m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];
     
-    [_avtarImageView sd_setImageWithURL:[NSURL URLWithString:loginInfo.avatar]];
-    _nameLabel.text = loginInfo.name;
-    _positionLabel.text = loginInfo.position;
-    
-    _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[self getNowBundleVersion]];
+    _appVersionLabel.text = [NSString stringWithFormat:@"当前版本：%@",[MFAppMacroUtil getCFBundleVersion]];
     
     _synMemberInfoArray = [NSMutableArray array];
     _synProgressLabel.hidden = YES;
     
-//    [self getAddressBookAuthor];
+    [self getAddressBookAuthor];
+    
+    [self reloadMeView];
 }
 
-- (NSString *)getNowBundleVersion
+-(void)reloadMeView
 {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleVersion"];
-    return app_Version;
+    [m_tableViewInfo clearAllSection];
+    
+    [self addProfileSection];
+    
+    [self addFunctionSection];
 }
 
--(void)scanBigImageClick:(UITapGestureRecognizer *)tap
+-(void)addProfileSection
 {
-    UIImageView *clickedImageView = (UIImageView *)tap.view;
-    [XWScanImage scanBigImageWithImageView:clickedImageView];
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeProfileCell:)
+                                                             makeTarget:self
+                                                              actionSel:nil
+                                                           actionTarget:self
+                                                                 height:88.0f
+                                                               userInfo:nil];
+    [sectionInfo addCell:cellInfo];
+    [m_tableViewInfo addSection:sectionInfo];
+}
+
+-(void)addFunctionSection
+{
+    if ([self needAddressBookCell])
+    {
+        return;
+    }
+    
+}
+
+-(BOOL)needAddressBookCell
+{
+    return YES;
+}
+
+- (void)makeProfileCell:(MFTableViewCell *)cell
+{
+    if (!cell.m_subContentView) {
+        MShopMeProfileCellView *cellView = [MShopMeProfileCellView nibView];
+        cell.m_subContentView = cellView;
+    }
+    else
+    {
+        [cell.contentView addSubview:cell.m_subContentView];
+    }
+    
+    MShopMeProfileCellView *cellView = (MShopMeProfileCellView *)cell.m_subContentView;
+    cellView.frame = cell.contentView.bounds;
+    
+    m_loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
+    MShopLoginUserInfo *loginInfo = [m_loginService currentLoginUserInfo];
+    
+    [cellView setProfileCellInfo:loginInfo];
 }
 
 - (IBAction)onClickSynMemBerInfo:(id)sender {

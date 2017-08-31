@@ -189,6 +189,9 @@
 		AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EFA1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m */; };
 		AC867F001F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EFC1F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m */; };
 		AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */; };
+		AC96D3161F57DCF600486095 /* MShopMeProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */; };
+		AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */; };
+		AC96D31B1F57E30300486095 /* MFAppMacroUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D31A1F57E30300486095 /* MFAppMacroUtil.m */; };
 		AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */; };
 		AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */; };
 		AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */; };
@@ -551,6 +554,11 @@
 		AC867EFC1F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKChainRequest+AnimatingAccessory.m"; sourceTree = "<group>"; };
 		AC867F011F1E00DA00694086 /* MShopLoginUserInfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = MShopLoginUserInfo.h; sourceTree = "<group>"; };
 		AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopLoginUserInfo.m; sourceTree = "<group>"; };
+		AC96D3141F57DCF600486095 /* MShopMeProfileCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMeProfileCellView.h; sourceTree = "<group>"; };
+		AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMeProfileCellView.m; sourceTree = "<group>"; };
+		AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMeProfileCellView.xib; sourceTree = "<group>"; };
+		AC96D3191F57E30300486095 /* MFAppMacroUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAppMacroUtil.h; sourceTree = "<group>"; };
+		AC96D31A1F57E30300486095 /* MFAppMacroUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFAppMacroUtil.m; sourceTree = "<group>"; };
 		AC9F83C71F2C16C200952678 /* MShopIndividualConsumptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionModel.h; sourceTree = "<group>"; };
 		AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionModel.m; sourceTree = "<group>"; };
 		AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionItemModel.h; sourceTree = "<group>"; };
@@ -1004,6 +1012,9 @@
 			children = (
 				AC85C2271F1F542F003785A4 /* MShopMeViewController.h */,
 				AC85C2281F1F542F003785A4 /* MShopMeViewController.mm */,
+				AC96D3141F57DCF600486095 /* MShopMeProfileCellView.h */,
+				AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */,
+				AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */,
 				AC2C580E1F51695A00FB2E00 /* MFFlexLayoutCellView.h */,
 				AC2C580F1F51695A00FB2E00 /* MFFlexLayoutCellView.mm */,
 				AC7C28571F209509003C0C4C /* Mshop_Me.storyboard */,
@@ -1104,8 +1115,6 @@
 				AC867DF01F1D99E600694086 /* Category */,
 				AC867E041F1D99E600694086 /* Class */,
 				AC867E281F1D99E600694086 /* Helper */,
-				AC867E2D1F1D99E600694086 /* MFKeyBoardView */,
-				AC867E2E1F1D99E600694086 /* MFNumberKeyBoard */,
 				AC867E381F1D99E600694086 /* MMTabBarController */,
 				AC867E3B1F1D99E600694086 /* Util */,
 			);
@@ -1203,20 +1212,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		AC867E2D1F1D99E600694086 /* MFKeyBoardView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MFKeyBoardView;
-			sourceTree = "<group>";
-		};
-		AC867E2E1F1D99E600694086 /* MFNumberKeyBoard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MFNumberKeyBoard;
-			sourceTree = "<group>";
-		};
 		AC867E2F1F1D99E600694086 /* MFTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1246,6 +1241,8 @@
 			children = (
 				AC867E3C1F1D99E600694086 /* MFStringUtil.h */,
 				AC867E3D1F1D99E600694086 /* MFStringUtil.m */,
+				AC96D3191F57E30300486095 /* MFAppMacroUtil.h */,
+				AC96D31A1F57E30300486095 /* MFAppMacroUtil.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1503,6 +1500,7 @@
 				AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */,
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
 				AC7C28581F209509003C0C4C /* Mshop_Me.storyboard in Resources */,
+				AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,
 				AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */,
 				AC77263F1F2B0F04005B2100 /* main.js in Resources */,
@@ -1608,6 +1606,7 @@
 				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */,
 				ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */,
 				AC867E461F1D99E600694086 /* UIViewController+UINavigationItem.m in Sources */,
+				AC96D3161F57DCF600486095 /* MShopMeProfileCellView.m in Sources */,
 				AC867EC51F1DB32800694086 /* HYBNetworking.m in Sources */,
 				AC7399101F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m in Sources */,
 				AC867E451F1D99E600694086 /* UIViewController+pregress.m in Sources */,
@@ -1657,6 +1656,7 @@
 				AC73990D1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m in Sources */,
 				A5C1387E1F4C60CC00F205E3 /* IQTextView.m in Sources */,
 				AC867E471F1D99E600694086 /* MFMultiMenuTableViewCell.m in Sources */,
+				AC96D31B1F57E30300486095 /* MFAppMacroUtil.m in Sources */,
 				AC7E3F771F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A5C138811F4C60CC00F205E3 /* IQTitleBarButtonItem.m in Sources */,
 				AC6670A81F0B25C00067F6EE /* main.m in Sources */,

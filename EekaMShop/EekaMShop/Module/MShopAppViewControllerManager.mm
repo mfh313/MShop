@@ -70,8 +70,8 @@
     meRootNav.tabBarItem = setTabItem;
     
     m_tabbarController = [self getTabBarController];
-//    m_tabbarController.viewControllers = @[rootNav,rootAppointmentNav,meRootNav];
-    m_tabbarController.viewControllers = @[rootNav,meRootNav];
+    m_tabbarController.viewControllers = @[rootNav,rootAppointmentNav,meRootNav];
+//    m_tabbarController.viewControllers = @[rootNav,meRootNav];
     m_tabbarController.tabBar.barTintColor = [UIColor whiteColor];
     
     m_window.rootViewController = m_tabbarController;

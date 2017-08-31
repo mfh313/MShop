@@ -22,4 +22,6 @@
 #import "MFUIButton.h"
 #import "MFTableViewCell.h"
 
+#import "MFTableViewInfo.h"
+
 #endif /* MMBaseClass_h */
