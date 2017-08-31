@@ -59,8 +59,22 @@
     [m_tableViewInfo clearAllSection];
     
     [self addProfileSection];
-    
     [self addFrozenEmployeeSection];
+    
+    if ([self needAddressBookCell])
+    {
+        [self getAddressBookAuthor];
+        
+        MFTableViewSectionInfo *addressSectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeAddressBookCell:)
+                                                                 makeTarget:self
+                                                                  actionSel:@selector(synMemberInfo)
+                                                               actionTarget:self
+                                                                     height:90.0f
+                                                                   userInfo:nil];
+        [addressSectionInfo addCell:cellInfo];
+        [m_tableViewInfo addSection:addressSectionInfo];
+    }
     
     [self addFunctionSection];
 }
@@ -76,11 +90,6 @@
                                                                userInfo:nil];
     [sectionInfo addCell:cellInfo];
     [m_tableViewInfo addSection:sectionInfo];
-}
-
--(BOOL)needAddressBookCell
-{
-    return NO;
 }
 
 -(BOOL)needFrozenEmployeeCell
@@ -133,24 +142,6 @@
 
 -(void)addFunctionSection
 {
-    
-    
-    if ([self needAddressBookCell])
-    {
-        [self getAddressBookAuthor];
-        
-        MFTableViewSectionInfo *addressSectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeAddressBookCell:)
-                                                                 makeTarget:self
-                                                                  actionSel:@selector(synMemberInfo)
-                                                               actionTarget:self
-                                                                     height:90.0f
-                                                                   userInfo:nil];
-        [addressSectionInfo addCell:cellInfo];
-        [m_tableViewInfo addSection:addressSectionInfo];
-    }
-    
-
     MFTableViewCellInfo *shareVersionCellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeShareVersionCell:)
                                                              makeTarget:self
                                                               actionSel:nil
@@ -171,12 +162,11 @@
                                                                    height:44.0f
                                                                  userInfo:nil];
     
-    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-    
     MFTableViewSectionInfo *versionSectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     [versionSectionInfo addCell:shareVersionCellInfo];
     [m_tableViewInfo addSection:versionSectionInfo];
     
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     [sectionInfo addCell:logoutCell];
     [sectionInfo addCell:versionCell];
     
@@ -444,6 +434,11 @@
 {
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     [contentTableView reloadRowsAtIndexPaths:@[_synMemberInfoIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+-(BOOL)needAddressBookCell
+{
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning {
