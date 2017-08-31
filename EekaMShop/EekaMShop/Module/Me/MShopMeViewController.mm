@@ -16,6 +16,7 @@
 #import "MFAppMacroUtil.h"
 #import "MShopMeProfileCellView.h"
 #import "MShopMeAddressBookSynCellView.h"
+#import "MShopFrozenEmployeeManagerViewController.h"
 
 @interface MShopMeViewController ()
 {
@@ -30,6 +31,7 @@
 }
 
 @end
+
 
 @implementation MShopMeViewController
 
@@ -46,6 +48,7 @@
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor hx_colorWithHexString:@"EFEFF4"];
+    contentTableView.sectionHeaderHeight = 15.0f;
     [self.view addSubview:contentTableView];
     
     [self reloadMeView];
@@ -123,7 +126,9 @@
 
 -(void)onClickFrozenEmployee
 {
-    
+    MShopFrozenEmployeeManagerViewController *frozenEmployeeVC = [MShopFrozenEmployeeManagerViewController new];
+    frozenEmployeeVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:frozenEmployeeVC animated:YES];
 }
 
 -(void)addFunctionSection

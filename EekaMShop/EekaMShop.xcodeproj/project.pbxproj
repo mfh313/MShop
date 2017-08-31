@@ -192,6 +192,7 @@
 		AC96D31B1F57E30300486095 /* MFAppMacroUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D31A1F57E30300486095 /* MFAppMacroUtil.m */; };
 		AC96D31E1F57E96900486095 /* MShopMeAddressBookSynCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D31D1F57E96900486095 /* MShopMeAddressBookSynCellView.m */; };
 		AC96D3201F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC96D31F1F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib */; };
+		AC96D3231F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D3221F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m */; };
 		AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */; };
 		AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */; };
 		AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */; };
@@ -559,6 +560,8 @@
 		AC96D31C1F57E96900486095 /* MShopMeAddressBookSynCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMeAddressBookSynCellView.h; sourceTree = "<group>"; };
 		AC96D31D1F57E96900486095 /* MShopMeAddressBookSynCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMeAddressBookSynCellView.m; sourceTree = "<group>"; };
 		AC96D31F1F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMeAddressBookSynCellView.xib; sourceTree = "<group>"; };
+		AC96D3211F5814A900486095 /* MShopFrozenEmployeeManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopFrozenEmployeeManagerViewController.h; sourceTree = "<group>"; };
+		AC96D3221F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopFrozenEmployeeManagerViewController.m; sourceTree = "<group>"; };
 		AC9F83C71F2C16C200952678 /* MShopIndividualConsumptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionModel.h; sourceTree = "<group>"; };
 		AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionModel.m; sourceTree = "<group>"; };
 		AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionItemModel.h; sourceTree = "<group>"; };
@@ -1012,6 +1015,8 @@
 			children = (
 				AC85C2271F1F542F003785A4 /* MShopMeViewController.h */,
 				AC85C2281F1F542F003785A4 /* MShopMeViewController.mm */,
+				AC96D3211F5814A900486095 /* MShopFrozenEmployeeManagerViewController.h */,
+				AC96D3221F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m */,
 				AC96D3141F57DCF600486095 /* MShopMeProfileCellView.h */,
 				AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */,
 				AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */,
@@ -1601,6 +1606,7 @@
 				AC867E801F1D9CBB00694086 /* MBProgressHUD.m in Sources */,
 				AC7398FC1F21936800F753C2 /* MShopGetEmployeeListApi.m in Sources */,
 				AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				AC96D3231F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m in Sources */,
 				AC38C2C41F3BE1B100AD8707 /* SCLSwitchView.m in Sources */,
 				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */,
 				ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */,
