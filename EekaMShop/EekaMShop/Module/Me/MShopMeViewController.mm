@@ -8,11 +8,11 @@
 
 #import "MShopMeViewController.h"
 #import "MShopLoginService.h"
-#import "WWKApi.h"
 #import "MFThirdPartyPlugin.h"
 #import "MFGetSynMemberInfoApi.h"
 #import "MShopSynMemberInfoModel.h"
 #import <AddressBook/AddressBook.h>
+#import "WWKApi.h"
 #import "MFAppMacroUtil.h"
 #import "MShopMeProfileCellView.h"
 #import "MShopMeAddressBookSynCellView.h"
@@ -107,7 +107,6 @@
                                                            actionTarget:self
                                                                  height:44.0f
                                                                userInfo:nil];
-//    [cellInfo setAccessoryType:UITableViewCellAccessoryDetailButton];
     [sectionInfo addCell:cellInfo];
 
     [m_tableViewInfo addSection:sectionInfo];
@@ -164,11 +163,18 @@
                                                                              height:44.0f
                                                                            userInfo:nil];
     
+    MFTableViewCellInfo *versionCell = [MFTableViewCellInfo cellForMakeSel:@selector(makeVersionCell:)
+                                                               makeTarget:self
+                                                                actionSel:nil
+                                                             actionTarget:nil
+                                                                   height:44.0f
+                                                                 userInfo:nil];
     
     
     
     [sectionInfo addCell:shareVersionCellInfo];
     [sectionInfo addCell:logoutCell];
+    [sectionInfo addCell:versionCell];
     
     [m_tableViewInfo addSection:sectionInfo];
     
@@ -250,8 +256,21 @@
     contentBtn.center = cell.contentView.center;
 }
 
-- (void)onClickLogout:(id)sender {
+- (void)onClickLogout:(id)sender
+{
     [m_loginService logout];
+}
+
+- (void)makeVersionCell:(MFTableViewCell *)cell
+{
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor hx_colorWithHexString:@"686868"];
+    titleLabel.text = [NSString stringWithFormat:@"当前版本：%@",[MFAppMacroUtil getCFBundleVersion]];
+    titleLabel.frame = cell.contentView.bounds;
+    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [cell.contentView addSubview:titleLabel];
 }
 
 -(void)synMemberInfo
