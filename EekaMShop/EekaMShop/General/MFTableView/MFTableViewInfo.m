@@ -25,6 +25,11 @@ _Pragma("clang diagnostic pop") \
         _tableView.dataSource = self;
         _tableView.m_delegate = self;
         _arrSections = @[].mutableCopy;
+        
+        if (style == UITableViewStyleGrouped) {
+            _tableView.sectionHeaderHeight = 10.0f;
+            _tableView.sectionFooterHeight = 10.0f;
+        }
     }
     return self;
 }
@@ -117,6 +122,40 @@ _Pragma("clang diagnostic pop") \
     return CGFLOAT_MIN;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section < _arrSections.count) {
+        MFTableViewSectionInfo *sectionInfo = _arrSections[section];
+        id target = sectionInfo.makeHeaderTarget;
+        if (target) {
+            if ([target respondsToSelector:sectionInfo.makeHeaderSel]) {
+                return NoWarningPerformSelector(target, sectionInfo.makeHeaderSel, sectionInfo, nil);
+            }
+            else
+            {
+//                NSString *headerTitle = [self tableView:tableView titleForHeaderInSection:section];
+//                if (headerTitle) {
+//                    return [PPTableViewInfo genHeaderView:headerTitle andIsUseDynamic:sectionInfo.bUseDynamicSize];
+//                }
+            }
+        }
+        else
+        {
+            UIView *headerView =  [sectionInfo getUserInfoValueForKey:@"header"];
+            if (headerView) {
+                return headerView;
+            } else if ([_delegate respondsToSelector:sectionInfo.makeHeaderSel]) {
+                return NoWarningPerformSelector(_delegate, sectionInfo.makeHeaderSel, sectionInfo, nil);
+            } else {
+//                NSString *headerTitle = [self tableView:tableView titleForHeaderInSection:section];
+//                if (headerTitle) {
+//                    return [PPTableViewInfo genHeaderView:headerTitle andIsUseDynamic:sectionInfo.bUseDynamicSize];
+//                }
+            }
+        }
+    }
+    return nil;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

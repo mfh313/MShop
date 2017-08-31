@@ -48,7 +48,7 @@
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     contentTableView.backgroundColor = [UIColor hx_colorWithHexString:@"EFEFF4"];
-    contentTableView.sectionHeaderHeight = 15.0f;
+    contentTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 15)];
     [self.view addSubview:contentTableView];
     
     [self reloadMeView];
@@ -105,7 +105,7 @@
                                                                  height:44.0f
                                                                userInfo:nil];
     [sectionInfo addCell:cellInfo];
-
+    
     [m_tableViewInfo addSection:sectionInfo];
 }
 
@@ -188,6 +188,8 @@
     {
         [cell.contentView addSubview:cell.m_subContentView];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     MShopMeProfileCellView *cellView = (MShopMeProfileCellView *)cell.m_subContentView;
     cellView.frame = cell.contentView.bounds;
