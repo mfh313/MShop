@@ -46,7 +46,7 @@
     m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     UITableView *contentTableView = [m_tableViewInfo getTableView];
     contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    contentTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     contentTableView.backgroundColor = [UIColor hx_colorWithHexString:@"EFEFF4"];
     contentTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 15)];
     [self.view addSubview:contentTableView];
@@ -133,19 +133,21 @@
 
 -(void)addFunctionSection
 {
-    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    
     
     if ([self needAddressBookCell])
     {
         [self getAddressBookAuthor];
         
+        MFTableViewSectionInfo *addressSectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
         MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeAddressBookCell:)
                                                                  makeTarget:self
                                                                   actionSel:@selector(synMemberInfo)
                                                                actionTarget:self
                                                                      height:90.0f
                                                                    userInfo:nil];
-        [sectionInfo addCell:cellInfo];
+        [addressSectionInfo addCell:cellInfo];
+        [m_tableViewInfo addSection:addressSectionInfo];
     }
     
 
@@ -153,7 +155,7 @@
                                                              makeTarget:self
                                                               actionSel:nil
                                                            actionTarget:nil
-                                                                 height:50.0f
+                                                                 height:44.0f
                                                                userInfo:nil];
     MFTableViewCellInfo *logoutCell = [MFTableViewCellInfo cellForMakeSel:@selector(makeLogoutCell:)
                                                                          makeTarget:self
@@ -169,9 +171,12 @@
                                                                    height:44.0f
                                                                  userInfo:nil];
     
+    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
     
+    MFTableViewSectionInfo *versionSectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
+    [versionSectionInfo addCell:shareVersionCellInfo];
+    [m_tableViewInfo addSection:versionSectionInfo];
     
-    [sectionInfo addCell:shareVersionCellInfo];
     [sectionInfo addCell:logoutCell];
     [sectionInfo addCell:versionCell];
     
