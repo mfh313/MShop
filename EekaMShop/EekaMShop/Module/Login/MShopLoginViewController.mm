@@ -30,15 +30,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longGesture.minimumPressDuration = 3.0;
+    [_WXLoginBtn addGestureRecognizer:longGesture];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
 #ifdef DEBUG
     [self showTestLoginToast];
 #else
     
 #endif
-    
-    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longGesture.minimumPressDuration = 2.0;
-    [_WXLoginBtn addGestureRecognizer:longGesture];
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -72,9 +77,9 @@
         NSString *numberRegex = @"[0-9]+";
         NSPredicate *numberPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", numberRegex];
         
-        if ([numberPred evaluateWithObject:inputId])
+        if (![numberPred evaluateWithObject:inputId])
         {
-            [weakSelf showTips:@"请输入数字"];
+            [self showTips:@"请输入数字" withDuration:2];
             return;
         }
         
