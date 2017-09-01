@@ -75,7 +75,6 @@
             [_frozenUserIdSet addObject:frozenUserId];
         }
         
-
         [_frozenEmployeeList removeAllObjects];
         for (int i = 0; i < employeeList.count; i++) {
             MShopFrozenEmployeeModel *employeeInfo = [MShopFrozenEmployeeModel MM_modelWithJSON:employeeList[i]];
