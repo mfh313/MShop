@@ -87,7 +87,7 @@
     }];
     
     NSString *subTitle = [NSString stringWithFormat:@"可以选择固定的userId,也可以选择店长登录(%@),店员登录(%@)",shopKeeper,clerk];
-    [alert showInfo:@"登陆测试" subTitle:subTitle closeButtonTitle:@"关闭弹窗" duration:0];
+    [alert showInfo:@"测试专用" subTitle:subTitle closeButtonTitle:@"关闭弹窗" duration:0];
 }
 
 - (IBAction)onClickWXLogin:(id)sender {
