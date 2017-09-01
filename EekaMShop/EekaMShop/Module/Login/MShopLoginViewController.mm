@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longGesture.minimumPressDuration = 3.0;
+    longGesture.minimumPressDuration = 2.0;
     [_WXLoginBtn addGestureRecognizer:longGesture];
 }
 
@@ -170,6 +170,8 @@
 
 -(void)onClickLoginUserId:(NSString *)userId
 {
+    [self.view endEditing:YES];
+    
     if ([MFStringUtil isBlankString:userId]) {
         [self showTips:@"userId是空！" withDuration:2];
         return;
@@ -189,7 +191,8 @@
     [m_loginApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         if (!m_loginApi.messageSuccess) {
-            [self showTips:m_loginApi.errorMessage];
+            [weakSelf showTips:m_loginApi.errorMessage];
+            [weakSelf showTestLoginToast];
             return;
         }
         
@@ -206,7 +209,8 @@
     } failure:^(YTKBaseRequest * request) {
         
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
-        [self showTips:errorDesc];
+        [weakSelf showTips:errorDesc];
+        [weakSelf showTestLoginToast];
     }];
 }
 
