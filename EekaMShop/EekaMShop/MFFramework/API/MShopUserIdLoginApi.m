@@ -10,16 +10,6 @@
 
 @implementation MShopUserIdLoginApi
 
--(void)mangerLogin
-{
-    self.userId = @"33766";
-}
-
--(void)clerkLogin
-{
-    self.userId = @"42599";
-}
-
 -(NSString *)requestUrl
 {
     return [MShopApiManger userLoginURL];

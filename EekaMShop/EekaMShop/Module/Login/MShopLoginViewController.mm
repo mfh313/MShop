@@ -21,8 +21,6 @@
 @interface MShopLoginViewController ()
 {
     __weak IBOutlet UIButton *_WXLoginBtn;
-    __weak IBOutlet UIButton *_dianZBtn;
-    __weak IBOutlet UIButton *_dianYBtn;
 }
 
 @end
@@ -33,36 +31,59 @@
     [super viewDidLoad];
     
 #ifdef DEBUG
-    [self setTestBtnHidden:NO];
+    [self showTestLoginToast];
 #else
-    [self setTestBtnHidden:YES];
+    
+#endif
     
     UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longGesture.minimumPressDuration = 2.0;
     [_WXLoginBtn addGestureRecognizer:longGesture];
-    
-#endif
-    
-}
-
--(void)setTestBtnHidden:(BOOL)hidden
-{
-    [_dianZBtn setHidden:hidden];
-    [_dianYBtn setHidden:hidden];
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
     {
-        [self setTestBtnHidden:NO];
-    }
-    else if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
-    {
-
+        [self showTestLoginToast];
     }
 }
 
+-(void)showTestLoginToast
+{
+    __weak typeof(self) weakSelf = self;
+    
+    NSString *shopKeeper = @"33766";
+    NSString *clerk = @"42599";
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+    [alert addButton:@"店长登录-测试" actionBlock:^{
+        [weakSelf onClickLoginUserId:shopKeeper];
+    }];
+    
+    [alert addButton:@"店员登录-测试" actionBlock:^{
+        [weakSelf onClickLoginUserId:clerk];
+    }];
+    
+    UITextField *textField = [alert addTextField:@"输入userId"];
+    textField.keyboardType = UIKeyboardTypeNumberPad;
+    [alert addButton:@"使用输入的userId登录" actionBlock:^(void) {
+        NSString *inputId = textField.text;
+        NSString *numberRegex = @"[0-9]+";
+        NSPredicate *numberPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", numberRegex];
+        
+        if ([numberPred evaluateWithObject:inputId])
+        {
+            [weakSelf showTips:@"请输入数字"];
+            return;
+        }
+        
+        [weakSelf onClickLoginUserId:inputId];
+    }];
+    
+    NSString *subTitle = [NSString stringWithFormat:@"可以选择固定的userId,也可以选择店长登录(%@),店员登录(%@)",shopKeeper,clerk];
+    [alert showInfo:@"登陆测试" subTitle:subTitle closeButtonTitle:@"关闭弹窗" duration:0];
+}
 
 - (IBAction)onClickWXLogin:(id)sender {
     
@@ -142,17 +163,15 @@
 
 }
 
-- (IBAction)onClickMangerLogin:(id)sender
+-(void)onClickLoginUserId:(NSString *)userId
 {
+    if ([MFStringUtil isBlankString:userId]) {
+        [self showTips:@"userId是空！" withDuration:2];
+        return;
+    }
+    
     MShopUserIdLoginApi *m_loginApi = [MShopUserIdLoginApi new];
-    [m_loginApi mangerLogin];
-    [self userIdLogin:m_loginApi];
-}
-
-- (IBAction)onClickClerkLogin:(id)sender
-{
-    MShopUserIdLoginApi *m_loginApi = [MShopUserIdLoginApi new];
-    [m_loginApi clerkLogin];
+    m_loginApi.userId = userId;
     [self userIdLogin:m_loginApi];
 }
 

@@ -33,8 +33,6 @@
 
 -(void)handleTokenExpire
 {
-    __weak typeof(self) weakSelf = self;
-    
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     [alert addButton:@"重新登录" actionBlock:^{
         
@@ -44,7 +42,6 @@
     }];
 
     [alert showNotice:@"提醒" subTitle:@"使用到期" closeButtonTitle:@"确定" duration:0];
-
     
 }
 

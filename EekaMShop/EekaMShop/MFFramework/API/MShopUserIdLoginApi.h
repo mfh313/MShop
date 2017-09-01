@@ -12,7 +12,4 @@
 
 @property (nonatomic,strong) NSString *userId;
 
--(void)mangerLogin;
--(void)clerkLogin;
-
 @end
