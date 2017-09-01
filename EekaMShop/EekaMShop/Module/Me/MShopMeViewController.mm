@@ -218,13 +218,13 @@
 - (void)makeShareVersionCell:(MFTableViewCell *)cell
 {
     UIButton *contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    contentBtn.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [contentBtn setTitle:@"分享此版本" forState:UIControlStateNormal];
     [contentBtn setTitleColor:[UIColor hx_colorWithHexString:@"0080C0"] forState:UIControlStateNormal];
     [contentBtn addTarget:self action:@selector(onClickShare:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell.contentView addSubview:contentBtn];
-    contentBtn.frame = CGRectMake(0, 0, 160, 40);
-    contentBtn.center = cell.contentView.center;
+    contentBtn.frame = CGRectMake((CGRectGetWidth(cell.contentView.frame) - 160) / 2, (CGRectGetHeight(cell.contentView.frame) - 40) / 2, 160, 40);
 }
 
 - (void)onClickShare:(id)sender
@@ -242,13 +242,13 @@
 - (void)makeLogoutCell:(MFTableViewCell *)cell
 {
     UIButton *contentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    contentBtn.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [contentBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     [contentBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [contentBtn addTarget:self action:@selector(onClickLogout:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell.contentView addSubview:contentBtn];
-    contentBtn.frame = CGRectMake(0, 0, 160, 40);
-    contentBtn.center = cell.contentView.center;
+    contentBtn.frame = CGRectMake((CGRectGetWidth(cell.contentView.frame) - 160) / 2, (CGRectGetHeight(cell.contentView.frame) - 40) / 2, 160, 40);
 }
 
 - (void)onClickLogout:(id)sender
