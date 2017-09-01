@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"员工冻结管理";
+    self.title = @"员工管理";
     [self setLeftNaviButtonWithAction:@selector(onClickBackBtn:)];
     
     _frozenEmployeeList = [NSMutableArray array];
