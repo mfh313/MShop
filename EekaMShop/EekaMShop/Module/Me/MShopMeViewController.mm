@@ -123,7 +123,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.font = [UIFont systemFontOfSize:17.0f];
     titleLabel.textColor = [UIColor hx_colorWithHexString:@"282828"];
-    titleLabel.text = @"员工冻结管理";
+    titleLabel.text = @"员工管理";
     titleLabel.frame = CGRectMake(15, (CGRectGetHeight(cell.contentView.frame) - 21) / 2, 120, 21);
     [cell.contentView addSubview:titleLabel];
     
