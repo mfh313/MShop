@@ -76,7 +76,7 @@
 		AC77260C1F2AEACA005B2100 /* MShopGetConsumptionItemsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77260B1F2AEACA005B2100 /* MShopGetConsumptionItemsApi.m */; };
 		AC77261E1F2B09D2005B2100 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC77260E1F2B09D2005B2100 /* Bugly.framework */; };
 		AC77261F1F2B09D2005B2100 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7726101F2B09D2005B2100 /* JSPatchPlatform.framework */; };
-		AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77261D1F2B09D2005B2100 /* MFThirdPartyPlugin.m */; };
+		AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC77261D1F2B09D2005B2100 /* MFThirdPartyPlugin.mm */; };
 		AC7726291F2B0C01005B2100 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7726281F2B0C01005B2100 /* SystemConfiguration.framework */; };
 		AC77262B1F2B0C13005B2100 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC77262A1F2B0C13005B2100 /* libz.tbd */; };
 		AC77262D1F2B0C1C005B2100 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC77262C1F2B0C1C005B2100 /* libc++.tbd */; };
@@ -348,7 +348,7 @@
 		AC77260E1F2B09D2005B2100 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		AC7726101F2B09D2005B2100 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
 		AC77261C1F2B09D2005B2100 /* MFThirdPartyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFThirdPartyPlugin.h; sourceTree = "<group>"; };
-		AC77261D1F2B09D2005B2100 /* MFThirdPartyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFThirdPartyPlugin.m; sourceTree = "<group>"; };
+		AC77261D1F2B09D2005B2100 /* MFThirdPartyPlugin.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MFThirdPartyPlugin.mm; sourceTree = "<group>"; };
 		AC7726281F2B0C01005B2100 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AC77262A1F2B0C13005B2100 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AC77262C1F2B0C1C005B2100 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -801,7 +801,7 @@
 			isa = PBXGroup;
 			children = (
 				AC77261C1F2B09D2005B2100 /* MFThirdPartyPlugin.h */,
-				AC77261D1F2B09D2005B2100 /* MFThirdPartyPlugin.m */,
+				AC77261D1F2B09D2005B2100 /* MFThirdPartyPlugin.mm */,
 				AC77260E1F2B09D2005B2100 /* Bugly.framework */,
 				AC77260F1F2B09D2005B2100 /* JSPatch */,
 			);
@@ -1693,7 +1693,7 @@
 				AC867E5D1F1D99E600694086 /* MFTableViewUserInfo.m in Sources */,
 				AC867E5B1F1D99E600694086 /* MFTableViewInfo.m in Sources */,
 				AC867E431F1D99E600694086 /* UIViewController+FixBackIndicatorImage.m in Sources */,
-				AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.m in Sources */,
+				AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.mm in Sources */,
 				AC85C22C1F1F5943003785A4 /* MShopMemberListViewController.m in Sources */,
 				AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */,
 				AC7726441F2B1CD9005B2100 /* UIImageView+CornerRadius.m in Sources */,

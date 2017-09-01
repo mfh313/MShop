@@ -11,6 +11,8 @@
 @interface MFThirdPartyPlugin : NSObject
 
 +(void)testCrash;
+
+-(void)setWCDBMonitor;
     
 -(void)registerPluginsApplication:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;

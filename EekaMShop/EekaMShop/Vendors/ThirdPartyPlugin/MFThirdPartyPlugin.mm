@@ -19,6 +19,9 @@
 #import "MShopLoginService.h"
 #import "MMServerPushService.h"
 
+#import <WCDB/WCDB.h>
+#import <WCDB/WCTStatistics.h>
+
 #define JSPatch_APP_KEY @"a3ea2110954730fe"
 #define BUGLY_APP_ID @"11db5a0376"
 #define JPUSH_APP_KEY @"97144cda4d1a6c13f653b8f1"
@@ -361,6 +364,22 @@ static NSInteger seq = 0;
     NSArray * array = @[@"1", @"2"];
     
     NSLog(@"print %@", [array objectAtIndex:2]);
+}
+
+-(void)setWCDBMonitor
+{
+    //Error Monitor
+    [WCTStatistics SetGlobalErrorReport:^(WCTError *error) {
+        NSLog(@"[WCDB]%@", error);
+    }];
+    
+    [WCTStatistics SetGlobalPerformanceTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
+        NSLog(@"Tag: %d", tag);
+        [sqls enumerateKeysAndObjectsUsingBlock:^(NSString *sql, NSNumber *count, BOOL *) {
+            NSLog(@"SQL: %@ Count: %d", sql, count.intValue);
+        }];
+        NSLog(@"Total cost %ld nanoseconds", (long)cost);
+    }];
 }
 
 @end

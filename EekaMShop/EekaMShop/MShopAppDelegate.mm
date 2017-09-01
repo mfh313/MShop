@@ -12,8 +12,6 @@
 #import "MShopAppViewControllerManager.h"
 #import "MShopLoginService.h"
 #import "MFThirdPartyPlugin.h"
-#import <WCDB/WCDB.h>
-#import <WCDB/WCTStatistics.h>
 
 @interface MShopAppDelegate ()
 {
@@ -32,6 +30,8 @@
     MFThirdPartyPlugin *thirdPartyPlugin = [[MMServiceCenter defaultCenter] getService:[MFThirdPartyPlugin class]];
     [thirdPartyPlugin registerPluginsApplication:application didFinishLaunchingWithOptions:launchOptions];
     
+    [thirdPartyPlugin setWCDBMonitor];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -40,8 +40,6 @@
     
     MShopLoginService *loginService = [[MMServiceCenter defaultCenter] getService:[MShopLoginService class]];
     [loginService autoLogin];
-    
-    [self setWCDBMonitor];
     
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor clearColor];
@@ -142,22 +140,6 @@ fetchCompletionHandler:
     [thirdPartyPlugin didReceiveRemoteNotification:userInfo];
     
     completionHandler(UIBackgroundFetchResultNewData);
-}
-
--(void)setWCDBMonitor
-{
-    //Error Monitor
-    [WCTStatistics SetGlobalErrorReport:^(WCTError *error) {
-        NSLog(@"[WCDB]%@", error);
-    }];
-    
-    [WCTStatistics SetGlobalPerformanceTrace:^(WCTTag tag, NSDictionary<NSString*, NSNumber*>* sqls, NSInteger cost) {
-        NSLog(@"Tag: %d", tag);
-        [sqls enumerateKeysAndObjectsUsingBlock:^(NSString *sql, NSNumber *count, BOOL *) {
-            NSLog(@"SQL: %@ Count: %d", sql, count.intValue);
-        }];
-        NSLog(@"Total cost %ld nanoseconds", (long)cost);
-    }];
 }
 
 @end
