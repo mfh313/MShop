@@ -70,7 +70,7 @@
         [weakSelf onClickLoginUserId:clerk];
     }];
     
-    UITextField *textField = [alert addTextField:@"输入userId"];
+    UITextField *textField = [alert addTextField:@"请输入纯数字5位的userId"];
     textField.keyboardType = UIKeyboardTypeNumberPad;
     [alert addButton:@"使用输入的userId登录" actionBlock:^(void) {
         NSString *inputId = textField.text;
