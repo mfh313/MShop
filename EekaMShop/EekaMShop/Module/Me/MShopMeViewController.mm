@@ -17,6 +17,7 @@
 #import "MShopMeProfileCellView.h"
 #import "MShopMeAddressBookSynCellView.h"
 #import "MShopFrozenEmployeeManagerViewController.h"
+#import "MGJRouter.h"
 
 @interface MShopMeViewController ()
 {
@@ -52,6 +53,19 @@
     [self.view addSubview:contentTableView];
     
     [self reloadMeView];
+    
+    [self registerMGJRouter];
+}
+
+-(void)registerMGJRouter
+{
+    [MGJRouter registerURLPattern:@"mshop://me/frozenEmployee" toHandler:^(NSDictionary *routerParameters) {
+       
+        MShopFrozenEmployeeManagerViewController *frozenEmployeeVC = [MShopFrozenEmployeeManagerViewController new];
+        frozenEmployeeVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:frozenEmployeeVC animated:YES];
+    }];
+    
 }
 
 -(void)reloadMeView
@@ -135,9 +149,11 @@
 
 -(void)onClickFrozenEmployee
 {
-    MShopFrozenEmployeeManagerViewController *frozenEmployeeVC = [MShopFrozenEmployeeManagerViewController new];
-    frozenEmployeeVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:frozenEmployeeVC animated:YES];
+//    MShopFrozenEmployeeManagerViewController *frozenEmployeeVC = [MShopFrozenEmployeeManagerViewController new];
+//    frozenEmployeeVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:frozenEmployeeVC animated:YES];
+    
+    [MGJRouter openURL:@"mshop://me/frozenEmployee" withUserInfo:nil completion:nil];
 }
 
 -(void)addFunctionSection
