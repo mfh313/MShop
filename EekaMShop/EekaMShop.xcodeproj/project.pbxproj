@@ -193,6 +193,34 @@
 		AC96D31E1F57E96900486095 /* MShopMeAddressBookSynCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D31D1F57E96900486095 /* MShopMeAddressBookSynCellView.m */; };
 		AC96D3201F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC96D31F1F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib */; };
 		AC96D3231F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D3221F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m */; };
+		AC9A622C1F5CD82400AF5875 /* Chat.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A61F11F5CD82400AF5875 /* Chat.pb.m */; };
+		AC9A622D1F5CD82400AF5875 /* chat.proto in Resources */ = {isa = PBXBuildFile; fileRef = AC9A61F21F5CD82400AF5875 /* chat.proto */; };
+		AC9A622E1F5CD82400AF5875 /* Main.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A61F41F5CD82400AF5875 /* Main.pb.m */; };
+		AC9A622F1F5CD82400AF5875 /* main.proto in Resources */ = {isa = PBXBuildFile; fileRef = AC9A61F51F5CD82400AF5875 /* main.proto */; };
+		AC9A62301F5CD82400AF5875 /* Messagepush.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A61F71F5CD82400AF5875 /* Messagepush.pb.m */; };
+		AC9A62311F5CD82400AF5875 /* messagepush.proto in Resources */ = {isa = PBXBuildFile; fileRef = AC9A61F81F5CD82400AF5875 /* messagepush.proto */; };
+		AC9A62321F5CD82400AF5875 /* AbstractMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A61FB1F5CD82400AF5875 /* AbstractMessage.m */; };
+		AC9A62331F5CD82400AF5875 /* AbstractMessageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A61FD1F5CD82400AF5875 /* AbstractMessageBuilder.m */; };
+		AC9A62341F5CD82400AF5875 /* CodedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62001F5CD82400AF5875 /* CodedInputStream.m */; };
+		AC9A62351F5CD82400AF5875 /* CodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62021F5CD82400AF5875 /* CodedOutputStream.m */; };
+		AC9A62361F5CD82400AF5875 /* ConcreteExtensionField.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62041F5CD82400AF5875 /* ConcreteExtensionField.m */; };
+		AC9A62371F5CD82400AF5875 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62061F5CD82400AF5875 /* Descriptor.pb.m */; };
+		AC9A62381F5CD82400AF5875 /* ExtendableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62081F5CD82400AF5875 /* ExtendableMessage.m */; };
+		AC9A62391F5CD82400AF5875 /* ExtendableMessageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A620A1F5CD82400AF5875 /* ExtendableMessageBuilder.m */; };
+		AC9A623A1F5CD82400AF5875 /* ExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A620D1F5CD82400AF5875 /* ExtensionRegistry.m */; };
+		AC9A623B1F5CD82400AF5875 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A620F1F5CD82400AF5875 /* Field.m */; };
+		AC9A623C1F5CD82400AF5875 /* GeneratedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62121F5CD82400AF5875 /* GeneratedMessage.m */; };
+		AC9A623D1F5CD82400AF5875 /* GeneratedMessageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62141F5CD82400AF5875 /* GeneratedMessageBuilder.m */; };
+		AC9A623E1F5CD82400AF5875 /* MutableExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62181F5CD82400AF5875 /* MutableExtensionRegistry.m */; };
+		AC9A623F1F5CD82400AF5875 /* MutableField.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A621A1F5CD82400AF5875 /* MutableField.m */; };
+		AC9A62401F5CD82400AF5875 /* ObjectivecDescriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A621C1F5CD82400AF5875 /* ObjectivecDescriptor.pb.m */; };
+		AC9A62411F5CD82400AF5875 /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A621E1F5CD82400AF5875 /* PBArray.m */; };
+		AC9A62421F5CD82400AF5875 /* RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62211F5CD82400AF5875 /* RingBuffer.m */; };
+		AC9A62431F5CD82400AF5875 /* TextFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62231F5CD82400AF5875 /* TextFormat.m */; };
+		AC9A62441F5CD82400AF5875 /* UnknownFieldSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62251F5CD82400AF5875 /* UnknownFieldSet.m */; };
+		AC9A62451F5CD82400AF5875 /* UnknownFieldSetBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62271F5CD82400AF5875 /* UnknownFieldSetBuilder.m */; };
+		AC9A62461F5CD82400AF5875 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A62291F5CD82400AF5875 /* Utilities.m */; };
+		AC9A62471F5CD82400AF5875 /* WireFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A622B1F5CD82400AF5875 /* WireFormat.m */; };
 		AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */; };
 		AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CB1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m */; };
 		AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83CE1F2C22F200952678 /* MShopMemberConsumptionCellView.m */; };
@@ -565,6 +593,65 @@
 		AC96D31F1F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMeAddressBookSynCellView.xib; sourceTree = "<group>"; };
 		AC96D3211F5814A900486095 /* MShopFrozenEmployeeManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopFrozenEmployeeManagerViewController.h; sourceTree = "<group>"; };
 		AC96D3221F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopFrozenEmployeeManagerViewController.m; sourceTree = "<group>"; };
+		AC9A61F01F5CD82400AF5875 /* Chat.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chat.pb.h; sourceTree = "<group>"; };
+		AC9A61F11F5CD82400AF5875 /* Chat.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chat.pb.m; sourceTree = "<group>"; };
+		AC9A61F21F5CD82400AF5875 /* chat.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chat.proto; sourceTree = "<group>"; };
+		AC9A61F31F5CD82400AF5875 /* Main.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main.pb.h; sourceTree = "<group>"; };
+		AC9A61F41F5CD82400AF5875 /* Main.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main.pb.m; sourceTree = "<group>"; };
+		AC9A61F51F5CD82400AF5875 /* main.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.proto; sourceTree = "<group>"; };
+		AC9A61F61F5CD82400AF5875 /* Messagepush.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messagepush.pb.h; sourceTree = "<group>"; };
+		AC9A61F71F5CD82400AF5875 /* Messagepush.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messagepush.pb.m; sourceTree = "<group>"; };
+		AC9A61F81F5CD82400AF5875 /* messagepush.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = messagepush.proto; sourceTree = "<group>"; };
+		AC9A61FA1F5CD82400AF5875 /* AbstractMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessage.h; sourceTree = "<group>"; };
+		AC9A61FB1F5CD82400AF5875 /* AbstractMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMessage.m; sourceTree = "<group>"; };
+		AC9A61FC1F5CD82400AF5875 /* AbstractMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessageBuilder.h; sourceTree = "<group>"; };
+		AC9A61FD1F5CD82400AF5875 /* AbstractMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMessageBuilder.m; sourceTree = "<group>"; };
+		AC9A61FE1F5CD82400AF5875 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
+		AC9A61FF1F5CD82400AF5875 /* CodedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodedInputStream.h; sourceTree = "<group>"; };
+		AC9A62001F5CD82400AF5875 /* CodedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodedInputStream.m; sourceTree = "<group>"; };
+		AC9A62011F5CD82400AF5875 /* CodedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodedOutputStream.h; sourceTree = "<group>"; };
+		AC9A62021F5CD82400AF5875 /* CodedOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodedOutputStream.m; sourceTree = "<group>"; };
+		AC9A62031F5CD82400AF5875 /* ConcreteExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcreteExtensionField.h; sourceTree = "<group>"; };
+		AC9A62041F5CD82400AF5875 /* ConcreteExtensionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcreteExtensionField.m; sourceTree = "<group>"; };
+		AC9A62051F5CD82400AF5875 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pb.h; sourceTree = "<group>"; };
+		AC9A62061F5CD82400AF5875 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pb.m; sourceTree = "<group>"; };
+		AC9A62071F5CD82400AF5875 /* ExtendableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendableMessage.h; sourceTree = "<group>"; };
+		AC9A62081F5CD82400AF5875 /* ExtendableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendableMessage.m; sourceTree = "<group>"; };
+		AC9A62091F5CD82400AF5875 /* ExtendableMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendableMessageBuilder.h; sourceTree = "<group>"; };
+		AC9A620A1F5CD82400AF5875 /* ExtendableMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendableMessageBuilder.m; sourceTree = "<group>"; };
+		AC9A620B1F5CD82400AF5875 /* ExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionField.h; sourceTree = "<group>"; };
+		AC9A620C1F5CD82400AF5875 /* ExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionRegistry.h; sourceTree = "<group>"; };
+		AC9A620D1F5CD82400AF5875 /* ExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtensionRegistry.m; sourceTree = "<group>"; };
+		AC9A620E1F5CD82400AF5875 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
+		AC9A620F1F5CD82400AF5875 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Field.m; sourceTree = "<group>"; };
+		AC9A62101F5CD82400AF5875 /* ForwardDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwardDeclarations.h; sourceTree = "<group>"; };
+		AC9A62111F5CD82400AF5875 /* GeneratedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratedMessage.h; sourceTree = "<group>"; };
+		AC9A62121F5CD82400AF5875 /* GeneratedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedMessage.m; sourceTree = "<group>"; };
+		AC9A62131F5CD82400AF5875 /* GeneratedMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratedMessageBuilder.h; sourceTree = "<group>"; };
+		AC9A62141F5CD82400AF5875 /* GeneratedMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedMessageBuilder.m; sourceTree = "<group>"; };
+		AC9A62151F5CD82400AF5875 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		AC9A62161F5CD82400AF5875 /* MessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBuilder.h; sourceTree = "<group>"; };
+		AC9A62171F5CD82400AF5875 /* MutableExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableExtensionRegistry.h; sourceTree = "<group>"; };
+		AC9A62181F5CD82400AF5875 /* MutableExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableExtensionRegistry.m; sourceTree = "<group>"; };
+		AC9A62191F5CD82400AF5875 /* MutableField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableField.h; sourceTree = "<group>"; };
+		AC9A621A1F5CD82400AF5875 /* MutableField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableField.m; sourceTree = "<group>"; };
+		AC9A621B1F5CD82400AF5875 /* ObjectivecDescriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectivecDescriptor.pb.h; sourceTree = "<group>"; };
+		AC9A621C1F5CD82400AF5875 /* ObjectivecDescriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectivecDescriptor.pb.m; sourceTree = "<group>"; };
+		AC9A621D1F5CD82400AF5875 /* PBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBArray.h; sourceTree = "<group>"; };
+		AC9A621E1F5CD82400AF5875 /* PBArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBArray.m; sourceTree = "<group>"; };
+		AC9A621F1F5CD82400AF5875 /* ProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers.h; sourceTree = "<group>"; };
+		AC9A62201F5CD82400AF5875 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		AC9A62211F5CD82400AF5875 /* RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingBuffer.m; sourceTree = "<group>"; };
+		AC9A62221F5CD82400AF5875 /* TextFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFormat.h; sourceTree = "<group>"; };
+		AC9A62231F5CD82400AF5875 /* TextFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFormat.m; sourceTree = "<group>"; };
+		AC9A62241F5CD82400AF5875 /* UnknownFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnknownFieldSet.h; sourceTree = "<group>"; };
+		AC9A62251F5CD82400AF5875 /* UnknownFieldSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnknownFieldSet.m; sourceTree = "<group>"; };
+		AC9A62261F5CD82400AF5875 /* UnknownFieldSetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnknownFieldSetBuilder.h; sourceTree = "<group>"; };
+		AC9A62271F5CD82400AF5875 /* UnknownFieldSetBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnknownFieldSetBuilder.m; sourceTree = "<group>"; };
+		AC9A62281F5CD82400AF5875 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		AC9A62291F5CD82400AF5875 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		AC9A622A1F5CD82400AF5875 /* WireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WireFormat.h; sourceTree = "<group>"; };
+		AC9A622B1F5CD82400AF5875 /* WireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WireFormat.m; sourceTree = "<group>"; };
 		AC9F83C71F2C16C200952678 /* MShopIndividualConsumptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionModel.h; sourceTree = "<group>"; };
 		AC9F83C81F2C16C200952678 /* MShopIndividualConsumptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopIndividualConsumptionModel.m; sourceTree = "<group>"; };
 		AC9F83CA1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopIndividualConsumptionItemModel.h; sourceTree = "<group>"; };
@@ -1070,6 +1157,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AC9A61EF1F5CD82400AF5875 /* Proto */,
 				A5C138511F4C60CC00F205E3 /* IQKeyboardManager */,
 				AC396F161F4A73590071434E /* MGJRouter */,
 				AC38C2AE1F3BE1B100AD8707 /* SCLAlertView */,
@@ -1424,6 +1512,80 @@
 			path = static/Accessory;
 			sourceTree = "<group>";
 		};
+		AC9A61EF1F5CD82400AF5875 /* Proto */ = {
+			isa = PBXGroup;
+			children = (
+				AC9A61F01F5CD82400AF5875 /* Chat.pb.h */,
+				AC9A61F11F5CD82400AF5875 /* Chat.pb.m */,
+				AC9A61F21F5CD82400AF5875 /* chat.proto */,
+				AC9A61F31F5CD82400AF5875 /* Main.pb.h */,
+				AC9A61F41F5CD82400AF5875 /* Main.pb.m */,
+				AC9A61F51F5CD82400AF5875 /* main.proto */,
+				AC9A61F61F5CD82400AF5875 /* Messagepush.pb.h */,
+				AC9A61F71F5CD82400AF5875 /* Messagepush.pb.m */,
+				AC9A61F81F5CD82400AF5875 /* messagepush.proto */,
+				AC9A61F91F5CD82400AF5875 /* ProtocolBuffers */,
+			);
+			path = Proto;
+			sourceTree = "<group>";
+		};
+		AC9A61F91F5CD82400AF5875 /* ProtocolBuffers */ = {
+			isa = PBXGroup;
+			children = (
+				AC9A61FA1F5CD82400AF5875 /* AbstractMessage.h */,
+				AC9A61FB1F5CD82400AF5875 /* AbstractMessage.m */,
+				AC9A61FC1F5CD82400AF5875 /* AbstractMessageBuilder.h */,
+				AC9A61FD1F5CD82400AF5875 /* AbstractMessageBuilder.m */,
+				AC9A61FE1F5CD82400AF5875 /* Bootstrap.h */,
+				AC9A61FF1F5CD82400AF5875 /* CodedInputStream.h */,
+				AC9A62001F5CD82400AF5875 /* CodedInputStream.m */,
+				AC9A62011F5CD82400AF5875 /* CodedOutputStream.h */,
+				AC9A62021F5CD82400AF5875 /* CodedOutputStream.m */,
+				AC9A62031F5CD82400AF5875 /* ConcreteExtensionField.h */,
+				AC9A62041F5CD82400AF5875 /* ConcreteExtensionField.m */,
+				AC9A62051F5CD82400AF5875 /* Descriptor.pb.h */,
+				AC9A62061F5CD82400AF5875 /* Descriptor.pb.m */,
+				AC9A62071F5CD82400AF5875 /* ExtendableMessage.h */,
+				AC9A62081F5CD82400AF5875 /* ExtendableMessage.m */,
+				AC9A62091F5CD82400AF5875 /* ExtendableMessageBuilder.h */,
+				AC9A620A1F5CD82400AF5875 /* ExtendableMessageBuilder.m */,
+				AC9A620B1F5CD82400AF5875 /* ExtensionField.h */,
+				AC9A620C1F5CD82400AF5875 /* ExtensionRegistry.h */,
+				AC9A620D1F5CD82400AF5875 /* ExtensionRegistry.m */,
+				AC9A620E1F5CD82400AF5875 /* Field.h */,
+				AC9A620F1F5CD82400AF5875 /* Field.m */,
+				AC9A62101F5CD82400AF5875 /* ForwardDeclarations.h */,
+				AC9A62111F5CD82400AF5875 /* GeneratedMessage.h */,
+				AC9A62121F5CD82400AF5875 /* GeneratedMessage.m */,
+				AC9A62131F5CD82400AF5875 /* GeneratedMessageBuilder.h */,
+				AC9A62141F5CD82400AF5875 /* GeneratedMessageBuilder.m */,
+				AC9A62151F5CD82400AF5875 /* Message.h */,
+				AC9A62161F5CD82400AF5875 /* MessageBuilder.h */,
+				AC9A62171F5CD82400AF5875 /* MutableExtensionRegistry.h */,
+				AC9A62181F5CD82400AF5875 /* MutableExtensionRegistry.m */,
+				AC9A62191F5CD82400AF5875 /* MutableField.h */,
+				AC9A621A1F5CD82400AF5875 /* MutableField.m */,
+				AC9A621B1F5CD82400AF5875 /* ObjectivecDescriptor.pb.h */,
+				AC9A621C1F5CD82400AF5875 /* ObjectivecDescriptor.pb.m */,
+				AC9A621D1F5CD82400AF5875 /* PBArray.h */,
+				AC9A621E1F5CD82400AF5875 /* PBArray.m */,
+				AC9A621F1F5CD82400AF5875 /* ProtocolBuffers.h */,
+				AC9A62201F5CD82400AF5875 /* RingBuffer.h */,
+				AC9A62211F5CD82400AF5875 /* RingBuffer.m */,
+				AC9A62221F5CD82400AF5875 /* TextFormat.h */,
+				AC9A62231F5CD82400AF5875 /* TextFormat.m */,
+				AC9A62241F5CD82400AF5875 /* UnknownFieldSet.h */,
+				AC9A62251F5CD82400AF5875 /* UnknownFieldSet.m */,
+				AC9A62261F5CD82400AF5875 /* UnknownFieldSetBuilder.h */,
+				AC9A62271F5CD82400AF5875 /* UnknownFieldSetBuilder.m */,
+				AC9A62281F5CD82400AF5875 /* Utilities.h */,
+				AC9A62291F5CD82400AF5875 /* Utilities.m */,
+				AC9A622A1F5CD82400AF5875 /* WireFormat.h */,
+				AC9A622B1F5CD82400AF5875 /* WireFormat.m */,
+			);
+			path = ProtocolBuffers;
+			sourceTree = "<group>";
+		};
 		AC9F83D51F2C728E00952678 /* XWScanImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1666,7 @@
 			files = (
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
 				AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */,
+				AC9A62311F5CD82400AF5875 /* messagepush.proto in Resources */,
 				ACEF8B391F58309400733125 /* MShopFrozenEmployeeCellView.xib in Resources */,
 				AC03A9551F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 in Resources */,
 				ACDFE2471F2F2114002795BE /* MShopMemberConsumptionTitleView.xib in Resources */,
@@ -1514,9 +1677,11 @@
 				AC7726321F2B0EEF005B2100 /* rsa_private_key.pem in Resources */,
 				AC77263E1F2B0F04005B2100 /* main.js in Resources */,
 				A5C138841F4C60CC00F205E3 /* IQKeyboardManager.bundle in Resources */,
+				AC9A622D1F5CD82400AF5875 /* chat.proto in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
 				AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */,
 				AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */,
+				AC9A622F1F5CD82400AF5875 /* main.proto in Resources */,
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
 				AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */,
 				AC96D3201F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib in Resources */,
@@ -1563,8 +1728,10 @@
 				AC867E551F1D99E600694086 /* MMUIView.m in Sources */,
 				AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */,
 				AC867E571F1D99E600694086 /* UINavigationBar+MMUINavigationBar.m in Sources */,
+				AC9A62371F5CD82400AF5875 /* Descriptor.pb.m in Sources */,
 				AC867EE41F1DB55600694086 /* MMServiceCenter.m in Sources */,
 				AC867E421F1D99E600694086 /* UIView+viewController.m in Sources */,
+				AC9A62361F5CD82400AF5875 /* ConcreteExtensionField.m in Sources */,
 				AC867F001F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m in Sources */,
 				AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */,
 				AC867E511F1D99E600694086 /* MMSelectButton.m in Sources */,
@@ -1597,17 +1764,21 @@
 				AC77260C1F2AEACA005B2100 /* MShopGetConsumptionItemsApi.m in Sources */,
 				AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */,
 				AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */,
+				AC9A623E1F5CD82400AF5875 /* MutableExtensionRegistry.m in Sources */,
 				AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,
 				A5C1387B1F4C60CC00F205E3 /* IQUIWindow+Hierarchy.m in Sources */,
 				AC867EFD1F1DF24100694086 /* YTKAnimatingRequestAccessory.m in Sources */,
 				AC867E771F1D9BB400694086 /* HexColors.m in Sources */,
+				AC9A62471F5CD82400AF5875 /* WireFormat.m in Sources */,
 				A5C1387A1F4C60CC00F205E3 /* IQUIViewController+Additions.m in Sources */,
 				AC867E521F1D99E600694086 /* MMUIBridgeView.m in Sources */,
+				AC9A62321F5CD82400AF5875 /* AbstractMessage.m in Sources */,
 				AC7FBD7F1F27443100B11D5C /* MShopIndividualConsumptionApi.m in Sources */,
 				AC7FBD641F26DB2F00B11D5C /* MShopGetIndividualApi.m in Sources */,
 				ACC92EFA1F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.m in Sources */,
 				AC867E4D1F1D99E600694086 /* MMBaseTextFieldItem.m in Sources */,
+				AC9A62331F5CD82400AF5875 /* AbstractMessageBuilder.m in Sources */,
 				AC7399081F21E67500F753C2 /* MShopMemberListCellView.m in Sources */,
 				AC867EE31F1DB55600694086 /* MMService.m in Sources */,
 				AC867E5F1F1D99E600694086 /* MFStringUtil.m in Sources */,
@@ -1618,32 +1789,46 @@
 				AC2547B81F24ABED00F54829 /* MShopMemberDetailViewController.m in Sources */,
 				AC7C28521F203E6D003C0C4C /* MShopLoginApi.m in Sources */,
 				AC85C2251F1F52BC003785A4 /* MShopAppViewControllerManager.mm in Sources */,
+				AC9A622C1F5CD82400AF5875 /* Chat.pb.m in Sources */,
 				AC867E801F1D9CBB00694086 /* MBProgressHUD.m in Sources */,
 				AC7398FC1F21936800F753C2 /* MShopGetEmployeeListApi.m in Sources */,
 				AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				AC96D3231F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m in Sources */,
 				AC38C2C41F3BE1B100AD8707 /* SCLSwitchView.m in Sources */,
+				AC9A623F1F5CD82400AF5875 /* MutableField.m in Sources */,
+				AC9A62301F5CD82400AF5875 /* Messagepush.pb.m in Sources */,
 				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */,
 				ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */,
+				AC9A623D1F5CD82400AF5875 /* GeneratedMessageBuilder.m in Sources */,
+				AC9A62441F5CD82400AF5875 /* UnknownFieldSet.m in Sources */,
+				AC9A623C1F5CD82400AF5875 /* GeneratedMessage.m in Sources */,
 				AC867E461F1D99E600694086 /* UIViewController+UINavigationItem.m in Sources */,
 				AC96D3161F57DCF600486095 /* MShopMeProfileCellView.m in Sources */,
 				AC867EC51F1DB32800694086 /* HYBNetworking.m in Sources */,
 				AC7399101F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m in Sources */,
+				AC9A623A1F5CD82400AF5875 /* ExtensionRegistry.m in Sources */,
 				AC867E451F1D99E600694086 /* UIViewController+pregress.m in Sources */,
+				AC9A62351F5CD82400AF5875 /* CodedOutputStream.m in Sources */,
 				AC7C28641F20B01E003C0C4C /* MFNetWorkAgent.m in Sources */,
 				AC867E411F1D99E600694086 /* UIView+threadHook.m in Sources */,
 				AC867E5A1F1D99E600694086 /* MFTableViewCellInfo.m in Sources */,
 				A5C138801F4C60CC00F205E3 /* IQPreviousNextView.m in Sources */,
+				AC9A623B1F5CD82400AF5875 /* Field.m in Sources */,
 				AC85C2291F1F542F003785A4 /* MShopMeViewController.mm in Sources */,
 				AC867E581F1D99E600694086 /* MFModelHelper.m in Sources */,
+				AC9A62341F5CD82400AF5875 /* CodedInputStream.m in Sources */,
 				AC867E5E1F1D99E600694086 /* MMTabBarController.m in Sources */,
 				AC76F3D91F289D5E00499C66 /* MShopMemberSearchBar.m in Sources */,
 				AC867E501F1D99E600694086 /* MMOnePixLayoutConstraint.m in Sources */,
 				AC867EF31F1DD4EA00694086 /* MShopSSOReqAttachObject.m in Sources */,
 				AC38C2C51F3BE1B100AD8707 /* SCLTextView.m in Sources */,
 				AC7E3F851F25DB270035E3DC /* MShopMemberProfileCellView.m in Sources */,
+				AC9A62401F5CD82400AF5875 /* ObjectivecDescriptor.pb.m in Sources */,
 				AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */,
+				AC9A62381F5CD82400AF5875 /* ExtendableMessage.m in Sources */,
 				AC7C28671F20B33F003C0C4C /* MShopMainFrameLogicController.m in Sources */,
+				AC9A62391F5CD82400AF5875 /* ExtendableMessageBuilder.m in Sources */,
+				AC9A62431F5CD82400AF5875 /* TextFormat.m in Sources */,
 				AC867EFE1F1DF24100694086 /* YTKBaseRequest+AnimatingAccessory.m in Sources */,
 				A5C1387D1F4C60CC00F205E3 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				AC7399161F22045A00F753C2 /* NSCache+SafeInsert.m in Sources */,
@@ -1657,11 +1842,13 @@
 				AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */,
 				AC7399051F21DCF500F753C2 /* MShopUserIdLoginApi.m in Sources */,
 				AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */,
+				AC9A622E1F5CD82400AF5875 /* Main.pb.m in Sources */,
 				AC7C28611F209B86003C0C4C /* MShopEmployeeInfo+WCDB.mm in Sources */,
 				A5C138831F4C60CC00F205E3 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				ACEF8B371F58307200733125 /* MShopFrozenEmployeeCellView.m in Sources */,
 				AC867E401F1D99E600694086 /* UIView+Extend.m in Sources */,
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
+				AC9A62421F5CD82400AF5875 /* RingBuffer.m in Sources */,
 				AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */,
 				AC867E541F1D99E600694086 /* MMUITextField.m in Sources */,
 				AC38C2C71F3BE1B100AD8707 /* UIImage+ImageEffects.m in Sources */,
@@ -1671,6 +1858,7 @@
 				AC567D7A1F3B10F400EE33BD /* MShopSynMemberInfoModel.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,
 				AC7E3F821F25CF420035E3DC /* MShopIndividualModifyApi.m in Sources */,
+				AC9A62411F5CD82400AF5875 /* PBArray.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,
 				AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */,
 				AC7D01851F32BD5C00912EDA /* MShopAppointmentCellView.m in Sources */,
@@ -1684,6 +1872,7 @@
 				AC6670A81F0B25C00067F6EE /* main.m in Sources */,
 				AC7726091F2ACF6F005B2100 /* MShopMemberConsumptionViewController.m in Sources */,
 				AC7C285B1F209A79003C0C4C /* MShopLoginUserInfo+WCDB.mm in Sources */,
+				AC9A62461F5CD82400AF5875 /* Utilities.m in Sources */,
 				AC7D01821F32B9C500912EDA /* MShopAppointmentModifyApi.m in Sources */,
 				AC38C2C61F3BE1B100AD8707 /* SCLTimerDisplay.m in Sources */,
 				A5C138771F4C60CC00F205E3 /* IQUIScrollView+Additions.m in Sources */,
@@ -1692,6 +1881,7 @@
 				AC867E761F1D9BB400694086 /* LYSideslipCell.m in Sources */,
 				AC867E5D1F1D99E600694086 /* MFTableViewUserInfo.m in Sources */,
 				AC867E5B1F1D99E600694086 /* MFTableViewInfo.m in Sources */,
+				AC9A62451F5CD82400AF5875 /* UnknownFieldSetBuilder.m in Sources */,
 				AC867E431F1D99E600694086 /* UIViewController+FixBackIndicatorImage.m in Sources */,
 				AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.mm in Sources */,
 				AC85C22C1F1F5943003785A4 /* MShopMemberListViewController.m in Sources */,
