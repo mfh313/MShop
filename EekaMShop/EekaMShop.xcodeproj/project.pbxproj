@@ -106,7 +106,6 @@
 		AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */; };
 		AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */; };
 		AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */; };
-		AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */; };
 		AC7E3F771F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */; };
 		AC7E3F7A1F25C3130035E3DC /* MShopEmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F791F25C3130035E3DC /* MShopEmployeeListViewController.m */; };
 		AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F7C1F25CA560035E3DC /* MShopEmployeeInfoCellView.m */; };
@@ -424,8 +423,6 @@
 		AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		AC7D018C1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
-		AC7D01901F32FF4100912EDA /* MShopAppointmentFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentFootView.h; sourceTree = "<group>"; };
-		AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentFootView.m; sourceTree = "<group>"; };
 		AC7E3F751F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		AC7E3F781F25C3130035E3DC /* MShopEmployeeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopEmployeeListViewController.h; sourceTree = "<group>"; };
@@ -1014,8 +1011,6 @@
 			children = (
 				AC7D017A1F32B7F500912EDA /* MShopAppointmentListViewController.h */,
 				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
-				AC7D01901F32FF4100912EDA /* MShopAppointmentFootView.h */,
-				AC7D01911F32FF4100912EDA /* MShopAppointmentFootView.m */,
 				AC7D01831F32BD5C00912EDA /* MShopAppointmentCellView.h */,
 				AC7D01841F32BD5C00912EDA /* MShopAppointmentCellView.m */,
 				AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */,
@@ -1724,7 +1719,6 @@
 				AC867E741F1D9BB400694086 /* NSObject+YYModel.m in Sources */,
 				AC396F191F4A73590071434E /* MGJRouter.m in Sources */,
 				A5C138821F4C60CC00F205E3 /* IQToolbar.m in Sources */,
-				AC7D01921F32FF4100912EDA /* MShopAppointmentFootView.m in Sources */,
 				AC867E551F1D99E600694086 /* MMUIView.m in Sources */,
 				AC7C28531F203E6D003C0C4C /* MShopLoginService.mm in Sources */,
 				AC867E571F1D99E600694086 /* UINavigationBar+MMUINavigationBar.m in Sources */,
