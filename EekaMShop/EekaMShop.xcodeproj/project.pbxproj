@@ -1062,10 +1062,6 @@
 		AC85C21F1F1F2F5C003785A4 /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
-				AC85C2201F1F2F7B003785A4 /* MShopMainFrameViewController.h */,
-				AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */,
-				AC7C28651F20B33F003C0C4C /* MShopMainFrameLogicController.h */,
-				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				ACDE76CA1F469316003222AE /* MShopMemberListFreshDelegate.h */,
 				AC85C22A1F1F5943003785A4 /* MShopMemberListViewController.h */,
 				AC85C22B1F1F5943003785A4 /* MShopMemberListViewController.m */,
@@ -1095,6 +1091,10 @@
 				AC7E3F7E1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib */,
 				AC76F3D71F289D5E00499C66 /* MShopMemberSearchBar.h */,
 				AC76F3D81F289D5E00499C66 /* MShopMemberSearchBar.m */,
+				AC85C2201F1F2F7B003785A4 /* MShopMainFrameViewController.h */,
+				AC85C2211F1F2F7B003785A4 /* MShopMainFrameViewController.m */,
+				AC7C28651F20B33F003C0C4C /* MShopMainFrameLogicController.h */,
+				AC7C28661F20B33F003C0C4C /* MShopMainFrameLogicController.m */,
 				AC7C28681F20B540003C0C4C /* MShop_MainFrame.storyboard */,
 			);
 			path = MainFrame;

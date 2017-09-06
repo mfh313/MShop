@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const MShopAppointmentStatusPending;
+extern NSString *const MShopAppointmentStatusHandled;
+extern NSString *const MShopAppointmentStatusInvalidate;
+
 @interface MShopAppointmentDataItem : NSObject
 
 @property (nonatomic,strong) NSNumber *appointmentId;
@@ -22,9 +26,12 @@
 @property (nonatomic,strong) NSString *deptName;
 @property (nonatomic,strong) NSString *employeeId;
 @property (nonatomic,strong) NSString *employeeName;
+@property (nonatomic,strong) NSString *status;
 @property (nonatomic,strong) NSString *source;
 @property (nonatomic,strong) NSString *remarks;
 @property (nonatomic,strong) NSString *createdtime;
-
+@property (nonatomic,strong) NSString *address;
+@property (nonatomic,strong) NSString *score;
+@property (nonatomic,strong) NSString *evaluate;
 
 @end

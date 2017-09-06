@@ -8,6 +8,10 @@
 
 #import "MShopAppointmentDataItem.h"
 
+NSString *const MShopAppointmentStatusPending = @"0";  //待处理
+NSString *const MShopAppointmentStatusHandled = @"1";  //已处理
+NSString *const MShopAppointmentStatusInvalidate = @"2"; //作废
+
 @implementation MShopAppointmentDataItem
 
 + (NSDictionary *)modelCustomPropertyMapper {
