@@ -33,7 +33,11 @@ extern NSString *const MShopApiTestUrl;
 
 +(NSString *)getAppointmentListURL;
 
++(NSString *)checkIndividualPointURL;
+
 +(NSString *)appointmentModifyURL;
+
++(NSString *)sendVerificationCodeURL;
 
 +(NSString *)getSynMemberInfoURL;
 

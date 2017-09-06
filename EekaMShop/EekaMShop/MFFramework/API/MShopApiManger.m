@@ -79,6 +79,16 @@ NSString *const MShopApiTestUrl = @"http://120.76.242.182:8083/ms/";
     return MFURLWithPara(@"employeeApi/appointmentModify.json");
 }
 
++(NSString *)checkIndividualPointURL
+{
+    return MFURLWithPara(@"employeeApi/checkIndividualPoint.json");
+}
+
++(NSString *)sendVerificationCodeURL
+{
+    return MFURLWithPara(@"employeeApi/sendVerificationCode.json");
+}
+
 +(NSString *)getSynMemberInfoURL
 {
     return MFURLWithPara(@"employeeApi/getInfoByExcel.json");

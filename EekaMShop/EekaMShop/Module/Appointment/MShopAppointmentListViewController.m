@@ -12,6 +12,7 @@
 #import "MShopAppointmentDataItem.h"
 #import "MShopMemberDetailViewController.h"
 #import "MShopAppointmentCellView.h"
+#import "MShopAppointmentModifyApi.h"
 
 @interface MShopAppointmentListViewController ()
 {

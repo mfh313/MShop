@@ -8,6 +8,10 @@
 
 #import "MFNetworkRequest.h"
 
+@class MShopAppointmentDataItem;
+
 @interface MShopAppointmentModifyApi : MFNetworkRequest
+
+@property (nonatomic,strong) MShopAppointmentDataItem *dataItem;
 
 @end
