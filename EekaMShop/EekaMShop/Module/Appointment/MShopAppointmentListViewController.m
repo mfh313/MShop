@@ -13,6 +13,8 @@
 #import "MShopMemberDetailViewController.h"
 #import "MShopAppointmentCellView.h"
 #import "MShopAppointmentModifyApi.h"
+#import "MShopSendVerificationCodeApi.h"
+#import "MShopDoPayAppointmentApi.h"
 
 @interface MShopAppointmentListViewController ()
 {
@@ -128,7 +130,6 @@
 {
     MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
     mfApi.animatingView = MFAppWindow;
-    
     [mfApi setPageIndex:_pageIndex pageSize:_pageSize];
     
     __weak typeof(self) weakSelf = self;
@@ -286,7 +287,9 @@
 -(void)onClickAppointmentCell:(MFTableViewCellInfo *)cellInfo
 {
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
-    [self showIndividualInfo:dataItem.individualId];
+//    [self showIndividualInfo:dataItem.individualId];
+    
+    [self doPayAppointment:dataItem];
 }
 
 -(void)showIndividualInfo:(NSString *)individualId
@@ -295,6 +298,34 @@
     memberDetailVC.individualId = individualId;
     memberDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:memberDetailVC animated:YES];
+}
+
+-(void)doPayAppointment:(MShopAppointmentDataItem *)dataItem
+{
+    MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
+    mfApi.animatingView = MFAppWindow;
+    mfApi.phone = dataItem.individualPhone;
+    mfApi.individualId = dataItem.individualId;
+    mfApi.type = dataItem.type;
+    
+    __weak typeof(self) weakSelf = self;
+    [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        UITableView *tableView = [m_tableViewInfo getTableView];
+        [tableView.pullToRefreshView stopAnimating];
+        
+        if (!mfApi.messageSuccess) {
+            [self showTips:mfApi.errorMessage];
+            return;
+        }
+        
+        
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
 }
 
 -(void)setNavTitle
