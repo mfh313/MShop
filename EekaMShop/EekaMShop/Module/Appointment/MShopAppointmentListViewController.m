@@ -288,8 +288,8 @@
 {
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
 //    [self showIndividualInfo:dataItem.individualId];
-    
-    [self doPayAppointment:dataItem];
+//    [self doPayAppointment:dataItem];
+    [self sendVerificationCode:dataItem.individualPhone];
 }
 
 -(void)showIndividualInfo:(NSString *)individualId
@@ -304,6 +304,7 @@
 {
     MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
     mfApi.animatingView = MFAppWindow;
+    
     mfApi.phone = dataItem.individualPhone;
     mfApi.individualId = dataItem.individualId;
     mfApi.type = dataItem.type;
@@ -311,21 +312,54 @@
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
-        UITableView *tableView = [m_tableViewInfo getTableView];
-        [tableView.pullToRefreshView stopAnimating];
-        
         if (!mfApi.messageSuccess) {
             [self showTips:mfApi.errorMessage];
             return;
         }
         
+        NSString *expectVerificationCode = [mfApi verificationCode];
+        NSLog(@"expectVerificationCode=%@",expectVerificationCode);
         
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf showVerificationCodeInputView];
         
     } failure:^(YTKBaseRequest * request) {
         
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];
+}
+
+-(void)sendVerificationCode:(NSString *)phone
+{
+    phone = @"13798228953";
+    
+    MShopSendVerificationCodeApi *mfApi = [MShopSendVerificationCodeApi new];
+    mfApi.animatingView = MFAppWindow;
+    mfApi.phone = phone;
+
+    __weak typeof(self) weakSelf = self;
+    [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (!mfApi.messageSuccess) {
+            [strongSelf showTips:mfApi.errorMessage];
+            return;
+        }
+        
+        NSString *expectVerificationCode = [mfApi verificationCode];
+        NSLog(@"expectVerificationCode=%@",expectVerificationCode);
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
+}
+
+-(void)showVerificationCodeInputView
+{
+    
 }
 
 -(void)setNavTitle
