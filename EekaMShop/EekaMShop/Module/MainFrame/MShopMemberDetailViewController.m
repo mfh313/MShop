@@ -152,8 +152,19 @@
     [addressCellInfo addUserInfoValue:@"住址" forKey:@"title"];
     [addressCellInfo addUserInfoValue:self.individual.address forKey:@"rightValue"];
     
+    //会员积分
+    MFTableViewCellInfo *currentPointInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeNormalCell:cellInfo:)
+                                                                    makeTarget:self
+                                                                     actionSel:nil
+                                                                  actionTarget:nil
+                                                                        height:44.0
+                                                                      userInfo:nil];
+    [currentPointInfo addUserInfoValue:@"会员积分" forKey:@"title"];
+    [currentPointInfo addUserInfoValue:[NSString stringWithFormat:@"%@",@(self.individual.currentPoint)] forKey:@"rightValue"];
+    
     
     [sectionInfo addCell:phoneCellInfo];
+    [sectionInfo addCell:currentPointInfo];
     [sectionInfo addCell:sexCellInfo];
     [sectionInfo addCell:birthdayCellInfo];
     [sectionInfo addCell:addressCellInfo];

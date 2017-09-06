@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 
-
 @interface MShopIndividualInfo : NSObject
 
 @property (nonatomic,strong) NSString *individualId;
@@ -33,13 +32,15 @@
 @property (nonatomic,assign) NSUInteger beginCount;
 @property (nonatomic,assign) NSUInteger endCount;
 @property (nonatomic,strong) NSString *avatar;
-@property (nonatomic,strong) NSString *currentPoint;
+@property (nonatomic,assign) NSUInteger currentPoint;
 @property (nonatomic,strong) NSString *grade;
 @property (nonatomic,strong) NSString *provinceName;
 @property (nonatomic,strong) NSString *cityName;
 @property (nonatomic,strong) NSString *regionName;
 @property (nonatomic,strong) NSString *address;
 @property (nonatomic,assign) BOOL birthdayFlag;
+@property (nonatomic,assign) CGFloat balance;
+@property (nonatomic,assign) NSUInteger couponCount;
 
 -(BOOL)hasMaintainEmployee;
 
