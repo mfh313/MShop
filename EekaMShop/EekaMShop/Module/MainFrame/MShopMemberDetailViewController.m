@@ -379,7 +379,6 @@
         getIndividualApi.individualId = self.individualId;
     }
     
-    getIndividualApi.animatingView = MFAppWindow;
     [getIndividualApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         if (!getIndividualApi.messageSuccess) {
