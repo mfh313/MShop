@@ -25,7 +25,7 @@ using namespace std;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor clearColor];
     
     NSLog(@"self.frame=%@",NSStringFromCGRect(self.frame));
     
