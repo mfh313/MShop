@@ -1638,8 +1638,8 @@
 				TargetAttributes = {
 					AC6670A21F0B25C00067F6EE = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 2C97V99SA2;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = G782L57G45;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2022,8 +2022,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EekaMShop/eekamshop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: xu yiheng (8BZ9HQD624)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu yiheng (8BZ9HQD624)";
-				DEVELOPMENT_TEAM = 2C97V99SA2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = G782L57G45;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2041,10 +2041,10 @@
 					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
 					"$(PROJECT_DIR)/EekaMShop/Vendors/JPUSH",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshoptest;
 				PRODUCT_NAME = eekamshop;
-				PROVISIONING_PROFILE = "b1c2fec2-089b-4f63-97fd-a99d82c27607";
-				PROVISIONING_PROFILE_SPECIFIER = "cn.eeka.eekamshop开发描述文件";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -2054,8 +2054,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EekaMShop/eekamshop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN EEKA FASHION CO.,LTD";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SHENZHEN EEKA FASHION CO.,LTD";
-				DEVELOPMENT_TEAM = 2C97V99SA2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = G782L57G45;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2073,10 +2073,10 @@
 					"$(PROJECT_DIR)/EekaMShop/Vendors/WWK",
 					"$(PROJECT_DIR)/EekaMShop/Vendors/JPUSH",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshop;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.eeka.eekamshoptest;
 				PRODUCT_NAME = eekamshop;
-				PROVISIONING_PROFILE = "572a4550-772d-4e30-84d6-87365ca131cc";
-				PROVISIONING_PROFILE_SPECIFIER = "cn.eeka.eekamshop发布证书";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

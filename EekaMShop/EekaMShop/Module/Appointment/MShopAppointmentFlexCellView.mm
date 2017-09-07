@@ -12,6 +12,13 @@
 
 using namespace VZ;
 
+@interface MShopAppointmentFlexCellView ()
+{
+    UIView *m_contentView;
+}
+
+@end
+
 @implementation MShopAppointmentFlexCellView
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
@@ -20,12 +27,12 @@ using namespace VZ;
     NSString *time = [NSString stringWithFormat:@"预约时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
     NSString *appointmentNo = [NSString stringWithFormat:@"预约单号：%@",dataItem.appointmentNo];
     
-    [self removeAllSubViews];
     self.backgroundColor = [UIColor lightGrayColor];
     
-    NodeLayout layout = [self titleNodeForTitle:title];
-    UIView *contentView = viewForRootNode(layout, self.frame.size);
-    [self addSubview:contentView];
+    [m_contentView removeFromSuperview];
+    NodeLayout layout = [self titleNodeForTitle:@"【形象管理】"];
+    m_contentView = viewForRootNode(layout, self.frame.size);
+    [self addSubview:m_contentView];
 }
 
 -(NodeLayout)titleNodeForTitle:(NSString *)appointmentTitle
