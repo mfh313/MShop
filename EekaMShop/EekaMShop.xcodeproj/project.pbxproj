@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A56291F31F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A56291F21F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm */; };
 		A5C138761F4C60CC00F205E3 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C138541F4C60CC00F205E3 /* IQNSArray+Sort.m */; };
 		A5C138771F4C60CC00F205E3 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C138561F4C60CC00F205E3 /* IQUIScrollView+Additions.m */; };
 		A5C138781F4C60CC00F205E3 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C138581F4C60CC00F205E3 /* IQUITextFieldView+Additions.m */; };
@@ -258,6 +259,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A56291F11F6168A100AE2DD1 /* MShopAppointmentFlexCellView.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = MShopAppointmentFlexCellView.h; sourceTree = "<group>"; };
+		A56291F21F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = MShopAppointmentFlexCellView.mm; sourceTree = "<group>"; };
 		A5C138531F4C60CC00F205E3 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		A5C138541F4C60CC00F205E3 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		A5C138551F4C60CC00F205E3 /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
@@ -1021,6 +1024,8 @@
 			children = (
 				AC7D017A1F32B7F500912EDA /* MShopAppointmentListViewController.h */,
 				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
+				A56291F11F6168A100AE2DD1 /* MShopAppointmentFlexCellView.h */,
+				A56291F21F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm */,
 				AC7D01831F32BD5C00912EDA /* MShopAppointmentCellView.h */,
 				AC7D01841F32BD5C00912EDA /* MShopAppointmentCellView.m */,
 				AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */,
@@ -1771,6 +1776,7 @@
 				AC9A623E1F5CD82400AF5875 /* MutableExtensionRegistry.m in Sources */,
 				AC38C2C11F3BE1B100AD8707 /* SCLAlertViewResponder.m in Sources */,
 				AC867E491F1D99E600694086 /* MFUIButton.m in Sources */,
+				A56291F31F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm in Sources */,
 				A5C1387B1F4C60CC00F205E3 /* IQUIWindow+Hierarchy.m in Sources */,
 				AC867EFD1F1DF24100694086 /* YTKAnimatingRequestAccessory.m in Sources */,
 				AC867E771F1D9BB400694086 /* HexColors.m in Sources */,
