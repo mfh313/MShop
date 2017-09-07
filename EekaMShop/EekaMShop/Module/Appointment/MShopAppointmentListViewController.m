@@ -11,10 +11,10 @@
 #import "MShopGetAppointmentListApi.h"
 #import "MShopAppointmentDataItem.h"
 #import "MShopMemberDetailViewController.h"
-#import "MShopAppointmentCellView.h"
 #import "MShopAppointmentModifyApi.h"
 #import "MShopSendVerificationCodeApi.h"
 #import "MShopDoPayAppointmentApi.h"
+#import "MShopAppointmentFlexCellView.h"
 
 @interface MShopAppointmentListViewController ()
 {
@@ -269,7 +269,7 @@
 -(void)makeAppointmentCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
     if (!cell.m_subContentView) {
-        MShopAppointmentCellView *cellView = [MShopAppointmentCellView nibView];
+        MShopAppointmentFlexCellView *cellView = [MShopAppointmentFlexCellView new];
         cell.m_subContentView = cellView;
     }
     else
@@ -277,7 +277,7 @@
         [cell.contentView addSubview:cell.m_subContentView];
     }
     
-    MShopAppointmentCellView *cellView = (MShopAppointmentCellView *)cell.m_subContentView;
+    MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)cell.m_subContentView;
     cellView.frame = cell.contentView.bounds;
     
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
@@ -287,9 +287,9 @@
 -(void)onClickAppointmentCell:(MFTableViewCellInfo *)cellInfo
 {
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
-//    [self showIndividualInfo:dataItem.individualId];
+    [self showIndividualInfo:dataItem.individualId];
 //    [self doPayAppointment:dataItem];
-    [self sendVerificationCode:dataItem.individualPhone];
+//    [self sendVerificationCode:dataItem.individualPhone];
 }
 
 -(void)showIndividualInfo:(NSString *)individualId
