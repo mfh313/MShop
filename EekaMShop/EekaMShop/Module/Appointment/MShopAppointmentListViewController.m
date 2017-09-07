@@ -253,7 +253,7 @@
                                                                  makeTarget:self
                                                                   actionSel:@selector(onClickAppointmentCell:)
                                                                actionTarget:self
-                                                                     height:90.0f
+                                                                     height:150.0f
                                                                    userInfo:nil];
         cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
         
@@ -279,6 +279,7 @@
     
     MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)cell.m_subContentView;
     cellView.frame = cell.contentView.bounds;
+    cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
     [cellView setAppointmentDataItem:dataItem];

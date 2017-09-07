@@ -23,26 +23,63 @@ using namespace VZ;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    NSString *title = [self titleDataItem:dataItem];
-    NSString *time = [NSString stringWithFormat:@"预约时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
-    NSString *appointmentNo = [NSString stringWithFormat:@"预约单号：%@",dataItem.appointmentNo];
-    
     self.backgroundColor = [UIColor lightGrayColor];
     
     [m_contentView removeFromSuperview];
-    NodeLayout layout = [self titleNodeForTitle:time];
-    m_contentView = viewForRootNode(layout, self.frame.size);
+    NodeLayout layout = [self stackNodeLayoutForAppointmentDataItem:dataItem];
+    m_contentView = viewForRootNode(layout, self.bounds.size);
+    m_contentView.frame = self.bounds;
     [self addSubview:m_contentView];
 }
 
--(NodeLayout)titleNodeForTitle:(NSString *)appointmentTitle
+-(NodeLayout)stackNodeLayoutForAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
+{
+    NSString *title = [NSString stringWithFormat:@"【%@】",dataItem.type];
+    NSString *individualTitle = [NSString stringWithFormat:@"%@ %@",dataItem.individualName,dataItem.individualPhone];
+    NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
+    NSString *appointmentNo = [NSString stringWithFormat:@"预约单号：%@",dataItem.appointmentNo];
+    
+    VZFStackNode *stackNode = [VZFStackNode newWithStackAttributes:{
+        .wrap = VZFlexNoWrap,
+        .direction = VZFlexVertical,
+        .justifyContent = VZFlexStart,
+        .alignItems = VZFlexStart,
+        .alignContent = VZFlexStretch,
+    }
+                                                         NodeSpecs:
+                               {
+                                   .backgroundColor = [UIColor yellowColor],
+                               }
+                                                          Children:
+                               {
+                                   {
+                                       [self textNodeForTitle:title textColor:[UIColor hx_colorWithHexString:@"282828"]]
+                                   },
+                                   {
+                                       [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"686868"]]
+                                   },
+                                   {
+                                       [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"686868"]]
+                                   },
+                                   {
+                                       [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"686868"]]
+                                   },
+                                   {
+                                       [self lineNode]
+                                   }
+                               }];
+    
+    return [stackNode computeLayoutThatFits:self.frame.size];
+}
+
+-(VZFTextNode *)textNodeForTitle:(NSString *)title textColor:(UIColor *)textColor
 {
     VZFTextNode *titleNode = [VZFTextNode newWithTextAttributes:
                              {
-                                 .text = appointmentTitle,
+                                 .text = title,
                                  .lines = 0,
                                  ._font = [UIFont systemFontOfSize:14.0f],
-                                 .color = [UIColor hx_colorWithHexString:@"282828"],
+                                 .color = textColor,
                                  .alignment = NSTextAlignmentLeft
                              }
                                                      NodeSpecs:
@@ -55,7 +92,7 @@ using namespace VZ;
                                  .marginBottom = flexLength(10, FlexLengthTypeDefault)
                              }
                              ];
-    return [titleNode computeLayoutThatFits:self.frame.size];
+    return titleNode;
 }
 
 -(VZFLineNode *)lineNode
@@ -74,9 +111,5 @@ using namespace VZ;
     return lineNode;
 }
 
--(NSString *)titleDataItem:(MShopAppointmentDataItem *)dataItem
-{
-    return [NSString stringWithFormat:@"%@预约了%@",dataItem.individualName,dataItem.type];
-}
 
 @end

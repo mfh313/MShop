@@ -72,6 +72,8 @@
     m_tabbarController.viewControllers = @[rootNav,rootAppointmentNav,meRootNav];
     m_tabbarController.tabBar.barTintColor = [UIColor whiteColor];
     m_window.rootViewController = m_tabbarController;
+    
+    [m_tabbarController setSelectedIndex:1];
 }
 
 + (MMTabBarController *)getTabBarController
