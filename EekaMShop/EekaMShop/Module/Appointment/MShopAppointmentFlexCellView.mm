@@ -48,10 +48,10 @@ using namespace std;
         [self textNodeForTitle:title textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
     children.push_back({
-        [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
     children.push_back({
-        [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
     children.push_back({
         [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"282828"]]
