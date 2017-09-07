@@ -11,6 +11,8 @@
 @class MShopAppointmentDataItem;
 @interface MShopAppointmentFlexCellView : UIView
 
+@property (nonatomic,strong) NSIndexPath *indexPath;
+
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem;
 
 @end

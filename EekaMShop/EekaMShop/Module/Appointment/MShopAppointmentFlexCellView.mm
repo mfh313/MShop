@@ -9,8 +9,10 @@
 #import "MShopAppointmentFlexCellView.h"
 #import "MShopAppointmentDataItem.h"
 #import <VZFlexLayout/VZFlexLayout.h>
+#import <vector>
 
 using namespace VZ;
+using namespace std;
 
 @interface MShopAppointmentFlexCellView ()
 {
@@ -23,51 +25,60 @@ using namespace VZ;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor whiteColor];
+    
+    NSLog(@"self.frame=%@",NSStringFromCGRect(self.frame));
     
     [m_contentView removeFromSuperview];
     NodeLayout layout = [self stackNodeLayoutForAppointmentDataItem:dataItem];
-    m_contentView = viewForRootNode(layout, self.bounds.size);
-    m_contentView.frame = self.bounds;
+    m_contentView = viewForRootNode(layout, self.frame.size);
+    m_contentView.frame = self.frame;
     [self addSubview:m_contentView];
 }
 
 -(NodeLayout)stackNodeLayoutForAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    NSString *title = [NSString stringWithFormat:@"【%@】",dataItem.type];
+    NSString *title = [NSString stringWithFormat:@"[%@]",dataItem.type];
     NSString *individualTitle = [NSString stringWithFormat:@"%@ %@",dataItem.individualName,dataItem.individualPhone];
     NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
-    NSString *appointmentNo = [NSString stringWithFormat:@"预约单号：%@",dataItem.appointmentNo];
+    
+    vector<VZFStackChildNode> children;
+    children.push_back({
+        [self textNodeForTitle:title textColor:[UIColor hx_colorWithHexString:@"282828"]]
+    });
+    
+    children.push_back({
+        [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"282828"]]
+    });
+    children.push_back({
+        [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"282828"]]
+    });
+    
+    if (self.indexPath.row % 2 == 1)
+    {
+        children.push_back({
+            [self textNodeForTitle:@"评分：5" textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        });
+        children.push_back({
+            [self textNodeForTitle:@"详细评价：fafafsafa" textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        });
+    }
+    
+    children.push_back({
+        [self lineNode]
+    });
     
     VZFStackNode *stackNode = [VZFStackNode newWithStackAttributes:{
         .wrap = VZFlexNoWrap,
         .direction = VZFlexVertical,
         .justifyContent = VZFlexStart,
         .alignItems = VZFlexStart,
-        .alignContent = VZFlexStretch,
     }
                                                          NodeSpecs:
                                {
-                                   .backgroundColor = [UIColor yellowColor],
+                                   .backgroundColor = [UIColor lightGrayColor],
                                }
-                                                          Children:
-                               {
-                                   {
-                                       [self textNodeForTitle:title textColor:[UIColor hx_colorWithHexString:@"282828"]]
-                                   },
-                                   {
-                                       [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"686868"]]
-                                   },
-                                   {
-                                       [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"686868"]]
-                                   },
-                                   {
-                                       [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"686868"]]
-                                   },
-                                   {
-                                       [self lineNode]
-                                   }
-                               }];
+                                                          Children:children];
     
     return [stackNode computeLayoutThatFits:self.frame.size];
 }
@@ -85,11 +96,11 @@ using namespace VZ;
                                                      NodeSpecs:
                              {
                                  .flexShrink = 0,
-                                 .backgroundColor = [UIColor redColor],
+                                 .backgroundColor = [UIColor clearColor],
                                  .marginLeft = flexLength(10, FlexLengthTypeDefault),
                                  .marginTop = flexLength(10, FlexLengthTypeDefault),
                                  .marginRight = flexLength(10, FlexLengthTypeDefault),
-                                 .marginBottom = flexLength(10, FlexLengthTypeDefault)
+                                 .marginBottom = FlexLengthZero
                              }
                              ];
     return titleNode;
@@ -99,14 +110,15 @@ using namespace VZ;
 {
     VZFLineNode *lineNode = [VZFLineNode newWithLineAttributes:
     {
-        .color = [UIColor redColor],
-        .dashLength = 100,
-        .spaceLength = 20
+        .color = MFCustomLineColor,
         
     }
                                                      NodeSpecs:
     {
-        
+        .width = flexLength(CGRectGetWidth(self.bounds), FlexLengthTypeDefault),
+        .height = MFOnePixHeight,
+        .marginTop = FlexLengthAuto,
+        .marginBottom = FlexLengthZero,
     }];
     return lineNode;
 }

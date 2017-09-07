@@ -282,6 +282,8 @@
     cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
+    UITableView *tableView = [m_tableViewInfo getTableView];
+    cellView.indexPath = [tableView indexPathForCell:cell];
     [cellView setAppointmentDataItem:dataItem];
 }
 
