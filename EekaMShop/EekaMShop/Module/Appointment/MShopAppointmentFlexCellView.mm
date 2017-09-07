@@ -25,7 +25,7 @@ using namespace std;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor lightGrayColor];
     
     NSLog(@"self.frame=%@",NSStringFromCGRect(self.frame));
     
@@ -54,13 +54,13 @@ using namespace std;
         [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
     
-    if (self.indexPath.row % 2 == 1)
+    if (self.indexPath.row % 2 == 0)
     {
         children.push_back({
             [self textNodeForTitle:@"评分：5" textColor:[UIColor hx_colorWithHexString:@"282828"]]
         });
         children.push_back({
-            [self textNodeForTitle:@"详细评价：fafafsafa" textColor:[UIColor hx_colorWithHexString:@"282828"]]
+            [self textNodeForTitle:@"详细评价：美好的评价。。。。" textColor:[UIColor hx_colorWithHexString:@"282828"]]
         });
     }
     
@@ -76,7 +76,7 @@ using namespace std;
     }
                                                          NodeSpecs:
                                {
-                                   .backgroundColor = [UIColor lightGrayColor],
+                                   .backgroundColor = [UIColor whiteColor],
                                }
                                                           Children:children];
     
