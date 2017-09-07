@@ -268,16 +268,8 @@
 
 -(void)makeAppointmentCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
 {
-    if (!cell.m_subContentView) {
-        MShopAppointmentFlexCellView *cellView = [MShopAppointmentFlexCellView new];
-        cell.m_subContentView = cellView;
-    }
-    else
-    {
-        [cell.contentView addSubview:cell.m_subContentView];
-    }
-    
-    MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)cell.m_subContentView;
+    MShopAppointmentFlexCellView *cellView = [MShopAppointmentFlexCellView new];
+    cell.m_subContentView = cellView;
     cellView.frame = cell.contentView.bounds;
     cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     

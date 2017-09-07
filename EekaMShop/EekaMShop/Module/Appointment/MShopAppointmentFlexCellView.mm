@@ -54,7 +54,7 @@ using namespace std;
         [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
     
-    if (self.indexPath.row % 2 == 0)
+    if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
     {
         children.push_back({
             [self textNodeForTitle:@"评分：5" textColor:[UIColor hx_colorWithHexString:@"282828"]]
@@ -69,14 +69,16 @@ using namespace std;
     });
     
     VZFStackNode *stackNode = [VZFStackNode newWithStackAttributes:{
-        .wrap = VZFlexNoWrap,
         .direction = VZFlexVertical,
-        .justifyContent = VZFlexStart,
+        .wrap = VZFlexNoWrap,
+        .justifyContent = VZFlexSpaceAround,
         .alignItems = VZFlexStart,
+        .alignContent = VZFlexSpaceAround,
     }
                                                          NodeSpecs:
                                {
                                    .backgroundColor = [UIColor whiteColor],
+                                   .flexShrink = 0,
                                }
                                                           Children:children];
     
