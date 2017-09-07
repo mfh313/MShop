@@ -105,8 +105,6 @@
 		AC7D017C1F32B7F500912EDA /* MShopAppointmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */; };
 		AC7D017F1F32B99D00912EDA /* MShopGetAppointmentListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D017E1F32B99D00912EDA /* MShopGetAppointmentListApi.m */; };
 		AC7D01821F32B9C500912EDA /* MShopAppointmentModifyApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D01811F32B9C500912EDA /* MShopAppointmentModifyApi.m */; };
-		AC7D01851F32BD5C00912EDA /* MShopAppointmentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D01841F32BD5C00912EDA /* MShopAppointmentCellView.m */; };
-		AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */; };
 		AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */; };
 		AC7D018F1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7D018D1F32CF0000912EDA /* UIScrollView+SVPullToRefresh.m */; };
 		AC7E3F771F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3F761F2598DD0035E3DC /* UINavigationController+FDFullscreenPopGesture.m */; };
@@ -424,9 +422,6 @@
 		AC7D017E1F32B99D00912EDA /* MShopGetAppointmentListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetAppointmentListApi.m; sourceTree = "<group>"; };
 		AC7D01801F32B9C500912EDA /* MShopAppointmentModifyApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentModifyApi.h; sourceTree = "<group>"; };
 		AC7D01811F32B9C500912EDA /* MShopAppointmentModifyApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentModifyApi.m; sourceTree = "<group>"; };
-		AC7D01831F32BD5C00912EDA /* MShopAppointmentCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentCellView.h; sourceTree = "<group>"; };
-		AC7D01841F32BD5C00912EDA /* MShopAppointmentCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentCellView.m; sourceTree = "<group>"; };
-		AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopAppointmentCellView.xib; sourceTree = "<group>"; };
 		AC7D01891F32CF0000912EDA /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		AC7D018A1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		AC7D018B1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -1026,9 +1021,6 @@
 				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
 				A56291F11F6168A100AE2DD1 /* MShopAppointmentFlexCellView.h */,
 				A56291F21F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm */,
-				AC7D01831F32BD5C00912EDA /* MShopAppointmentCellView.h */,
-				AC7D01841F32BD5C00912EDA /* MShopAppointmentCellView.m */,
-				AC7D01861F32BE7300912EDA /* MShopAppointmentCellView.xib */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -1689,7 +1681,6 @@
 				A5C138841F4C60CC00F205E3 /* IQKeyboardManager.bundle in Resources */,
 				AC9A622D1F5CD82400AF5875 /* chat.proto in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
-				AC7D01871F32BE7300912EDA /* MShopAppointmentCellView.xib in Resources */,
 				AC254C3C1F4D6633007BE516 /* versionUpdate.json in Resources */,
 				AC9A622F1F5CD82400AF5875 /* main.proto in Resources */,
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
@@ -1873,7 +1864,6 @@
 				AC9A62411F5CD82400AF5875 /* PBArray.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,
 				AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */,
-				AC7D01851F32BD5C00912EDA /* MShopAppointmentCellView.m in Sources */,
 				AC867E4F1F1D99E600694086 /* MMObject.m in Sources */,
 				AC73990D1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m in Sources */,
 				A5C1387E1F4C60CC00F205E3 /* IQTextView.m in Sources */,

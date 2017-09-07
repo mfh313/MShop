@@ -30,7 +30,7 @@ using namespace VZ;
     self.backgroundColor = [UIColor lightGrayColor];
     
     [m_contentView removeFromSuperview];
-    NodeLayout layout = [self titleNodeForTitle:@"【形象管理】"];
+    NodeLayout layout = [self titleNodeForTitle:time];
     m_contentView = viewForRootNode(layout, self.frame.size);
     [self addSubview:m_contentView];
 }
