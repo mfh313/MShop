@@ -41,12 +41,15 @@ using namespace std;
     NSString *title = [NSString stringWithFormat:@"[%@]",dataItem.type];
     NSString *individualTitle = [NSString stringWithFormat:@"%@ %@",dataItem.individualName,dataItem.individualPhone];
     NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
+    NSString *appointmentNo = [NSString stringWithFormat:@"预约单号：%@",dataItem.appointmentNo];
     
     vector<VZFStackChildNode> children;
     children.push_back({
         [self textNodeForTitle:title textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
-    
+    children.push_back({
+        [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"282828"]]
+    });
     children.push_back({
         [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
