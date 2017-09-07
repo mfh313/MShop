@@ -122,17 +122,20 @@
         _pullPrePageIndex--;
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
+        
+        UITableView *tableView = [m_tableViewInfo getTableView];
+        [tableView.pullToRefreshView stopAnimating];
     }];
 
 }
 
 -(void)getAppointmentList
 {
+    __weak typeof(self) weakSelf = self;
+    
     MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
-    mfApi.animatingView = MFAppWindow;
     [mfApi setPageIndex:_pageIndex pageSize:_pageSize];
     
-    __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         UITableView *tableView = [m_tableViewInfo getTableView];
@@ -160,6 +163,9 @@
         
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
+        
+        UITableView *tableView = [m_tableViewInfo getTableView];
+        [tableView.pullToRefreshView stopAnimating];
     }];
     
 }
