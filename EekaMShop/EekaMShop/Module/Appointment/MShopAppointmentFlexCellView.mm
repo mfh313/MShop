@@ -50,9 +50,9 @@ using namespace std;
     children.push_back({
         [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
-    children.push_back({
-        [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"282828"]]
-    });
+//    children.push_back({
+//        [self textNodeForTitle:appointmentNo textColor:[UIColor hx_colorWithHexString:@"282828"]]
+//    });
     children.push_back({
         [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"282828"]]
     });
