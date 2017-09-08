@@ -7,7 +7,6 @@
 //
 
 #import "MShopAppointmentListViewController.h"
-#import "MFTableViewInfo.h"
 #import "MShopGetAppointmentListApi.h"
 #import "MShopAppointmentDataItem.h"
 #import "MShopMemberDetailViewController.h"

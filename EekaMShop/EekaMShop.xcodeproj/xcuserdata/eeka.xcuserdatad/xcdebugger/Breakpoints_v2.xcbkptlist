@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Appointment/MShopAppointmentListViewController.m"
-            timestampString = "526362413.879043"
+            timestampString = "526524122.654783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-doPayAppointment:"
             landmarkType = "7">
          </BreakpointContent>
