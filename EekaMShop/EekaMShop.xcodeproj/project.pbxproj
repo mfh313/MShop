@@ -187,6 +187,8 @@
 		AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EFA1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m */; };
 		AC867F001F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867EFC1F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m */; };
 		AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */; };
+		AC8EA5571F6240FE00C6C20E /* MShopAppointmentDateSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8EA5561F6240FE00C6C20E /* MShopAppointmentDateSelectView.m */; };
+		AC8EA5591F62416900C6C20E /* MShopAppointmentDateSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8EA5581F62416900C6C20E /* MShopAppointmentDateSelectView.xib */; };
 		AC96D3161F57DCF600486095 /* MShopMeProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */; };
 		AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */; };
 		AC96D31B1F57E30300486095 /* MFAppMacroUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D31A1F57E30300486095 /* MFAppMacroUtil.m */; };
@@ -584,6 +586,9 @@
 		AC867EFC1F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKChainRequest+AnimatingAccessory.m"; sourceTree = "<group>"; };
 		AC867F011F1E00DA00694086 /* MShopLoginUserInfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = MShopLoginUserInfo.h; sourceTree = "<group>"; };
 		AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MShopLoginUserInfo.m; sourceTree = "<group>"; };
+		AC8EA5551F6240FE00C6C20E /* MShopAppointmentDateSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentDateSelectView.h; sourceTree = "<group>"; };
+		AC8EA5561F6240FE00C6C20E /* MShopAppointmentDateSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentDateSelectView.m; sourceTree = "<group>"; };
+		AC8EA5581F62416900C6C20E /* MShopAppointmentDateSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopAppointmentDateSelectView.xib; sourceTree = "<group>"; };
 		AC96D3141F57DCF600486095 /* MShopMeProfileCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMeProfileCellView.h; sourceTree = "<group>"; };
 		AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMeProfileCellView.m; sourceTree = "<group>"; };
 		AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMeProfileCellView.xib; sourceTree = "<group>"; };
@@ -1021,6 +1026,9 @@
 				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
 				A56291F11F6168A100AE2DD1 /* MShopAppointmentFlexCellView.h */,
 				A56291F21F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm */,
+				AC8EA5551F6240FE00C6C20E /* MShopAppointmentDateSelectView.h */,
+				AC8EA5561F6240FE00C6C20E /* MShopAppointmentDateSelectView.m */,
+				AC8EA5581F62416900C6C20E /* MShopAppointmentDateSelectView.xib */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -1678,6 +1686,7 @@
 				AC6670B31F0B25C00067F6EE /* Assets.xcassets in Resources */,
 				AC7726321F2B0EEF005B2100 /* rsa_private_key.pem in Resources */,
 				AC77263E1F2B0F04005B2100 /* main.js in Resources */,
+				AC8EA5591F62416900C6C20E /* MShopAppointmentDateSelectView.xib in Resources */,
 				A5C138841F4C60CC00F205E3 /* IQKeyboardManager.bundle in Resources */,
 				AC9A622D1F5CD82400AF5875 /* chat.proto in Resources */,
 				AC73990A1F21E68C00F753C2 /* MShopMemberListCellView.xib in Resources */,
@@ -1738,6 +1747,7 @@
 				AC867E4C1F1D99E600694086 /* MMBaseInfoItem.m in Sources */,
 				AC7399021F21AC6200F753C2 /* MShopIndividualInfo.m in Sources */,
 				AC7D01791F32B67C00912EDA /* MShopAppointmentDataItem.m in Sources */,
+				AC8EA5571F6240FE00C6C20E /* MShopAppointmentDateSelectView.m in Sources */,
 				AC867E531F1D99E600694086 /* MMUINavigationBar.m in Sources */,
 				AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */,
 				AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */,

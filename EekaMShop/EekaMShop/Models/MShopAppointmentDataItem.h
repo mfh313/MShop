@@ -17,6 +17,7 @@ extern NSString *const MShopAppointmentStatusInvalidate;
 @property (nonatomic,strong) NSNumber *appointmentId;
 @property (nonatomic,strong) NSString *appointmentNo;
 @property (nonatomic,strong) NSString *type;
+@property (nonatomic,strong) NSString *typeValue;
 @property (nonatomic,strong) NSString *individualId;
 @property (nonatomic,strong) NSString *individualName;
 @property (nonatomic,strong) NSString *individualPhone;

@@ -15,8 +15,9 @@
 #import "MShopDoPayAppointmentApi.h"
 #import "MShopAppointmentFlexCellView.h"
 #import "MFMultiMenuTableViewCell.h"
+#import "MShopAppointmentDateSelectView.h"
 
-@interface MShopAppointmentListViewController () <UITableViewDataSource,UITableViewDelegate,LYSideslipCellDelegate>
+@interface MShopAppointmentListViewController () <UITableViewDataSource,UITableViewDelegate,LYSideslipCellDelegate,MShopAppointmentDateSelectViewDelegate>
 {
 //    MFTableViewInfo *m_tableViewInfo;
     MFUITableView *_tableView;
@@ -29,6 +30,8 @@
     NSInteger _pageSize;
     
     BOOL _hasFootBlankLine;
+    
+    MShopAppointmentDateSelectView *m_dateSelectView;
 }
 
 @end
@@ -47,29 +50,7 @@
     [super viewDidLoad];
     
     self.title = @"预约列表";
-        
     _appointmentList = [NSMutableArray array];
-    
-//    m_tableViewInfo = [[MFTableViewInfo alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-//    UITableView *contentTableView = [m_tableViewInfo getTableView];
-//    contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-//    contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    contentTableView.backgroundColor = [UIColor whiteColor];
-//    contentTableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
-//    [self.view addSubview:contentTableView];
-//    
-//    __weak MShopAppointmentListViewController *weakSelf = self;
-//    [contentTableView addPullToRefreshWithActionHandler:^{
-//        [weakSelf initPullToRefreshConfig];
-//        [weakSelf getAppointmentList];
-//    }];
-//    
-//    [contentTableView addInfiniteScrollingWithActionHandler:^{
-//        [weakSelf pullUpConfig];
-//        [weakSelf pullUPAppointmentList];
-//    }];
-//
-//    [contentTableView triggerPullToRefresh];
     [self initTableView];
     
     [self initPullToRefreshConfig];
@@ -82,11 +63,8 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.rowHeight = 120.0;
+    _tableView.rowHeight = 150.0;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [_tableView setContentInset:UIEdgeInsetsMake(0, 0, 45, 0)];
-//    [_tableView setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 45, 0)];
-    
     [self.view addSubview:_tableView];
 }
 
@@ -135,11 +113,11 @@
     NSMutableArray *actionArray = [NSMutableArray array];
     MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
     
-//    if (!dataItem.status) {
-//        return nil;
-//    }
+    if (!dataItem.status) {
+        return nil;
+    }
     
-//    if ([dataItem.status isEqualToString:MShopAppointmentStatusPending])
+    if ([dataItem.status isEqualToString:MShopAppointmentStatusPending])
     {
         LYSideslipCellAction *timeAction = [LYSideslipCellAction rowActionWithStyle:LYSideslipCellActionStyleNormal title:@"修改服务时间"
                                                                             handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
@@ -148,11 +126,8 @@
                                                 [weakSelf showTimeEditView:dataItem];
                                             }];
         [actionArray addObject:timeAction];
-    }
-    
-//    if (![dataItem.status isEqualToString:MShopAppointmentStatusInvalidate])
-    {
-        LYSideslipCellAction *dopayAction = [LYSideslipCellAction rowActionWithStyle:LYSideslipCellActionStyleDestructive title:@"完成预约"
+        
+        LYSideslipCellAction *dopayAction = [LYSideslipCellAction rowActionWithStyle:LYSideslipCellActionStyleDestructive title:@"完成服务"
                                                                              handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
                                              {
                                                  [sideslipCell hiddenAllSideslip];
@@ -168,65 +143,6 @@
 {
     return YES;
 }
-
-//
-//-(void)pullUpConfig
-//{
-//    _pullPrePageIndex++;
-//}
-//
-//-(void)pullUPAppointmentList
-//{
-//    MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
-//    
-//    [mfApi setPageIndex:_pullPrePageIndex pageSize:_pageSize];
-//    
-//    __weak typeof(self) weakSelf = self;
-//    [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
-//
-//        UITableView *tableView = [m_tableViewInfo getTableView];
-//        [tableView.infiniteScrollingView stopAnimating];
-//        
-//        if (!mfApi.messageSuccess) {
-//            [weakSelf showTips:mfApi.errorMessage];
-//            _pullPrePageIndex--;
-//            return;
-//        }
-//        
-//        NSArray *appointmentList = request.responseObject[@"appointmentList"];
-//        NSMutableArray *pullAppointmentList = [NSMutableArray array];
-//        
-//        for (int i = 0; i < appointmentList.count; i++) {
-//            MShopAppointmentDataItem *dataItem = [MShopAppointmentDataItem MM_modelWithJSON:appointmentList[i]];
-//            [pullAppointmentList addObject:dataItem];
-//        }
-//        
-//        __strong typeof(weakSelf) strongSelf = weakSelf;
-//        
-//        if (pullAppointmentList.count > 0)
-//        {
-//            [_appointmentList addObjectsFromArray:pullAppointmentList];
-//            
-//            _hasFootBlankLine = NO;
-//        }
-//        else
-//        {
-//            _hasFootBlankLine = YES;
-//        }
-//        
-//        [strongSelf reloadTableView];
-//        
-//    } failure:^(YTKBaseRequest * request) {
-//        
-//        _pullPrePageIndex--;
-//        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
-//        [self showTips:errorDesc];
-//        
-//        UITableView *tableView = [m_tableViewInfo getTableView];
-//        [tableView.pullToRefreshView stopAnimating];
-//    }];
-//
-//}
 
 -(void)getAppointmentList
 {
@@ -265,6 +181,7 @@
 
 -(void)reloadTableView
 {
+    [self setNavTitle];
     [_tableView reloadData];
 }
 
@@ -409,16 +326,18 @@
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+       
         if (!mfApi.messageSuccess) {
-            [self showTips:mfApi.errorMessage];
+            [strongSelf getAppointmentList];
+            [strongSelf showTips:mfApi.errorMessage];
             return;
         }
         
         NSString *expectVerificationCode = [mfApi verificationCode];
         NSLog(@"expectVerificationCode=%@",expectVerificationCode);
         
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf showVerificationCodeInputView];
+        [strongSelf getAppointmentList];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -461,6 +380,18 @@
 
 -(void)showTimeEditView:(MShopAppointmentDataItem *)dataItem
 {
+    if (!m_dateSelectView) {
+        m_dateSelectView = [MShopAppointmentDateSelectView nibView];
+        m_dateSelectView.m_delegate = self;
+    }
+    
+    m_dateSelectView.frame = MFAppWindow.bounds;
+    [MFAppWindow addSubview:m_dateSelectView];
+}
+
+#pragma mark - MShopAppointmentDateSelectViewDelegate
+-(void)onClickDoneButton:(MShopAppointmentDateSelectView *)selectView
+{
     
 }
 
@@ -486,5 +417,7 @@
     [super didReceiveMemoryWarning];
 }
 
+//8：00 -9：00
+//22：00-23：00
 
 @end

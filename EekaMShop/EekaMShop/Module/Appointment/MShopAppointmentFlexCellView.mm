@@ -38,7 +38,7 @@ using namespace std;
 
 -(NodeLayout)stackNodeLayoutForAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    NSString *title = [NSString stringWithFormat:@"[%@]",dataItem.type];
+    NSString *title = [NSString stringWithFormat:@"[%@]",dataItem.typeValue];
     NSString *individualTitle = [NSString stringWithFormat:@"%@ %@",dataItem.individualName,dataItem.individualPhone];
     NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
     
