@@ -390,7 +390,7 @@
 }
 
 #pragma mark - MShopAppointmentDateSelectViewDelegate
--(void)onClickDoneButton:(MShopAppointmentDateSelectView *)selectView
+-(void)didSetAppointmentDate:(NSString *)appointmentDate appointmentTime:(NSString *)appointmentTime selectView:(MShopAppointmentDateSelectView *)selectView;
 {
     
 }

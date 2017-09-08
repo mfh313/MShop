@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Appointment/MShopAppointmentListViewController.m"
-            timestampString = "526534274.826816"
+            timestampString = "526536015.582971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-sideslipCell:editActionsForRowAtIndexPath:"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
+            landmarkName = "-didSetAppointmentDate:appointmentTime:selectView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

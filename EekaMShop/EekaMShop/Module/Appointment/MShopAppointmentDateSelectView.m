@@ -30,6 +30,10 @@
     if ([self.m_delegate respondsToSelector:@selector(onClickDoneButton:)]) {
         [self.m_delegate onClickDoneButton:self];
     }
+    
+    if ([self.m_delegate respondsToSelector:@selector(didSetAppointmentDate:appointmentTime:selectView:)]) {
+        [self.m_delegate didSetAppointmentDate:@"2017-09-09" appointmentTime:@"12:00-13:00" selectView:self];
+    }
 }
 
 
