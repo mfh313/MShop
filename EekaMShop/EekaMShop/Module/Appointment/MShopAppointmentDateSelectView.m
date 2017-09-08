@@ -14,6 +14,7 @@
     __weak IBOutlet UIButton *_doneBtn;
     __weak IBOutlet UIDatePicker *m_datePicker;
     __weak IBOutlet UIPickerView *m_timePicker;
+    __weak IBOutlet UIImageView *_bgImageView;
     
     NSMutableArray *_timeArray;
     
@@ -27,9 +28,15 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    [_doneBtn setBackgroundImage:MFImageStretchCenter(@"border_pink") forState:UIControlStateNormal];
+    
+    self.backgroundColor = [UIColor hx_colorWithHexString:@"#000" alpha:0.5];
+    [_doneBtn setBackgroundImage:MFImageStretchCenter(@"bg_red") forState:UIControlStateNormal];
+    
+    _bgImageView.image = MFImageStretchCenter(@"round");
     
     m_datePicker.datePickerMode = UIDatePickerModeDate;
+    m_datePicker.minimumDate = [NSDate date];
+    m_datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
     
     m_timePicker.dataSource = self;
     m_timePicker.delegate = self;
@@ -76,7 +83,7 @@
 #pragma mark - UIPickerViewDataSource
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 3;
+    return 1;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
@@ -116,7 +123,7 @@
     
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:title];
     
-    UIFont *font = [UIFont systemFontOfSize:15.0f];
+    UIFont *font = [UIFont systemFontOfSize:16.0f];
     CTFontRef fontRef = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
     [attString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)fontRef range:NSMakeRange(0, attString.string.length)];
     CFRelease(fontRef);
@@ -132,10 +139,29 @@
         [self.m_delegate onClickDoneButton:self];
     }
     
+    NSString *seletedYearDate = [self seletedYearDate];
+    NSInteger selectedIndex = [m_timePicker selectedRowInComponent:0];
+    NSString *selectedTime = _timeArray[selectedIndex];
+    
     if ([self.m_delegate respondsToSelector:@selector(didSetAppointmentDate:appointmentTime:selectView:)]) {
-        [self.m_delegate didSetAppointmentDate:@"2017-09-09" appointmentTime:@"12:00-13:00" selectView:self];
+        [self.m_delegate didSetAppointmentDate:seletedYearDate appointmentTime:selectedTime selectView:self];
     }
 }
 
+
+-(NSString *)seletedYearDate
+{
+    NSDate *selectDate = m_datePicker.date;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:selectDate];
+    NSString *year = [NSString stringWithFormat:@"%2ld",(long)[components year]];
+    NSString *month = [NSString stringWithFormat:@"%02ld",(long)[components month]];
+    NSString *day = [NSString stringWithFormat:@"%02ld",(long)[components day]];
+    
+    NSString *dateDesc = [NSString stringWithFormat:@"%@-%@-%@",year,month,day];
+    
+    return dateDesc;
+}
 
 @end
