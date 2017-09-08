@@ -18,6 +18,7 @@
 @interface MShopAppointmentListViewController ()
 {
     MFTableViewInfo *m_tableViewInfo;
+    MFUITableView *_tableView;
     NSMutableArray *_appointmentList;
     
     UILabel *_navTitleLabel;
