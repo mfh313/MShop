@@ -54,6 +54,7 @@ using namespace std;
     });
     
 //    if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
+    if (self.indexPath.row % 2 == 1)
     {
         children.push_back({
             [self textNodeForTitle:@"评分：5" textColor:[UIColor hx_colorWithHexString:@"282828"]]
