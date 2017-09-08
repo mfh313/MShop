@@ -101,9 +101,10 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
+    [self showIndividualInfo:dataItem.individualId];
 }
 
 #pragma mark - LYSideslipCellDelegate
@@ -123,7 +124,7 @@
                                                                             handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
                                             {
                                                 [sideslipCell hiddenAllSideslip];
-                                                [weakSelf showTimeEditView:dataItem];
+                                                [weakSelf showModifyTimeView:dataItem];
                                             }];
         [actionArray addObject:timeAction];
         
@@ -304,8 +305,6 @@
 {
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
     [self showIndividualInfo:dataItem.individualId];
-//    [self doPayAppointment:dataItem];
-//    [self sendVerificationCode:dataItem.individualPhone];
 }
 
 -(void)showIndividualInfo:(NSString *)individualId
@@ -327,26 +326,26 @@
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         __strong typeof(weakSelf) strongSelf = weakSelf;
-       
         if (!mfApi.messageSuccess) {
-            [strongSelf getAppointmentList];
             [strongSelf showTips:mfApi.errorMessage];
             return;
         }
         
         NSString *expectVerificationCode = [mfApi verificationCode];
-        NSLog(@"expectVerificationCode=%@",expectVerificationCode);
-        
-        [strongSelf getAppointmentList];
+        [strongSelf showVerificationCodeInputView:dataItem verificationCode:expectVerificationCode];
         
     } failure:^(YTKBaseRequest * request) {
-        
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];
 }
 
--(void)sendVerificationCode:(NSString *)phone
+-(void)showVerificationCodeInputView:(MShopAppointmentDataItem *)dataItem verificationCode:(NSString *)expectVerificationCode
+{
+    [self reSendVerificationCode:dataItem.individualPhone];
+}
+
+-(void)reSendVerificationCode:(NSString *)phone
 {
     phone = @"13798228953";
     
@@ -373,12 +372,9 @@
     }];
 }
 
--(void)showVerificationCodeInputView
-{
-    
-}
 
--(void)showTimeEditView:(MShopAppointmentDataItem *)dataItem
+
+-(void)showModifyTimeView:(MShopAppointmentDataItem *)dataItem
 {
     if (!m_dateSelectView) {
         m_dateSelectView = [MShopAppointmentDateSelectView nibView];
@@ -394,7 +390,36 @@
 #pragma mark - MShopAppointmentDateSelectViewDelegate
 -(void)didSetAppointmentDate:(NSString *)appointmentDate appointmentTime:(NSString *)appointmentTime selectView:(MShopAppointmentDateSelectView *)selectView
 {
+    MShopAppointmentDataItem *dataItem = [selectView appointmentDataItem];
+    dataItem.appointmentDate = appointmentDate;
+    dataItem.appointmentTime = appointmentTime;
     
+    [self modifyAppointment:dataItem];
+}
+
+-(void)modifyAppointment:(MShopAppointmentDataItem *)dataItem
+{
+    MShopAppointmentModifyApi *mfApi = [MShopAppointmentModifyApi new];
+    mfApi.animatingView = MFAppWindow;
+    mfApi.dataItem = dataItem;
+    
+    __weak typeof(self) weakSelf = self;
+    [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (!mfApi.messageSuccess) {
+            [strongSelf showTips:mfApi.errorMessage];
+            return;
+        }
+        
+        [strongSelf showTips:@"修改成功！"];
+        [strongSelf getAppointmentList];
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
 }
 
 -(void)setNavTitle

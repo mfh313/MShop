@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EekaMShop/Module/Appointment/MShopAppointmentDateSelectView.m"
-            timestampString = "526554732.536632"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "-onClickDoneButton:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "EekaMShop/Module/Appointment/MShopAppointmentListViewController.m"
-            timestampString = "526554741.132199"
+            timestampString = "526556188.916721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "-didSetAppointmentDate:appointmentTime:selectView:"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-doPayAppointment:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

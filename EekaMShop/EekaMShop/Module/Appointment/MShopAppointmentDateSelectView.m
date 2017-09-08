@@ -48,6 +48,11 @@
     [self setAppointmentDate:m_dataItem.appointmentDate appointmentTime:m_dataItem.appointmentTime];
 }
 
+-(MShopAppointmentDataItem *)appointmentDataItem
+{
+    return m_dataItem;
+}
+
 -(void)setAppointmentDate:(NSString *)appointmentDate appointmentTime:(NSString *)appointmentTime
 {
     _timeArray = [self availableDateHours:[NSDate date]];

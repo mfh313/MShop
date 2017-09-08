@@ -19,7 +19,7 @@
                     <rect key="frame" x="118" y="81" width="300" height="300"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fmS-R3-pVJ">
-                    <rect key="frame" x="113" y="76" width="310" height="310"/>
+                    <rect key="frame" x="118" y="76" width="300" height="310"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdl-Cf-rZ6">
                     <rect key="frame" x="118" y="81.5" width="300" height="300"/>
@@ -29,7 +29,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="9MW-eg-oQW"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -55,7 +55,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="jyN-8a-nwf"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -101,12 +101,12 @@
                 <constraint firstItem="Sce-EO-Mbc" firstAttribute="bottom" secondItem="fmS-R3-pVJ" secondAttribute="bottom" constant="-5" id="N3f-d0-Tj8"/>
                 <constraint firstItem="Sce-EO-Mbc" firstAttribute="trailing" secondItem="sdl-Cf-rZ6" secondAttribute="trailing" id="Wg1-CR-NNK"/>
                 <constraint firstItem="W7K-Nj-0Rw" firstAttribute="top" secondItem="sdl-Cf-rZ6" secondAttribute="bottom" constant="20" id="ZyE-ZD-FH1"/>
-                <constraint firstItem="Sce-EO-Mbc" firstAttribute="leading" secondItem="fmS-R3-pVJ" secondAttribute="leading" constant="5" id="cOo-Qm-3Io"/>
+                <constraint firstItem="Sce-EO-Mbc" firstAttribute="leading" secondItem="fmS-R3-pVJ" secondAttribute="leading" id="cOo-Qm-3Io"/>
                 <constraint firstItem="Sce-EO-Mbc" firstAttribute="top" secondItem="fmS-R3-pVJ" secondAttribute="top" constant="5" id="icM-R0-zXc"/>
                 <constraint firstItem="Sce-EO-Mbc" firstAttribute="top" secondItem="sdl-Cf-rZ6" secondAttribute="top" id="idA-Y5-Tlq"/>
                 <constraint firstItem="Sce-EO-Mbc" firstAttribute="leading" secondItem="sdl-Cf-rZ6" secondAttribute="leading" id="lwk-zQ-pDy"/>
                 <constraint firstItem="Sce-EO-Mbc" firstAttribute="bottom" secondItem="sdl-Cf-rZ6" secondAttribute="bottom" id="o6V-YF-ld5"/>
-                <constraint firstItem="Sce-EO-Mbc" firstAttribute="trailing" secondItem="fmS-R3-pVJ" secondAttribute="trailing" constant="-5" id="riK-gS-bMu"/>
+                <constraint firstItem="Sce-EO-Mbc" firstAttribute="trailing" secondItem="fmS-R3-pVJ" secondAttribute="trailing" id="riK-gS-bMu"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

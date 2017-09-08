@@ -23,5 +23,6 @@
 @property (nonatomic,weak) id<MShopAppointmentDateSelectViewDelegate> m_delegate;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem;
+-(MShopAppointmentDataItem *)appointmentDataItem;
 
 @end
