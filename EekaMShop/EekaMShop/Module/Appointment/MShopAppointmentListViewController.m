@@ -387,6 +387,8 @@
     
     m_dateSelectView.frame = MFAppWindow.bounds;
     [MFAppWindow addSubview:m_dateSelectView];
+    
+    [m_dateSelectView setAppointmentDataItem:dataItem];
 }
 
 #pragma mark - MShopAppointmentDateSelectViewDelegate
@@ -417,7 +419,5 @@
     [super didReceiveMemoryWarning];
 }
 
-//8：00 -9：00
-//22：00-23：00
 
 @end

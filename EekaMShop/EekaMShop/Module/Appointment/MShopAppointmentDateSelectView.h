@@ -17,8 +17,11 @@
 
 @end
 
+@class MShopAppointmentDataItem;
 @interface MShopAppointmentDateSelectView : MMUIBridgeView
 
 @property (nonatomic,weak) id<MShopAppointmentDateSelectViewDelegate> m_delegate;
+
+-(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem;
 
 @end

@@ -189,6 +189,7 @@
 		AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC867F021F1E00DA00694086 /* MShopLoginUserInfo.m */; };
 		AC8EA5571F6240FE00C6C20E /* MShopAppointmentDateSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8EA5561F6240FE00C6C20E /* MShopAppointmentDateSelectView.m */; };
 		AC8EA5591F62416900C6C20E /* MShopAppointmentDateSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8EA5581F62416900C6C20E /* MShopAppointmentDateSelectView.xib */; };
+		AC8EA55B1F627C8500C6C20E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8EA55A1F627C8500C6C20E /* CoreText.framework */; };
 		AC96D3161F57DCF600486095 /* MShopMeProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */; };
 		AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */; };
 		AC96D31B1F57E30300486095 /* MFAppMacroUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AC96D31A1F57E30300486095 /* MFAppMacroUtil.m */; };
@@ -589,6 +590,7 @@
 		AC8EA5551F6240FE00C6C20E /* MShopAppointmentDateSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentDateSelectView.h; sourceTree = "<group>"; };
 		AC8EA5561F6240FE00C6C20E /* MShopAppointmentDateSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentDateSelectView.m; sourceTree = "<group>"; };
 		AC8EA5581F62416900C6C20E /* MShopAppointmentDateSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopAppointmentDateSelectView.xib; sourceTree = "<group>"; };
+		AC8EA55A1F627C8500C6C20E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AC96D3141F57DCF600486095 /* MShopMeProfileCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopMeProfileCellView.h; sourceTree = "<group>"; };
 		AC96D3151F57DCF600486095 /* MShopMeProfileCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopMeProfileCellView.m; sourceTree = "<group>"; };
 		AC96D3171F57DDC400486095 /* MShopMeProfileCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopMeProfileCellView.xib; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8EA55B1F627C8500C6C20E /* CoreText.framework in Frameworks */,
 				AC38C2CA1F3BE28900AD8707 /* AddressBook.framework in Frameworks */,
 				AC38C2CB1F3BE28900AD8707 /* AddressBookUI.framework in Frameworks */,
 				AC03A95B1F31B26A004D4DDC /* libresolv.tbd in Frameworks */,
@@ -1138,6 +1141,7 @@
 		AC867DDA1F1D983E00694086 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC8EA55A1F627C8500C6C20E /* CoreText.framework */,
 				AC2C580B1F5168C600FB2E00 /* VZFlexLayout.framework */,
 				AC38C2C81F3BE28900AD8707 /* AddressBook.framework */,
 				AC38C2C91F3BE28900AD8707 /* AddressBookUI.framework */,
