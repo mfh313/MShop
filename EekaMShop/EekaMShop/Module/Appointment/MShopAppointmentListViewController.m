@@ -26,10 +26,7 @@
     UILabel *_navTitleLabel;
     
     NSInteger _pageIndex;
-    NSInteger _pullPrePageIndex;
     NSInteger _pageSize;
-    
-    BOOL _hasFootBlankLine;
     
     MShopAppointmentDateSelectView *m_dateSelectView;
     MShopAppointmentCodeInputView *m_codeInputView;
@@ -45,8 +42,6 @@
 {
     _pageIndex = 0;
     _pageSize = 10;
-    
-    _pullPrePageIndex = _pageIndex;
 }
 
 - (void)viewDidLoad {
@@ -54,9 +49,10 @@
     
     self.title = @"预约列表";
     _appointmentList = [NSMutableArray array];
-    [self initTableView];
     
+    [self initTableView];
     [self initPullToRefreshConfig];
+    
     [self getAppointmentList];
 }
 
@@ -70,23 +66,7 @@
     [self.view addSubview:_tableView];
     
     [self initHeader];
-    
     [self initFooter];
-}
-
-- (void)initFooter
-{
-    __weak typeof(self) weakSelf = self;
-    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        
-        
-        [_tableView.mj_footer endRefreshing];
-    }];
-    
-    [_tableView.mj_footer setHidden:YES];
-    if (_tableView.contentSize.height >= _tableView.contentOffset.y) {
-        [_tableView.mj_footer setHidden:NO];
-    }
 }
 
 -(void)initHeader
@@ -94,9 +74,27 @@
     __weak typeof(self) weakSelf = self;
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf initPullToRefreshConfig];
         [strongSelf getAppointmentList];
+        
         [_tableView.mj_header endRefreshing];
     }];
+}
+
+- (void)initFooter
+{
+    __weak typeof(self) weakSelf = self;
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        ++_pageIndex;
+        [strongSelf getAppointmentListPageIndex:_pageIndex pageSize:_pageSize];
+        [_tableView.mj_footer endRefreshing];
+    }];
+    
+    [_tableView.mj_footer setHidden:YES];
+    if (_tableView.contentSize.height >= _tableView.contentOffset.y) {
+        [_tableView.mj_footer setHidden:NO];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -197,9 +195,7 @@
     __weak typeof(self) weakSelf = self;
     
     MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
-    
-//    [mfApi setPageIndex:_pageIndex pageSize:_pageSize];
-    
+    [mfApi setPageIndex:_pageIndex pageSize:_pageSize];
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
         if (!mfApi.messageSuccess) {
@@ -225,7 +221,47 @@
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
         [self showTips:errorDesc];
     }];
+}
+
+-(void)getAppointmentListPageIndex:(NSInteger)pageIndex pageSize:(NSInteger)pageSize
+{
+    __weak typeof(self) weakSelf = self;
     
+    MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
+    [mfApi setPageIndex:pageIndex pageSize:pageSize];
+    
+    [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
+        
+        if (!mfApi.messageSuccess) {
+            [self showTips:mfApi.errorMessage];
+            return;
+        }
+        
+        NSMutableArray *appointments = [NSMutableArray array];
+        NSArray *appointmentList = request.responseObject[@"appointmentList"];
+        for (int i = 0; i < appointmentList.count; i++) {
+            MShopAppointmentDataItem *dataItem = [MShopAppointmentDataItem MM_modelWithJSON:appointmentList[i]];
+            [appointments addObject:dataItem];
+        }
+        
+        if (appointments.count == 0)
+        {
+            [self showTips:@"已经没有了"];
+        }
+        else
+        {
+            [_appointmentList addObjectsFromArray:appointments];
+        }
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf reloadTableView];
+        
+    } failure:^(YTKBaseRequest * request) {
+        
+        NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
+        [self showTips:errorDesc];
+    }];
+
 }
 
 -(void)reloadTableView
