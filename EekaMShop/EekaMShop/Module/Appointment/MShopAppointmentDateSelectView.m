@@ -175,6 +175,10 @@
     }
 }
 
+- (IBAction)onClickBgView:(id)sender {
+    [self removeFromSuperview];
+}
+
 -(NSString *)seletedYearDate
 {
     NSDate *selectDate = m_datePicker.date;

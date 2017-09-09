@@ -95,12 +95,21 @@
     
     cell.m_subContentView.frame = cell.contentView.frame;
     
-    MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)cell.m_subContentView;
-    MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
-    cellView.indexPath = indexPath;
-    [cellView setAppointmentDataItem:dataItem];
+//    MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)cell.m_subContentView;
+//    MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
+//    cellView.indexPath = indexPath;
+//    [cellView setAppointmentDataItem:dataItem];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MFMultiMenuTableViewCell *mcell = (MFMultiMenuTableViewCell *)cell;
+    MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)mcell.m_subContentView;
+    
+    MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
+    [cellView setAppointmentDataItem:dataItem];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -342,7 +351,7 @@
             return;
         }
         
-        [strongSelf showTips:@"修改成功！"];
+        [strongSelf showTips:@"修改成功"];
         [strongSelf getAppointmentList];
         
     } failure:^(YTKBaseRequest * request) {
