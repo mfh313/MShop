@@ -29,6 +29,7 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    self.numberOfVertificationCode = 4;
     
     self.backgroundColor = [UIColor hx_colorWithHexString:@"#000" alpha:0.6];
     _bgImageView.image = MFImageStretchCenter(@"round");

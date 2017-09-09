@@ -263,7 +263,7 @@
     m_codeInputView.frame = MFAppWindow.bounds;
     [MFAppWindow addSubview:m_codeInputView];
     
-    m_codeInputView.numberOfVertificationCode = expectVerificationCode.length;
+    m_codeInputView.numberOfVertificationCode = 4;
     [m_codeInputView setAppointmentDataItem:dataItem];
 }
 
