@@ -87,6 +87,7 @@
     
     if (cell == nil) {
         cell = [[MFMultiMenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MFShoppingCartItemCellView"];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.delegate = self;
         
         MShopAppointmentFlexCellView *cellView = [MShopAppointmentFlexCellView new];
@@ -94,12 +95,6 @@
     }
     
     cell.m_subContentView.frame = cell.contentView.frame;
-    
-//    MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)cell.m_subContentView;
-//    MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
-//    cellView.indexPath = indexPath;
-//    [cellView setAppointmentDataItem:dataItem];
-    
     return cell;
 }
 
@@ -109,11 +104,14 @@
     MShopAppointmentFlexCellView *cellView = (MShopAppointmentFlexCellView *)mcell.m_subContentView;
     
     MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
+    cellView.indexPath = indexPath;
     [cellView setAppointmentDataItem:dataItem];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
     [self showIndividualInfo:dataItem.individualId];
 }

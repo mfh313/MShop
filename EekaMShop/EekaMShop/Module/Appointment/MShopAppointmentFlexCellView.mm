@@ -26,8 +26,7 @@ using namespace std;
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
     self.backgroundColor = [UIColor redColor];
-    
-//    NSLog(@"self.frame=%@",NSStringFromCGRect(self.frame));
+    NSLog(@"self.frame=%@",NSStringFromCGRect(self.frame));
     
     [m_contentView removeFromSuperview];
     NodeLayout layout = [self stackNodeLayoutForAppointmentDataItem:dataItem];
