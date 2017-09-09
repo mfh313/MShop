@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FUy-eB-An2">
-                    <rect key="frame" x="55.5" y="95" width="310" height="210"/>
+                    <rect key="frame" x="55.5" y="125" width="310" height="210"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2O-PL-Rpj">
-                    <rect key="frame" x="60" y="100" width="300" height="200"/>
+                    <rect key="frame" x="60" y="130" width="300" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入顾客手机收到的短信验证码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4w-cj-hPx">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -57,7 +57,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-KN-cn9">
-                    <rect key="frame" x="190" y="60" width="40" height="40"/>
+                    <rect key="frame" x="190" y="80" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="bTY-dK-Wwl"/>
                         <constraint firstAttribute="width" constant="40" id="rPc-wS-WPl"/>
@@ -70,13 +70,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="8ik-KN-cn9" secondAttribute="bottom" id="CJg-xA-gaX"/>
+                <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="8ik-KN-cn9" secondAttribute="bottom" constant="10" id="CJg-xA-gaX"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="top" secondItem="h2O-PL-Rpj" secondAttribute="top" constant="-5" id="FpR-1k-pqu"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="trailing" secondItem="h2O-PL-Rpj" secondAttribute="trailing" constant="5" id="Lo0-5K-dbZ"/>
                 <constraint firstItem="h2O-PL-Rpj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vl9-or-HOS"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="bottom" secondItem="h2O-PL-Rpj" secondAttribute="bottom" constant="5" id="g4D-LU-ZWf"/>
                 <constraint firstItem="8ik-KN-cn9" firstAttribute="centerX" secondItem="h2O-PL-Rpj" secondAttribute="centerX" id="m0i-14-Ib0"/>
-                <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="mRh-az-wee"/>
+                <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="130" id="mRh-az-wee"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="leading" secondItem="h2O-PL-Rpj" secondAttribute="leading" constant="-5" id="nzG-rY-MX2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -91,6 +91,6 @@
         </view>
     </objects>
     <resources>
-        <image name="remove" width="9" height="9"/>
+        <image name="remove" width="48" height="48"/>
     </resources>
 </document>
