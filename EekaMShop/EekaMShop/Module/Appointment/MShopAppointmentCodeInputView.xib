@@ -57,7 +57,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-KN-cn9">
-                    <rect key="frame" x="190" y="80" width="40" height="40"/>
+                    <rect key="frame" x="320" y="80" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="bTY-dK-Wwl"/>
                         <constraint firstAttribute="width" constant="40" id="rPc-wS-WPl"/>
@@ -75,9 +75,9 @@
                 <constraint firstItem="FUy-eB-An2" firstAttribute="trailing" secondItem="h2O-PL-Rpj" secondAttribute="trailing" constant="5" id="Lo0-5K-dbZ"/>
                 <constraint firstItem="h2O-PL-Rpj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vl9-or-HOS"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="bottom" secondItem="h2O-PL-Rpj" secondAttribute="bottom" constant="5" id="g4D-LU-ZWf"/>
-                <constraint firstItem="8ik-KN-cn9" firstAttribute="centerX" secondItem="h2O-PL-Rpj" secondAttribute="centerX" id="m0i-14-Ib0"/>
                 <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="130" id="mRh-az-wee"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="leading" secondItem="h2O-PL-Rpj" secondAttribute="leading" constant="-5" id="nzG-rY-MX2"/>
+                <constraint firstItem="8ik-KN-cn9" firstAttribute="trailing" secondItem="h2O-PL-Rpj" secondAttribute="trailing" id="rWu-ea-ei8"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
