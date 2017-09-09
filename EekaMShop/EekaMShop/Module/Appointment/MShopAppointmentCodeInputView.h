@@ -8,11 +8,13 @@
 
 #import "MMUIBridgeView.h"
 
+@class MShopAppointmentCodeInputView;
 @protocol MShopAppointmentCodeInputViewDelegate <NSObject>
 
 @optional
--(void)onClickResendVerificationCode:(NSString *)phone;
 -(NSString *)verificationCodeSendedPhone;
+-(void)onClickResendVerificationCode:(NSString *)phone;
+-(void)checkVerificationCode:(NSString *)code inputView:(MShopAppointmentCodeInputView *)inputView;
 
 @end
 
@@ -23,5 +25,7 @@
 @property (nonatomic, assign) NSInteger numberOfVertificationCode;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem;
+
+-(MShopAppointmentDataItem *)appointmentDataItem;
 
 @end

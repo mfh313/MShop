@@ -76,7 +76,7 @@ using namespace std;
     }
                                                          NodeSpecs:
                                {
-                                   .backgroundColor = [UIColor grayColor],
+                                   .backgroundColor = [UIColor whiteColor],
                                    .flexShrink = 0,
                                }
                                                           Children:children];

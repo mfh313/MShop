@@ -44,9 +44,21 @@
     m_verificationCodeView.codeViewType = VerificationCodeViewType_Custom;
     [_verificationCodeBgView addSubview:m_verificationCodeView];
     
+    __weak typeof(self) weakSelf = self;
     m_verificationCodeView.endEditBlcok = ^(NSString *text) {
-        NSLog(@"输入的验证码为：%@", text);
+        if (text.length == self.numberOfVertificationCode)
+        {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf checkVerificationCode:text];
+        }
     };
+}
+
+-(void)checkVerificationCode:(NSString *)code
+{
+    if ([self.m_delegate respondsToSelector:@selector(checkVerificationCode:inputView:)]) {
+        [self.m_delegate checkVerificationCode:code inputView:self];
+    }
 }
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
@@ -55,7 +67,7 @@
     
     if ([self.m_delegate respondsToSelector:@selector(verificationCodeSendedPhone)])
     {
-        _tipsLabel.text = [NSString stringWithFormat:@"输入顾客手机%@收到的短信验证码",[self.m_delegate verificationCodeSendedPhone]];
+        _tipsLabel.text = [NSString stringWithFormat:@"输入顾客手机%@收到的验证码",[self.m_delegate verificationCodeSendedPhone]];
     }
     
     [m_verificationCodeView removeFromSuperview];
@@ -63,6 +75,11 @@
     [self initVerificationCodeView];
     
     [m_verificationCodeView Jht_BecomeFirstResponder];
+}
+
+-(MShopAppointmentDataItem *)appointmentDataItem
+{
+    return m_dataItem;
 }
 
 - (IBAction)onClickCancelButton:(id)sender {

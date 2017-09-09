@@ -333,6 +333,8 @@
     m_sendedVerificationCodePhone = [self verificationCodePhone:dataItem.individualPhone];
     
     MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
+    mfApi.animatingText = @"正在完成服务";
+    mfApi.animatingView = MFAppWindow;
     mfApi.phone = m_sendedVerificationCodePhone;
     mfApi.individualId = dataItem.individualId;
     mfApi.type = dataItem.type;
@@ -373,6 +375,22 @@
 -(NSString *)verificationCodeSendedPhone
 {
     return m_sendedVerificationCodePhone;
+}
+
+-(void)checkVerificationCode:(NSString *)code inputView:(MShopAppointmentCodeInputView *)inputView
+{
+    if ([m_expectVerificationCode isEqualToString:code])
+    {
+        [m_codeInputView removeFromSuperview];
+        
+        MShopAppointmentDataItem *dataItem = [inputView appointmentDataItem];
+        dataItem.status = MShopAppointmentStatusHandled;
+        [self modifyAppointment:dataItem];
+    }
+    else
+    {
+        [self showTips:@"验证码输入错误"];
+    }
 }
 
 -(void)onClickResendVerificationCode:(NSString *)phone
