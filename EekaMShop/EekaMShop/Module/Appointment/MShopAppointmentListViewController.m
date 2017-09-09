@@ -41,7 +41,7 @@
 -(void)initPullToRefreshConfig
 {
     _pageIndex = 0;
-    _pageSize = 10;
+    _pageSize = 1000;
 }
 
 - (void)viewDidLoad {
@@ -51,8 +51,6 @@
     _appointmentList = [NSMutableArray array];
     
     [self initTableView];
-    [self initPullToRefreshConfig];
-    
     [self getAppointmentList];
 }
 
@@ -74,7 +72,6 @@
     __weak typeof(self) weakSelf = self;
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf initPullToRefreshConfig];
         [strongSelf getAppointmentList];
         
         [_tableView.mj_header endRefreshing];
@@ -192,6 +189,8 @@
 
 -(void)getAppointmentList
 {
+    [self initPullToRefreshConfig];
+    
     __weak typeof(self) weakSelf = self;
     
     MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
