@@ -37,7 +37,7 @@ using namespace std;
 
 -(NodeLayout)stackNodeLayoutForAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    NSString *title = [NSString stringWithFormat:@"[%@]",dataItem.typeValue];
+    NSString *title = [NSString stringWithFormat:@"[%@] %@",dataItem.typeValue,dataItem.appointmentNo];
     NSString *individualTitle = [NSString stringWithFormat:@"%@ %@",dataItem.individualName,dataItem.individualPhone];
     NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
     
@@ -47,10 +47,10 @@ using namespace std;
     
     vector<VZFStackChildNode> children;
     children.push_back({
-        [self textNodeForTitle:title textColor:blackColor font:[UIFont systemFontOfSize:15.0f]]
+        [self textNodeForTitle:title textColor:blackColor font:[UIFont systemFontOfSize:14.0f]]
     });
     children.push_back({
-        [self textNodeForTitle:individualTitle textColor:blackColor]
+        [self textNodeForTitle:individualTitle textColor:grayColor]
     });
     children.push_back({
         [self textNodeForTitle:time textColor:blackColor]

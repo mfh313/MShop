@@ -161,7 +161,6 @@
 - (IBAction)onClickDoneButton:(id)sender
 {
     [self removeFromSuperview];
-    
     if ([self.m_delegate respondsToSelector:@selector(onClickDoneButton:)]) {
         [self.m_delegate onClickDoneButton:self];
     }

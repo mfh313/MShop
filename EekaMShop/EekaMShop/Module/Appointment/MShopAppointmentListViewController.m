@@ -328,9 +328,15 @@
 -(void)didSetAppointmentDate:(NSString *)appointmentDate appointmentTime:(NSString *)appointmentTime selectView:(MShopAppointmentDateSelectView *)selectView
 {
     MShopAppointmentDataItem *dataItem = [selectView appointmentDataItem];
+    
+    if ([appointmentDate isEqualToString:dataItem.appointmentDate]
+        && [appointmentTime isEqualToString:dataItem.appointmentTime]) {
+        [self showTips:@"修改时间没有变化"];
+        return;
+    }
+    
     dataItem.appointmentDate = appointmentDate;
     dataItem.appointmentTime = appointmentTime;
-    
     [self modifyAppointment:dataItem];
 }
 
