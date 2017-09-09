@@ -323,12 +323,12 @@
 
 -(void)doPayAppointment:(MShopAppointmentDataItem *)dataItem
 {
-    dataItem.individualPhone = @"13798228953";
-    
     MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
     mfApi.phone = dataItem.individualPhone;
     mfApi.individualId = dataItem.individualId;
     mfApi.type = dataItem.type;
+    
+    mfApi.phone = @"13798228953";
     
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
@@ -367,6 +367,8 @@
 {
     MShopSendVerificationCodeApi *mfApi = [MShopSendVerificationCodeApi new];
     mfApi.phone = phone;
+    
+    mfApi.phone = @"13798228953";
     
     mfApi.animatingText = @"正在重发验证码";
     mfApi.animatingView = MFAppWindow;
