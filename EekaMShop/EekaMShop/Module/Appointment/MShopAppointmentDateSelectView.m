@@ -35,11 +35,30 @@
     _bgImageView.image = MFImageStretchCenter(@"round");
     
     m_datePicker.datePickerMode = UIDatePickerModeDate;
-    m_datePicker.minimumDate = [NSDate date];
     m_datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    m_datePicker.minimumDate = [self dateByAddingYears:-1 date:[NSDate date]];
+    m_datePicker.maximumDate = [self dateByAddingYears:1 date:[NSDate date]];
     
     m_timePicker.dataSource = self;
     m_timePicker.delegate = self;
+}
+
+- (NSDate *)dateByAddingYears:(NSInteger)dYears date:(NSDate *)date
+{
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setYear:dYears];
+    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:date options:0];
+    return newDate;
+}
+
+-(NSDate *)dateForAppointmentDate:(NSString *)appointmentDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    NSDate *date = [formatter dateFromString:appointmentDate];
+    
+    return date;
 }
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
@@ -55,9 +74,13 @@
 
 -(void)setAppointmentDate:(NSString *)appointmentDate appointmentTime:(NSString *)appointmentTime
 {
-    _timeArray = [self availableDateHours:[NSDate date]];
+    NSDate *selectedDate = [self dateForAppointmentDate:appointmentDate];
+    [m_datePicker setDate:selectedDate animated:NO];
     
+    _timeArray = [self availableDateHours:[NSDate date]];
     [m_timePicker reloadAllComponents];
+    NSInteger selectedTimeIndex = [_timeArray indexOfObject:appointmentTime];
+    [m_timePicker selectRow:selectedTimeIndex inComponent:0 animated:NO];
 }
 
 -(NSMutableArray *)availableDateHours:(NSDate *)date
@@ -152,7 +175,6 @@
         [self.m_delegate didSetAppointmentDate:seletedYearDate appointmentTime:selectedTime selectView:self];
     }
 }
-
 
 -(NSString *)seletedYearDate
 {
