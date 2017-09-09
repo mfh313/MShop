@@ -128,16 +128,13 @@
     NSMutableArray *actionArray = [NSMutableArray array];
     MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
     
-    if (!dataItem.status) {
-        return nil;
-    }
-    
     if ([dataItem.status isEqualToString:MShopAppointmentStatusPending])
     {
         LYSideslipCellAction *timeAction = [LYSideslipCellAction rowActionWithStyle:LYSideslipCellActionStyleNormal title:@"修改服务时间"
                                                                             handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
                                             {
                                                 [sideslipCell hiddenAllSideslip];
+                                                
                                                 [weakSelf showModifyTimeView:dataItem];
                                             }];
         [actionArray addObject:timeAction];
@@ -146,6 +143,7 @@
                                                                              handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
                                              {
                                                  [sideslipCell hiddenAllSideslip];
+                                                 
                                                  [weakSelf doPayAppointment:dataItem];
                                              }];
         [actionArray addObject:dopayAction];
@@ -156,6 +154,12 @@
 
 - (BOOL)sideslipCell:(LYSideslipCell *)sideslipCell canSideslipRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
+    
+    if (!dataItem.status) {
+        return NO;
+    }
+    
     return YES;
 }
 

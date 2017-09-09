@@ -42,7 +42,6 @@ using namespace std;
     NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
     
     UIColor *blackColor = [UIColor hx_colorWithHexString:@"282828"];
-    UIColor *grayColor = [UIColor hx_colorWithHexString:@"686868"];
     UIColor *lightGrayColor = [UIColor hx_colorWithHexString:@"989898"];
     
     vector<VZFStackChildNode> children;
@@ -50,7 +49,7 @@ using namespace std;
         [self textNodeForTitle:title textColor:blackColor font:[UIFont systemFontOfSize:14.0f]]
     });
     children.push_back({
-        [self textNodeForTitle:individualTitle textColor:grayColor]
+        [self textNodeForTitle:individualTitle textColor:blackColor]
     });
     children.push_back({
         [self textNodeForTitle:time textColor:blackColor]
@@ -68,9 +67,9 @@ using namespace std;
         }
         else
         {
-            score = [NSString stringWithFormat:@"顾客未评分"];
+            score = [NSString stringWithFormat:@"已完成服务,顾客未评分"];
             children.push_back({
-                [self textNodeForTitle:score textColor:grayColor]
+                [self textNodeForTitle:score textColor:lightGrayColor]
             });
         }
         
@@ -84,9 +83,9 @@ using namespace std;
         }
         else
         {
-            evaluate = [NSString stringWithFormat:@"顾客未填写评价"];
+            evaluate = [NSString stringWithFormat:@"已完成服务,顾客未填写评价"];
             children.push_back({
-                [self textNodeForTitle:evaluate textColor:grayColor]
+                [self textNodeForTitle:evaluate textColor:lightGrayColor]
             });
         }
     }

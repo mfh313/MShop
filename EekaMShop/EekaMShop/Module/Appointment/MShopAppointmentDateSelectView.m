@@ -79,6 +79,9 @@
     _timeArray = [self availableDateHours:[NSDate date]];
     [m_timePicker reloadAllComponents];
     NSInteger selectedTimeIndex = [_timeArray indexOfObject:appointmentTime];
+    if (selectedTimeIndex == NSNotFound) {
+        selectedTimeIndex = 0;
+    }
     [m_timePicker selectRow:selectedTimeIndex inComponent:0 animated:NO];
 }
 
