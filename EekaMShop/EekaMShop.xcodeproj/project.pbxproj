@@ -237,6 +237,25 @@
 		ACA45EDE1F637C740016F278 /* MShopAppointmentCodeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EDD1F637C740016F278 /* MShopAppointmentCodeInputView.m */; };
 		ACA45EE01F637D890016F278 /* MShopAppointmentCodeInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA45EDF1F637D890016F278 /* MShopAppointmentCodeInputView.xib */; };
 		ACA45EE41F63BF8C0016F278 /* JhtVerificationCodeViewSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA45EE31F63BF8C0016F278 /* JhtVerificationCodeViewSDK.a */; };
+		ACA45F121F640A190016F278 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EE81F640A190016F278 /* MJRefreshAutoFooter.m */; };
+		ACA45F131F640A190016F278 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EEA1F640A190016F278 /* MJRefreshBackFooter.m */; };
+		ACA45F141F640A190016F278 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EEC1F640A190016F278 /* MJRefreshComponent.m */; };
+		ACA45F151F640A190016F278 /* MJRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EEE1F640A190016F278 /* MJRefreshFooter.m */; };
+		ACA45F161F640A190016F278 /* MJRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EF01F640A190016F278 /* MJRefreshHeader.m */; };
+		ACA45F171F640A190016F278 /* MJRefreshAutoGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EF51F640A190016F278 /* MJRefreshAutoGifFooter.m */; };
+		ACA45F181F640A190016F278 /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EF71F640A190016F278 /* MJRefreshAutoNormalFooter.m */; };
+		ACA45F191F640A190016F278 /* MJRefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EF91F640A190016F278 /* MJRefreshAutoStateFooter.m */; };
+		ACA45F1A1F640A190016F278 /* MJRefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EFC1F640A190016F278 /* MJRefreshBackGifFooter.m */; };
+		ACA45F1B1F640A190016F278 /* MJRefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EFE1F640A190016F278 /* MJRefreshBackNormalFooter.m */; };
+		ACA45F1C1F640A190016F278 /* MJRefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F001F640A190016F278 /* MJRefreshBackStateFooter.m */; };
+		ACA45F1D1F640A190016F278 /* MJRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F031F640A190016F278 /* MJRefreshGifHeader.m */; };
+		ACA45F1E1F640A190016F278 /* MJRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F051F640A190016F278 /* MJRefreshNormalHeader.m */; };
+		ACA45F1F1F640A190016F278 /* MJRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F071F640A190016F278 /* MJRefreshStateHeader.m */; };
+		ACA45F201F640A190016F278 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACA45F081F640A190016F278 /* MJRefresh.bundle */; };
+		ACA45F211F640A190016F278 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F0B1F640A190016F278 /* MJRefreshConst.m */; };
+		ACA45F221F640A190016F278 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F0D1F640A190016F278 /* UIScrollView+MJExtension.m */; };
+		ACA45F231F640A190016F278 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F0F1F640A190016F278 /* UIScrollView+MJRefresh.m */; };
+		ACA45F241F640A190016F278 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45F111F640A190016F278 /* UIView+MJExtension.m */; };
 		ACC92EF71F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC92EF61F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m */; };
 		ACC92EFA1F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC92EF91F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.m */; };
 		ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDFE2441F2F20C3002795BE /* MShopMemberConsumptionTitleView.m */; };
@@ -686,6 +705,44 @@
 		ACA45EDF1F637D890016F278 /* MShopAppointmentCodeInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopAppointmentCodeInputView.xib; sourceTree = "<group>"; };
 		ACA45EE21F63BF8C0016F278 /* JhtVerificationCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JhtVerificationCodeView.h; sourceTree = "<group>"; };
 		ACA45EE31F63BF8C0016F278 /* JhtVerificationCodeViewSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = JhtVerificationCodeViewSDK.a; sourceTree = "<group>"; };
+		ACA45EE71F640A190016F278 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
+		ACA45EE81F640A190016F278 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
+		ACA45EE91F640A190016F278 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
+		ACA45EEA1F640A190016F278 /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackFooter.m; sourceTree = "<group>"; };
+		ACA45EEB1F640A190016F278 /* MJRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshComponent.h; sourceTree = "<group>"; };
+		ACA45EEC1F640A190016F278 /* MJRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshComponent.m; sourceTree = "<group>"; };
+		ACA45EED1F640A190016F278 /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
+		ACA45EEE1F640A190016F278 /* MJRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooter.m; sourceTree = "<group>"; };
+		ACA45EEF1F640A190016F278 /* MJRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeader.h; sourceTree = "<group>"; };
+		ACA45EF01F640A190016F278 /* MJRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeader.m; sourceTree = "<group>"; };
+		ACA45EF41F640A190016F278 /* MJRefreshAutoGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoGifFooter.h; sourceTree = "<group>"; };
+		ACA45EF51F640A190016F278 /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
+		ACA45EF61F640A190016F278 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
+		ACA45EF71F640A190016F278 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
+		ACA45EF81F640A190016F278 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
+		ACA45EF91F640A190016F278 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
+		ACA45EFB1F640A190016F278 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
+		ACA45EFC1F640A190016F278 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
+		ACA45EFD1F640A190016F278 /* MJRefreshBackNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackNormalFooter.h; sourceTree = "<group>"; };
+		ACA45EFE1F640A190016F278 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
+		ACA45EFF1F640A190016F278 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
+		ACA45F001F640A190016F278 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
+		ACA45F021F640A190016F278 /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshGifHeader.h; sourceTree = "<group>"; };
+		ACA45F031F640A190016F278 /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshGifHeader.m; sourceTree = "<group>"; };
+		ACA45F041F640A190016F278 /* MJRefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshNormalHeader.h; sourceTree = "<group>"; };
+		ACA45F051F640A190016F278 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshNormalHeader.m; sourceTree = "<group>"; };
+		ACA45F061F640A190016F278 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshStateHeader.h; sourceTree = "<group>"; };
+		ACA45F071F640A190016F278 /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshStateHeader.m; sourceTree = "<group>"; };
+		ACA45F081F640A190016F278 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		ACA45F091F640A190016F278 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		ACA45F0A1F640A190016F278 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		ACA45F0B1F640A190016F278 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		ACA45F0C1F640A190016F278 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		ACA45F0D1F640A190016F278 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		ACA45F0E1F640A190016F278 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		ACA45F0F1F640A190016F278 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		ACA45F101F640A190016F278 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		ACA45F111F640A190016F278 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		ACC92EF51F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopGetFrozenEmployeeListApi.h; sourceTree = "<group>"; };
 		ACC92EF61F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetFrozenEmployeeListApi.m; sourceTree = "<group>"; };
 		ACC92EF81F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopFrozenOptEmployeeApi.h; sourceTree = "<group>"; };
@@ -1191,6 +1248,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ACA45EE51F640A190016F278 /* MJRefresh */,
 				ACA45EE11F63BF8C0016F278 /* JhtVerificationCodeViewSDK */,
 				ACA45ED31F637C130016F278 /* HSFCodeInputView */,
 				AC9A61EF1F5CD82400AF5875 /* Proto */,
@@ -1652,6 +1710,99 @@
 			path = JhtVerificationCodeViewSDK;
 			sourceTree = "<group>";
 		};
+		ACA45EE51F640A190016F278 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45EE61F640A190016F278 /* Base */,
+				ACA45EF11F640A190016F278 /* Custom */,
+				ACA45F081F640A190016F278 /* MJRefresh.bundle */,
+				ACA45F091F640A190016F278 /* MJRefresh.h */,
+				ACA45F0A1F640A190016F278 /* MJRefreshConst.h */,
+				ACA45F0B1F640A190016F278 /* MJRefreshConst.m */,
+				ACA45F0C1F640A190016F278 /* UIScrollView+MJExtension.h */,
+				ACA45F0D1F640A190016F278 /* UIScrollView+MJExtension.m */,
+				ACA45F0E1F640A190016F278 /* UIScrollView+MJRefresh.h */,
+				ACA45F0F1F640A190016F278 /* UIScrollView+MJRefresh.m */,
+				ACA45F101F640A190016F278 /* UIView+MJExtension.h */,
+				ACA45F111F640A190016F278 /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		ACA45EE61F640A190016F278 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45EE71F640A190016F278 /* MJRefreshAutoFooter.h */,
+				ACA45EE81F640A190016F278 /* MJRefreshAutoFooter.m */,
+				ACA45EE91F640A190016F278 /* MJRefreshBackFooter.h */,
+				ACA45EEA1F640A190016F278 /* MJRefreshBackFooter.m */,
+				ACA45EEB1F640A190016F278 /* MJRefreshComponent.h */,
+				ACA45EEC1F640A190016F278 /* MJRefreshComponent.m */,
+				ACA45EED1F640A190016F278 /* MJRefreshFooter.h */,
+				ACA45EEE1F640A190016F278 /* MJRefreshFooter.m */,
+				ACA45EEF1F640A190016F278 /* MJRefreshHeader.h */,
+				ACA45EF01F640A190016F278 /* MJRefreshHeader.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		ACA45EF11F640A190016F278 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45EF21F640A190016F278 /* Footer */,
+				ACA45F011F640A190016F278 /* Header */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		ACA45EF21F640A190016F278 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45EF31F640A190016F278 /* Auto */,
+				ACA45EFA1F640A190016F278 /* Back */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		ACA45EF31F640A190016F278 /* Auto */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45EF41F640A190016F278 /* MJRefreshAutoGifFooter.h */,
+				ACA45EF51F640A190016F278 /* MJRefreshAutoGifFooter.m */,
+				ACA45EF61F640A190016F278 /* MJRefreshAutoNormalFooter.h */,
+				ACA45EF71F640A190016F278 /* MJRefreshAutoNormalFooter.m */,
+				ACA45EF81F640A190016F278 /* MJRefreshAutoStateFooter.h */,
+				ACA45EF91F640A190016F278 /* MJRefreshAutoStateFooter.m */,
+			);
+			path = Auto;
+			sourceTree = "<group>";
+		};
+		ACA45EFA1F640A190016F278 /* Back */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45EFB1F640A190016F278 /* MJRefreshBackGifFooter.h */,
+				ACA45EFC1F640A190016F278 /* MJRefreshBackGifFooter.m */,
+				ACA45EFD1F640A190016F278 /* MJRefreshBackNormalFooter.h */,
+				ACA45EFE1F640A190016F278 /* MJRefreshBackNormalFooter.m */,
+				ACA45EFF1F640A190016F278 /* MJRefreshBackStateFooter.h */,
+				ACA45F001F640A190016F278 /* MJRefreshBackStateFooter.m */,
+			);
+			path = Back;
+			sourceTree = "<group>";
+		};
+		ACA45F011F640A190016F278 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45F021F640A190016F278 /* MJRefreshGifHeader.h */,
+				ACA45F031F640A190016F278 /* MJRefreshGifHeader.m */,
+				ACA45F041F640A190016F278 /* MJRefreshNormalHeader.h */,
+				ACA45F051F640A190016F278 /* MJRefreshNormalHeader.m */,
+				ACA45F061F640A190016F278 /* MJRefreshStateHeader.h */,
+				ACA45F071F640A190016F278 /* MJRefreshStateHeader.m */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1744,6 +1895,7 @@
 				AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */,
 				AC96D3201F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib in Resources */,
 				ACA45EE01F637D890016F278 /* MShopAppointmentCodeInputView.xib in Resources */,
+				ACA45F201F640A190016F278 /* MJRefresh.bundle in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,
 				AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */,
 				AC77263F1F2B0F04005B2100 /* main.js in Resources */,
@@ -1778,6 +1930,7 @@
 			files = (
 				AC7399131F22034500F753C2 /* NSArray+SafeInsert.m in Sources */,
 				ACC92EF71F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m in Sources */,
+				ACA45F1E1F640A190016F278 /* MJRefreshNormalHeader.m in Sources */,
 				AC38C2C31F3BE1B100AD8707 /* SCLButton.m in Sources */,
 				A5C1387F1F4C60CC00F205E3 /* IQBarButtonItem.m in Sources */,
 				AC867E741F1D9BB400694086 /* NSObject+YYModel.m in Sources */,
@@ -1790,10 +1943,12 @@
 				AC867EE41F1DB55600694086 /* MMServiceCenter.m in Sources */,
 				AC867E421F1D99E600694086 /* UIView+viewController.m in Sources */,
 				AC9A62361F5CD82400AF5875 /* ConcreteExtensionField.m in Sources */,
+				ACA45F141F640A190016F278 /* MJRefreshComponent.m in Sources */,
 				AC867F001F1DF24100694086 /* YTKChainRequest+AnimatingAccessory.m in Sources */,
 				AC7C28511F203E6D003C0C4C /* MShopApiManger.m in Sources */,
 				AC867E511F1D99E600694086 /* MMSelectButton.m in Sources */,
 				AC867E4C1F1D99E600694086 /* MMBaseInfoItem.m in Sources */,
+				ACA45F181F640A190016F278 /* MJRefreshAutoNormalFooter.m in Sources */,
 				AC7399021F21AC6200F753C2 /* MShopIndividualInfo.m in Sources */,
 				AC7D01791F32B67C00912EDA /* MShopAppointmentDataItem.m in Sources */,
 				AC8EA5571F6240FE00C6C20E /* MShopAppointmentDateSelectView.m in Sources */,
@@ -1801,6 +1956,7 @@
 				AC867EFF1F1DF24100694086 /* YTKBatchRequest+AnimatingAccessory.m in Sources */,
 				AC867E3E1F1D99E600694086 /* NSDictionary+Unicode.m in Sources */,
 				A5C138781F4C60CC00F205E3 /* IQUITextFieldView+Additions.m in Sources */,
+				ACA45F151F640A190016F278 /* MJRefreshFooter.m in Sources */,
 				AC9F83CC1F2C1E0E00952678 /* MShopIndividualConsumptionItemModel.m in Sources */,
 				AC867E441F1D99E600694086 /* UIViewController+FullScreen.m in Sources */,
 				AC867E781F1D9BB400694086 /* XXNibBridge.m in Sources */,
@@ -1812,9 +1968,11 @@
 				AC867E481F1D99E600694086 /* MFTableViewCell.m in Sources */,
 				AC867E4B1F1D99E600694086 /* MFUITableView.m in Sources */,
 				AC7FBD7B1F2741B300B11D5C /* MMSearchBarDisplayController.m in Sources */,
+				ACA45F1A1F640A190016F278 /* MJRefreshBackGifFooter.m in Sources */,
 				ACEF8B341F58289700733125 /* MShopFrozenEmployeeModel.m in Sources */,
 				AC867F031F1E00DA00694086 /* MShopLoginUserInfo.m in Sources */,
 				AC7FBD751F2735E100B11D5C /* MShopSearchIndividualApi.m in Sources */,
+				ACA45F231F640A190016F278 /* UIScrollView+MJRefresh.m in Sources */,
 				AC7398FF1F21A33700F753C2 /* MShopGetMemberListApi.m in Sources */,
 				AC867EC71F1DB32800694086 /* MFNetworkRequest.m in Sources */,
 				A5C138791F4C60CC00F205E3 /* IQUIView+Hierarchy.m in Sources */,
@@ -1856,7 +2014,9 @@
 				AC7D018E1F32CF0000912EDA /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				AC96D3231F5814A900486095 /* MShopFrozenEmployeeManagerViewController.m in Sources */,
 				AC38C2C41F3BE1B100AD8707 /* SCLSwitchView.m in Sources */,
+				ACA45F171F640A190016F278 /* MJRefreshAutoGifFooter.m in Sources */,
 				AC9A623F1F5CD82400AF5875 /* MutableField.m in Sources */,
+				ACA45F1C1F640A190016F278 /* MJRefreshBackStateFooter.m in Sources */,
 				AC9A62301F5CD82400AF5875 /* Messagepush.pb.m in Sources */,
 				AC6670AB1F0B25C00067F6EE /* MShopAppDelegate.mm in Sources */,
 				ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */,
@@ -1866,6 +2026,7 @@
 				AC867E461F1D99E600694086 /* UIViewController+UINavigationItem.m in Sources */,
 				AC96D3161F57DCF600486095 /* MShopMeProfileCellView.m in Sources */,
 				AC31E3361F5F99D700AE6F02 /* MShopDoPayAppointmentApi.m in Sources */,
+				ACA45F131F640A190016F278 /* MJRefreshBackFooter.m in Sources */,
 				AC867EC51F1DB32800694086 /* HYBNetworking.m in Sources */,
 				AC7399101F21FBAF00F753C2 /* NSMutableDictionary+SafeInsert.m in Sources */,
 				AC9A623A1F5CD82400AF5875 /* ExtensionRegistry.m in Sources */,
@@ -1888,6 +2049,7 @@
 				AC9A62401F5CD82400AF5875 /* ObjectivecDescriptor.pb.m in Sources */,
 				AC7E3F7D1F25CA560035E3DC /* MShopEmployeeInfoCellView.m in Sources */,
 				AC9A62381F5CD82400AF5875 /* ExtendableMessage.m in Sources */,
+				ACA45F221F640A190016F278 /* UIScrollView+MJExtension.m in Sources */,
 				AC7C28671F20B33F003C0C4C /* MShopMainFrameLogicController.m in Sources */,
 				AC9A62391F5CD82400AF5875 /* ExtendableMessageBuilder.m in Sources */,
 				AC9A62431F5CD82400AF5875 /* TextFormat.m in Sources */,
@@ -1895,10 +2057,12 @@
 				A5C1387D1F4C60CC00F205E3 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				AC7399161F22045A00F753C2 /* NSCache+SafeInsert.m in Sources */,
 				AC7399191F2204D100F753C2 /* NSMutableSet+SafeInsert.m in Sources */,
+				ACA45F1B1F640A190016F278 /* MJRefreshBackNormalFooter.m in Sources */,
 				A5C1387C1F4C60CC00F205E3 /* IQKeyboardManager.m in Sources */,
 				AC96D31E1F57E96900486095 /* MShopMeAddressBookSynCellView.m in Sources */,
 				AC867E751F1D9BB400694086 /* YYClassInfo.m in Sources */,
 				A5C138761F4C60CC00F205E3 /* IQNSArray+Sort.m in Sources */,
+				ACA45F191F640A190016F278 /* MJRefreshAutoStateFooter.m in Sources */,
 				AC85C21C1F1EE7A1003785A4 /* MShopEmployeeInfo.m in Sources */,
 				AC254C3A1F4D5836007BE516 /* MMServerPushService.m in Sources */,
 				AC76F3D61F281B9500499C66 /* MMSearchBar.m in Sources */,
@@ -1918,7 +2082,9 @@
 				AC38C2C71F3BE1B100AD8707 /* UIImage+ImageEffects.m in Sources */,
 				AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */,
 				AC867E3F1F1D99E600694086 /* NSString+MMWidth.m in Sources */,
+				ACA45F121F640A190016F278 /* MJRefreshAutoFooter.m in Sources */,
 				AC29F8A21F29D7F5000E474F /* MShopMemberDetailCellView.m in Sources */,
+				ACA45F1D1F640A190016F278 /* MJRefreshGifHeader.m in Sources */,
 				AC567D7A1F3B10F400EE33BD /* MShopSynMemberInfoModel.m in Sources */,
 				AC867EC61F1DB32800694086 /* MFNetwork.m in Sources */,
 				AC7E3F821F25CF420035E3DC /* MShopIndividualModifyApi.m in Sources */,
@@ -1938,6 +2104,7 @@
 				AC7C285B1F209A79003C0C4C /* MShopLoginUserInfo+WCDB.mm in Sources */,
 				AC9A62461F5CD82400AF5875 /* Utilities.m in Sources */,
 				AC7D01821F32B9C500912EDA /* MShopAppointmentModifyApi.m in Sources */,
+				ACA45F211F640A190016F278 /* MJRefreshConst.m in Sources */,
 				AC38C2C61F3BE1B100AD8707 /* SCLTimerDisplay.m in Sources */,
 				A5C138771F4C60CC00F205E3 /* IQUIScrollView+Additions.m in Sources */,
 				AC7D017C1F32B7F500912EDA /* MShopAppointmentListViewController.m in Sources */,
@@ -1947,6 +2114,9 @@
 				AC867E5B1F1D99E600694086 /* MFTableViewInfo.m in Sources */,
 				AC9A62451F5CD82400AF5875 /* UnknownFieldSetBuilder.m in Sources */,
 				AC867E431F1D99E600694086 /* UIViewController+FixBackIndicatorImage.m in Sources */,
+				ACA45F161F640A190016F278 /* MJRefreshHeader.m in Sources */,
+				ACA45F241F640A190016F278 /* UIView+MJExtension.m in Sources */,
+				ACA45F1F1F640A190016F278 /* MJRefreshStateHeader.m in Sources */,
 				AC7726261F2B09D2005B2100 /* MFThirdPartyPlugin.mm in Sources */,
 				AC85C22C1F1F5943003785A4 /* MShopMemberListViewController.m in Sources */,
 				AC9F83CF1F2C22F200952678 /* MShopMemberConsumptionCellView.m in Sources */,

@@ -68,6 +68,35 @@
     _tableView.delegate = self;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_tableView];
+    
+    [self initHeader];
+    
+    [self initFooter];
+}
+
+- (void)initFooter
+{
+    __weak typeof(self) weakSelf = self;
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        
+        [_tableView.mj_footer endRefreshing];
+    }];
+    
+    [_tableView.mj_footer setHidden:YES];
+    if (_tableView.contentSize.height >= _tableView.contentOffset.y) {
+        [_tableView.mj_footer setHidden:NO];
+    }
+}
+
+-(void)initHeader
+{
+    __weak typeof(self) weakSelf = self;
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf getAppointmentList];
+        [_tableView.mj_header endRefreshing];
+    }];
 }
 
 #pragma mark - UITableViewDataSource
