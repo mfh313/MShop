@@ -21,11 +21,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2O-PL-Rpj">
                     <rect key="frame" x="60" y="130" width="300" height="200"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入顾客手机收到的短信验证码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4w-cj-hPx">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="QhX-ho-Y3e"/>
-                            </constraints>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入顾客手机收到的短信验证码" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4w-cj-hPx">
+                            <rect key="frame" x="10" y="5" width="280" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -50,10 +47,10 @@
                         <constraint firstAttribute="trailing" secondItem="RJD-dV-zYG" secondAttribute="trailing" constant="20" id="12r-0M-3QU"/>
                         <constraint firstAttribute="width" constant="300" id="7q4-Kr-X54"/>
                         <constraint firstAttribute="bottom" secondItem="RJD-dV-zYG" secondAttribute="bottom" id="Sce-hv-3yj"/>
-                        <constraint firstAttribute="trailing" secondItem="b4w-cj-hPx" secondAttribute="trailing" id="hDu-ym-M7x"/>
-                        <constraint firstItem="b4w-cj-hPx" firstAttribute="top" secondItem="h2O-PL-Rpj" secondAttribute="top" id="kNO-Ku-a0M"/>
+                        <constraint firstAttribute="trailing" secondItem="b4w-cj-hPx" secondAttribute="trailing" constant="10" id="hDu-ym-M7x"/>
+                        <constraint firstItem="b4w-cj-hPx" firstAttribute="top" secondItem="h2O-PL-Rpj" secondAttribute="top" constant="5" id="kNO-Ku-a0M"/>
                         <constraint firstAttribute="height" constant="200" id="oKc-c9-wOC"/>
-                        <constraint firstItem="b4w-cj-hPx" firstAttribute="leading" secondItem="h2O-PL-Rpj" secondAttribute="leading" id="rDM-Ju-Q3C"/>
+                        <constraint firstItem="b4w-cj-hPx" firstAttribute="leading" secondItem="h2O-PL-Rpj" secondAttribute="leading" constant="10" id="rDM-Ju-Q3C"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-KN-cn9">
@@ -86,6 +83,7 @@
             <connections>
                 <outlet property="_bgImageView" destination="FUy-eB-An2" id="Et8-wn-fb6"/>
                 <outlet property="_resendBtn" destination="RJD-dV-zYG" id="oHq-Oe-SOg"/>
+                <outlet property="_tipsLabel" destination="b4w-cj-hPx" id="8jh-ZS-vpR"/>
             </connections>
             <point key="canvasLocation" x="80.5" y="175"/>
         </view>

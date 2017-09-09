@@ -13,6 +13,7 @@
 {
     __weak IBOutlet UIImageView *_bgImageView;
     __weak IBOutlet UIButton *_resendBtn;
+    __weak IBOutlet UILabel *_tipsLabel;
     
     MShopAppointmentDataItem *m_dataItem;
 }
@@ -32,6 +33,11 @@
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
     m_dataItem = dataItem;
+    
+    if ([self.m_delegate respondsToSelector:@selector(verificationCodeSendedPhone)])
+    {
+        _tipsLabel.text = [NSString stringWithFormat:@"输入顾客手机%@收到的短信验证码",[self.m_delegate verificationCodeSendedPhone]];
+    }
 }
 
 - (IBAction)onClickCancelButton:(id)sender {

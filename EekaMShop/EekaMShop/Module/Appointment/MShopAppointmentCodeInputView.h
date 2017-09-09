@@ -11,8 +11,8 @@
 @protocol MShopAppointmentCodeInputViewDelegate <NSObject>
 
 @optional
-
 -(void)onClickResendVerificationCode:(NSString *)phone;
+-(NSString *)verificationCodeSendedPhone;
 
 @end
 

@@ -34,6 +34,7 @@
     MShopAppointmentDateSelectView *m_dateSelectView;
     MShopAppointmentCodeInputView *m_codeInputView;
     NSString *m_expectVerificationCode;
+    NSString *m_sendedVerificationCodePhone;
 }
 
 @end
@@ -323,14 +324,16 @@
 
 -(NSString *)verificationCodePhone:(NSString *)phone
 {
-    return @"13425148460";
-//    return phone;
+    return @"13798228953";
+    return phone;
 }
 
 -(void)doPayAppointment:(MShopAppointmentDataItem *)dataItem
 {
+    m_sendedVerificationCodePhone = [self verificationCodePhone:dataItem.individualPhone];
+    
     MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
-    mfApi.phone = [self verificationCodePhone:dataItem.individualPhone];
+    mfApi.phone = m_sendedVerificationCodePhone;
     mfApi.individualId = dataItem.individualId;
     mfApi.type = dataItem.type;
     
@@ -367,10 +370,15 @@
 }
 
 #pragma mark - MShopAppointmentCodeInputViewDelegate
+-(NSString *)verificationCodeSendedPhone
+{
+    return m_sendedVerificationCodePhone;
+}
+
 -(void)onClickResendVerificationCode:(NSString *)phone
 {
     MShopSendVerificationCodeApi *mfApi = [MShopSendVerificationCodeApi new];
-    mfApi.phone = [self verificationCodePhone:phone];
+    mfApi.phone = m_sendedVerificationCodePhone;
     mfApi.animatingText = @"正在重发验证码";
     mfApi.animatingView = MFAppWindow;
     
