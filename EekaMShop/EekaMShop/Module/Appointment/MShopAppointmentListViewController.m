@@ -16,10 +16,10 @@
 #import "MShopAppointmentFlexCellView.h"
 #import "MFMultiMenuTableViewCell.h"
 #import "MShopAppointmentDateSelectView.h"
+#import "MShopAppointmentCodeInputView.h"
 
-@interface MShopAppointmentListViewController () <UITableViewDataSource,UITableViewDelegate,LYSideslipCellDelegate,MShopAppointmentDateSelectViewDelegate>
+@interface MShopAppointmentListViewController () <UITableViewDataSource,UITableViewDelegate,LYSideslipCellDelegate,MShopAppointmentDateSelectViewDelegate,MShopAppointmentCodeInputViewDelegate>
 {
-//    MFTableViewInfo *m_tableViewInfo;
     MFUITableView *_tableView;
     NSMutableArray *_appointmentList;
     
@@ -32,6 +32,8 @@
     BOOL _hasFootBlankLine;
     
     MShopAppointmentDateSelectView *m_dateSelectView;
+    MShopAppointmentCodeInputView *m_codeInputView;
+    NSString *m_expectVerificationCode;
 }
 
 @end
@@ -63,7 +65,6 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.rowHeight = 150.0;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_tableView];
 }
@@ -105,6 +106,11 @@
 {
     MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
     [self showIndividualInfo:dataItem.individualId];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150.0;
 }
 
 #pragma mark - LYSideslipCellDelegate
@@ -317,6 +323,8 @@
 
 -(void)doPayAppointment:(MShopAppointmentDataItem *)dataItem
 {
+    dataItem.individualPhone = @"13798228953";
+    
     MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
     mfApi.phone = dataItem.individualPhone;
     mfApi.individualId = dataItem.individualId;
@@ -331,8 +339,8 @@
             return;
         }
         
-        NSString *expectVerificationCode = [mfApi verificationCode];
-        [strongSelf showVerificationCodeInputView:dataItem verificationCode:expectVerificationCode];
+        m_expectVerificationCode = [mfApi verificationCode];
+        [strongSelf showVerificationCodeInputView:dataItem verificationCode:m_expectVerificationCode];
         
     } failure:^(YTKBaseRequest * request) {
         NSString *errorDesc = [NSString stringWithFormat:@"错误状态码=%@\n错误原因=%@",@(request.error.code),[request.error localizedDescription]];
@@ -342,17 +350,27 @@
 
 -(void)showVerificationCodeInputView:(MShopAppointmentDataItem *)dataItem verificationCode:(NSString *)expectVerificationCode
 {
-    [self reSendVerificationCode:dataItem.individualPhone];
+    if (!m_codeInputView) {
+        m_codeInputView = [MShopAppointmentCodeInputView nibView];
+        m_codeInputView.m_delegate = self;
+    }
+    
+    m_codeInputView.frame = MFAppWindow.bounds;
+    [MFAppWindow addSubview:m_codeInputView];
+    
+    m_codeInputView.numberOfVertificationCode = expectVerificationCode.length;
+    [m_codeInputView setAppointmentDataItem:dataItem];
 }
 
--(void)reSendVerificationCode:(NSString *)phone
+#pragma mark - MShopAppointmentCodeInputViewDelegate
+-(void)onClickResendVerificationCode:(NSString *)phone
 {
-    phone = @"13798228953";
-    
     MShopSendVerificationCodeApi *mfApi = [MShopSendVerificationCodeApi new];
-    mfApi.animatingView = MFAppWindow;
     mfApi.phone = phone;
-
+    
+    mfApi.animatingText = @"正在重发验证码";
+    mfApi.animatingView = MFAppWindow;
+    
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
@@ -362,8 +380,8 @@
             return;
         }
         
-        NSString *expectVerificationCode = [mfApi verificationCode];
-        NSLog(@"expectVerificationCode=%@",expectVerificationCode);
+        m_expectVerificationCode = [mfApi verificationCode];
+        [strongSelf showTips:@"验证码发送成功"];
         
     } failure:^(YTKBaseRequest * request) {
         
@@ -371,8 +389,6 @@
         [self showTips:errorDesc];
     }];
 }
-
-
 
 -(void)showModifyTimeView:(MShopAppointmentDataItem *)dataItem
 {

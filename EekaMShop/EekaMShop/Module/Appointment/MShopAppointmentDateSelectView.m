@@ -31,7 +31,6 @@
     
     self.backgroundColor = [UIColor hx_colorWithHexString:@"#000" alpha:0.5];
     [_doneBtn setBackgroundImage:MFImageStretchCenter(@"bg_red") forState:UIControlStateNormal];
-    
     _bgImageView.image = MFImageStretchCenter(@"round");
     
     m_datePicker.datePickerMode = UIDatePickerModeDate;

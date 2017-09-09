@@ -25,7 +25,7 @@ using namespace std;
 
 -(void)setAppointmentDataItem:(MShopAppointmentDataItem *)dataItem
 {
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor redColor];
     
     NSLog(@"self.frame=%@",NSStringFromCGRect(self.frame));
     
@@ -76,7 +76,7 @@ using namespace std;
     }
                                                          NodeSpecs:
                                {
-                                   .backgroundColor = [UIColor whiteColor],
+                                   .backgroundColor = [UIColor grayColor],
                                    .flexShrink = 0,
                                }
                                                           Children:children];

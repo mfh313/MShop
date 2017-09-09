@@ -231,6 +231,11 @@
 		AC9F83D31F2C6D8800952678 /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; };
 		AC9F83D41F2C6D8800952678 /* YTKNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC9F83D81F2C728E00952678 /* XWScanImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F83D71F2C728E00952678 /* XWScanImage.m */; };
+		ACA45ED91F637C130016F278 /* HSFCodeInputLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45ED51F637C130016F278 /* HSFCodeInputLabel.m */; };
+		ACA45EDA1F637C130016F278 /* HSFCodeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45ED71F637C130016F278 /* HSFCodeInputView.m */; };
+		ACA45EDB1F637C130016F278 /* HSFCodeInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA45ED81F637C130016F278 /* HSFCodeInputView.xib */; };
+		ACA45EDE1F637C740016F278 /* MShopAppointmentCodeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA45EDD1F637C740016F278 /* MShopAppointmentCodeInputView.m */; };
+		ACA45EE01F637D890016F278 /* MShopAppointmentCodeInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA45EDF1F637D890016F278 /* MShopAppointmentCodeInputView.xib */; };
 		ACC92EF71F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC92EF61F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m */; };
 		ACC92EFA1F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC92EF91F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.m */; };
 		ACDFE2451F2F20C3002795BE /* MShopMemberConsumptionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDFE2441F2F20C3002795BE /* MShopMemberConsumptionTitleView.m */; };
@@ -670,6 +675,14 @@
 		AC9F83D21F2C6D8800952678 /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YTKNetwork.framework; path = Carthage/Build/iOS/YTKNetwork.framework; sourceTree = "<group>"; };
 		AC9F83D61F2C728E00952678 /* XWScanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScanImage.h; sourceTree = "<group>"; };
 		AC9F83D71F2C728E00952678 /* XWScanImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWScanImage.m; sourceTree = "<group>"; };
+		ACA45ED41F637C130016F278 /* HSFCodeInputLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSFCodeInputLabel.h; sourceTree = "<group>"; };
+		ACA45ED51F637C130016F278 /* HSFCodeInputLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSFCodeInputLabel.m; sourceTree = "<group>"; };
+		ACA45ED61F637C130016F278 /* HSFCodeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSFCodeInputView.h; sourceTree = "<group>"; };
+		ACA45ED71F637C130016F278 /* HSFCodeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSFCodeInputView.m; sourceTree = "<group>"; };
+		ACA45ED81F637C130016F278 /* HSFCodeInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSFCodeInputView.xib; sourceTree = "<group>"; };
+		ACA45EDC1F637C740016F278 /* MShopAppointmentCodeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopAppointmentCodeInputView.h; sourceTree = "<group>"; };
+		ACA45EDD1F637C740016F278 /* MShopAppointmentCodeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopAppointmentCodeInputView.m; sourceTree = "<group>"; };
+		ACA45EDF1F637D890016F278 /* MShopAppointmentCodeInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MShopAppointmentCodeInputView.xib; sourceTree = "<group>"; };
 		ACC92EF51F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopGetFrozenEmployeeListApi.h; sourceTree = "<group>"; };
 		ACC92EF61F554DFE0008C0CB /* MShopGetFrozenEmployeeListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShopGetFrozenEmployeeListApi.m; sourceTree = "<group>"; };
 		ACC92EF81F554E5A0008C0CB /* MShopFrozenOptEmployeeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShopFrozenOptEmployeeApi.h; sourceTree = "<group>"; };
@@ -1025,13 +1038,16 @@
 		AC7D01761F32B63400912EDA /* Appointment */ = {
 			isa = PBXGroup;
 			children = (
-				AC7D017A1F32B7F500912EDA /* MShopAppointmentListViewController.h */,
-				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
 				A56291F11F6168A100AE2DD1 /* MShopAppointmentFlexCellView.h */,
 				A56291F21F6168A100AE2DD1 /* MShopAppointmentFlexCellView.mm */,
+				AC7D017A1F32B7F500912EDA /* MShopAppointmentListViewController.h */,
+				AC7D017B1F32B7F500912EDA /* MShopAppointmentListViewController.m */,
 				AC8EA5551F6240FE00C6C20E /* MShopAppointmentDateSelectView.h */,
 				AC8EA5561F6240FE00C6C20E /* MShopAppointmentDateSelectView.m */,
 				AC8EA5581F62416900C6C20E /* MShopAppointmentDateSelectView.xib */,
+				ACA45EDC1F637C740016F278 /* MShopAppointmentCodeInputView.h */,
+				ACA45EDD1F637C740016F278 /* MShopAppointmentCodeInputView.m */,
+				ACA45EDF1F637D890016F278 /* MShopAppointmentCodeInputView.xib */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -1171,6 +1187,7 @@
 		AC867DE11F1D990300694086 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ACA45ED31F637C130016F278 /* HSFCodeInputView */,
 				AC9A61EF1F5CD82400AF5875 /* Proto */,
 				A5C138511F4C60CC00F205E3 /* IQKeyboardManager */,
 				AC396F161F4A73590071434E /* MGJRouter */,
@@ -1609,6 +1626,18 @@
 			path = XWScanImage;
 			sourceTree = "<group>";
 		};
+		ACA45ED31F637C130016F278 /* HSFCodeInputView */ = {
+			isa = PBXGroup;
+			children = (
+				ACA45ED61F637C130016F278 /* HSFCodeInputView.h */,
+				ACA45ED71F637C130016F278 /* HSFCodeInputView.m */,
+				ACA45ED81F637C130016F278 /* HSFCodeInputView.xib */,
+				ACA45ED41F637C130016F278 /* HSFCodeInputLabel.h */,
+				ACA45ED51F637C130016F278 /* HSFCodeInputLabel.m */,
+			);
+			path = HSFCodeInputView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1680,6 +1709,7 @@
 			files = (
 				AC6670B61F0B25C00067F6EE /* LaunchScreen.storyboard in Resources */,
 				AC7E3F7F1F25CBB60035E3DC /* MShopEmployeeInfoCellView.xib in Resources */,
+				ACA45EDB1F637C130016F278 /* HSFCodeInputView.xib in Resources */,
 				AC9A62311F5CD82400AF5875 /* messagepush.proto in Resources */,
 				ACEF8B391F58309400733125 /* MShopFrozenEmployeeCellView.xib in Resources */,
 				AC03A9551F31ADEC004D4DDC /* AuthKey_55GB65T7Y7.p8 in Resources */,
@@ -1699,6 +1729,7 @@
 				AC7726401F2B0F04005B2100 /* main.js in Resources */,
 				AC96D3181F57DDC400486095 /* MShopMeProfileCellView.xib in Resources */,
 				AC96D3201F57E9FE00486095 /* MShopMeAddressBookSynCellView.xib in Resources */,
+				ACA45EE01F637D890016F278 /* MShopAppointmentCodeInputView.xib in Resources */,
 				AC6670B11F0B25C00067F6EE /* Main.storyboard in Resources */,
 				AC9F83D11F2C232900952678 /* MShopMemberConsumptionCellView.xib in Resources */,
 				AC77263F1F2B0F04005B2100 /* main.js in Resources */,
@@ -1761,6 +1792,7 @@
 				AC867E781F1D9BB400694086 /* XXNibBridge.m in Sources */,
 				AC38C2C01F3BE1B100AD8707 /* SCLAlertView.m in Sources */,
 				AC867E5C1F1D99E600694086 /* MFTableViewSectionInfo.m in Sources */,
+				ACA45ED91F637C130016F278 /* HSFCodeInputLabel.m in Sources */,
 				AC7C285E1F209B51003C0C4C /* MShopLoginTable+WCDB.mm in Sources */,
 				AC9F83C91F2C16C200952678 /* MShopIndividualConsumptionModel.m in Sources */,
 				AC867E481F1D99E600694086 /* MFTableViewCell.m in Sources */,
@@ -1867,6 +1899,7 @@
 				AC867E4E1F1D99E600694086 /* MMNavigationController.m in Sources */,
 				AC9A62421F5CD82400AF5875 /* RingBuffer.m in Sources */,
 				AC867DEE1F1D997600694086 /* MShopLoginViewController.mm in Sources */,
+				ACA45EDE1F637C740016F278 /* MShopAppointmentCodeInputView.m in Sources */,
 				AC867E541F1D99E600694086 /* MMUITextField.m in Sources */,
 				AC38C2C71F3BE1B100AD8707 /* UIImage+ImageEffects.m in Sources */,
 				AC7C28561F207932003C0C4C /* MShopLoginTable.m in Sources */,
@@ -1878,6 +1911,7 @@
 				AC9A62411F5CD82400AF5875 /* PBArray.m in Sources */,
 				AC867E791F1D9BB400694086 /* XXNibConvention.m in Sources */,
 				AC567D771F3B0EE200EE33BD /* MFGetSynMemberInfoApi.m in Sources */,
+				ACA45EDA1F637C130016F278 /* HSFCodeInputView.m in Sources */,
 				AC867E4F1F1D99E600694086 /* MMObject.m in Sources */,
 				AC73990D1F21FB8D00F753C2 /* NSMutableArray+SafeInsert.m in Sources */,
 				A5C1387E1F4C60CC00F205E3 /* IQTextView.m in Sources */,
