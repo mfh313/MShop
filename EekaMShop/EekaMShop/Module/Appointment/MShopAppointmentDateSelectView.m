@@ -35,7 +35,7 @@
     
     m_datePicker.datePickerMode = UIDatePickerModeDate;
     m_datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
-    m_datePicker.minimumDate = [self dateByAddingYears:-1 date:[NSDate date]];
+    m_datePicker.minimumDate = [NSDate date];
     m_datePicker.maximumDate = [self dateByAddingYears:1 date:[NSDate date]];
     
     m_timePicker.dataSource = self;
