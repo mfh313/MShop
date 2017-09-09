@@ -42,24 +42,64 @@ using namespace std;
     NSString *individualTitle = [NSString stringWithFormat:@"%@ %@",dataItem.individualName,dataItem.individualPhone];
     NSString *time = [NSString stringWithFormat:@"服务时间：%@ %@",dataItem.appointmentDate,dataItem.appointmentTime];
     
+    UIColor *blackColor = [UIColor hx_colorWithHexString:@"282828"];
+    UIColor *grayColor = [UIColor hx_colorWithHexString:@"686868"];
+    UIColor *lightGrayColor = [UIColor hx_colorWithHexString:@"989898"];
+    
     vector<VZFStackChildNode> children;
     children.push_back({
-        [self textNodeForTitle:title textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        [self textNodeForTitle:title textColor:blackColor]
     });
     children.push_back({
-        [self textNodeForTitle:individualTitle textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        [self textNodeForTitle:individualTitle textColor:blackColor]
     });
     children.push_back({
-        [self textNodeForTitle:time textColor:[UIColor hx_colorWithHexString:@"282828"]]
+        [self textNodeForTitle:time textColor:blackColor]
     });
     
     if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
     {
+        NSString *score = nil;
+        if (dataItem.score)
+        {
+            score = [NSString stringWithFormat:@"评分：%@",dataItem.score];
+            children.push_back({
+                [self textNodeForTitle:score textColor:blackColor]
+            });
+        }
+        else
+        {
+            score = [NSString stringWithFormat:@"顾客未评分"];
+            children.push_back({
+                [self textNodeForTitle:score textColor:grayColor]
+            });
+        }
+        
+        NSString *evaluate = nil;
+        if (dataItem.evaluate)
+        {
+            evaluate = [NSString stringWithFormat:@"详细评价：%@",dataItem.evaluate];
+            children.push_back({
+                [self textNodeForTitle:evaluate textColor:blackColor]
+            });
+        }
+        else
+        {
+            evaluate = [NSString stringWithFormat:@"顾客未填写评价"];
+            children.push_back({
+                [self textNodeForTitle:evaluate textColor:grayColor]
+            });
+        }
+    }
+    else
+    {
+        NSString *statusText = @"未完成服务,左滑修改服务时间或者完成服务";
+        if ([dataItem.status isEqualToString:MShopAppointmentStatusInvalidate]) {
+            statusText = @"此记录已作废";
+        }
+        
         children.push_back({
-            [self textNodeForTitle:@"评分：5" textColor:[UIColor hx_colorWithHexString:@"282828"]]
-        });
-        children.push_back({
-            [self textNodeForTitle:@"详细评价：美好的评价。。。。" textColor:[UIColor hx_colorWithHexString:@"282828"]]
+            [self textNodeForTitle:statusText textColor:lightGrayColor]
         });
     }
     

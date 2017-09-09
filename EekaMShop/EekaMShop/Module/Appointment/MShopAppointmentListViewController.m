@@ -157,7 +157,8 @@
     __weak typeof(self) weakSelf = self;
     
     MShopGetAppointmentListApi *mfApi = [MShopGetAppointmentListApi new];
-    [mfApi setPageIndex:_pageIndex pageSize:_pageSize];
+    
+//    [mfApi setPageIndex:_pageIndex pageSize:_pageSize];
     
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
         
@@ -193,121 +194,6 @@
     [_tableView reloadData];
 }
 
-//-(void)reloadTableView
-//{
-//    [self setNavTitle];
-//    
-//    [m_tableViewInfo clearAllSection];
-//    
-//    if (_appointmentList.count > 0)
-//    {
-//        MFTableViewSectionInfo *sectionInfo = [self addAppointmentSection];
-//        [m_tableViewInfo addSection:sectionInfo];
-//        
-//        if (_hasFootBlankLine)
-//        {
-//            [self addFootBlankLine];
-//        }
-//    }
-//    else
-//    {
-//        [self addBlankView];
-//    }
-//}
-
-//-(void)addFootBlankLine
-//{
-//    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-//    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeFootBlankLineCell:)
-//                                                             makeTarget:self
-//                                                              actionSel:nil
-//                                                           actionTarget:self
-//                                                                 height:30.0f
-//                                                               userInfo:nil];
-//    [sectionInfo addCell:cellInfo];
-//    [m_tableViewInfo addSection:sectionInfo];
-//}
-//
-//-(void)makeFootBlankLineCell:(MFTableViewCell *)cell
-//{
-//    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
-//    contentView.backgroundColor = [UIColor whiteColor];
-//    
-//    UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-//    tipLabel.textAlignment = NSTextAlignmentCenter;
-//    tipLabel.text = @"已经到底了！";
-//    tipLabel.font = [UIFont systemFontOfSize:15.0f];
-//    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [contentView addSubview:tipLabel];
-//    
-//    cell.m_subContentView = contentView;
-//    contentView.frame = cell.contentView.bounds;
-//}
-//
-//-(void)addBlankView
-//{
-//    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-//    MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeBlankCell:)
-//                                                             makeTarget:self
-//                                                              actionSel:nil
-//                                                           actionTarget:self
-//                                                                 height:200.0f
-//                                                               userInfo:nil];
-//    [sectionInfo addCell:cellInfo];
-//    [m_tableViewInfo addSection:sectionInfo];
-//}
-//
-//-(void)makeBlankCell:(MFTableViewCell *)cell
-//{
-//    UIView *contentView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
-//    contentView.backgroundColor = [UIColor whiteColor];
-//    
-//    UILabel *tipLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-//    tipLabel.textAlignment = NSTextAlignmentCenter;
-//    tipLabel.text = @"无预约记录";
-//    tipLabel.font = [UIFont systemFontOfSize:16.0f];
-//    tipLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [contentView addSubview:tipLabel];
-//    
-//    cell.m_subContentView = contentView;
-//    contentView.frame = cell.contentView.bounds;
-//}
-//
-//-(MFTableViewSectionInfo *)addAppointmentSection
-//{
-//    MFTableViewSectionInfo *sectionInfo = [MFTableViewSectionInfo sectionInfoDefault];
-//    for (int i = 0; i < _appointmentList.count; i++)
-//    {
-//        MFTableViewCellInfo *cellInfo = [MFTableViewCellInfo cellForMakeSel:@selector(makeAppointmentCell:cellInfo:)
-//                                                                 makeTarget:self
-//                                                                  actionSel:@selector(onClickAppointmentCell:)
-//                                                               actionTarget:self
-//                                                                     height:150.0f
-//                                                                   userInfo:nil];
-//        cellInfo.selectionStyle = UITableViewCellSelectionStyleGray;
-//        
-//        MShopAppointmentDataItem *dataItem = _appointmentList[i];
-//        [cellInfo addUserInfoValue:dataItem forKey:@"MShopAppointmentDataItem"];
-//        
-//        [sectionInfo addCell:cellInfo];
-//    }
-//    
-//    return sectionInfo;
-//}
-//
-//-(void)makeAppointmentCell:(MFTableViewCell *)cell cellInfo:(MFTableViewCellInfo *)cellInfo
-//{
-//    MShopAppointmentFlexCellView *cellView = [MShopAppointmentFlexCellView new];
-//    cell.m_subContentView = cellView;
-//    cellView.frame = cell.contentView.bounds;
-//    cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    
-//    MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
-//    UITableView *tableView = [m_tableViewInfo getTableView];
-//    cellView.indexPath = [tableView indexPathForCell:cell];
-//    [cellView setAppointmentDataItem:dataItem];
-//}
-
 -(void)onClickAppointmentCell:(MFTableViewCellInfo *)cellInfo
 {
     MShopAppointmentDataItem *dataItem = (MShopAppointmentDataItem *)[cellInfo getUserInfoValueForKey:@"MShopAppointmentDataItem"];
@@ -324,7 +210,6 @@
 
 -(NSString *)verificationCodePhone:(NSString *)phone
 {
-    return @"13798228953";
     return phone;
 }
 
@@ -488,6 +373,5 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 @end
