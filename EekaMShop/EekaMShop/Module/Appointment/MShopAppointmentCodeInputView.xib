@@ -91,6 +91,6 @@
         </view>
     </objects>
     <resources>
-        <image name="remove" width="15" height="15"/>
+        <image name="remove" width="9" height="9"/>
     </resources>
 </document>
