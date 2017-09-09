@@ -47,7 +47,7 @@ using namespace std;
     
     vector<VZFStackChildNode> children;
     children.push_back({
-        [self textNodeForTitle:title textColor:blackColor]
+        [self textNodeForTitle:title textColor:blackColor font:[UIFont systemFontOfSize:15.0f]]
     });
     children.push_back({
         [self textNodeForTitle:individualTitle textColor:blackColor]
@@ -125,24 +125,29 @@ using namespace std;
 
 -(VZFTextNode *)textNodeForTitle:(NSString *)title textColor:(UIColor *)textColor
 {
+    return [self textNodeForTitle:title textColor:textColor font:[UIFont systemFontOfSize:14.0f]];
+}
+
+-(VZFTextNode *)textNodeForTitle:(NSString *)title textColor:(UIColor *)textColor font:(UIFont *)font
+{
     VZFTextNode *titleNode = [VZFTextNode newWithTextAttributes:
-                             {
-                                 .text = title,
-                                 .lines = 0,
-                                 ._font = [UIFont systemFontOfSize:14.0f],
-                                 .color = textColor,
-                                 .alignment = NSTextAlignmentLeft
-                             }
-                                                     NodeSpecs:
-                             {
-                                 .flexShrink = 0,
-                                 .backgroundColor = [UIColor clearColor],
-                                 .marginLeft = flexLength(10, FlexLengthTypeDefault),
-                                 .marginTop = flexLength(10, FlexLengthTypeDefault),
-                                 .marginRight = flexLength(10, FlexLengthTypeDefault),
-                                 .marginBottom = FlexLengthZero
-                             }
-                             ];
+                              {
+                                  .text = title,
+                                  .lines = 0,
+                                  ._font = font,
+                                  .color = textColor,
+                                  .alignment = NSTextAlignmentLeft
+                              }
+                                                      NodeSpecs:
+                              {
+                                  .flexShrink = 0,
+                                  .backgroundColor = [UIColor clearColor],
+                                  .marginLeft = flexLength(10, FlexLengthTypeDefault),
+                                  .marginTop = flexLength(10, FlexLengthTypeDefault),
+                                  .marginRight = flexLength(10, FlexLengthTypeDefault),
+                                  .marginBottom = FlexLengthZero
+                              }
+                              ];
     return titleNode;
 }
 
