@@ -74,6 +74,6 @@ typedef NS_ENUM(NSUInteger,HSFCodeInputViewType ) {
  */
 @property (nonatomic, copy) NSString *vertificationCode;
 
-
+-(BOOL)becomeFirstResponder;
 
 @end

@@ -204,4 +204,9 @@
     self.label.codeWidthOffset = codeBgWidthOffset;
 }
 
+-(BOOL)becomeFirstResponder
+{
+    return [self.textField becomeFirstResponder];
+}
+
 @end
