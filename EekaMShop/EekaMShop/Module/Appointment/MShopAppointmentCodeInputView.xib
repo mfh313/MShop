@@ -19,12 +19,11 @@
                     <rect key="frame" x="105.5" y="75" width="250" height="210"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-KN-cn9">
-                    <rect key="frame" x="350.5" y="30" width="50" height="50"/>
+                    <rect key="frame" x="345.5" y="35" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="bTY-dK-Wwl"/>
                         <constraint firstAttribute="width" constant="50" id="rPc-wS-WPl"/>
                     </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="20" maxX="20" maxY="0.0"/>
                     <state key="normal" image="remove"/>
                     <connections>
                         <action selector="onClickCancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="scR-KR-9sR"/>
@@ -71,9 +70,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="8ik-KN-cn9" secondAttribute="bottom" id="CJg-xA-gaX"/>
+                <constraint firstItem="h2O-PL-Rpj" firstAttribute="top" secondItem="8ik-KN-cn9" secondAttribute="bottom" constant="-5" id="CJg-xA-gaX"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="top" secondItem="h2O-PL-Rpj" secondAttribute="top" constant="-5" id="FpR-1k-pqu"/>
-                <constraint firstItem="8ik-KN-cn9" firstAttribute="leading" secondItem="h2O-PL-Rpj" secondAttribute="trailing" id="LNt-dY-Ftf"/>
+                <constraint firstItem="8ik-KN-cn9" firstAttribute="leading" secondItem="h2O-PL-Rpj" secondAttribute="trailing" constant="-5" id="LNt-dY-Ftf"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="trailing" secondItem="h2O-PL-Rpj" secondAttribute="trailing" constant="5" id="Lo0-5K-dbZ"/>
                 <constraint firstItem="h2O-PL-Rpj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vl9-or-HOS"/>
                 <constraint firstItem="FUy-eB-An2" firstAttribute="bottom" secondItem="h2O-PL-Rpj" secondAttribute="bottom" constant="5" id="g4D-LU-ZWf"/>
@@ -92,6 +91,6 @@
         </view>
     </objects>
     <resources>
-        <image name="remove" width="12" height="12"/>
+        <image name="remove" width="15" height="15"/>
     </resources>
 </document>

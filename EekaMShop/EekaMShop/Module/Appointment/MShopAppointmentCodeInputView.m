@@ -25,7 +25,7 @@
 {
     [super awakeFromNib];
     
-    self.backgroundColor = [UIColor hx_colorWithHexString:@"#000" alpha:0.5];
+    self.backgroundColor = [UIColor hx_colorWithHexString:@"#000" alpha:0.6];
     _bgImageView.image = MFImageStretchCenter(@"round");
 }
 
