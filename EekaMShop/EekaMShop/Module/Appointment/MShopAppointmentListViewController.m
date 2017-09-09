@@ -321,14 +321,18 @@
     [self.navigationController pushViewController:memberDetailVC animated:YES];
 }
 
+-(NSString *)verificationCodePhone:(NSString *)phone
+{
+    return @"13425148460";
+//    return phone;
+}
+
 -(void)doPayAppointment:(MShopAppointmentDataItem *)dataItem
 {
     MShopDoPayAppointmentApi *mfApi = [MShopDoPayAppointmentApi new];
-    mfApi.phone = dataItem.individualPhone;
+    mfApi.phone = [self verificationCodePhone:dataItem.individualPhone];
     mfApi.individualId = dataItem.individualId;
     mfApi.type = dataItem.type;
-    
-    mfApi.phone = @"13798228953";
     
     __weak typeof(self) weakSelf = self;
     [mfApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest * request) {
@@ -366,10 +370,7 @@
 -(void)onClickResendVerificationCode:(NSString *)phone
 {
     MShopSendVerificationCodeApi *mfApi = [MShopSendVerificationCodeApi new];
-    mfApi.phone = phone;
-    
-    mfApi.phone = @"13798228953";
-    
+    mfApi.phone = [self verificationCodePhone:phone];
     mfApi.animatingText = @"正在重发验证码";
     mfApi.animatingView = MFAppWindow;
     
