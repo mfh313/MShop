@@ -11,6 +11,7 @@
 NSString *const MShopAppointmentStatusPending = @"0";  //待处理
 NSString *const MShopAppointmentStatusHandled = @"1";  //已处理
 NSString *const MShopAppointmentStatusInvalidate = @"2"; //作废
+NSString *const MShopAppointmentStatusConfirmed = @"3";  //已确认
 
 @implementation MShopAppointmentDataItem
 

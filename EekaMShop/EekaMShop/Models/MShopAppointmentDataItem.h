@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const MShopAppointmentStatusPending;
+extern NSString *const MShopAppointmentStatusConfirmed;
 extern NSString *const MShopAppointmentStatusHandled;
 extern NSString *const MShopAppointmentStatusInvalidate;
 

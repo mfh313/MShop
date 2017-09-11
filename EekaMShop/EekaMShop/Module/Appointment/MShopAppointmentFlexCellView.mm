@@ -91,9 +91,13 @@ using namespace std;
     }
     else
     {
-        NSString *statusText = @"未完成服务,左滑修改服务时间或者完成服务";
+        NSString *statusText;
         if ([dataItem.status isEqualToString:MShopAppointmentStatusInvalidate]) {
             statusText = @"此记录已作废";
+        }
+        else if ([dataItem.status isEqualToString:MShopAppointmentStatusConfirmed])
+        {
+            statusText = @"预约已确认";
         }
         
         children.push_back({

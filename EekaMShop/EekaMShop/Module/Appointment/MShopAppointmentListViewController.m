@@ -152,12 +152,22 @@
     NSMutableArray *actionArray = [NSMutableArray array];
     MShopAppointmentDataItem *dataItem = _appointmentList[indexPath.row];
     
-    if ([dataItem.status isEqualToString:MShopAppointmentStatusPending])
-    {
+    
         LYSideslipCellAction *timeAction = [LYSideslipCellAction rowActionWithStyle:LYSideslipCellActionStyleNormal title:@"修改服务时间"
                                                                             handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath)
                                             {
                                                 [sideslipCell hiddenAllSideslip];
+                                                
+                                                if ([dataItem.status isEqualToString:MShopAppointmentStatusInvalidate])
+                                                {
+                                                    [weakSelf showTips:@"此预约已作废"];
+                                                    return;
+                                                }
+                                                else if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
+                                                {
+                                                    [weakSelf showTips:@"此预约已处理"];
+                                                    return;
+                                                }
                                                 
                                                 [weakSelf showModifyTimeView:dataItem];
                                             }];
@@ -168,10 +178,22 @@
                                              {
                                                  [sideslipCell hiddenAllSideslip];
                                                  
+                                                 if ([dataItem.status isEqualToString:MShopAppointmentStatusInvalidate])
+                                                 {
+                                                     [weakSelf showTips:@"此预约已作废"];
+                                                     return;
+                                                 }
+                                                 else if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
+                                                 {
+                                                     [weakSelf showTips:@"此预约已处理"];
+                                                     return;
+                                                 }
+                                                 
                                                  [weakSelf doPayAppointment:dataItem];
+                                                 
                                              }];
         [actionArray addObject:dopayAction];
-    }
+    
     
     return actionArray;
 }
@@ -405,6 +427,7 @@
     
     dataItem.appointmentDate = appointmentDate;
     dataItem.appointmentTime = appointmentTime;
+    dataItem.status = MShopAppointmentStatusConfirmed;
     [self modifyAppointment:dataItem];
 }
 
