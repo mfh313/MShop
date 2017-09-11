@@ -11,14 +11,6 @@
 
 @implementation MShopIndividualConsumptionModel
 
-//+ (NSDictionary *)modelCustomPropertyMapper {
-//    return @{
-//             @"orderNum" : @"order_num",
-//             @"orderServeArray" : @"orderServeList",
-//             @"orderProdArray" : @"orderProdList"
-//             };
-//}
-
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"itemList" : [MShopIndividualConsumptionItemModel class]};
 }
