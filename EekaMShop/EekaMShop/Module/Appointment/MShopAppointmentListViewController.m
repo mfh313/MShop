@@ -165,7 +165,7 @@
                                                 }
                                                 else if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
                                                 {
-                                                    [weakSelf showTips:@"此预约已处理"];
+                                                    [weakSelf showTips:@"该预约已完成"];
                                                     return;
                                                 }
                                                 
@@ -185,7 +185,7 @@
                                                  }
                                                  else if ([dataItem.status isEqualToString:MShopAppointmentStatusHandled])
                                                  {
-                                                     [weakSelf showTips:@"此预约已处理"];
+                                                     [weakSelf showTips:@"该预约已完成"];
                                                      return;
                                                  }
                                                  

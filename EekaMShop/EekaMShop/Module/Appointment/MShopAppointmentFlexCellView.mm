@@ -93,11 +93,15 @@ using namespace std;
     {
         NSString *statusText;
         if ([dataItem.status isEqualToString:MShopAppointmentStatusInvalidate]) {
-            statusText = @"此记录已作废";
+            statusText = @"该预约已作废";
         }
         else if ([dataItem.status isEqualToString:MShopAppointmentStatusConfirmed])
         {
-            statusText = @"预约已确认";
+            statusText = @"已确认";
+        }
+        else if ([dataItem.status isEqualToString:MShopAppointmentStatusPending])
+        {
+            statusText = @"待处理";
         }
         
         children.push_back({
