@@ -19,7 +19,7 @@ NSString *const MShopApiTestUrl = @"http://120.76.242.182:8083/ms/";
 
 + (NSString *)hostUrl
 {
-    return MShopApiUrl;
+    return MShopApiTestUrl;
 //    return @"http://10.8.143.30:8080/ms/";   //zao long
 //    return @"http://10.8.143.193:8080/ms/"; //guo dong
 }
