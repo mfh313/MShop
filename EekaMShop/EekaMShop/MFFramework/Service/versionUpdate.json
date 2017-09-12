@@ -11,3 +11,6 @@
  */
 
 //http://mp.eekamclub.com/ms/employeeApi/pushMessage.json?message=versionUpdate
+
+//测试
+//http://120.76.242.182:8083/ms/employeeApi/pushMessage.json?message=versionUpdate
