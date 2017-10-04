@@ -12,6 +12,7 @@
 extern "C"{
 #endif
 
+#include <math.h>
 #include <stddef.h>
 #ifndef __cplusplus
 #   include <stdbool.h>
@@ -23,9 +24,6 @@ typedef enum {
     FlexHorizontalReverse,
     FlexVerticalReverse
 } FlexDirection;
-
-static const FlexDirection FLEX_WIDTH = FlexHorizontal;
-static const FlexDirection FLEX_HEIGHT = FlexVertical;
 
 typedef enum {
     FlexNoWrap,
@@ -44,113 +42,158 @@ typedef enum {
     FlexBaseline,
 } FlexAlign;
 
-typedef struct {
-    float size[2];
-} FlexSize;
-
 typedef enum {
-    FLEX_LEFT = 0,
-    FLEX_TOP,
-    FLEX_RIGHT,
-    FLEX_BOTTOM,
-    FLEX_START,
-    FLEX_END
-} FlexPositionIndex;
-
-typedef struct {
-    float position[2];
-    float size[2];
-    float margin[4];
-    float border[4];
-} FlexResult;
-
-typedef enum {
-    FlexLengthTypeDefault,
+    FlexLengthTypeUndefined,
+    FlexLengthTypePoint,
     FlexLengthTypePercent,
-    FlexLengthTypePx,
-    FlexLengthTypeCm,       // 1cm = 96px/2.54
-    FlexLengthTypeMm,       // 1mm = 1/10th of 1cm
-    FlexLengthTypeQ,        // 1q = 1/40th of 1cm
-    FlexLengthTypeIn,       // 1in = 2.54cm = 96px
-    FlexLengthTypePc,       // 1pc = 1/6th of 1in
-    FlexLengthTypePt,       // 1pt = 1/72th of 1in
-    FlexLengthTypeEm,       // font size of element
-//    FlexLengthTypeEx,       // x-height of the element’s font
-//    FlexLengthTypeCh,       // width of the "0" (ZERO, U+0030) glyph in the element’s font
-//    FlexLengthTypeRem,      // font size of the root element
-    FlexLengthTypeVw,       // 1% of viewport’s width
-    FlexLengthTypeVh,       // 1% viewport’s height
-    FlexLengthTypeVmin,     // 1% of viewport’s smaller dimension
-    FlexLengthTypeVmax      // 1% of viewport’s larger dimension
+    FlexLengthTypeAuto,
+    FlexLengthTypeContent,
 } FlexLengthType;
+
 
 typedef struct {
     float value;
     FlexLengthType type;
 } FlexLength;
 
-inline FlexLength flexLength(float value, FlexLengthType type) {
-    FlexLength r;
-    r.value = value;
-    r.type = type;
-    return r;
-}
 
-extern const float FlexAuto;
-extern const float FlexUndefined;
-extern const float FlexContent;
+#define FlexUndefined NAN
+#define FlexIsUndefined(n) isnan(n)
 
-#define FlexLengthZero      flexLength(0, FlexLengthTypeDefault)
-#define FlexLengthAuto      flexLength(FlexAuto, FlexLengthTypeDefault)
-#define FlexLengthContent   flexLength(FlexContent, FlexLengthTypeDefault)
-#define FlexLengthUndefined flexLength(FlexUndefined, FlexLengthTypeDefault)
+#define FlexLengthZero      (FlexLength){ 0,   FlexLengthTypePoint     }
+#define FlexLengthAuto      (FlexLength){ NAN, FlexLengthTypeAuto      }
+#define FlexLengthContent   (FlexLength){ NAN, FlexLengthTypeContent   }
+#define FlexLengthUndefined (FlexLength){ NAN, FlexLengthTypeUndefined }
 
-typedef struct FlexNode {
-    FlexWrapMode wrap;
-    FlexDirection direction;
-    FlexAlign alignItems;
-    FlexAlign alignSelf;
-    FlexAlign alignContent;
-    FlexAlign justifyContent;
-    FlexLength flexBasis;       // length, percentage(relative to the flex container's inner main size), auto, content
-    float flexGrow;
-    float flexShrink;
-    FlexLength size[2];         // length, percentage(relative to the flex container's inner size), auto
-    FlexLength minSize[2];      // length, percentage(relative to the flex container's inner size)
-    FlexLength maxSize[2];      // length, percentage(relative to the flex container's inner size), none
-    FlexLength margin[6];       // length, percentage(relative to the flex container's inner width), auto
-    FlexLength padding[6];      // length, percentage(relative to the flex container's inner width)
-    FlexLength border[6];       // length
-    
-    // extension
-    bool fixed;
-    FlexLength spacing;         // the spacing between each two items. length, percentage(relative to its inner main size)
-    FlexLength lineSpacing;     // the spacing between each two lines. length, percentage(relative to its inner cross size)
-    unsigned int lines;         // the maximum number of lines, 0 means no limit
-    unsigned int itemsPerLine;  // the maximum number of items per line, 0 means no limit
-    
-    FlexResult result;
-    
-    // internal fields
-    float flexBaseSize;
-    float resolvedMargin[4];
-    float resolvedPadding[4];
-    float ascender;
-    
-    // cache measure results
-    void* measuredSizeCache;
-    
-    void* context;
-    size_t childrenCount;
-    FlexSize (*measure)(void* context, FlexSize constrainedSize);
-    float (*baseline)(void* context, FlexSize constrainedSize);
-    struct FlexNode* (*childAt)(void* context, size_t index);
-} FlexNode;
 
-FlexNode* newFlexNode();
-void initFlexNode(FlexNode* node);
-void freeFlexNode(FlexNode* node);
-void layoutFlexNode(FlexNode* node, float constrainedWidth, float constrainedHeight, float scale);
+typedef union {
+    struct {
+        float width;
+        float height;
+    };
+    float size[2];
+} FlexSize;
+
+typedef enum {
+    FlexPrintDefault = 0,
+    FlexPrintStyle = 1 << 0,
+    FlexPrintResult = 1 << 1,
+    FlexPrintChildren = 1 << 2,
+    FlexPrintHideUnspecified = 1 << 3,
+} FlexPrintOptions;
+
+typedef struct FlexNode * FlexNodeRef;
+
+typedef FlexSize    (*FlexMeasureFunc )(void* context, FlexSize constrainedSize);
+typedef float       (*FlexBaselineFunc)(void* context, FlexSize constrainedSize);
+
+
+#define FLEX_PROPERTY(type, Name, field) \
+    FLEX_GETTER(type, Name, field) \
+    FLEX_SETTER(type, Name, field)
+#define FLEX_FLOAT_PROPERTY(Name, field) FLEX_PROPERTY(float, Name, field)
+#define FLEX_LENGTH_PROPERTY(Name, field) \
+    FLEX_GETTER(FlexLength, Name, field) \
+    FLEX_SETTER_LENGTH(Name##_Length, field) \
+    FLEX_SETTER_LENGTH_VALUE(Name, field, Point) \
+    FLEX_SETTER_LENGTH_VALUE(Name##Percent, field, Percent)
+#define FLEX_LENGTH_PROPERTY_AUTO(Name, field) \
+    FLEX_LENGTH_PROPERTY(Name, field) \
+    FLEX_SETTER_LENGTH_TYPE(Name, field, Auto)
+#define FLEX_LENGTH_PROPERTY_AUTO_CONTENT(Name, field) \
+    FLEX_LENGTH_PROPERTY_AUTO(Name, field) \
+    FLEX_SETTER_LENGTH_TYPE(Name, field, Content)
+#define FLEX_RESULT_PROPERTY(Name, field) FLEX_GETTER(float, Result##Name, field)
+
+#define FLEX_PROPERTYES() \
+    FLEX_PROPERTY                       ( FlexWrapMode,     Wrap,           wrap                        ); \
+    FLEX_PROPERTY                       ( FlexDirection,    Direction,      direction                   ); \
+    FLEX_PROPERTY                       ( FlexAlign,        AlignItems,     alignItems                  ); \
+    FLEX_PROPERTY                       ( FlexAlign,        AlignSelf,      alignSelf                   ); \
+    FLEX_PROPERTY                       ( FlexAlign,        AlignContent,   alignContent                ); \
+    FLEX_PROPERTY                       ( FlexAlign,        JustifyContent, justifyContent              ); \
+    FLEX_LENGTH_PROPERTY_AUTO_CONTENT   (                   FlexBasis,      flexBasis                   ); \
+    FLEX_FLOAT_PROPERTY                 (                   FlexGrow,       flexGrow                    ); \
+    FLEX_FLOAT_PROPERTY                 (                   FlexShrink,     flexShrink                  ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   Width,          size[FLEX_WIDTH]            ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   Height,         size[FLEX_HEIGHT]           ); \
+    FLEX_LENGTH_PROPERTY                (                   MinWidth,       minSize[FLEX_WIDTH]         ); \
+    FLEX_LENGTH_PROPERTY                (                   MinHeight,      minSize[FLEX_HEIGHT]        ); \
+    FLEX_LENGTH_PROPERTY                (                   MaxWidth,       maxSize[FLEX_WIDTH]         ); \
+    FLEX_LENGTH_PROPERTY                (                   MaxHeight,      maxSize[FLEX_HEIGHT]        ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   MarginLeft,     margin[FLEX_LEFT]           ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   MarginTop,      margin[FLEX_TOP]            ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   MarginBottom,   margin[FLEX_BOTTOM]         ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   MarginRight,    margin[FLEX_RIGHT]          ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   MarginStart,    margin[FLEX_START]          ); \
+    FLEX_LENGTH_PROPERTY_AUTO           (                   MarginEnd,      margin[FLEX_END]            ); \
+    FLEX_LENGTH_PROPERTY                (                   PaddingLeft,    padding[FLEX_LEFT]          ); \
+    FLEX_LENGTH_PROPERTY                (                   PaddingTop,     padding[FLEX_TOP]           ); \
+    FLEX_LENGTH_PROPERTY                (                   PaddingBottom,  padding[FLEX_BOTTOM]        ); \
+    FLEX_LENGTH_PROPERTY                (                   PaddingRight,   padding[FLEX_RIGHT]         ); \
+    FLEX_LENGTH_PROPERTY                (                   PaddingStart,   padding[FLEX_START]         ); \
+    FLEX_LENGTH_PROPERTY                (                   PaddingEnd,     padding[FLEX_END]           ); \
+    FLEX_FLOAT_PROPERTY                 (                   BorderLeft,     border[FLEX_LEFT]           ); \
+    FLEX_FLOAT_PROPERTY                 (                   BorderTop,      border[FLEX_TOP]            ); \
+    FLEX_FLOAT_PROPERTY                 (                   BorderBottom,   border[FLEX_BOTTOM]         ); \
+    FLEX_FLOAT_PROPERTY                 (                   BorderRight,    border[FLEX_RIGHT]          ); \
+    FLEX_FLOAT_PROPERTY                 (                   BorderStart,    border[FLEX_START]          ); \
+    FLEX_FLOAT_PROPERTY                 (                   BorderEnd,      border[FLEX_END]            ); \
+    FLEX_PROPERTY                       ( void*,            Context,        context                     ); \
+    FLEX_PROPERTY                       ( FlexMeasureFunc,  MeasureFunc,    measure                     ); \
+    FLEX_PROPERTY                       ( FlexBaselineFunc, BaselineFunc,   baseline                    ); \
+
+#define FLEX_EXT_PROPERTYES() \
+    FLEX_PROPERTY                       ( bool,             Fixed,          fixed                       ); \
+    FLEX_LENGTH_PROPERTY                (                   Spacing,        spacing                     ); \
+    FLEX_LENGTH_PROPERTY                (                   LineSpacing,    lineSpacing                 ); \
+    FLEX_PROPERTY                       ( unsigned int,     Lines,          lines                       ); \
+    FLEX_PROPERTY                       ( unsigned int,     ItemsPerLine,   itemsPerLine                ); \
+
+#define FLEX_RESULT_PROPERTYES() \
+    FLEX_RESULT_PROPERTY                (                   Width,          result.size[FLEX_WIDTH]     ); \
+    FLEX_RESULT_PROPERTY                (                   Height,         result.size[FLEX_HEIGHT]    ); \
+    FLEX_RESULT_PROPERTY                (                   Left,           result.position[FLEX_LEFT]  ); \
+    FLEX_RESULT_PROPERTY                (                   Top,            result.position[FLEX_TOP]   ); \
+    FLEX_RESULT_PROPERTY                (                   MarginLeft,     result.margin[FLEX_LEFT]    ); \
+    FLEX_RESULT_PROPERTY                (                   MarginRight,    result.margin[FLEX_RIGHT]   ); \
+    FLEX_RESULT_PROPERTY                (                   MarginTop,      result.margin[FLEX_TOP]     ); \
+    FLEX_RESULT_PROPERTY                (                   MarginBottom,   result.margin[FLEX_BOTTOM]  ); \
+    FLEX_RESULT_PROPERTY                (                   PaddingLeft,    result.padding[FLEX_LEFT]   ); \
+    FLEX_RESULT_PROPERTY                (                   PaddingRight,   result.padding[FLEX_RIGHT]  ); \
+    FLEX_RESULT_PROPERTY                (                   PaddingTop,     result.padding[FLEX_TOP]    ); \
+    FLEX_RESULT_PROPERTY                (                   PaddingBottom,  result.padding[FLEX_BOTTOM] ); \
+
+
+// declaration of getters and setters
+#define FLEX_GETTER(type, Name, field)                  type Flex_get##Name(FlexNodeRef node);
+#define FLEX_SETTER(type, Name, field)                  void Flex_set##Name(FlexNodeRef node, type Name);
+#define FLEX_SETTER_LENGTH(Name, field)                 FLEX_SETTER(FlexLength, Name, field)
+#define FLEX_SETTER_LENGTH_VALUE(Name, field, Type)     void Flex_set##Name(FlexNodeRef node, float Name);
+#define FLEX_SETTER_LENGTH_TYPE(Name, field, Type)      void Flex_set##Name##Type(FlexNodeRef node);
+
+FLEX_PROPERTYES()
+FLEX_EXT_PROPERTYES()
+FLEX_RESULT_PROPERTYES()
+
+#undef FLEX_GETTER
+#undef FLEX_SETTER
+#undef FLEX_SETTER_LENGTH
+#undef FLEX_SETTER_LENGTH_VALUE
+#undef FLEX_SETTER_LENGTH_TYPE
+
+
+FlexNodeRef Flex_newNode();
+void        Flex_freeNode          (FlexNodeRef node);
+void        Flex_freeNodeRecursive (FlexNodeRef node);
+void        Flex_insertChild       (FlexNodeRef node, FlexNodeRef child, size_t index);
+void        Flex_addChild          (FlexNodeRef node, FlexNodeRef child);
+void        Flex_removeChild       (FlexNodeRef node, FlexNodeRef child);
+FlexNodeRef Flex_getChild          (FlexNodeRef node, size_t index);
+size_t      Flex_getChildrenCount  (FlexNodeRef node);
+void        Flex_layout            (FlexNodeRef node, float constrainedWidth, float constrainedHeight, float scale);
+void        Flex_print             (FlexNodeRef node, FlexPrintOptions options);
+
 
 #ifdef __cplusplus
 }

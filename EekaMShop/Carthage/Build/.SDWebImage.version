@@ -1,26 +1,26 @@
 {
   "iOS" : [
     {
-      "hash" : "d7d1b5de80edf1a34a4d1d1936d7cbe1ca73c759e590badf6ef49247a13567cb",
+      "hash" : "00b707228fa8b59e593d7b09a07eac857144d02504ce8e33fb0a4d959fe6048c",
       "name" : "SDWebImage"
     }
   ],
   "commitish" : "4.1.0",
   "watchOS" : [
     {
-      "hash" : "6d3a1736447d9d56259199ed5692f74f284ac231d516a3908de8ce03388eb1cc",
+      "hash" : "84c47dec138f5339df0dfb4a5cfb9da0830455350046ab29cea69c62e095b2d2",
       "name" : "SDWebImage"
     }
   ],
   "tvOS" : [
     {
-      "hash" : "e1e9619bccac9b8698120db82e3e9ec580ba1e4626da334136be9c412b766244",
+      "hash" : "54181d5b6ce51943f102bb3dc27e509406d3545fd234d8b185190c766b9521b8",
       "name" : "SDWebImage"
     }
   ],
   "Mac" : [
     {
-      "hash" : "699e95a34750cb6a06b7ba8615fd901e1f8078ceaf018ff74512f64cf03ccba1",
+      "hash" : "a7390811d250304cdeec7cf3a5edab633cd4c44fad25ca08da4c1a5d7e0607b5",
       "name" : "SDWebImage"
     }
   ]

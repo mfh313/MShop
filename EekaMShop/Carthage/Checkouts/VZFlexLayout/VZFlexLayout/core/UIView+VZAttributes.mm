@@ -80,7 +80,8 @@
 }
 
 - (void)_applyRendererAttributes:(const NodeSpecs&)vs {
-    if ([self conformsToProtocol:@protocol(VZFBackingViewProtocol)]) {
+    // 先判断 respondsToSelector，因为 conformsToProtocol 性能比较差
+    if ([self respondsToSelector:@selector(renderer)] && [self conformsToProtocol:@protocol(VZFBackingViewProtocol)]) {
         VZFRenderer *renderer = [(id<VZFBackingViewProtocol>)self renderer];
         if (renderer) {
             renderer.backgroundColor = vs.backgroundColor;
@@ -105,10 +106,10 @@
             //end accessibility
             
             //custom corner
-            CGFloat cornerRadiusTopLeft = vs.cornerRadiusTopLeft != VZ::FlexValue::Undefined() ? vs.cornerRadiusTopLeft.value : vs.cornerRadius;
-            CGFloat cornerRadiusTopRight = vs.cornerRadiusTopRight != VZ::FlexValue::Undefined() ? vs.cornerRadiusTopRight.value : vs.cornerRadius;
-            CGFloat cornerRadiusBottomLeft = vs.cornerRadiusBottomLeft != VZ::FlexValue::Undefined() ? vs.cornerRadiusBottomLeft.value : vs.cornerRadius;
-            CGFloat cornerRadiusBottomRight = vs.cornerRadiusBottomRight != VZ::FlexValue::Undefined() ? vs.cornerRadiusBottomRight.value : vs.cornerRadius;
+            CGFloat cornerRadiusTopLeft = !FlexIsUndefined(vs.cornerRadiusTopLeft.value) ? vs.cornerRadiusTopLeft.value : vs.cornerRadius;
+            CGFloat cornerRadiusTopRight = !FlexIsUndefined(vs.cornerRadiusTopRight.value) ? vs.cornerRadiusTopRight.value : vs.cornerRadius;
+            CGFloat cornerRadiusBottomLeft = !FlexIsUndefined(vs.cornerRadiusBottomLeft.value) ? vs.cornerRadiusBottomLeft.value : vs.cornerRadius;
+            CGFloat cornerRadiusBottomRight = !FlexIsUndefined(vs.cornerRadiusBottomRight.value) ? vs.cornerRadiusBottomRight.value : vs.cornerRadius;
             renderer.customCorner = {cornerRadiusTopLeft, cornerRadiusTopRight, cornerRadiusBottomLeft, cornerRadiusBottomRight};
             
         }
@@ -162,12 +163,13 @@
         }
     }];
     
-    CGFloat cornerRadiusTopLeft = vs.cornerRadiusTopLeft != VZ::FlexValue::Undefined() ? vs.cornerRadiusTopLeft.value : vs.cornerRadius;
-    CGFloat cornerRadiusTopRight = vs.cornerRadiusTopRight != VZ::FlexValue::Undefined() ? vs.cornerRadiusTopRight.value : vs.cornerRadius;
-    CGFloat cornerRadiusBottomLeft = vs.cornerRadiusBottomLeft != VZ::FlexValue::Undefined() ? vs.cornerRadiusBottomLeft.value : vs.cornerRadius;
-    CGFloat cornerRadiusBottomRight = vs.cornerRadiusBottomRight != VZ::FlexValue::Undefined() ? vs.cornerRadiusBottomRight.value : vs.cornerRadius;
+    CGFloat cornerRadiusTopLeft = !FlexIsUndefined(vs.cornerRadiusTopLeft.value) ? vs.cornerRadiusTopLeft.value : vs.cornerRadius;
+    CGFloat cornerRadiusTopRight = !FlexIsUndefined(vs.cornerRadiusTopRight.value) ? vs.cornerRadiusTopRight.value : vs.cornerRadius;
+    CGFloat cornerRadiusBottomLeft = !FlexIsUndefined(vs.cornerRadiusBottomLeft.value) ? vs.cornerRadiusBottomLeft.value : vs.cornerRadius;
+    CGFloat cornerRadiusBottomRight = !FlexIsUndefined(vs.cornerRadiusBottomRight.value) ? vs.cornerRadiusBottomRight.value : vs.cornerRadius;
     if (cornerRadiusTopLeft != cornerRadiusTopRight || cornerRadiusTopLeft != cornerRadiusBottomLeft || cornerRadiusTopLeft != cornerRadiusBottomRight) {
-        self.layer.borderWidth      = 0;
+        self.layer.borderWidth = 0;
+        self.layer.cornerRadius = 0;
         UIBezierPath *path = [self _roundRectPathWithWidth:self.bounds.size.width
                                                     height:self.bounds.size.height
                                              topLeftRadius:cornerRadiusTopLeft
@@ -179,11 +181,12 @@
         objc_setAssociatedObject(maskLayer, _id, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [self.layer addSublayer:maskLayer];
         self.layer.mask = maskLayer;
-        if (vs.borderWidth > 0 && vs.borderColor) {
+        if (vs.borderWidth > 0) {
             CAShapeLayer *strokeLayer = [CAShapeLayer layer];
+            strokeLayer.zPosition = MAXFLOAT;
             strokeLayer.path = path.CGPath;
             strokeLayer.fillColor = [UIColor clearColor].CGColor;
-            strokeLayer.strokeColor = vs.borderColor.CGColor;
+            strokeLayer.strokeColor = vs.borderColor.CGColor ?: UIColor.blackColor.CGColor;
             strokeLayer.lineWidth = vs.borderWidth * 2;
             objc_setAssociatedObject(strokeLayer, _id, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             [self.layer addSublayer:strokeLayer];
@@ -204,13 +207,7 @@
 }
 
 - (void)_applyGestures:(const NodeSpecs&)vs{
-    
-    VZFBlockGesture *gesture = vs.gesture;
-    
-    if (gesture && vs.userInteractionEnabled == INT_MIN) {
-        self.userInteractionEnabled = YES;
-    }
-    
+
     static const void* _id = &_id;
     // 移除重用的view上的recognizer
     [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -218,10 +215,21 @@
             [self removeGestureRecognizer:obj];
         }
     }];
-    
-    NSMutableArray *gestureArray = [NSMutableArray array];
-    objc_setAssociatedObject(self, _id, gestureArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if (gesture) {
+
+    auto gestures = vs.gestures;
+    if (vs.gesture) {
+        gestures.push_back(vs.gesture);
+    }
+
+    if (!gestures.empty() && vs.userInteractionEnabled == INT_MIN) {
+        self.userInteractionEnabled = YES;
+    }
+
+    for (VZFBlockGesture *gesture : gestures) {
+
+        NSMutableArray *gestureArray = [NSMutableArray array];
+        objc_setAssociatedObject(self, _id, gestureArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
         UIGestureRecognizer *gestureRecognizer = [[gesture.gestureClass alloc] initWithTarget:nil action:nil];
         [gestureArray addObject:gesture];
         [gestureRecognizer addTarget:gesture action:@selector(invoke:)];

@@ -7,23 +7,11 @@
 //
 
 #include "FlexLayout.h"
-#include "khash.h"
 
 #include <stdlib.h>
 #include <assert.h>
-#include <float.h>
-#include <math.h>
-
-#define kh_FlexSize_hash_func(key) (uint32_t)((uint32_t)(key.size[FLEX_WIDTH]) ^ (uint32_t)(key.size[FLEX_HEIGHT]))
-#define kh_FlexSize_hash_equal(a, b) (a.size[FLEX_WIDTH] == b.size[FLEX_WIDTH] && a.size[FLEX_HEIGHT] == b.size[FLEX_HEIGHT])
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-function"
-KHASH_INIT(FlexSize, FlexSize, FlexSize, 1, kh_FlexSize_hash_func, kh_FlexSize_hash_equal)
-#pragma GCC diagnostic pop
-
-
-#define FLEX_PIXEL_ROUND(value, scale) (roundf((value) * (scale)) / (scale))
+#include <stdio.h>
+#include <memory.h>
 
 
 #if DEBUG
@@ -33,189 +21,104 @@ KHASH_INIT(FlexSize, FlexSize, FlexSize, 1, kh_FlexSize_hash_func, kh_FlexSize_h
 #endif
 
 
-const float FlexUndefined = 999999;
-const float FlexAuto = 999998;
-const float FlexContent = 999997;
+#define FlexTreatNanAsInf(n) (isnan(n) ? INFINITY : n)
+#define FlexFloatEquals(a, b) ((isnan(a) && isnan(b)) || a == b)
+#define FlexLengthEquals(a, b) (FlexFloatEquals(a.value, b.value) && a.type == b.type)
+#define FlexPixelRound(value, scale) (roundf((value) * (scale)) / (scale))
+#define FlexIsResolved(n) !FlexIsUndefined(n)
+#define FlexCacheSizeUndefined (FlexSize){ -1000, -1000 }
 
-typedef struct {
-    float viewportWidth;
-    float viewportHeight;
-    float scale;
-} FlexLayoutContext;
+#define FlexVector(type) FlexVector_##type
+#define FlexVectorRef(type) FlexVector(type)*
+#define FlexVector_new(type, initialCapacity) _FlexVector_new_##type(initialCapacity)
+#define FlexVector_free(type, vector) _FlexVector_free_##type(vector)
+#define FlexVector_insert(type, vector, value, index) _FlexVector_insert_##type(vector, value, index)
+#define FlexVector_add(type, vector, value) _FlexVector_add_##type(vector, value)
+#define FlexVector_removeAt(type, vector, index) _FlexVector_removeAt_##type(vector, index)
+#define FlexVector_remove(type, vector, value) _FlexVector_remove_##type(vector, value)
+#define FlexVector_size(type, vector) _FlexVector_size_##type(vector)
 
-FlexSize flex_size(float width, float height) {
-    FlexSize size;
-    size.size[FLEX_WIDTH] = width;
-    size.size[FLEX_HEIGHT] = height;
-    return size;
-}
+#define FLEX_VECTOR_INIT_WITH_EQUALS(type, equals)                                      \
+typedef struct {                                                                        \
+    size_t size;                                                                        \
+    size_t capacity;                                                                    \
+    type *data;                                                                         \
+} FlexVector(type);                                                                     \
+                                                                                        \
+ FlexVectorRef(type) _FlexVector_new_##type(size_t initialCapacity) {                   \
+    flex_assert(initialCapacity > 0);                                                   \
+    FlexVectorRef(type) vector = (FlexVectorRef(type))malloc(sizeof(FlexVector(type))); \
+    vector->size = 0;                                                                   \
+    vector->capacity = initialCapacity;                                                 \
+    vector->data = (type *)malloc(sizeof(type) * vector->capacity);                     \
+    return vector;                                                                      \
+}                                                                                       \
+                                                                                        \
+void _FlexVector_free_##type(FlexVectorRef(type) vector) {                              \
+    free(vector->data);                                                                 \
+    free(vector);                                                                       \
+}                                                                                       \
+                                                                                        \
+void _FlexVector_insert_##type(FlexVectorRef(type) vector, type value, size_t index) {  \
+   if (vector->size == vector->capacity) {                                              \
+       vector->capacity *= 2;                                                           \
+       vector->data = (type *)realloc(vector->data, sizeof(type) * vector->capacity);   \
+   }                                                                                    \
+   for (size_t i = index; i < vector->size; i++) {                                      \
+       vector->data[i + 1] = vector->data[i];                                           \
+   }                                                                                    \
+   vector->data[index] = value;                                                         \
+   vector->size++;                                                                      \
+}                                                                                       \
+                                                                                        \
+void _FlexVector_add_##type(FlexVectorRef(type) vector, type value) {                   \
+    _FlexVector_insert_##type(vector, value, vector->size);                             \
+}                                                                                       \
+                                                                                        \
+void _FlexVector_removeAt_##type(FlexVectorRef(type) vector, size_t index) {            \
+    for (size_t i = index + 1; i < vector->size; i++) {                                 \
+        vector->data[i - 1] = vector->data[i];                                          \
+    }                                                                                   \
+    vector->size--;                                                                     \
+}                                                                                       \
+                                                                                        \
+void _FlexVector_remove_##type(FlexVectorRef(type) vector, type value) {                \
+    for (size_t i = 0; i < vector->size; i++) {                                         \
+        if (equals(vector->data[i], value)) {                                           \
+            _FlexVector_removeAt_##type(vector, i);                                     \
+            return;                                                                     \
+        }                                                                               \
+    }                                                                                   \
+}                                                                                       \
+                                                                                        \
+size_t _FlexVector_size_##type(FlexVectorRef(type) vector) {                            \
+    return vector ? vector->size : 0;                                                   \
+}                                                                                       \
 
-bool flex_isAbsolute(FlexLength length) {
-    return length.type != FlexLengthTypePercent && length.value != FlexAuto && length.value != FlexUndefined;
-}
+#define FLEX_VECTOR_EQUALS_FUNC(a, b) (a == b)
+#define FLEX_VECTOR_INIT(type) FLEX_VECTOR_INIT_WITH_EQUALS(type, FLEX_VECTOR_EQUALS_FUNC)
 
-float flex_absoluteValue(FlexLength length, FlexLayoutContext *context) {
-    flex_assert(flex_isAbsolute(length));    // absolute value is requested
-    
-    float value;
-    switch (length.type) {
-        case FlexLengthTypeDefault:
-            value = length.value;
-            break;
-        case FlexLengthTypePx:
-            value = length.value / context->scale;
-            break;
-        case FlexLengthTypeCm:
-            value = length.value * 96 / 2.54;
-            break;
-        case FlexLengthTypeMm:
-            value = length.value * 96 / 2.54 / 10;
-            break;
-        case FlexLengthTypeQ:
-            value = length.value * 96 / 2.54 / 40;
-            break;
-        case FlexLengthTypeIn:
-            value = length.value * 96;
-            break;
-        case FlexLengthTypePc:
-            value = length.value * 96 / 6;
-            break;
-        case FlexLengthTypePt:
-            value = length.value * 96 / 72;
-            break;
-//            case FlexLengthTypeEm:
-//            case FlexLengthTypeEx:
-//            case FlexLengthTypeCh:
-//            case FlexLengthTypeRem:
-        case FlexLengthTypeVw:
-            value = length.value / 100 * context->viewportWidth;
-            break;
-        case FlexLengthTypeVh:
-            value = length.value / 100 * context->viewportHeight;
-            break;
-        case FlexLengthTypeVmin:
-            value = length.value / 100 * fminf(context->viewportWidth, context->viewportHeight);
-            break;
-        case FlexLengthTypeVmax:
-            value = length.value / 100 * fmaxf(context->viewportWidth, context->viewportHeight);
-            break;
-        default:
-            value = length.value;
-            break;
-    }
-    
-    return value;
-}
 
-float flex_resolve(FlexLength length, FlexLayoutContext *context, float relativeTo) {
-    if (flex_isAbsolute(length)) {
-        return flex_absoluteValue(length, context);
-    }
-    else if (length.type == FlexLengthTypePercent && relativeTo != FlexAuto) {
-        return length.value / 100 * relativeTo;
-    }
-    
-    return FlexAuto;
-}
+static const FlexDirection FLEX_WIDTH = FlexHorizontal;
+static const FlexDirection FLEX_HEIGHT = FlexVertical;
 
-float flex_auto_to_0(float value) {
-    return value == FlexAuto ? 0 : value;
-}
-
-float clamp(float value, float minValue, float maxValue) {
-    if (value == FlexAuto) {
-        return value;
-    }
-    
-    if (maxValue == FlexAuto || maxValue == FlexUndefined) {
-        return fmaxf(value, minValue);
-    } else {
-        return fmaxf(fminf(value, maxValue), minValue);
-    }
-}
-
-float clampMax(float value, float maxValue) {
-    if (value == FlexAuto) {
-        return value;
-    }
-    
-    if (maxValue == FlexAuto || maxValue == FlexUndefined) {
-        return value;
-    } else {
-        return fminf(value, maxValue);
-    }
-}
+typedef enum {
+    FLEX_LEFT = 0,
+    FLEX_TOP,
+    FLEX_RIGHT,
+    FLEX_BOTTOM,
+    FLEX_START,
+    FLEX_END
+} FlexPositionIndex;
 
 static FlexPositionIndex flex_start[4] = { FLEX_LEFT, FLEX_TOP, FLEX_RIGHT, FLEX_BOTTOM };
 static FlexPositionIndex flex_end[4] = { FLEX_RIGHT, FLEX_BOTTOM, FLEX_LEFT, FLEX_TOP };
 static FlexDirection flex_dim[4] = { FLEX_WIDTH, FLEX_HEIGHT, FLEX_WIDTH, FLEX_HEIGHT };
 
-void flex_resolveMarginAndPadding(FlexNode *node, FlexLayoutContext *context, float widthOfContainingBlock, FlexDirection parentDirection) {
-    bool isMainHorizontal = parentDirection == FlexHorizontal || parentDirection == FlexHorizontalReverse;
-    FlexDirection crossAxis = isMainHorizontal ? FlexVertical : FlexHorizontal;
-    node->resolvedMargin[flex_start[parentDirection]] = flex_resolve(!node->fixed && isMainHorizontal && node->margin[FLEX_START].value != FlexUndefined ? node->margin[FLEX_START] : node->margin[flex_start[parentDirection]], context, widthOfContainingBlock);
-    node->resolvedMargin[flex_end[parentDirection]] = flex_resolve(!node->fixed && isMainHorizontal && node->margin[FLEX_END].value != FlexUndefined ? node->margin[FLEX_END] : node->margin[flex_end[parentDirection]], context, widthOfContainingBlock);
-    node->resolvedMargin[flex_start[crossAxis]] = flex_resolve(!node->fixed && !isMainHorizontal && node->margin[FLEX_START].value != FlexUndefined ? node->margin[FLEX_START] : node->margin[flex_start[crossAxis]], context, widthOfContainingBlock);
-    node->resolvedMargin[flex_end[crossAxis]] = flex_resolve(!node->fixed && !isMainHorizontal && node->margin[FLEX_END].value != FlexUndefined ? node->margin[FLEX_END] : node->margin[flex_end[crossAxis]], context, widthOfContainingBlock);
-    node->result.border[flex_start[parentDirection]] = flex_resolve(isMainHorizontal && node->border[FLEX_START].value != FlexUndefined ? node->border[FLEX_START] : node->border[flex_start[parentDirection]], context, 0);
-    node->result.border[flex_end[parentDirection]] = flex_resolve(isMainHorizontal && node->border[FLEX_END].value != FlexUndefined ? node->border[FLEX_END] : node->border[flex_end[parentDirection]], context, 0);
-    node->result.border[flex_start[crossAxis]] = flex_resolve(!isMainHorizontal && node->border[FLEX_START].value != FlexUndefined ? node->border[FLEX_START] : node->border[flex_start[crossAxis]], context, 0);
-    node->result.border[flex_end[crossAxis]] = flex_resolve(!isMainHorizontal && node->border[FLEX_END].value != FlexUndefined ? node->border[FLEX_END] : node->border[flex_end[crossAxis]], context, 0);
-    node->resolvedPadding[flex_start[parentDirection]] = flex_resolve(isMainHorizontal && node->padding[FLEX_START].value != FlexUndefined ? node->padding[FLEX_START] : node->padding[flex_start[parentDirection]], context, widthOfContainingBlock) + node->result.border[flex_start[parentDirection]];
-    node->resolvedPadding[flex_end[parentDirection]] = flex_resolve(isMainHorizontal && node->padding[FLEX_END].value != FlexUndefined ? node->padding[FLEX_END] : node->padding[flex_end[parentDirection]], context, widthOfContainingBlock) + node->result.border[flex_end[parentDirection]];
-    node->resolvedPadding[flex_start[crossAxis]] = flex_resolve(!isMainHorizontal && node->padding[FLEX_START].value != FlexUndefined ? node->padding[FLEX_START] : node->padding[flex_start[crossAxis]], context, widthOfContainingBlock) + node->result.border[flex_start[crossAxis]];
-    node->resolvedPadding[flex_end[crossAxis]] = flex_resolve(!isMainHorizontal && node->padding[FLEX_END].value != FlexUndefined ? node->padding[FLEX_END] : node->padding[flex_end[crossAxis]], context, widthOfContainingBlock) + node->result.border[flex_end[crossAxis]];
-    node->result.margin[0] = node->resolvedMargin[0];
-    node->result.margin[1] = node->resolvedMargin[1];
-    node->result.margin[2] = node->resolvedMargin[2];
-    node->result.margin[3] = node->resolvedMargin[3];
-}
 
-float flex_inset(float *inset, FlexDirection direction) {
-    float inset_start = inset[flex_start[direction]];
-    float inset_end = inset[flex_end[direction]];
-    return (inset_start != FlexAuto ? inset_start : 0) + (inset_end != FlexAuto ? inset_end : 0);
-}
-
-void flex_baseline(FlexNode *node, float *ascender, float *descender) {
-    FlexDirection crossAxis = FlexVertical;
-    float _ascender, _descender;
-    
-    if (node->ascender != FlexUndefined) {
-        _ascender = node->ascender;
-        _descender = node->result.size[crossAxis] - _ascender;
-    }
-    else if (node->baseline) {
-        FlexSize size;
-        size.size[FLEX_WIDTH] = node->result.size[FLEX_WIDTH] - flex_inset(node->resolvedPadding, FLEX_WIDTH);
-        size.size[FLEX_HEIGHT] = node->result.size[FLEX_HEIGHT] - flex_inset(node->resolvedPadding, FLEX_HEIGHT);
-        _descender = node->baseline(node->context, size) + node->resolvedPadding[flex_end[crossAxis]];
-        _ascender = node->result.size[crossAxis] - _descender;
-    }
-    else {
-        _ascender = node->result.size[crossAxis];
-        for (int i=0;i<node->childrenCount;i++) {
-            FlexNode *child = node->childAt(node->context, i);
-            if (!child->fixed) {
-                flex_baseline(child, NULL, NULL);
-                _ascender = child->ascender + (isnan(child->result.position[flex_start[crossAxis]]) ? 0 : child->result.position[flex_start[crossAxis]]);
-                break;
-            }
-        }
-        _descender = node->result.size[crossAxis] - _ascender;
-    }
-    
-    node->ascender = _ascender;
-    _ascender += node->resolvedMargin[flex_start[crossAxis]] == FlexAuto ? 0 : node->resolvedMargin[flex_start[crossAxis]];
-    _descender += node->resolvedMargin[flex_end[crossAxis]] == FlexAuto ? 0 : node->resolvedMargin[flex_end[crossAxis]];
-    
-    if (ascender) *ascender = _ascender;
-    if (descender) *descender = _descender;
-}
-
-bool hasAutoMargin(FlexNode* node, FlexDirection direction) {
-    return node->resolvedMargin[flex_start[direction]] == FlexAuto || node->resolvedMargin[flex_end[direction]] == FlexAuto;
-}
+typedef struct {
+    float scale;
+} FlexLayoutContext;
 
 typedef enum {
     FlexLayoutFlagMeasureWidth = 1 << 0,    // only measure width
@@ -229,77 +132,391 @@ typedef struct {
     float ascender;
 } FlexLine;
 
-void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constrainedSize, FlexLayoutFlags flags, bool isRoot) {
-    node->ascender = FlexUndefined;
+typedef struct {
+    float position[2];
+    float size[2];
+    float margin[4];
+    float padding[4];
+} FlexResult;
+
+typedef struct {
+    FlexSize availableSize;
+    FlexSize measuredSize;
+} FlexMeasureCache;
+
+FLEX_VECTOR_INIT(FlexNodeRef)
+#define FlexSizeEquals(a, b) (FlexFloatEquals(a.width, b.width) && FlexFloatEquals(a.height, b.height))
+#define FlexMeasureCacheEquals(a, b) (FlexSizeEquals(a.availableSize, b.availableSize) && FlexSizeEquals(a.measuredSize, b.measuredSize))
+FLEX_VECTOR_INIT_WITH_EQUALS(FlexMeasureCache, FlexMeasureCacheEquals)
+
+typedef struct FlexNode {
+    FlexWrapMode wrap;
+    FlexDirection direction;
+    FlexAlign alignItems;
+    FlexAlign alignSelf;
+    FlexAlign alignContent;
+    FlexAlign justifyContent;
+    FlexLength flexBasis;       // length, percentage(relative to the flex container's inner main size), auto, content
+    float flexGrow;
+    float flexShrink;
+    FlexLength size[2];         // length, percentage(relative to the flex container's inner size), auto
+    FlexLength minSize[2];      // length, percentage(relative to the flex container's inner size)
+    FlexLength maxSize[2];      // length, percentage(relative to the flex container's inner size), none
+    FlexLength margin[6];       // length, percentage(relative to the flex container's inner width), auto
+    FlexLength padding[6];      // length, percentage(relative to the flex container's inner width)
+    float border[6];            // length
+
+    // extension
+    bool fixed;
+    FlexLength spacing;         // the spacing between each two items. length, percentage(relative to its inner main size)
+    FlexLength lineSpacing;     // the spacing between each two lines. length, percentage(relative to its inner cross size)
+    unsigned int lines;         // the maximum number of lines, 0 means no limit
+    unsigned int itemsPerLine;  // the maximum number of items per line, 0 means no limit
+
+    FlexResult result;
+
+    void* context;
+    FlexMeasureFunc measure;
+    FlexBaselineFunc baseline;
+
+    FlexVectorRef(FlexNodeRef) children;
+    FlexNodeRef parent;
     
-    if (constrainedSize.size[FLEX_WIDTH] < 0) constrainedSize.size[FLEX_WIDTH] = 0;
-    if (constrainedSize.size[FLEX_HEIGHT] < 0) constrainedSize.size[FLEX_HEIGHT] = 0;
-    float constrainedWidth = constrainedSize.size[FLEX_WIDTH];
-    float constrainedHeight = constrainedSize.size[FLEX_HEIGHT];
+    // internal fields
+    float flexBaseSize;
+    float resolvedMargin[4];
+    float ascender;
+    FlexLength calculatedFlexBasis;
+    FlexAlign calculatedAlignSelf;
+
+    // measure cache
+    FlexVectorRef(FlexMeasureCache) measuredSizeCache;
+
+    // layout cache
+    FlexSize lastConstrainedSize;
+    FlexLength lastSize[2];
+
+} FlexNode;
+
+
+static const FlexNode defaultFlexNode = {
+    .wrap = FlexNoWrap,
+    .direction = FlexHorizontal,
+    .alignItems = FlexStretch,
+    .alignSelf = FlexInherit,
+    .alignContent = FlexStretch,
+    .justifyContent = FlexStart,
+    .flexBasis = FlexLengthAuto,
+    .flexGrow  = 0,
+    .flexShrink = 1,
+    .size = { FlexLengthAuto, FlexLengthAuto },
+    .minSize = { FlexLengthZero, FlexLengthZero },
+    .maxSize = { FlexLengthUndefined, FlexLengthUndefined },
+    .margin = { FlexLengthZero, FlexLengthZero, FlexLengthZero, FlexLengthZero, FlexLengthUndefined, FlexLengthUndefined },
+    .padding = { FlexLengthZero, FlexLengthZero, FlexLengthZero, FlexLengthZero, FlexLengthUndefined, FlexLengthUndefined },
+    .border = { 0, 0, 0, 0, FlexUndefined, FlexUndefined },
+
+    .fixed = false,
+    .spacing = FlexLengthZero,
+    .lineSpacing = FlexLengthZero,
+    .lines = 0,
+    .itemsPerLine = 0,
+
+    .result = {
+        .position = { 0, 0 },
+        .size = { 0, 0 },
+        .margin = { 0, 0, 0, 0 },
+        .padding = { 0, 0, 0, 0 },
+    },
+
+    .context = NULL,
+    .measure = NULL,
+    .baseline = NULL,
+
+    .children = NULL,
+    .parent = NULL,
+
+    .measuredSizeCache = NULL,
+    .lastConstrainedSize = FlexCacheSizeUndefined,
+};
+
+
+void flex_markDirty(FlexNodeRef node) {
+    node->lastConstrainedSize = FlexCacheSizeUndefined;
+    if (node->parent) {
+        flex_markDirty(node->parent);
+    }
+}
+
+
+// implementation of getters and setters
+#define FLEX_GETTER(type, Name, field) \
+    type Flex_get##Name(FlexNodeRef node) { \
+        return node->field; \
+    }
+#define FLEX_SETTER(type, Name, field) \
+    void Flex_set##Name(FlexNodeRef node, type Name) { \
+        if (node->field != Name) { \
+            node->field = Name; \
+            flex_markDirty(node); \
+        } \
+    }
+#define FLEX_SETTER_LENGTH(Name, field) \
+    void Flex_set##Name(FlexNodeRef node, FlexLength Name) { \
+        if (!FlexLengthEquals(node->field, Name)) { \
+            node->field = Name; \
+            flex_markDirty(node); \
+        } \
+    }
+#define FLEX_SETTER_LENGTH_VALUE(Name, field, Type) \
+    void Flex_set##Name(FlexNodeRef node, float Name) { \
+        FlexLength value = {FlexLengthType##Type, Name}; \
+        if (!FlexLengthEquals(node->field, value)) { \
+            node->field = value; \
+            flex_markDirty(node); \
+        } \
+    }
+#define FLEX_SETTER_LENGTH_TYPE(Name, field, Type) \
+    void Flex_set##Name##Type(FlexNodeRef node) { \
+        if (node->field.type != FlexLengthType##Type) { \
+            node->field.type = FlexLengthType##Type; \
+            flex_markDirty(node); \
+        } \
+    }
+
+FLEX_PROPERTYES()
+FLEX_EXT_PROPERTYES()
+FLEX_RESULT_PROPERTYES()
+
+#undef FLEX_GETTER
+#undef FLEX_SETTER
+#undef FLEX_SETTER_LENGTH
+#undef FLEX_SETTER_LENGTH_VALUE
+#undef FLEX_SETTER_LENGTH_TYPE
+
+
+// for internal use
+#define FLEX_GETTER(type, Name, field) \
+    void Flex_set##Name(FlexNodeRef node, type Name) { \
+        node->field = Name; \
+    }
+FLEX_RESULT_PROPERTYES()
+#undef FLEX_GETTER
+
+
+static inline bool flex_isAbsolute(FlexLength length) {
+    return length.type == FlexLengthTypePoint;
+}
+
+static inline float flex_absoluteValue(FlexLength length, FlexLayoutContext *context) {
+    flex_assert(flex_isAbsolute(length));    // absolute value is requested
+    return length.value;
+}
+
+static inline float flex_resolve(FlexLength length, FlexLayoutContext *context, float relativeTo) {
+    if (flex_isAbsolute(length)) {
+        return flex_absoluteValue(length, context);
+    }
+    else if (length.type == FlexLengthTypePercent && FlexIsResolved(relativeTo)) {
+        return length.value / 100 * relativeTo;
+    }
+    
+    return NAN;
+}
+
+static inline float flex_auto_to_0(float value) {
+    return FlexIsResolved(value) ? value : 0;
+}
+
+static inline float flex_clamp(float value, float minValue, float maxValue) {
+    if (FlexIsUndefined(value)) {
+        return value;
+    }
+    
+    if (FlexIsUndefined(maxValue)) {
+        return fmaxf(value, minValue);
+    } else {
+        return fmaxf(fminf(value, maxValue), minValue);
+    }
+}
+
+static inline float flex_clampMax(float value, float maxValue) {
+    if (FlexIsUndefined(value)) {
+        return value;
+    }
+    
+    if (FlexIsUndefined(maxValue)) {
+        return value;
+    } else {
+        return fminf(value, maxValue);
+    }
+}
+
+static inline float flex_inset(float *inset, FlexDirection direction) {
+    float inset_start = inset[flex_start[direction]];
+    float inset_end = inset[flex_end[direction]];
+    return (!FlexIsUndefined(inset_start) ? inset_start : 0) + (!FlexIsUndefined(inset_end) ? inset_end : 0);
+}
+
+static inline bool flex_hasAutoMargin(FlexNodeRef node, FlexDirection direction) {
+    return FlexIsUndefined(node->resolvedMargin[flex_start[direction]]) || FlexIsUndefined(node->resolvedMargin[flex_end[direction]]);
+}
+
+void flex_resolveMarginAndPadding(FlexNodeRef node, FlexLayoutContext *context, float widthOfContainingBlock, FlexDirection parentDirection) {
+    bool isMainHorizontal = parentDirection == FlexHorizontal || parentDirection == FlexHorizontalReverse;
+    FlexDirection crossAxis = isMainHorizontal ? FlexVertical : FlexHorizontal;
+    node->resolvedMargin[flex_start[parentDirection]] = flex_resolve(!node->fixed && isMainHorizontal && node->margin[FLEX_START].type != FlexLengthTypeUndefined ? node->margin[FLEX_START] : node->margin[flex_start[parentDirection]], context, widthOfContainingBlock);
+    node->resolvedMargin[flex_end[parentDirection]] = flex_resolve(!node->fixed && isMainHorizontal && node->margin[FLEX_END].type != FlexLengthTypeUndefined ? node->margin[FLEX_END] : node->margin[flex_end[parentDirection]], context, widthOfContainingBlock);
+    node->resolvedMargin[flex_start[crossAxis]] = flex_resolve(!node->fixed && !isMainHorizontal && node->margin[FLEX_START].type != FlexLengthTypeUndefined ? node->margin[FLEX_START] : node->margin[flex_start[crossAxis]], context, widthOfContainingBlock);
+    node->resolvedMargin[flex_end[crossAxis]] = flex_resolve(!node->fixed && !isMainHorizontal && node->margin[FLEX_END].type != FlexLengthTypeUndefined ? node->margin[FLEX_END] : node->margin[flex_end[crossAxis]], context, widthOfContainingBlock);
+    float border[4];
+    border[flex_start[parentDirection]] = isMainHorizontal && !FlexIsUndefined(node->border[FLEX_START]) ? node->border[FLEX_START] : node->border[flex_start[parentDirection]];
+    border[flex_end[parentDirection]] = isMainHorizontal && !FlexIsUndefined(node->border[FLEX_END]) ? node->border[FLEX_END] : node->border[flex_end[parentDirection]];
+    border[flex_start[crossAxis]] = !isMainHorizontal && !FlexIsUndefined(node->border[FLEX_START]) ? node->border[FLEX_START] : node->border[flex_start[crossAxis]];
+    border[flex_end[crossAxis]] = !isMainHorizontal && !FlexIsUndefined(node->border[FLEX_END]) ? node->border[FLEX_END] : node->border[flex_end[crossAxis]];
+    node->result.padding[flex_start[parentDirection]] = flex_auto_to_0(flex_resolve(isMainHorizontal && node->padding[FLEX_START].type != FlexLengthTypeUndefined ? node->padding[FLEX_START] : node->padding[flex_start[parentDirection]], context, widthOfContainingBlock) + border[flex_start[parentDirection]]);
+    node->result.padding[flex_end[parentDirection]] = flex_auto_to_0(flex_resolve(isMainHorizontal && node->padding[FLEX_END].type != FlexLengthTypeUndefined ? node->padding[FLEX_END] : node->padding[flex_end[parentDirection]], context, widthOfContainingBlock) + border[flex_end[parentDirection]]);
+    node->result.padding[flex_start[crossAxis]] = flex_auto_to_0(flex_resolve(!isMainHorizontal && node->padding[FLEX_START].type != FlexLengthTypeUndefined ? node->padding[FLEX_START] : node->padding[flex_start[crossAxis]], context, widthOfContainingBlock) + border[flex_start[crossAxis]]);
+    node->result.padding[flex_end[crossAxis]] = flex_auto_to_0(flex_resolve(!isMainHorizontal && node->padding[FLEX_END].type != FlexLengthTypeUndefined ? node->padding[FLEX_END] : node->padding[flex_end[crossAxis]], context, widthOfContainingBlock) + border[flex_end[crossAxis]]);
+    node->result.margin[0] = node->resolvedMargin[0];
+    node->result.margin[1] = node->resolvedMargin[1];
+    node->result.margin[2] = node->resolvedMargin[2];
+    node->result.margin[3] = node->resolvedMargin[3];
+}
+
+void flex_baseline(FlexNodeRef node, float *ascender, float *descender) {
+    FlexDirection crossAxis = FlexVertical;
+    float _ascender, _descender;
+    
+    if (!FlexIsUndefined(node->ascender)) {
+        _ascender = node->ascender;
+        _descender = node->result.size[crossAxis] - _ascender;
+    }
+    else if (node->baseline) {
+        FlexSize size;
+        size.width = node->result.size[FLEX_WIDTH] - flex_inset(node->result.padding, FLEX_WIDTH);
+        size.height = node->result.size[FLEX_HEIGHT] - flex_inset(node->result.padding, FLEX_HEIGHT);
+        _descender = node->baseline(node->context, size) + node->result.padding[flex_end[crossAxis]];
+        _ascender = node->result.size[crossAxis] - _descender;
+    }
+    else {
+        _ascender = node->result.size[crossAxis];
+        for (int i=0;i<Flex_getChildrenCount(node);i++) {
+            FlexNodeRef child = Flex_getChild(node, i);
+            if (!child->fixed) {
+                flex_baseline(child, NULL, NULL);
+                _ascender = child->ascender + (isnan(child->result.position[flex_start[crossAxis]]) ? 0 : child->result.position[flex_start[crossAxis]]);
+                break;
+            }
+        }
+        _descender = node->result.size[crossAxis] - _ascender;
+    }
+    
+    node->ascender = _ascender;
+    _ascender += FlexIsUndefined(node->resolvedMargin[flex_start[crossAxis]]) ? 0 : node->resolvedMargin[flex_start[crossAxis]];
+    _descender += FlexIsUndefined(node->resolvedMargin[flex_end[crossAxis]]) ? 0 : node->resolvedMargin[flex_end[crossAxis]];
+    
+    if (ascender) *ascender = _ascender;
+    if (descender) *descender = _descender;
+}
+
+FlexSize flex_measureNode(FlexNodeRef node, FlexSize availableSize) {
+    if (node->measure) {
+        for (int i = (int)FlexVector_size(FlexMeasureCache, node->measuredSizeCache) - 1; i >= 0; i--) {
+            FlexSize key = node->measuredSizeCache->data[i].availableSize;
+            FlexSize value = node->measuredSizeCache->data[i].measuredSize;
+            if (FlexSizeEquals(availableSize, key)
+                || (FlexTreatNanAsInf(availableSize.width) <= FlexTreatNanAsInf(key.width)
+                && FlexTreatNanAsInf(availableSize.height) <= FlexTreatNanAsInf(key.height)
+                && FlexTreatNanAsInf(availableSize.width) >= value.width
+                && FlexTreatNanAsInf(availableSize.height) >= value.height)) {
+                return value;
+            }
+        }
+        FlexSize measuredSize = node->measure(node->context, availableSize);
+        if (!node->measuredSizeCache) {
+            node->measuredSizeCache = FlexVector_new(FlexMeasureCache, 2);
+        }
+        FlexVector_add(FlexMeasureCache, node->measuredSizeCache, ((FlexMeasureCache){availableSize, measuredSize}));
+        return measuredSize;
+    }
+
+    return (FlexSize){0,0};
+}
+
+bool flex_canUseCache(FlexNodeRef node, FlexSize constrainedSize) {
+    return FlexFloatEquals(node->lastConstrainedSize.width, constrainedSize.width)
+        && FlexFloatEquals(node->lastConstrainedSize.height, constrainedSize.height)
+        && FlexLengthEquals(node->size[FLEX_WIDTH], node->lastSize[FLEX_WIDTH])
+        && FlexLengthEquals(node->size[FLEX_HEIGHT], node->lastSize[FLEX_HEIGHT]);
+}
+
+void flex_layoutInternal(FlexNodeRef node, FlexLayoutContext *context, FlexSize constrainedSize, FlexLayoutFlags flags, bool isRoot) {
+    node->ascender = NAN;
+
+    if (constrainedSize.width < 0) constrainedSize.width = 0;
+    if (constrainedSize.height < 0) constrainedSize.height = 0;
+    float constrainedWidth = constrainedSize.width;
+    float constrainedHeight = constrainedSize.height;
     float resolvedWidth = flex_resolve(node->size[FLEX_WIDTH], context, constrainedWidth);
     float resolvedHeight = flex_resolve(node->size[FLEX_HEIGHT], context, constrainedHeight);
-    if (isRoot && resolvedWidth == FlexAuto && constrainedWidth != FlexAuto) resolvedWidth = constrainedWidth;
-    if (isRoot && resolvedHeight == FlexAuto && constrainedHeight != FlexAuto) resolvedHeight = constrainedHeight;
-    resolvedWidth = clamp(resolvedWidth, flex_resolve(node->minSize[FLEX_WIDTH], context, constrainedWidth), flex_resolve(node->maxSize[FLEX_WIDTH], context, constrainedWidth));
-    resolvedHeight = clamp(resolvedHeight, flex_resolve(node->minSize[FLEX_HEIGHT], context, constrainedHeight), flex_resolve(node->maxSize[FLEX_HEIGHT], context, constrainedHeight));
-    FlexSize resolvedSize = flex_size(resolvedWidth, resolvedHeight);
-    FlexSize resolvedInnerSize = flex_size(resolvedWidth == FlexAuto ? FlexAuto : resolvedWidth - flex_inset(node->resolvedPadding, FLEX_WIDTH), 
-                                           resolvedHeight == FlexAuto ? FlexAuto : resolvedHeight - flex_inset(node->resolvedPadding, FLEX_HEIGHT));
+    if (isRoot && !FlexIsResolved(resolvedWidth) && !FlexIsUndefined(constrainedWidth)) resolvedWidth = constrainedWidth;
+    if (isRoot && !FlexIsResolved(resolvedHeight) && !FlexIsUndefined(constrainedHeight)) resolvedHeight = constrainedHeight;
+    resolvedWidth = flex_clamp(resolvedWidth, flex_resolve(node->minSize[FLEX_WIDTH], context, constrainedWidth), flex_resolve(node->maxSize[FLEX_WIDTH], context, constrainedWidth));
+    resolvedHeight = flex_clamp(resolvedHeight, flex_resolve(node->minSize[FLEX_HEIGHT], context, constrainedHeight), flex_resolve(node->maxSize[FLEX_HEIGHT], context, constrainedHeight));
+    FlexSize resolvedSize = {resolvedWidth, resolvedHeight};
+    FlexSize resolvedInnerSize = {
+        FlexIsResolved(resolvedWidth) ? resolvedWidth - flex_inset(node->result.padding, FLEX_WIDTH) : NAN,
+        FlexIsResolved(resolvedHeight) ? resolvedHeight - flex_inset(node->result.padding, FLEX_HEIGHT) : NAN
+    };
     
-    if (resolvedWidth != FlexAuto) node->result.size[FLEX_WIDTH] = resolvedWidth;
-    if (resolvedHeight != FlexAuto) node->result.size[FLEX_HEIGHT] = resolvedHeight;
+    if (FlexIsResolved(resolvedWidth)) node->result.size[FLEX_WIDTH] = resolvedWidth;
+    if (FlexIsResolved(resolvedHeight)) node->result.size[FLEX_HEIGHT] = resolvedHeight;
     
-    if (flags == FlexLayoutFlagMeasureWidth && resolvedWidth != FlexAuto) {
+    if (flags == FlexLayoutFlagMeasureWidth && FlexIsResolved(resolvedWidth)) {
         node->result.size[FLEX_WIDTH] = resolvedWidth;
         return;
     }
-    if (flags == FlexLayoutFlagMeasureHeight && resolvedHeight != FlexAuto) {
+    if (flags == FlexLayoutFlagMeasureHeight && FlexIsResolved(resolvedHeight)) {
         node->result.size[FLEX_HEIGHT] = resolvedHeight;
         return;
     }
     
     float resolvedMarginWidth = flex_inset(node->resolvedMargin, FLEX_WIDTH);
     float resolvedMarginHeight = flex_inset(node->resolvedMargin, FLEX_HEIGHT);
-    float resolvedPaddingWidth = flex_inset(node->resolvedPadding, FLEX_WIDTH);
-    float resolvedPaddingHeight = flex_inset(node->resolvedPadding, FLEX_HEIGHT);
+    float resolvedPaddingWidth = flex_inset(node->result.padding, FLEX_WIDTH);
+    float resolvedPaddingHeight = flex_inset(node->result.padding, FLEX_HEIGHT);
     FlexSize availableSize;
-    availableSize.size[FLEX_WIDTH] =  resolvedWidth != FlexAuto ? resolvedWidth - resolvedPaddingWidth : constrainedWidth == FlexAuto ? FlexAuto : (constrainedWidth - resolvedMarginWidth - resolvedPaddingWidth);
-    availableSize.size[FLEX_HEIGHT] =  resolvedHeight != FlexAuto ? resolvedHeight - resolvedPaddingHeight : constrainedHeight == FlexAuto ? FlexAuto : (constrainedHeight - resolvedMarginHeight - resolvedPaddingHeight);
+    availableSize.width = FlexIsResolved(resolvedWidth) ? resolvedWidth - resolvedPaddingWidth : FlexIsUndefined(constrainedWidth) ? NAN : (constrainedWidth - resolvedMarginWidth - resolvedPaddingWidth);
+    availableSize.height = FlexIsResolved(resolvedHeight) ? resolvedHeight - resolvedPaddingHeight : FlexIsUndefined(constrainedHeight) ? NAN : (constrainedHeight - resolvedMarginHeight - resolvedPaddingHeight);
     
-    // measure non-container element
-    if (node->childrenCount == 0) {
-        if (resolvedWidth == FlexAuto || resolvedHeight == FlexAuto) {
-            FlexSize measuredSize;
-            if (node->measure) {
-                khiter_t itr = kh_get(FlexSize, node->measuredSizeCache, availableSize);
-                if (itr != kh_end((khash_t(FlexSize)*)node->measuredSizeCache) && kh_exist((khash_t(FlexSize)*)node->measuredSizeCache, itr)) {
-                    measuredSize = kh_value((khash_t(FlexSize)*)node->measuredSizeCache, itr);
-                }
-                else {
-                    measuredSize = node->measure(node->context, availableSize);
-                    int ret;
-                    khiter_t itr = kh_put(FlexSize, node->measuredSizeCache, availableSize, &ret);
-                    if (ret) {
-                        kh_value((khash_t(FlexSize)*)node->measuredSizeCache, itr) = measuredSize;
-                    }
-                }
-            }
-            else {
-                measuredSize.size[FLEX_WIDTH] = 0;
-                measuredSize.size[FLEX_HEIGHT] = 0;
-            }
-            
-            if (resolvedWidth == FlexAuto) {
-                node->result.size[FLEX_WIDTH] = clamp(measuredSize.size[FLEX_WIDTH] + flex_inset(node->resolvedPadding, FLEX_WIDTH), flex_resolve(node->minSize[FLEX_WIDTH], context, constrainedWidth), flex_resolve(node->maxSize[FLEX_WIDTH], context, constrainedWidth));
-            }
-            if (resolvedHeight == FlexAuto) {
-                node->result.size[FLEX_HEIGHT] = clamp(measuredSize.size[FLEX_HEIGHT] + flex_inset(node->resolvedPadding, FLEX_HEIGHT), flex_resolve(node->minSize[FLEX_HEIGHT], context, constrainedHeight), flex_resolve(node->maxSize[FLEX_HEIGHT], context, constrainedHeight));
-            }
-        }
-        
+    if (flex_canUseCache(node, availableSize)) {
         return;
     }
-    
+    else if (flags == FlexLayoutFlagLayout) {
+        node->lastConstrainedSize = availableSize;
+    }
+    else {
+        node->lastConstrainedSize = FlexCacheSizeUndefined;
+    }
+    node->lastSize[FLEX_WIDTH] = node->size[FLEX_WIDTH];
+    node->lastSize[FLEX_HEIGHT] = node->size[FLEX_HEIGHT];
+
+    // measure non-container element
+    if (Flex_getChildrenCount(node) == 0) {
+        if (!FlexIsResolved(resolvedWidth) || !FlexIsResolved(resolvedHeight)) {
+            FlexSize measuredSize = flex_measureNode(node, availableSize);
+            
+            if (!FlexIsResolved(resolvedWidth)) {
+                node->result.size[FLEX_WIDTH] = flex_clamp(measuredSize.width + flex_inset(node->result.padding, FLEX_WIDTH), flex_resolve(node->minSize[FLEX_WIDTH], context, constrainedWidth), flex_resolve(node->maxSize[FLEX_WIDTH], context, constrainedWidth));
+            }
+            if (!FlexIsResolved(resolvedHeight)) {
+                node->result.size[FLEX_HEIGHT] = flex_clamp(measuredSize.height + flex_inset(node->result.padding, FLEX_HEIGHT), flex_resolve(node->minSize[FLEX_HEIGHT], context, constrainedHeight), flex_resolve(node->maxSize[FLEX_HEIGHT], context, constrainedHeight));
+            }
+        }
+        return;
+    }
+
     // layout flex container
     
     bool isReverse = node->direction == FlexHorizontalReverse || node->direction == FlexVerticalReverse;
@@ -310,16 +527,16 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     int i, j;
     
     //  [flex items ----------->|<----------- fixed items]
-    FlexNode** items = (FlexNode**)malloc(sizeof(FlexNode) * node->childrenCount);
+    FlexNodeRef* items = (FlexNodeRef*)malloc(sizeof(FlexNode) * Flex_getChildrenCount(node));
     int flexItemsCount = 0;
     int fixedItemsCount = 0;
     
-    for (i=0;i<node->childrenCount;i++) {
-        FlexNode* item = node->childAt(node->context, i);
+    for (i=0;i<Flex_getChildrenCount(node);i++) {
+        FlexNodeRef item = Flex_getChild(node, i);
         // resolve margin and padding for each items
-        flex_resolveMarginAndPadding(item, context, resolvedInnerSize.size[FLEX_WIDTH], node->direction);
+        flex_resolveMarginAndPadding(item, context, resolvedInnerSize.width, node->direction);
         if (item->fixed) {
-            items[node->childrenCount - ++fixedItemsCount] = item;
+            items[Flex_getChildrenCount(node) - ++fixedItemsCount] = item;
         }
         else {
             items[flexItemsCount++] = item;
@@ -337,8 +554,8 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     float resolvedMaxCrossSize = flex_resolve(node->maxSize[crossAxis], context, constrainedSize.size[crossAxis]);
     float resolvedMinMainSize = flex_resolve(node->minSize[mainAxis], context, constrainedSize.size[mainAxis]);
     float resolvedMaxMainSize = flex_resolve(node->maxSize[mainAxis], context, constrainedSize.size[mainAxis]);
-    FlexSize resolvedMarginSize = flex_size(resolvedMarginWidth, resolvedMarginHeight);
-    FlexSize resolvedPaddingSize = flex_size(resolvedPaddingWidth, resolvedPaddingHeight);
+    FlexSize resolvedMarginSize = {resolvedMarginWidth, resolvedMarginHeight};
+    FlexSize resolvedPaddingSize = {resolvedPaddingWidth, resolvedPaddingHeight};
     
     FlexLine* lines = malloc(sizeof(FlexLine) * flexItemsCount);
     lines[0].itemsCount = 0;
@@ -350,13 +567,13 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     
     // 3. Determine the flex base size and hypothetical main size of each item:
     for (i=0;i<flexItemsCount;i++) {
-        FlexNode* item = items[i];
+        FlexNodeRef item = items[i];
         
         float itemHypotheticalMainSize;
-        float resolvedFlexBasis = flex_resolve(item->flexBasis, context, resolvedInnerSize.size[mainAxis]);
+        float resolvedFlexBasis = flex_resolve(item->calculatedFlexBasis, context, resolvedInnerSize.size[mainAxis]);
         
         // A. If the item has a definite used flex basis, that’s the flex base size.
-        if (resolvedFlexBasis != FlexAuto) {
+        if (FlexIsResolved(resolvedFlexBasis)) {
             item->flexBaseSize = resolvedFlexBasis;
         }
         
@@ -370,15 +587,15 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         // E. Otherwise, size the item into the available space using its used flex basis in place of its main size, treating a value of content as max-content. If a cross size is needed to determine the main size (e.g. when the flex item’s main size is in its block axis) and the flex item’s cross size is auto and not definite, in this calculation use fit-content as the flex item’s cross size. The flex base size is the item’s resulting main size.
         else {
             FlexLength oldMainSize = item->size[mainAxis];
-            item->size[mainAxis] = item->flexBasis;
-            _layoutFlexNode(item, context, availableSize, mainAxis == FlexHorizontal ? FlexLayoutFlagMeasureWidth : FlexLayoutFlagMeasureHeight, false);
+            item->size[mainAxis] = item->calculatedFlexBasis;
+            flex_layoutInternal(item, context, availableSize, mainAxis == FlexHorizontal ? FlexLayoutFlagMeasureWidth : FlexLayoutFlagMeasureHeight, false);
             item->size[mainAxis] = oldMainSize;
             item->flexBaseSize = item->result.size[mainAxis];
         }
         
         // When determining the flex base size, the item’s min and max main size properties are ignored (no clamping occurs).
         // The hypothetical main size is the item’s flex base size clamped according to its min and max main size properties.
-        itemHypotheticalMainSize = clamp(item->flexBaseSize, flex_resolve(item->minSize[mainAxis], context, resolvedInnerSize.size[mainAxis]), flex_resolve(item->maxSize[mainAxis], context, resolvedInnerSize.size[mainAxis]));
+        itemHypotheticalMainSize = flex_clamp(item->flexBaseSize, flex_resolve(item->minSize[mainAxis], context, resolvedInnerSize.size[mainAxis]), flex_resolve(item->maxSize[mainAxis], context, resolvedInnerSize.size[mainAxis]));
         item->result.size[mainAxis] = itemHypotheticalMainSize;
         float outerItemHypotheticalMainSize = itemHypotheticalMainSize + flex_inset(item->resolvedMargin, mainAxis);
         
@@ -401,10 +618,10 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             if (lines[linesCount - 1].itemsCount > 0) outerItemHypotheticalMainSize += spacing;
             // line break
             if ((node->itemsPerLine > 0 && lines[linesCount - 1].itemsCount >= node->itemsPerLine) ||
-                lines[linesCount - 1].itemsSize + outerItemHypotheticalMainSize > availableSize.size[mainAxis] + 0.001) {
+                lines[linesCount - 1].itemsSize + outerItemHypotheticalMainSize > FlexTreatNanAsInf(availableSize.size[mainAxis]) + 0.001) {
                 if (node->lines > 0 && linesCount >= node->lines) {
                     for (int j=i;j<flexItemsCount;j++) {
-                        FlexNode *item = items[j];
+                        FlexNodeRef item = items[j];
                         item->result.position[0] = 0;
                         item->result.position[1] = 0;
                         item->result.size[0] = -1;
@@ -442,8 +659,8 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     }
     
     // 4. Determine the main size of the flex container using the rules of the formatting context in which it participates. For this computation, auto margins on flex items are treated as 0.
-    node->result.size[mainAxis] = resolvedSize.size[mainAxis] != FlexAuto ? resolvedSize.size[mainAxis] : clampMax(itemsMainSize + resolvedPaddingSize.size[mainAxis], constrainedSize.size[mainAxis] != FlexAuto ? constrainedSize.size[mainAxis] - resolvedMarginSize.size[mainAxis] : FlexAuto);
-    node->result.size[mainAxis] = clamp(node->result.size[mainAxis], resolvedMinMainSize, resolvedMaxMainSize);
+    node->result.size[mainAxis] = FlexIsResolved(resolvedSize.size[mainAxis]) ? resolvedSize.size[mainAxis] : flex_clampMax(itemsMainSize + resolvedPaddingSize.size[mainAxis], !FlexIsUndefined(constrainedSize.size[mainAxis]) ? constrainedSize.size[mainAxis] - resolvedMarginSize.size[mainAxis] : NAN);
+    node->result.size[mainAxis] = flex_clamp(node->result.size[mainAxis], resolvedMinMainSize, resolvedMaxMainSize);
     itemsMainSize = node->result.size[mainAxis] - resolvedPaddingSize.size[mainAxis];
     
     if ((flags == FlexLayoutFlagMeasureWidth && mainAxis == FLEX_WIDTH)
@@ -467,16 +684,16 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         // 6.1 Determine the used flex factor. Sum the outer hypothetical main sizes of all items on the line. If the sum is less than the flex container’s inner main size, use the flex grow factor for the rest of this algorithm; otherwise, use the flex shrink factor.
         float lineMainSize = 0;
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             lineMainSize += item->result.size[mainAxis] + flex_inset(item->resolvedMargin, mainAxis);
         }
         float itemsSpacing = (count - 1) * spacing;
         lineMainSize += itemsSpacing;
-        bool usingFlexGrowFactor = lineMainSize < availableSize.size[mainAxis];
+        bool usingFlexGrowFactor = lineMainSize < FlexTreatNanAsInf(availableSize.size[mainAxis]);
         float initialFreeSpace = innerMainSize - itemsSpacing;
         
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             // 6.2 Size inflexible items. Freeze, setting its target main size to its hypothetical main size…
             //       * any item that has a flex factor of zero
             //       * if using the flex grow factor: any item that has a flex base size greater than its hypothetical main size
@@ -506,7 +723,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             float unFrozenFlexFactors = 0;
             
             for (j=lineStart;j<lineEnd;j++) {
-                FlexNode *item = items[j];
+                FlexNodeRef item = items[j];
                 if (isFrozen[j]) {
                     remainingFreeSpace -= item->result.size[mainAxis] + flex_inset(item->resolvedMargin, mainAxis);
                 }
@@ -533,7 +750,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             //         Find the ratio of the item’s flex grow factor to the sum of the flex grow factors of all unfrozen items on the line. Set the item’s target main size to its flex base size plus a fraction of the remaining free space proportional to the ratio.
             else if (usingFlexGrowFactor && unFrozenFlexFactors > 0) {
                 for (j=lineStart;j<lineEnd;j++) {
-                    FlexNode *item = items[j];
+                    FlexNodeRef item = items[j];
                     if (!isFrozen[j]) {
                         float ratio = item->flexGrow / unFrozenFlexFactors;
                         item->result.size[mainAxis] = item->flexBaseSize + remainingFreeSpace * ratio;
@@ -545,13 +762,13 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             else if (!usingFlexGrowFactor && unFrozenFlexFactors > 0) {
                 float unFrozenScaledFlexFactors = 0;
                 for (j=lineStart;j<lineEnd;j++) {
-                    FlexNode *item = items[j];
+                    FlexNodeRef item = items[j];
                     if (!isFrozen[j]) {
                         unFrozenScaledFlexFactors += item->flexShrink * item->flexBaseSize;
                     }
                 }
                 for (j=lineStart;j<lineEnd;j++) {
-                    FlexNode *item = items[j];
+                    FlexNodeRef item = items[j];
                     if (!isFrozen[j]) {
                         float ratio = item->flexShrink * item->flexBaseSize / unFrozenScaledFlexFactors;
                         item->result.size[mainAxis] = item->flexBaseSize + remainingFreeSpace * ratio;
@@ -564,10 +781,10 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             // d. Fix min/max violations. Clamp each non-frozen item’s target main size by its min and max main size properties. If the item’s target main size was made smaller by this, it’s a max violation. If the item’s target main size was made larger by this, it’s a min violation.
             float totalViolation = 0;
             for (j=lineStart;j<lineEnd;j++) {
-                FlexNode *item = items[j];
+                FlexNodeRef item = items[j];
                 if (!isFrozen[j]) {
                     float targetMainSize = item->result.size[mainAxis];
-                    float clampedSize = clamp(targetMainSize, flex_resolve(item->minSize[mainAxis], context, resolvedInnerSize.size[mainAxis]), flex_resolve(item->maxSize[mainAxis], context, resolvedInnerSize.size[mainAxis]));
+                    float clampedSize = flex_clamp(targetMainSize, flex_resolve(item->minSize[mainAxis], context, resolvedInnerSize.size[mainAxis]), flex_resolve(item->maxSize[mainAxis], context, resolvedInnerSize.size[mainAxis]));
                     violations[j] = clampedSize == targetMainSize ? 0 : clampedSize < targetMainSize ? 1 : -1;    // 1/-1 means max/min
                     totalViolation += clampedSize - targetMainSize;
                     item->result.size[mainAxis] = clampedSize;
@@ -617,26 +834,26 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     
     // 7. Determine the hypothetical cross size of each item by performing layout with the used main size and the available space, treating auto as fit-content.
     for (i=0;i<flexItemsCount;i++) {
-        FlexNode* item = items[i];
+        FlexNodeRef item = items[i];
         FlexLength oldMainSize = item->size[mainAxis];
-        item->size[mainAxis] = flexLength(item->result.size[mainAxis], FlexLengthTypeDefault);
-        _layoutFlexNode(item, context, availableSize, flags, false);
+        item->size[mainAxis] = (FlexLength){item->result.size[mainAxis], FlexLengthTypePoint};
+        flex_layoutInternal(item, context, availableSize, flags, false);
         item->size[mainAxis] = oldMainSize;
     }
     
     // 8. Calculate the cross size of each flex line.
     //    If the flex container is single-line and has a definite cross size, the cross size of the flex line is the flex container’s inner cross size.
     float itemsCrossSize = 0;
-    float resolvedInnerCrossSize = resolvedSize.size[crossAxis] != FlexAuto ? resolvedSize.size[crossAxis] - flex_inset(node->resolvedPadding, crossAxis) : FlexAuto;
-    if (!node->wrap && resolvedSize.size[crossAxis] != FlexAuto) {
+    float resolvedInnerCrossSize = FlexIsResolved(resolvedSize.size[crossAxis]) ? resolvedSize.size[crossAxis] - flex_inset(node->result.padding, crossAxis) : NAN;
+    if (!node->wrap && FlexIsResolved(resolvedSize.size[crossAxis])) {
         itemsCrossSize = resolvedInnerCrossSize;
         lines[0].itemsSize = itemsCrossSize;
         
         // prepare for baseline alignment
         float maxAscender = 0;
         for (j=0;j<lines[0].itemsCount;j++) {
-            FlexNode *item = items[j];
-            if (mainAxis == FlexHorizontal && item->alignSelf == FlexBaseline && !hasAutoMargin(item, crossAxis)) {
+            FlexNodeRef item = items[j];
+            if (mainAxis == FlexHorizontal && item->calculatedAlignSelf == FlexBaseline && !flex_hasAutoMargin(item, crossAxis)) {
                 float ascender;
                 flex_baseline(item, &ascender, NULL);
                 
@@ -657,11 +874,11 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             float maxAscender = 0;
             float maxDescender = 0;
             for (j=lineStart;j<lineEnd;j++) {
-                FlexNode *item = items[j];
+                FlexNodeRef item = items[j];
                 
                 //    1. Collect all the flex items whose inline-axis is parallel to the main-axis, whose align-self is baseline, and whose cross-axis margins are both non-auto. Find the largest of the distances between each item’s baseline and its hypothetical outer cross-start edge, and the largest of the distances between each item’s baseline and its hypothetical outer cross-end edge, and sum these two values.
                 // only the horizontal text layout is supported
-                if (mainAxis == FlexHorizontal && item->alignSelf == FlexBaseline && !hasAutoMargin(item, crossAxis)) {
+                if (mainAxis == FlexHorizontal && item->calculatedAlignSelf == FlexBaseline && !flex_hasAutoMargin(item, crossAxis)) {
                     float ascender, descender;
                     flex_baseline(item, &ascender, &descender);
                     
@@ -684,7 +901,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             
             //       If the flex container is single-line, then clamp the line’s cross-size to be within the container’s computed min and max cross-size properties. Note that if CSS 2.1’s definition of min/max-width/height applied more generally, this behavior would fall out automatically.
             if (!node->wrap) {
-                usedCrossSize = clamp(usedCrossSize, resolvedMinCrossSize, resolvedMaxCrossSize);
+                usedCrossSize = flex_clamp(usedCrossSize, resolvedMinCrossSize, resolvedMaxCrossSize);
             }
             if (i > 0) itemsCrossSize += lineSpacing;
             itemsCrossSize += usedCrossSize;
@@ -694,11 +911,11 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         }
     }
     
-    node->ascender = lines[0].ascender ? lines[0].ascender + node->resolvedPadding[flex_start[crossAxis]] : FlexUndefined;
+    node->ascender = lines[0].ascender ? lines[0].ascender + node->result.padding[flex_start[crossAxis]] : NAN;
     
     if (flags == FlexLayoutFlagLayout) {
     // 9. Handle 'align-content: stretch'. If the flex container has a definite cross size, align-content is stretch, and the sum of the flex lines' cross sizes is less than the flex container’s inner cross size, increase the cross size of each flex line by equal amounts such that the sum of their cross sizes exactly equals the flex container’s inner cross size.
-    if (resolvedSize.size[crossAxis] != FlexAuto && node->alignContent == FlexStretch && itemsCrossSize < resolvedInnerCrossSize) {
+    if (FlexIsResolved(resolvedSize.size[crossAxis]) && node->alignContent == FlexStretch && itemsCrossSize < FlexTreatNanAsInf(resolvedInnerCrossSize)) {
         float increment = (resolvedInnerCrossSize - itemsCrossSize) / linesCount;
         for (i=0;i<linesCount;i++) {
             lines[i].itemsSize += increment;
@@ -718,21 +935,21 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         int lineEnd = lineStart + lines[i].itemsCount;
         
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             
             FlexLength oldCrossSize = item->size[crossAxis];
-            if (item->alignSelf == FlexStretch && item->size[crossAxis].value == FlexAuto && !hasAutoMargin(item, crossAxis)) {
-                item->size[crossAxis].type = FlexLengthTypeDefault;
+            if (item->calculatedAlignSelf == FlexStretch && item->size[crossAxis].type == FlexLengthTypeAuto && !flex_hasAutoMargin(item, crossAxis)) {
+                item->size[crossAxis].type = FlexLengthTypePoint;
                 item->size[crossAxis].value = item->result.size[crossAxis] = lines[i].itemsSize - flex_inset(item->resolvedMargin, crossAxis);
             }
             
-            item->result.size[crossAxis] = clamp(item->result.size[crossAxis], flex_resolve(item->minSize[crossAxis], context, resolvedInnerSize.size[crossAxis]), flex_resolve(item->maxSize[crossAxis], context, resolvedInnerSize.size[crossAxis]));
+            item->result.size[crossAxis] = flex_clamp(item->result.size[crossAxis], flex_resolve(item->minSize[crossAxis], context, resolvedInnerSize.size[crossAxis]), flex_resolve(item->maxSize[crossAxis], context, resolvedInnerSize.size[crossAxis]));
             
-            if (item->alignSelf == FlexStretch) {
+            if (item->calculatedAlignSelf == FlexStretch) {
                 FlexLength oldMainSize = item->size[mainAxis];
-                item->size[crossAxis] = flexLength(item->result.size[crossAxis], FlexLengthTypeDefault);
-                item->size[mainAxis] = flexLength(item->result.size[mainAxis], FlexLengthTypeDefault);
-                _layoutFlexNode(item, context, availableSize, flags, false);
+                item->size[crossAxis] = (FlexLength){item->result.size[crossAxis], FlexLengthTypePoint};
+                item->size[mainAxis] = (FlexLength){item->result.size[mainAxis], FlexLengthTypePoint};
+                flex_layoutInternal(item, context, availableSize, flags, false);
                 item->size[mainAxis] = oldMainSize;
             }
             item->size[crossAxis] = oldCrossSize;
@@ -751,7 +968,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         
         float lineMainSize = 0;
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             lineMainSize += item->result.size[mainAxis] + flex_inset(item->resolvedMargin, mainAxis);
         }
         lineMainSize += (lines[i].itemsCount - 1) * spacing;
@@ -761,31 +978,31 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         if (remainMainSize > 0) {
             int count = 0;
             for (j=lineStart;j<lineEnd;j++) {
-                FlexNode *item = items[j];
-                if (item->resolvedMargin[flex_start[node->direction]] == FlexAuto) count++;
-                if (item->resolvedMargin[flex_end[node->direction]] == FlexAuto) count++;
+                FlexNodeRef item = items[j];
+                if (FlexIsUndefined(item->resolvedMargin[flex_start[node->direction]])) count++;
+                if (FlexIsUndefined(item->resolvedMargin[flex_end[node->direction]])) count++;
             }
             if (count > 0) {
                 float autoMargin = remainMainSize / count;
                 remainMainSize = 0;
                 for (j=lineStart;j<lineEnd;j++) {
-                    FlexNode *item = items[j];
-                    if (item->resolvedMargin[flex_start[node->direction]] == FlexAuto) item->result.margin[flex_start[node->direction]] = autoMargin;
-                    if (item->resolvedMargin[flex_end[node->direction]] == FlexAuto) item->result.margin[flex_end[node->direction]] = autoMargin;
+                    FlexNodeRef item = items[j];
+                    if (FlexIsUndefined(item->resolvedMargin[flex_start[node->direction]])) item->result.margin[flex_start[node->direction]] = autoMargin;
+                    if (FlexIsUndefined(item->resolvedMargin[flex_end[node->direction]])) item->result.margin[flex_end[node->direction]] = autoMargin;
                 }
             }
         }
         //          Otherwise, set all auto margins to zero.
         else {
             for (j=lineStart;j<lineEnd;j++) {
-                FlexNode *item = items[j];
-                if (item->resolvedMargin[flex_start[node->direction]] == FlexAuto) item->result.margin[flex_start[node->direction]] = 0;
-                if (item->resolvedMargin[flex_end[node->direction]] == FlexAuto) item->result.margin[flex_end[node->direction]] = 0;
+                FlexNodeRef item = items[j];
+                if (FlexIsUndefined(item->resolvedMargin[flex_start[node->direction]])) item->result.margin[flex_start[node->direction]] = 0;
+                if (FlexIsUndefined(item->resolvedMargin[flex_end[node->direction]])) item->result.margin[flex_end[node->direction]] = 0;
             }
         }
         
         //       2. Align the items along the main-axis per justify-content.
-        float offsetStart = node->resolvedPadding[flex_start[node->direction]];
+        float offsetStart = node->result.padding[flex_start[node->direction]];
         float offsetStep = 0;
         switch (node->justifyContent) {
             case FlexStart:
@@ -808,7 +1025,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
         }
         
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             offsetStart += item->result.margin[flex_start[node->direction]];
             item->result.position[flex_start[mainAxis]] = isReverse ? node->result.size[mainAxis] - offsetStart - item->result.size[mainAxis] : offsetStart;
             offsetStart += item->result.size[mainAxis] + item->result.margin[flex_end[node->direction]] + offsetStep + spacing;
@@ -826,21 +1043,21 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     for (i=0;i<linesCount;i++) {
         int lineEnd = lineStart + lines[i].itemsCount;
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             
             float remindCrossSize = lines[i].itemsSize - (item->result.size[crossAxis] + flex_inset(item->resolvedMargin, crossAxis));
             if (remindCrossSize > 0) {
-                if (item->resolvedMargin[flex_start[crossAxis]] == FlexAuto && item->resolvedMargin[flex_end[crossAxis]] == FlexAuto) {
+                if (FlexIsUndefined(item->resolvedMargin[flex_start[crossAxis]]) && FlexIsUndefined(item->resolvedMargin[flex_end[crossAxis]])) {
                     item->result.margin[flex_start[crossAxis]] = item->result.margin[flex_end[crossAxis]] = remindCrossSize / 2;
-                } else if (item->resolvedMargin[flex_start[crossAxis]] == FlexAuto) {
+                } else if (FlexIsUndefined(item->resolvedMargin[flex_start[crossAxis]])) {
                     item->result.margin[flex_start[crossAxis]] = remindCrossSize;
-                } else if (item->resolvedMargin[flex_end[crossAxis]] == FlexAuto) {
+                } else if (FlexIsUndefined(item->resolvedMargin[flex_end[crossAxis]])) {
                     item->result.margin[flex_end[crossAxis]] = remindCrossSize;
                 }
             }
             //       * Otherwise, if the block-start or inline-start margin (whichever is in the cross axis) is auto, set it to zero. Set the opposite margin so that the outer cross size of the item equals the cross size of its flex line.
             else {
-                if (item->resolvedMargin[flex_start[crossAxis]] == FlexAuto) {
+                if (FlexIsUndefined(item->resolvedMargin[flex_start[crossAxis]])) {
                     item->result.margin[flex_start[crossAxis]] = 0;
                 }
 //                item->result.margin[flex_end[crossAxis]] = elementsSizeInLine[i] - (item->result.size[crossAxis] + item->result.margin[flex_start[crossAxis]]);
@@ -849,7 +1066,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
             // 14. Align all flex items along the cross-axis per align-self, if neither of the item’s cross-axis margins are auto.
             remindCrossSize = lines[i].itemsSize - (item->result.size[crossAxis] + flex_inset(item->result.margin, crossAxis));
             float itemResultCrossPosition = item->result.margin[flex_start[crossAxis]];
-            switch (item->alignSelf) {
+            switch (item->calculatedAlignSelf) {
                 case FlexStart:
                     break;
                 case FlexCenter:
@@ -861,7 +1078,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
                 case FlexStretch:
                     break;
                 case FlexBaseline:
-                    if (mainAxis == FlexHorizontal && !hasAutoMargin(item, crossAxis)) {
+                    if (mainAxis == FlexHorizontal && !flex_hasAutoMargin(item, crossAxis)) {
                         itemResultCrossPosition = lines[i].ascender - item->ascender;
                     }
                     break;
@@ -878,12 +1095,12 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     
     // 15. Determine the flex container’s used cross size:
     //       * If the cross size property is a definite size, use that, clamped by the min and max cross size properties of the flex container.
-    if (resolvedSize.size[crossAxis] != FlexAuto) {
-        node->result.size[crossAxis] = clamp(resolvedSize.size[crossAxis], resolvedMinCrossSize, resolvedMaxCrossSize);
+    if (FlexIsResolved(resolvedSize.size[crossAxis])) {
+        node->result.size[crossAxis] = flex_clamp(resolvedSize.size[crossAxis], resolvedMinCrossSize, resolvedMaxCrossSize);
     }
     //       * Otherwise, use the sum of the flex lines' cross sizes, clamped by the min and max cross size properties of the flex container.
     else {
-        node->result.size[crossAxis] = clamp(itemsCrossSize + resolvedPaddingSize.size[crossAxis], resolvedMinCrossSize, resolvedMaxCrossSize);
+        node->result.size[crossAxis] = flex_clamp(itemsCrossSize + resolvedPaddingSize.size[crossAxis], resolvedMinCrossSize, resolvedMaxCrossSize);
     }
     
     if (flags != FlexLayoutFlagLayout) {
@@ -896,7 +1113,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     
     // 16. Align all flex lines per align-content.
     lineStart = 0;
-    float offsetStart = node->resolvedPadding[flex_start[crossAxis]];
+    float offsetStart = node->result.padding[flex_start[crossAxis]];
     float offsetStep = 0;
     float remindCrossSize = innerCrossSize - itemsCrossSize;
     switch (node->alignContent) {
@@ -923,7 +1140,7 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     for (i=0;i<linesCount;i++) {
         int lineEnd = lineStart + lines[i].itemsCount;
         for (j=lineStart;j<lineEnd;j++) {
-            FlexNode *item = items[j];
+            FlexNodeRef item = items[j];
             item->result.position[flex_start[crossAxis]] += isWrapReverse ? node->result.size[crossAxis] - lines[i].itemsSize - lineCrossPositionStart : lineCrossPositionStart;
         }
         lineCrossPositionStart += offsetStep + lines[i].itemsSize + lineSpacing;
@@ -932,52 +1149,52 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     
     // layout fixed items
     for (i=0;i<fixedItemsCount;i++) {
-        FlexNode* item = items[node->childrenCount - 1 - i];
+        FlexNodeRef item = items[Flex_getChildrenCount(node) - 1 - i];
         
         FlexSize childConstrainedSize;
-        childConstrainedSize.size[FLEX_WIDTH] = node->result.size[FLEX_WIDTH];
-        childConstrainedSize.size[FLEX_HEIGHT] = node->result.size[FLEX_HEIGHT];
+        childConstrainedSize.width = node->result.size[FLEX_WIDTH];
+        childConstrainedSize.height = node->result.size[FLEX_HEIGHT];
         
         FlexLength oldWidth = item->size[FLEX_WIDTH];
         FlexLength oldHeight = item->size[FLEX_HEIGHT];
-        if (item->size[FLEX_WIDTH].value == FlexAuto && !hasAutoMargin(item, FLEX_WIDTH)) {
-            item->size[FLEX_WIDTH] = flexLength(node->result.size[FLEX_WIDTH] - flex_inset(item->resolvedMargin, FLEX_WIDTH), FlexLengthTypeDefault);
+        if (item->size[FLEX_WIDTH].type == FlexLengthTypeAuto && !flex_hasAutoMargin(item, FLEX_WIDTH)) {
+            item->size[FLEX_WIDTH] = (FlexLength){node->result.size[FLEX_WIDTH] - flex_inset(item->resolvedMargin, FLEX_WIDTH), FlexLengthTypePoint};
         }
-        if (item->size[FLEX_HEIGHT].value == FlexAuto && !hasAutoMargin(item, FLEX_HEIGHT)) {
-            item->size[FLEX_HEIGHT] = flexLength(node->result.size[FLEX_HEIGHT] - flex_inset(item->resolvedMargin, FLEX_HEIGHT), FlexLengthTypeDefault);
+        if (item->size[FLEX_HEIGHT].type == FlexLengthTypeAuto && !flex_hasAutoMargin(item, FLEX_HEIGHT)) {
+            item->size[FLEX_HEIGHT] = (FlexLength){node->result.size[FLEX_HEIGHT] - flex_inset(item->resolvedMargin, FLEX_HEIGHT), FlexLengthTypePoint};
         }
-        _layoutFlexNode(item, context, childConstrainedSize, flags, false);
+        flex_layoutInternal(item, context, childConstrainedSize, flags, false);
         item->size[FLEX_WIDTH] = oldWidth;
         item->size[FLEX_HEIGHT] = oldHeight;
         
         float remindWidth = node->result.size[FLEX_WIDTH] - item->result.size[FLEX_WIDTH] - flex_inset(item->resolvedMargin, FLEX_WIDTH);
         float remindHeight = node->result.size[FLEX_HEIGHT] - item->result.size[FLEX_HEIGHT] - flex_inset(item->resolvedMargin, FLEX_HEIGHT);
         if (remindWidth > 0) {
-            if (item->resolvedMargin[flex_start[FLEX_WIDTH]] == FlexAuto && item->resolvedMargin[flex_end[FLEX_WIDTH]] == FlexAuto) {
+            if (FlexIsUndefined(item->resolvedMargin[flex_start[FLEX_WIDTH]]) && FlexIsUndefined(item->resolvedMargin[flex_end[FLEX_WIDTH]])) {
                 item->result.margin[flex_start[FLEX_WIDTH]] = item->result.margin[flex_end[FLEX_WIDTH]] = remindWidth / 2;
-            } else if (item->resolvedMargin[flex_start[FLEX_WIDTH]] == FlexAuto) {
+            } else if (FlexIsUndefined(item->resolvedMargin[flex_start[FLEX_WIDTH]])) {
                 item->result.margin[flex_start[FLEX_WIDTH]] = remindWidth;
-            } else if (item->resolvedMargin[flex_end[FLEX_WIDTH]] == FlexAuto) {
+            } else if (FlexIsUndefined(item->resolvedMargin[flex_end[FLEX_WIDTH]])) {
                 item->result.margin[flex_end[FLEX_WIDTH]] = remindWidth;
             }
         } else {
-            if (item->resolvedMargin[flex_start[FLEX_WIDTH]] == FlexAuto) item->result.margin[flex_start[FLEX_WIDTH]] = 0;
-            if (item->resolvedMargin[flex_end[FLEX_WIDTH]] == FlexAuto) item->result.margin[flex_end[FLEX_WIDTH]] = 0;
+            if (FlexIsUndefined(item->resolvedMargin[flex_start[FLEX_WIDTH]])) item->result.margin[flex_start[FLEX_WIDTH]] = 0;
+            if (FlexIsUndefined(item->resolvedMargin[flex_end[FLEX_WIDTH]])) item->result.margin[flex_end[FLEX_WIDTH]] = 0;
         }
         
-        flex_assert(item->result.margin[0] != FlexAuto);
+        flex_assert(FlexIsResolved(item->result.margin[0]));
         
         if (remindHeight > 0) {
-            if (item->resolvedMargin[flex_start[FLEX_HEIGHT]] == FlexAuto && item->resolvedMargin[flex_end[FLEX_HEIGHT]] == FlexAuto) {
+            if (FlexIsUndefined(item->resolvedMargin[flex_start[FLEX_HEIGHT]]) && FlexIsUndefined(item->resolvedMargin[flex_end[FLEX_HEIGHT]])) {
                 item->result.margin[flex_start[FLEX_HEIGHT]] = item->result.margin[flex_end[FLEX_HEIGHT]] = remindHeight / 2;
-            } else if (item->resolvedMargin[flex_start[FLEX_HEIGHT]] == FlexAuto) {
+            } else if (FlexIsUndefined(item->resolvedMargin[flex_start[FLEX_HEIGHT]])) {
                 item->result.margin[flex_start[FLEX_HEIGHT]] = remindHeight;
-            } else if (item->resolvedMargin[flex_end[FLEX_HEIGHT]] == FlexAuto) {
+            } else if (FlexIsUndefined(item->resolvedMargin[flex_end[FLEX_HEIGHT]])) {
                 item->result.margin[flex_end[FLEX_HEIGHT]] = remindHeight;
             }
         } else {
-            if (item->resolvedMargin[flex_start[FLEX_HEIGHT]] == FlexAuto) item->result.margin[flex_start[FLEX_HEIGHT]] = 0;
-            if (item->resolvedMargin[flex_end[FLEX_HEIGHT]] == FlexAuto) item->result.margin[flex_end[FLEX_HEIGHT]] = 0;
+            if (FlexIsUndefined(item->resolvedMargin[flex_start[FLEX_HEIGHT]])) item->result.margin[flex_start[FLEX_HEIGHT]] = 0;
+            if (FlexIsUndefined(item->resolvedMargin[flex_end[FLEX_HEIGHT]])) item->result.margin[flex_end[FLEX_HEIGHT]] = 0;
         }
         
         item->result.position[flex_start[FLEX_WIDTH]] = item->result.margin[flex_start[FLEX_WIDTH]];
@@ -985,21 +1202,21 @@ void _layoutFlexNode(FlexNode* node, FlexLayoutContext *context, FlexSize constr
     }
     
     // pixel snapping
-    for (i=0;i<node->childrenCount;i++) {
-        FlexNode *item = items[i];
+    for (i=0;i<Flex_getChildrenCount(node);i++) {
+        FlexNodeRef item = items[i];
         float right = item->result.position[FLEX_LEFT] + item->result.size[FLEX_WIDTH];
         float bottom = item->result.position[FLEX_TOP] + item->result.size[FLEX_HEIGHT];
-        item->result.position[FLEX_LEFT] = FLEX_PIXEL_ROUND(item->result.position[FLEX_LEFT], context->scale);
-        item->result.position[FLEX_TOP] = FLEX_PIXEL_ROUND(item->result.position[FLEX_TOP], context->scale);
-        item->result.size[FLEX_WIDTH] = FLEX_PIXEL_ROUND(item->result.size[FLEX_WIDTH], context->scale);//FLEX_PIXEL_ROUND(right - item->result.position[FLEX_LEFT], context->scale);
-        item->result.size[FLEX_HEIGHT] = FLEX_PIXEL_ROUND(item->result.size[FLEX_HEIGHT], context->scale);//FLEX_PIXEL_ROUND(bottom - item->result.position[FLEX_TOP], context->scale);
+        item->result.position[FLEX_LEFT] = FlexPixelRound(item->result.position[FLEX_LEFT], context->scale);
+        item->result.position[FLEX_TOP] = FlexPixelRound(item->result.position[FLEX_TOP], context->scale);
+        item->result.size[FLEX_WIDTH] = FlexPixelRound(item->result.size[FLEX_WIDTH], context->scale);//FlexPixelRound(right - item->result.position[FLEX_LEFT], context->scale);
+        item->result.size[FLEX_HEIGHT] = FlexPixelRound(item->result.size[FLEX_HEIGHT], context->scale);//FlexPixelRound(bottom - item->result.position[FLEX_TOP], context->scale);
     }
     
     free(items);
     free(lines);
 }
 
-void setupProperties(FlexNode* node) {
+void flex_setupProperties(FlexNodeRef node) {
 //    flex_assert(node->size[FLEX_WIDTH].value >= 0);
 //    flex_assert(node->size[FLEX_HEIGHT].value >= 0);
 //    flex_assert(node->minSize[FLEX_WIDTH].value >= 0);
@@ -1019,97 +1236,275 @@ void setupProperties(FlexNode* node) {
     node->result.size[FLEX_HEIGHT] = NAN;
 #endif
     
-    for (int i=0;i<node->childrenCount;i++) {
-        FlexNode *item = node->childAt(node->context, i);
+    for (int i=0;i<Flex_getChildrenCount(node);i++) {
+        FlexNodeRef item = Flex_getChild(node, i);
         
-        if (item->flexBasis.value == FlexAuto) {
-            item->flexBasis = item->size[flex_dim[node->direction]];
+        if (item->flexBasis.type == FlexLengthTypeAuto) {
+            item->calculatedFlexBasis = item->size[flex_dim[node->direction]];
         }
-        else if (item->flexBasis.value == FlexContent) {
-            item->flexBasis = FlexLengthAuto;
+        else if (item->flexBasis.type == FlexLengthTypeContent) {
+            item->calculatedFlexBasis = FlexLengthAuto;
+        }
+        else {
+            item->calculatedFlexBasis = item->flexBasis;
         }
         
         if (item->alignSelf == FlexInherit) {
-            item->alignSelf = node->alignItems;
+            item->calculatedAlignSelf = node->alignItems;
+        }
+        else {
+            item->calculatedAlignSelf = item->alignSelf;
         }
         
-        setupProperties(item);
+        flex_setupProperties(item);
     }
 }
 
-void layoutFlexNode(FlexNode* node, float constrainedWidth, float constrainedHeight, float scale) {
+void Flex_layout(FlexNodeRef node, float constrainedWidth, float constrainedHeight, float scale) {
     FlexLayoutContext context;
-    context.viewportWidth = constrainedWidth != FlexAuto ? constrainedWidth : 0;
-    context.viewportHeight = constrainedHeight != FlexAuto ? constrainedHeight : 0;
     context.scale = scale;
     
-    setupProperties(node);
+    flex_setupProperties(node);
     flex_resolveMarginAndPadding(node, &context, constrainedWidth, FlexVertical);
-    node->result.margin[FLEX_LEFT] = node->resolvedMargin[FLEX_LEFT] == FlexAuto ? 0 : FLEX_PIXEL_ROUND(node->resolvedMargin[FLEX_LEFT], scale);
-    node->result.margin[FLEX_TOP] = node->resolvedMargin[FLEX_TOP] == FlexAuto ? 0 : FLEX_PIXEL_ROUND(node->resolvedMargin[FLEX_TOP], scale);
-    node->result.margin[FLEX_RIGHT] = node->resolvedMargin[FLEX_RIGHT] == FlexAuto ? 0 : FLEX_PIXEL_ROUND(node->resolvedMargin[FLEX_RIGHT], scale);
-    node->result.margin[FLEX_BOTTOM] = node->resolvedMargin[FLEX_BOTTOM] == FlexAuto ? 0 : FLEX_PIXEL_ROUND(node->resolvedMargin[FLEX_BOTTOM], scale);
+    node->result.margin[FLEX_LEFT] = FlexIsResolved(node->resolvedMargin[FLEX_LEFT]) ? FlexPixelRound(node->resolvedMargin[FLEX_LEFT], scale) : 0;
+    node->result.margin[FLEX_TOP] = FlexIsResolved(node->resolvedMargin[FLEX_TOP]) ? FlexPixelRound(node->resolvedMargin[FLEX_TOP], scale) : 0;
+    node->result.margin[FLEX_RIGHT] = FlexIsResolved(node->resolvedMargin[FLEX_RIGHT]) ? FlexPixelRound(node->resolvedMargin[FLEX_RIGHT], scale) : 0;
+    node->result.margin[FLEX_BOTTOM] = FlexIsResolved(node->resolvedMargin[FLEX_BOTTOM]) ? FlexPixelRound(node->resolvedMargin[FLEX_BOTTOM], scale) : 0;
     FlexSize constrainedSize;
-    constrainedSize.size[FLEX_WIDTH] = constrainedWidth == FlexAuto ? FlexAuto : (constrainedWidth - flex_inset(node->resolvedMargin, FLEX_WIDTH));
-    constrainedSize.size[FLEX_HEIGHT] = constrainedHeight == FlexAuto ? FlexAuto : (constrainedHeight - flex_inset(node->resolvedMargin, FLEX_HEIGHT));
-    _layoutFlexNode(node, &context, constrainedSize, FlexLayoutFlagLayout, true);
+    constrainedSize.width = FlexIsUndefined(constrainedWidth) ? NAN : (constrainedWidth - flex_inset(node->resolvedMargin, FLEX_WIDTH));
+    constrainedSize.height = FlexIsUndefined(constrainedHeight) ? NAN : (constrainedHeight - flex_inset(node->resolvedMargin, FLEX_HEIGHT));
+    flex_layoutInternal(node, &context, constrainedSize, FlexLayoutFlagLayout, true);
     node->result.position[FLEX_LEFT] = node->result.margin[FLEX_LEFT];
     node->result.position[FLEX_TOP] = node->result.margin[FLEX_TOP];
-    node->result.size[FLEX_WIDTH] = FLEX_PIXEL_ROUND(node->result.size[FLEX_WIDTH], scale);
-    node->result.size[FLEX_HEIGHT] = FLEX_PIXEL_ROUND(node->result.size[FLEX_HEIGHT], scale);
+    node->result.size[FLEX_WIDTH] = FlexPixelRound(node->result.size[FLEX_WIDTH], scale);
+    node->result.size[FLEX_HEIGHT] = FlexPixelRound(node->result.size[FLEX_HEIGHT], scale);
 }
 
-FlexNode* newFlexNode() {
-    FlexNode* flexNode = (FlexNode *)malloc(sizeof(FlexNode));
+FlexNodeRef Flex_newNode() {
+    FlexNodeRef flexNode = (FlexNodeRef)malloc(sizeof(FlexNode));
+    memcpy(flexNode, &defaultFlexNode, sizeof(FlexNode));
     return flexNode;
 }
 
-void initFlexNode(FlexNode* node) {
-    node->fixed = false;
-    node->wrap = false;
-    node->direction = FlexHorizontal;
-    node->alignItems = FlexStretch;
-    node->alignSelf = FlexInherit;
-    node->alignContent = FlexStretch;
-    node->justifyContent = FlexStart;
-    node->flexBasis = FlexLengthAuto;
-    node->flexGrow  = 0;
-    node->flexShrink = 1;
-    node->size[FLEX_WIDTH] = FlexLengthAuto;
-    node->size[FLEX_HEIGHT] = FlexLengthAuto;
-    node->minSize[FLEX_WIDTH] = FlexLengthZero;
-    node->minSize[FLEX_HEIGHT] = FlexLengthZero;
-    node->maxSize[FLEX_WIDTH] = FlexLengthUndefined;
-    node->maxSize[FLEX_HEIGHT] = FlexLengthUndefined;
-    node->margin[FLEX_LEFT] = FlexLengthZero;
-    node->margin[FLEX_TOP] = FlexLengthZero;
-    node->margin[FLEX_RIGHT] = FlexLengthZero;
-    node->margin[FLEX_BOTTOM] = FlexLengthZero;
-    node->margin[FLEX_START] = FlexLengthUndefined;
-    node->margin[FLEX_END] = FlexLengthUndefined;
-    node->padding[FLEX_LEFT] = FlexLengthZero;
-    node->padding[FLEX_TOP] = FlexLengthZero;
-    node->padding[FLEX_RIGHT] = FlexLengthZero;
-    node->padding[FLEX_BOTTOM] = FlexLengthZero;
-    node->padding[FLEX_START] = FlexLengthUndefined;
-    node->padding[FLEX_END] = FlexLengthUndefined;
-    node->border[FLEX_LEFT] = FlexLengthZero;
-    node->border[FLEX_TOP] = FlexLengthZero;
-    node->border[FLEX_RIGHT] = FlexLengthZero;
-    node->border[FLEX_BOTTOM] = FlexLengthZero;
-    node->border[FLEX_START] = FlexLengthUndefined;
-    node->border[FLEX_END] = FlexLengthUndefined;
-    node->spacing = FlexLengthZero;
-    node->lineSpacing = FlexLengthZero;
-    
-    node->measure = NULL;
-    node->childAt = NULL;
-    node->baseline = NULL;
-    
-    node->measuredSizeCache = kh_init(FlexSize);
+void Flex_freeNode(FlexNodeRef node) {
+    if (node->measuredSizeCache) {
+        FlexVector_free(FlexMeasureCache, node->measuredSizeCache);
+    }
+    if (node->children) {
+        FlexVector_free(FlexNodeRef, node->children);
+    }
+    free(node);
 }
 
-void freeFlexNode(FlexNode* node) {
-    kh_destroy(FlexSize, node->measuredSizeCache);
-    free(node);
+void Flex_freeNodeRecursive(FlexNodeRef node) {
+    for (int i = 0; i < Flex_getChildrenCount(node); i++) {
+        Flex_freeNodeRecursive(Flex_getChild(node, i));
+    }
+    Flex_freeNode(node);
+}
+
+void Flex_insertChild(FlexNodeRef node, FlexNodeRef child, size_t index) {
+    if (!node->children) {
+        node->children = FlexVector_new(FlexNodeRef, 4);
+    }
+    flex_markDirty(node);
+    FlexVector_insert(FlexNodeRef, node->children, child, index);
+}
+
+void Flex_addChild(FlexNodeRef node, FlexNodeRef child) {
+    if (!node->children) {
+        node->children = FlexVector_new(FlexNodeRef, 4);
+    }
+    flex_markDirty(node);
+    FlexVector_add(FlexNodeRef, node->children, child);
+}
+
+void Flex_removeChild(FlexNodeRef node, FlexNodeRef child) {
+    FlexVector_remove(FlexNodeRef, node->children, child);
+    flex_markDirty(node);
+}
+
+FlexNodeRef Flex_getChild(FlexNodeRef node, size_t index) {
+    return node->children->data[index];
+}
+
+size_t Flex_getChildrenCount(FlexNodeRef node) {
+    return FlexVector_size(FlexNodeRef, node->children);
+}
+
+
+void flex_print_float(float value) {
+    printf("%.1f", value);
+}
+
+void flex_print_FlexLength(FlexLength value) {
+    switch (value.type) {
+        case FlexLengthTypePoint:
+            printf("%.1f", value.value);
+            break;
+        case FlexLengthTypePercent:
+            printf("%.1f%%", value.value);
+            break;
+        case FlexLengthTypeAuto:
+            printf("auto");
+            break;
+        case FlexLengthTypeContent:
+            printf("content");
+            break;
+        case FlexLengthTypeUndefined:
+            printf("undefined");
+            break;
+    }
+}
+
+void flex_print_FlexWrapMode(FlexWrapMode value) {
+    switch (value) {
+        case FlexWrap:
+            printf("wrap");
+            break;
+        case FlexNoWrap:
+            printf("nowrap");
+            break;
+        case FlexWrapReverse:
+            printf("wrap-reverse");
+            break;
+    }
+}
+
+void flex_print_FlexDirection(FlexDirection value) {
+    switch (value) {
+        case FlexVertical:
+            printf("vertical");
+            break;
+        case FlexHorizontal:
+            printf("horizontal");
+            break;
+        case FlexVerticalReverse:
+            printf("vertical-reverse");
+            break;
+        case FlexHorizontalReverse:
+            printf("horizontal-reverse");
+            break;
+    }
+}
+
+void flex_print_FlexAlign(FlexAlign value) {
+    switch (value) {
+        case FlexEnd:
+            printf("end");
+            break;
+        case FlexStart:
+            printf("start");
+            break;
+        case FlexCenter:
+            printf("center");
+            break;
+        case FlexInherit:
+            printf("auto");
+            break;
+        case FlexStretch:
+            printf("stretch");
+            break;
+        case FlexBaseline:
+            printf("baseline");
+            break;
+        case FlexSpaceAround:
+            printf("space-around");
+            break;
+        case FlexSpaceBetween:
+            printf("space-between");
+            break;
+    }
+}
+
+void flex_print_bool(bool value) {
+    printf("%s", value ? "true" : "false");
+}
+
+void flex_print_int(int value) {
+    printf("%d", value);
+}
+
+void flex_printIndent(int indent) {
+    for (int i=0;i<indent;i++) {
+        printf("  ");
+    }
+}
+
+void flex_printNode(FlexNodeRef node, FlexPrintOptions options, int indent) {
+#define FLEX_PRINT(type, name, field) \
+    if (showUnspecified || memcmp(&node->field, &defaultFlexNode.field, sizeof(node->field))){ \
+        flex_printIndent(indent); \
+        printf(name ": "); \
+        flex_print_##type(node->field); \
+        printf("\n"); \
+    }
+#define FLEX_PRINT_INSET(type, name, field) \
+    if (showUnspecified || memcmp(&node->field, &defaultFlexNode.field, sizeof(node->field))){ \
+        flex_printIndent(indent); \
+        printf(name ": "); \
+        flex_print_##type(node->field[FLEX_TOP]); \
+        printf(", "); \
+        flex_print_##type(node->field[FLEX_LEFT]); \
+        printf(", "); \
+        flex_print_##type(node->field[FLEX_BOTTOM]); \
+        printf(", "); \
+        flex_print_##type(node->field[FLEX_RIGHT]); \
+        printf("\n"); \
+    }
+
+    if (options == FlexPrintDefault) {
+        options = 0xffffffff;
+    }
+
+    bool showUnspecified = !(options & FlexPrintHideUnspecified);
+
+    flex_printIndent(indent); printf("{\n");
+    indent++;
+    if (options & FlexPrintStyle) {
+        FLEX_PRINT(FlexWrapMode, "wrap", wrap);
+        FLEX_PRINT(FlexDirection, "direction", direction);
+        FLEX_PRINT(FlexAlign, "align-items", alignItems);
+        FLEX_PRINT(FlexAlign, "align-self", alignSelf);
+        FLEX_PRINT(FlexAlign, "align-content", alignContent);
+        FLEX_PRINT(FlexAlign, "justify-content", justifyContent);
+        FLEX_PRINT(FlexLength, "flex-basis", flexBasis);
+        FLEX_PRINT(float, "flex-grow", flexGrow);
+        FLEX_PRINT(float, "flex-shrink", flexShrink);
+        FLEX_PRINT(FlexLength, "width", size[FLEX_WIDTH]);
+        FLEX_PRINT(FlexLength, "height", size[FLEX_HEIGHT]);
+        FLEX_PRINT(FlexLength, "min-width", minSize[FLEX_WIDTH]);
+        FLEX_PRINT(FlexLength, "min-height", minSize[FLEX_HEIGHT]);
+        FLEX_PRINT(FlexLength, "max-width", maxSize[FLEX_WIDTH]);
+        FLEX_PRINT(FlexLength, "max-height", maxSize[FLEX_HEIGHT]);
+        FLEX_PRINT_INSET(FlexLength, "margin", margin);
+        FLEX_PRINT_INSET(FlexLength, "padding", padding);
+        FLEX_PRINT_INSET(float, "border", border);
+        FLEX_PRINT(bool, "fixed", fixed);
+        FLEX_PRINT(FlexLength, "spacing", spacing);
+        FLEX_PRINT(FlexLength, "line-spacing", lineSpacing);
+        FLEX_PRINT(int, "lines", lines);
+        FLEX_PRINT(int, "items-per-line", itemsPerLine);
+    }
+    if (options & FlexPrintResult) {
+        FLEX_PRINT(float, "result-x", result.position[FLEX_LEFT]);
+        FLEX_PRINT(float, "result-y", result.position[FLEX_TOP]);
+        FLEX_PRINT(float, "result-width", result.size[FLEX_WIDTH]);
+        FLEX_PRINT(float, "result-height", result.size[FLEX_HEIGHT]);
+        FLEX_PRINT_INSET(float, "result-margin", result.margin);
+        FLEX_PRINT_INSET(float, "result-padding", result.padding);
+    }
+    if ((options & FlexPrintChildren) && Flex_getChildrenCount(node) > 0) {
+        flex_printIndent(indent); printf("children: [\n");
+        for (int i=0;i<Flex_getChildrenCount(node);i++) {
+            flex_printNode(Flex_getChild(node, i), options, indent + 1);
+        }
+        flex_printIndent(indent); printf("]\n");
+    }
+    indent--;
+    flex_printIndent(indent); printf("}\n");
+}
+
+void Flex_print(FlexNodeRef node, FlexPrintOptions options) {
+    flex_printNode(node, options, 0);
 }
