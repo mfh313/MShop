@@ -13,7 +13,7 @@
 #define MFURLWithPara(para) [MFURL stringByAppendingPathComponent:para]
 
 NSString *const MShopApiUrl = @"http://mp.eekamclub.com/ms/";
-NSString *const MShopApiTestUrl = @"http://120.76.242.182:8083/ms/";
+NSString *const MShopApiTestUrl = @"http://ad.koradior.info/ms";
 
 @implementation MShopApiManger
 
